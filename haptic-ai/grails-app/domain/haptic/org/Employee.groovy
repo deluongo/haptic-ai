@@ -7,6 +7,7 @@ import haptic.fields.ReviewSite
 import haptic.fields.SocialNetwork
 import haptic.fields.WebSite
 import haptic.join.Employee_Team
+
 /*                          ==============  ***  ==============                          *
  #  ---------------------       Class ~Employee~ Definition        --------------------  #
  *                          ===================================                          */
@@ -25,14 +26,15 @@ class Employee {
     String lastName
     String gender
     String jobTitle
-    String team
+    PrivateDetails employeeDetails
+    Employee_Team team //Employee_Team is customer pivot table
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */
 
     /*  -------------------             *** GORM Mapping ***            -------------------  */
     static hasMany = [emailAddresses: EmailAddress, phoneNumbers: PhoneNumber,
                       socialNetworks: SocialNetwork, reviewSites: ReviewSite, webSites: WebSite,
-                      addresses     : Address, teams: Employee_Team] //Employee_Team is customer pivot table
+                      addresses     : Address]
 
     //TO-DO:
     //------
