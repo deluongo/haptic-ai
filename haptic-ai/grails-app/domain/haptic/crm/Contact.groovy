@@ -22,7 +22,6 @@ class Contact {
 
 /*  -------------------         *** Instantiate Variables ***       -------------------  */
 
-
     // Fixed Fields
     String salutation //Mr., Mrs., etc.
     String firstName

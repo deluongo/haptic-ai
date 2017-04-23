@@ -27,7 +27,6 @@ class Employee {
     String jobTitle
     String team
 
-
 /*  -------------------             *** GORM Mapping ***            -------------------  */
 
     /*  -------------------             *** GORM Mapping ***            -------------------  */

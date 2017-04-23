@@ -8,7 +8,6 @@ import haptic.eval.Note
 import haptic.eval.Result
 import haptic.org.Employee
 
-import javax.xml.ws.Response
 
 
 /*                          ==============  ***  ==============                          *
@@ -24,13 +23,13 @@ class Lead {
 
 
     // Fixed Fields
-    String title
+    String status
     String leadStage // MQL, SAL, etc.
     String leadStatus // Converted, Qualified, Dis-qualified, etc.
 
     // BANT Qualification
     String budget // Yes, No, Unknown
-    String authority // Yes, No, Unknown
+    String auth // Yes, No, Unknown
     String need // Yes, No, Unknown
     String timing // Yes, No, Unknown
     String budgetDetails // Allocated $10,000 for new string CRM
@@ -40,12 +39,13 @@ class Lead {
     Float estimatedDealSize
     Date dateOpened
     Date dateClosed
-    Employee leadOwner
 
 
     // Possible Mapping, Pivot Table Candidates
+    Employee leadOwner
 
     // Possible transient or service
+    Action lastContact //Last Action
     def lastResponse  // Reference to linked row in call, email, or post w/ most recent timestamp
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */

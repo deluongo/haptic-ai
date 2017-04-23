@@ -10,3 +10,4 @@ class KPI {
     static constraints = {
     }
 }
+

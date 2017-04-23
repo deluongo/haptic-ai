@@ -11,3 +11,4 @@ class PrivateDetails {
     static constraints = {
     }
 }
+

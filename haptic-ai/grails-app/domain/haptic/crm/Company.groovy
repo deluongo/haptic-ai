@@ -7,7 +7,24 @@ import haptic.fields.ReviewSite
 import haptic.fields.SocialNetwork
 import haptic.fields.WebSite
 
+
+/*                          ==============  ***  ==============                          *
+ #  ---------------------        Class ~Company~ Definition        --------------------  #
+ *                          ===================================                          */
+
+
 class Company {
+
+
+/*  _________________________                                  ________________________  */
+/*  ========================= !!! ---*** PROPERTIES ***--- !!! ========================  */
+
+
+/*  -------------------         *** Instantiate Variables ***       -------------------  */
+
+
+    // Fixed Fields
+    String emailFormula
 
 
     /*  -------------------             *** GORM Mapping ***            -------------------  */

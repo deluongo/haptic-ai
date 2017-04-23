@@ -16,3 +16,4 @@ class Dashboard {
     static constraints = {
     }
 }
+
