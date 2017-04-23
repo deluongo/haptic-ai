@@ -8,7 +8,10 @@ class PrivateDetails {
     Float earnings
     Integer hapticLevel //represents how engaged they are with the platform. Gamification.
 
+    static belongsTo = [employee: Employee]
+
     static constraints = {
+        bonusStructure nullable: true
     }
 }
 
