@@ -1,6 +1,7 @@
 package haptic.fields
 
-import haptic.connect.Post
+import haptic.connect.Communication
+import haptic.eval.Note
 
 
 /*                          ==============  ***  ==============                          *
@@ -26,12 +27,13 @@ class ReviewSite {
     Date lastActivity
 
 
-    Post lastPost
+    Communication lastPost
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */
-    static hasMany = [posts: Post]
+    static hasMany = [posts: Communication, notes: Note]
 
 
     static constraints = {
     }
+
 }

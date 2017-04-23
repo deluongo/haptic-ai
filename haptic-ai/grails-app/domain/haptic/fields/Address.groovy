@@ -1,5 +1,7 @@
 package haptic.fields
 
+import haptic.eval.Note
+
 /*                          ==============  ***  ==============                          *
  #  ---------------------        Class ~Address~ Definition        --------------------  #
  *                          ===================================                          */
@@ -27,4 +29,7 @@ class Address {
 
     static constraints = {
     }
+
+/*  -------------------             *** GORM Mapping ***            -------------------  */
+    static hasMany = [notes: Note]
 }

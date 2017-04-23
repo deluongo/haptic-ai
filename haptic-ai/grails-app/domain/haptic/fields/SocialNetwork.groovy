@@ -1,6 +1,7 @@
 package haptic.fields
 
-import haptic.connect.Post
+import haptic.connect.Communication
+import haptic.eval.Note
 
 
 /*                          ==============  ***  ==============                          *
@@ -23,13 +24,14 @@ class SocialNetwork {
     String networkUrl
     String handle //CaptainAwesome650
     Date lastActivity
-    Post lastPost
+    Communication lastPost
     Date lastOnline
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */
-    static hasMany = [posts: Post]
+    static hasMany = [posts: Communication, notes: Note]
 
 
     static constraints = {
     }
+
 }

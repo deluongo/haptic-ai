@@ -1,5 +1,6 @@
 package haptic.eval
 
+import haptic.connect.Communication
 import haptic.org.Employee
 
 
@@ -19,15 +20,19 @@ class Action {
     // Fixed Fields
     Date actionDate
     Date timeStamp
+    String impotant //yes, no
+
     String actionType //call, email, post
 
-
     // Possible Mapping, Pivot Table Candidates
-    def actionChannel // Call actionType, Email actionType, Post actionType
-    Result result
+    Communication actionChannel // Communication call, email, post
+
     Employee owner
 
 
     static constraints = {
     }
+
+/*  -------------------             *** GORM Mapping ***            -------------------  */
+    static hasMany = [results: Result, notes: Note]
 }

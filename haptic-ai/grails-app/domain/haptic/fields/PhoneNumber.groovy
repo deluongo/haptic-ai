@@ -1,7 +1,7 @@
 package haptic.fields
 
-import haptic.connect.Call
-import haptic.eval.Action
+import haptic.connect.Communication
+import haptic.eval.Note
 
 
 /*                          ==============  ***  ==============                          *
@@ -27,8 +27,8 @@ class PhoneNumber {
     Date expirationDate
 
     // Possible transient or service
-    Call lastCallAnswered //Last Action
-    Call lastCallPlaced  // Reference to linked row in call, email, or post w/ most recent timestamp
+    Communication lastCallAnswered //Last Action
+    Communication lastCallPlaced  // Reference to linked row in call, email, or post w/ most recent timestamp
     Integer callsSinceLastAnswer
     Integer callsSinceLastResponse
     Float answerRate
@@ -37,4 +37,7 @@ class PhoneNumber {
 
     static constraints = {
     }
+
+/*  -------------------             *** GORM Mapping ***            -------------------  */
+    static hasMany = [notes: Note]
 }

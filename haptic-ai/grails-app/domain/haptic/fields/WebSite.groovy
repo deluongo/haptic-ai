@@ -1,5 +1,6 @@
 package haptic.fields
 
+import haptic.eval.Note
 
 
 /*                          ==============  ***  ==============                          *
@@ -28,4 +29,7 @@ class WebSite {
 
     static constraints = {
     }
+
+    /*  -------------------             *** GORM Mapping ***            -------------------  */
+    static hasMany = [notes: Note]
 }

@@ -1,6 +1,7 @@
 package haptic.fields
 
-import haptic.connect.Email
+import haptic.connect.Communication
+import haptic.eval.Note
 
 
 /*                          ==============  ***  ==============                          *
@@ -26,8 +27,8 @@ class EmailAddress {
     Boolean unsubscribed //yes, no
 
     // Possible transient or service
-    Email lastEmailAnswered //Last Action
-    Email lastEmailSent  // Reference to linked row in call, email, or post w/ most recent timestamp
+    Communication lastEmailAnswered //Last Action
+    Communication lastEmailSent  // Reference to linked row in call, email, or post w/ most recent timestamp
     Integer emailsSinceLastAnswer
     Integer emailsSinceLastResponse
     Float answerRate
@@ -37,4 +38,7 @@ class EmailAddress {
         emailStatus inList: ['active', 'unsubscribed', 'unverified', 'verified']
 
     }
+
+/*  -------------------             *** GORM Mapping ***            -------------------  */
+    static hasMany = [notes: Note]
 }
