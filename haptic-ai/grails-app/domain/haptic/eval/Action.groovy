@@ -23,7 +23,7 @@ class Action {
 
 
     // Possible Mapping, Pivot Table Candidates
-    def touchpoint // Call, Email, Post
+    def actionChannel // Call actionType, Email actionType, Post actionType
     Result result
     Employee owner
 
