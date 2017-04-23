@@ -29,12 +29,6 @@ class Team {
     //PrivateDetails privateDetails <- hasOne
     //Notes notes <- hasMany
 
-
-
-
-
-
-
 /*  -------------------              *** Constraints ***            -------------------  */
     static constraints = {
 

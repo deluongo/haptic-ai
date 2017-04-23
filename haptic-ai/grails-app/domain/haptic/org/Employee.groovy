@@ -13,7 +13,7 @@ class Employee {
 
 /*  -------------------         *** Instantiate Variables ***       -------------------  */
 
-    // Default
+    // Fixed Fields
     String salutation //Mr., Mrs., etc.
     String firstName
     String lastName
@@ -22,21 +22,22 @@ class Employee {
     String team
 
 
+/*  -------------------             *** GORM Mapping ***            -------------------  */
+    static hasMany = [teams: Employee_Team]
+    static belongsTo = [user: User]
+
+
+
 
 /*  -------------------              *** Constraints ***            -------------------  */
     static constraints = {
 
     }
 
-
 /*  -------------------          *** Database Designations ***      -------------------  */
     static mapping = {
 
     }
-
-/*  -------------------             *** GORM Mapping ***            -------------------  */
-    static hasMany = [teams: Employee_Team]
-    static belongsTo = [user: User]
 
 /*  -------------------             *** List Transients ***         -------------------  */
     static transients = [
