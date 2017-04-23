@@ -1,5 +1,6 @@
 package haptic.app
 
+import haptic.org.Employee
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
@@ -19,7 +20,6 @@ class User implements Serializable {
 /*  -------------------         *** Instantiate Variables ***       -------------------  */
 
 	// Default
-	private static final long serialVersionUID = 1
 	String username
 	String password
 	boolean enabled = true
@@ -48,20 +48,16 @@ class User implements Serializable {
 			/* ___  security  ___ */
 			'springSecurityService',
 ]
-
 /*  -------------------           *** Transient Functions ***       -------------------  */
 
 
 
 
 
+/*  -------------------             *** Default Params ***          -------------------  */
 
-
-
-
-
-
-
+	private static final long serialVersionUID = 1
+	transient springSecurityService
 
 	boolean passwordExpired
 
@@ -83,14 +79,4 @@ class User implements Serializable {
 		password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
 	}
 
-	static transients = ['springSecurityService']
-
-	static constraints = {
-		password blank: false, password: true
-		username blank: false, unique: true
-	}
-
-	static mapping = {
-		password column: '`password`'
-	}
 }
