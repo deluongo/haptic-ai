@@ -34,7 +34,7 @@ class Employee {
     /*  -------------------             *** GORM Mapping ***            -------------------  */
     static hasMany = [emailAddresses: EmailAddress, phoneNumbers: PhoneNumber,
                       socialNetworks: SocialNetwork, reviewSites: ReviewSite, webSites: WebSite,
-                      addresses     : Address]
+                      addresses: Address]
 
     //TO-DO:
     //------
@@ -47,7 +47,10 @@ class Employee {
 
 /*  -------------------              *** Constraints ***            -------------------  */
     static constraints = {
-
+        salutation inList: ['Mr.', 'Mrs.', 'Ms.', 'Dr.']
+        firstName blank: false
+        gender blank: false
+        jobTitle blank: false
     }
 
 /*  -------------------          *** Database Designations ***      -------------------  */
