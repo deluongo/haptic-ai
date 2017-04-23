@@ -21,9 +21,9 @@ class EmailAddress {
     String emailType
     String emailAddress
     String emailExtension
-    String primary // yes, no
+    Boolean primary // yes, no
     String emailStatus //active, unsubscribed, un-verified, verified
-    String unsubsribed //yes, no
+    Boolean unsubscribed //yes, no
 
     // Possible transient or service
     Email lastEmailAnswered //Last Action
@@ -33,5 +33,8 @@ class EmailAddress {
     Float answerRate
 
     static constraints = {
+        emailAddress matches: /^[a-zA-Z0-9_.+-]+@([\w-]+\.)+[\w-]{2,4}$/
+        emailStatus inList: ['active', 'unsubscribed', 'unverified', 'verified']
+
     }
 }
