@@ -1,12 +1,14 @@
 package haptic.app
 
+
 import haptic.org.Employee
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
 /*                          ==============  ***  ==============                          *
- #  ---------------------        Class ~User~ Definition         --------------------  #
+ #  ---------------------         Class ~User~ Definition          --------------------  #
  *                          ===================================                          */
+
 
 
 @EqualsAndHashCode(includes='username')
@@ -17,6 +19,11 @@ class User implements Serializable {
 /*  ========================= !!! ---*** PROPERTIES ***--- !!! ========================  */
 
 
+
+/*  -------------------             *** Default Params ***          -------------------  */
+	private static final long serialVersionUID = 1
+	transient springSecurityService
+
 /*  -------------------         *** Instantiate Variables ***       -------------------  */
 
 	// Default
@@ -25,42 +32,10 @@ class User implements Serializable {
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
-
-
-/*  -------------------              *** Constraints ***            -------------------  */
-	static constraints = {
-		password blank: false, password: true
-		username blank: false, unique: true
-	}
-
-
-/*  -------------------          *** Database Designations ***      -------------------  */
-	static mapping = {
-		password column: '`password`'
-		//username sqlType: 'text'
-	}
-
-/*  -------------------             *** GORM Mapping ***            -------------------  */
-	static hasOne = [employee: Employee]
-
-/*  -------------------             *** List Transients ***         -------------------  */
-	static transients = [
-			/* ___  security  ___ */
-			'springSecurityService',
-]
-/*  -------------------           *** Transient Functions ***       -------------------  */
-
-
-
-
+	boolean passwordExpired
+	Employee employee
 
 /*  -------------------             *** Default Params ***          -------------------  */
-
-	private static final long serialVersionUID = 1
-	transient springSecurityService
-
-	boolean passwordExpired
-
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this)*.role
 	}
@@ -78,5 +53,23 @@ class User implements Serializable {
 	protected void encodePassword() {
 		password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
 	}
+
+
+/*  -------------------             *** List Transients ***         -------------------  */
+	static transients = ['springSecurityService']
+
+/*  -------------------              *** Constraints ***            -------------------  */
+	static constraints = {
+		password blank: false, password: true
+		username blank: false, unique: true
+	}
+
+/*  -------------------          *** Database Designations ***      -------------------  */
+	static mapping = {
+		password column: '`password`'
+	}
+
+
+/*  -------------------           *** Transient Functions ***       -------------------  */
 
 }

@@ -56,6 +56,8 @@ dependencies {
     compile 'org.grails.plugins:spring-security-core:3.1.1'
 }
 
+
+
 bootRun {
     jvmArgs('-Dspring.output.ansi.enabled=always')
 }

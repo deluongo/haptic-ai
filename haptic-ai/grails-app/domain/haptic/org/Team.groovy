@@ -1,11 +1,12 @@
 package haptic.org
-import haptic.app.User
 import haptic.join.Employee_Team
 /*                          ==============  ***  ==============                          *
  #  ---------------------       Class ~Employee~ Definition        --------------------  #
  *                          ===================================                          */
 
-class Employee {
+
+class Team {
+
 
 /*  _________________________                                  ________________________  */
 /*  ========================= !!! ---*** PROPERTIES ***--- !!! ========================  */
@@ -35,14 +36,13 @@ class Employee {
     }
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */
-    static hasMany = [teams: Employee_Team]
-    static belongsTo = [user: User]
+    static hasMany = [employees: Employee_Team]
 
 /*  -------------------             *** List Transients ***         -------------------  */
     static transients = [
-            /* ___  security  ___ */
+        /* ___  security  ___ */
 
-    ]
+]
 /*  -------------------           *** Transient Functions ***       -------------------  */
 
 

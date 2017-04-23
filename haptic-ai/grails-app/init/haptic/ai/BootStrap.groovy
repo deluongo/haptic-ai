@@ -9,10 +9,10 @@ class BootStrap {
     def init = { servletContext ->
         environments {
             development {
-                setupUsersAndRoles()
+                //setupUsersAndRoles()
             }
             test {
-                setupUsersAndRoles()
+                //setupUsersAndRoles()
             }
             production {
                 // do nothing
