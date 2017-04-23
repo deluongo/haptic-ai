@@ -40,5 +40,25 @@ class Team {
 /*  -------------------           *** Transient Functions ***       -------------------  */
 
 
+
+    PrivateDetails sumTeamPrivateDetails() {
+        Float personalTarget = 0.0
+        Float personalAchieved = 0.0
+        Float earnings = 0.0
+        Integer hapticLevel = 0.0
+
+        for (member in teamMembers) {
+            personalTarget+=member.getEmployee().getEmployeeDetails().getPersonalTarget()
+            personalAchieved+=member.getEmployee().getEmployeeDetails().getPersonalAchieved()
+            earnings+=member.getEmployee().getEmployeeDetails().getEarnings()
+            hapticLevel+=member.getEmployee().getEmployeeDetails().getHapticLevel()
+        }
+
+        PrivateDetails teamDetails = new PrivateDetails(personalTarget: personalTarget, personalAchieved: personalAchieved,
+                                    earnings: earnings, hapticLevel: hapticLevel)
+
+        return teamDetails
+    }
+
 }
 
