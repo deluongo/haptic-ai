@@ -1,0 +1,117 @@
+/* Write your custom CSS here */
+.prospect-list {
+    overflow: hidden;
+    padding-top: 5px;
+}
+
+.prospect-list .secondary-label {
+    color: #ffffff;
+    text-align: left;
+    font-size: 7.5pt;
+    padding-left: 7px;
+    padding-right: 0px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 105px;
+}
+
+.prospect-list .primary-label {
+    text-align: left;
+    font-size: 10pt;
+    padding-left: 7px;
+    padding-right: 0px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 105px;
+}
+
+.prospect-list .expected-value {
+    color: #22baa0;
+    text-align: right;
+}
+
+.prospect-label-wrapper {
+    overflow: hidden;
+    height: 34px;
+    padding-right: 5px;
+}
+
+.padding-0 {
+    padding: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.padding-5-w {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.padding-5-l {
+    padding-left: 5px;
+    padding-right: 0px;
+}
+
+.padding-5-r {
+    padding-left: 0px;
+    padding-right: 5px;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.padding-5-v {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.margin-10 {
+    margin: 10px;
+}
+
+#prospect-list-quick-settings {
+}
+
+.menu.accordion-menu a {
+    padding: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.display-block {
+    display: block;
+}
+
+.vertical-align {
+    vartical-align: middle;
+    height: inherit;
+}
+
+#header {
+  position: relative;
+  min-height: 150px;
+}
+#header-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.pie-chart {
+  position: relative;
+  display: inline-block;
+}
+.pie-chart > span {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin-top: -2px;
+  right: 0;
+  left: 0;
+  text-align: center;
+}
