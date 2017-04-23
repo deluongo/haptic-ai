@@ -14,20 +14,8 @@ class Team {
 
 /*  -------------------         *** Instantiate Variables ***       -------------------  */
 
-    // Default
-    String salutation //Mr., Mrs., etc.
-    String firstName
-    String lastName
-    String gender
-    String jobTitle
-    Employee manager
+    String name
 
-    //To Do
-    //-----
-    //Phone phone <- hasMany
-    //Email email <- hasMany
-    //PrivateDetails privateDetails <- hasOne
-    //Notes notes <- hasMany
 
 /*  -------------------              *** Constraints ***            -------------------  */
     static constraints = {
@@ -41,7 +29,8 @@ class Team {
     }
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */
-    static hasMany = [employees: Employee_Team]
+    static hasMany = [teamMembers: Employee_Team]
+    static hasOne = [teamLead: Employee_Team]
 
 /*  -------------------             *** List Transients ***         -------------------  */
     static transients = [
