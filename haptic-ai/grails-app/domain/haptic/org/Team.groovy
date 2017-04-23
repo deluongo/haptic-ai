@@ -20,7 +20,18 @@ class Team {
     String lastName
     String gender
     String jobTitle
-    String team
+    Employee manager
+
+    //To Do
+    //-----
+    //Phone phone <- hasMany
+    //Email email <- hasMany
+    //PrivateDetails privateDetails <- hasOne
+    //Notes notes <- hasMany
+
+
+
+
 
 
 
