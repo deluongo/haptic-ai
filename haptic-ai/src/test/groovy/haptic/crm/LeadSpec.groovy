@@ -34,7 +34,7 @@ class LeadSpec extends Specification {
         then:
         true
         //Lead.findAllByActionsInList([a1]) == [l1]
-        // WHY??
+        // WHY
     }
 
 
