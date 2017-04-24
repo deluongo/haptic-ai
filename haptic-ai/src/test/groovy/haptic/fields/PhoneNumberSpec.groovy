@@ -1,6 +1,7 @@
 package haptic.fields
 
 import grails.test.mixin.TestFor
+import haptic.connect.Call
 import spock.lang.Specification
 
 /**
@@ -15,8 +16,16 @@ class PhoneNumberSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    void "Test phoneNumber in proper format"() {
+        when:"Phone number not in proper format"
+            PhoneNumber testPhoneNumber = new PhoneNumber(  phoneNumber: '',
+                                                            phoneType: 'Work',
+                                                            primary: true,
+                                                            dateCreated: new Date(),
+                                                            lastCallAnswered: new Call(),
+                                                            lastCallPlaced: new Call())
+
+        then:"Fail validation"
+            !testPhoneNumber.validate()
     }
 }
