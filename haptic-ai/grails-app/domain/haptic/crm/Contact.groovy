@@ -41,5 +41,12 @@ class Contact {
 
 
     static constraints = {
+        salutation inList: ['Mr.', 'Mrs.', 'Ms.', 'Dr.']
+        firstName blank: false
+        lastName blank: false
+        gender  blank: false
+        jobTitle blank: false
+        roleName blank: false
+        group blank: false
     }
 }
