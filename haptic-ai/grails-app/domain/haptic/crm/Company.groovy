@@ -33,5 +33,6 @@ class Company {
                       addresses     : Address]
 
     static constraints = {
+        emailFormula blank: false
     }
 }
