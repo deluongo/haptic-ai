@@ -19,7 +19,7 @@ class Team {
 
 /*  -------------------              *** Constraints ***            -------------------  */
     static constraints = {
-
+        name blank: false
     }
 
 
