@@ -114,7 +114,11 @@ class AddressSpec extends Specification {
                                                 city: 'Boston',
                                                 state: 'MA',
                                                 country: 'United States of America',
+<<<<<<< HEAD
                                                 zip: '0')
+=======
+                                                zip: '45678998765')
+>>>>>>> master
 
         then: "Fail validation"
             !testAddress.validate()

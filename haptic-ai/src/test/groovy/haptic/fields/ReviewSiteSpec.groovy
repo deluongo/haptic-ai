@@ -1,7 +1,11 @@
 package haptic.fields
 
 import grails.test.mixin.TestFor
+<<<<<<< HEAD
 import haptic.connect.Post
+=======
+import haptic.connect.Communication
+>>>>>>> master
 import spock.lang.Specification
 
 /**
@@ -22,8 +26,13 @@ class ReviewSiteSpec extends Specification {
                                                         siteUrl: 'yelp.com',
                                                         handle: 'HarvardU',
                                                         lastActivity: new Date(),
+<<<<<<< HEAD
                                                         lastPost: new Post(),
                                                         posts: new HashSet<Post>())
+=======
+                                                        lastPost: new Communication(),
+                                                        posts: new HashSet<Communication>())
+>>>>>>> master
 
         then: "Fail validation"
             !testReviewSite.validate()
@@ -36,8 +45,13 @@ class ReviewSiteSpec extends Specification {
                                                         siteUrl: 'yelp.com',
                                                         handle: '',
                                                         lastActivity: new Date(),
+<<<<<<< HEAD
                                                         lastPost: new Post(),
                                                         posts: new HashSet<Post>())
+=======
+                                                        lastPost: new Communication(),
+                                                        posts: new HashSet<Communication>())
+>>>>>>> master
 
         then: "Fail validation"
             !testReviewSite.validate()
@@ -50,8 +64,13 @@ class ReviewSiteSpec extends Specification {
                                                         siteUrl: '',
                                                         handle: 'HarvardU',
                                                         lastActivity: new Date(),
+<<<<<<< HEAD
                                                         lastPost: new Post(),
                                                         posts: new HashSet<Post>())
+=======
+                                                        lastPost: new Communication(),
+                                                        posts: new HashSet<Communication>())
+>>>>>>> master
         then:"Fail validation"
             !testReviewSite.validate()
     }

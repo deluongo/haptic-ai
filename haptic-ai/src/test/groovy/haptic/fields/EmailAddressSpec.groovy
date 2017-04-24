@@ -1,6 +1,7 @@
 package haptic.fields
 
 import grails.test.mixin.TestFor
+import haptic.connect.Communication
 import spock.lang.Specification
 import haptic.connect.Email
 
@@ -24,8 +25,13 @@ class EmailAddressSpec extends Specification {
                                                                 primary: true,
                                                                 emailStatus: 'unverified',
                                                                 unsubscribed: false,
+<<<<<<< HEAD
                                                                 lastEmailAnswered: new Email(),
                                                                 lastEmailSent: new Email())
+=======
+                                                                lastEmailAnswered: new Communication(),
+                                                                lastEmailSent: new Communication())
+>>>>>>> master
 
         then: "Fail validation"
             !testEmailAddress.validate()
@@ -39,8 +45,13 @@ class EmailAddressSpec extends Specification {
                                                                 primary: true,
                                                                 emailStatus: '',
                                                                 unsubscribed: false,
+<<<<<<< HEAD
                                                                 lastEmailAnswered: new Email(),
                                                                 lastEmailSent: new Email())
+=======
+                                                                lastEmailAnswered: new Communication(),
+                                                                lastEmailSent: new Communication())
+>>>>>>> master
 
         then: "Fail validation"
             !testEmailAddress.validate()

@@ -1,5 +1,7 @@
 package haptic.fields
 
+import haptic.eval.Note
+
 /*                          ==============  ***  ==============                          *
  #  ---------------------        Class ~Address~ Definition        --------------------  #
  *                          ===================================                          */
@@ -34,4 +36,7 @@ class Address {
         country blank: false
         zip matches: /^[0-9]{5}(?:-[0-9]{4})?$/
     }
+
+/*  -------------------             *** GORM Mapping ***            -------------------  */
+    static hasMany = [notes: Note]
 }

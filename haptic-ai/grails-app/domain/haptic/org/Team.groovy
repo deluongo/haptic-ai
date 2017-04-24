@@ -29,8 +29,8 @@ class Team {
     }
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */
-    static hasMany = [teamMembers: Employee_Team]
-    static hasOne = [teamLead: Employee_Team]
+    static hasMany = [teamMembers: Employee]
+    static hasOne = [teamLead: Employee]
 
 /*  -------------------             *** List Transients ***         -------------------  */
     static transients = [

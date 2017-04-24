@@ -2,6 +2,7 @@ package haptic.app
 
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import haptic.eval.Note
 
 /*                          ==============  ***  ==============                          *
  #  ---------------------         Class ~Role~ Definition          --------------------  #
@@ -35,4 +36,7 @@ class Role implements Serializable {
 	static mapping = {
 		cache true
 	}
+
+/*  -------------------             *** GORM Mapping ***            -------------------  */
+	static hasMany = [notes: Note]
 }

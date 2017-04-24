@@ -1,6 +1,6 @@
 package haptic.app
 
-
+import haptic.eval.Note
 import haptic.org.Employee
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
@@ -69,6 +69,8 @@ class User implements Serializable {
 		password column: '`password`'
 	}
 
+/*  -------------------             *** GORM Mapping ***            -------------------  */
+	static hasMany = [notes: Note]
 
 /*  -------------------           *** Transient Functions ***       -------------------  */
 

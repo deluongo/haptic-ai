@@ -1,5 +1,6 @@
 package haptic.crm
 
+import haptic.eval.Note
 import haptic.fields.Address
 import haptic.fields.EmailAddress
 import haptic.fields.PhoneNumber
@@ -30,7 +31,7 @@ class Company {
     /*  -------------------             *** GORM Mapping ***            -------------------  */
     static hasMany = [emailAddresses: EmailAddress, phoneNumbers: PhoneNumber,
                       socialNetworks: SocialNetwork, reviewSites: ReviewSite, webSites: WebSite,
-                      addresses     : Address]
+                      addresses     : Address, notes: Note]
 
     static constraints = {
         emailFormula blank: false

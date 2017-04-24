@@ -1,8 +1,6 @@
 package haptic.crm
 
-import haptic.connect.Call
-import haptic.connect.Email
-import haptic.connect.Post
+import haptic.connect.Communication
 import haptic.eval.Action
 import haptic.eval.Note
 import haptic.eval.Result
@@ -49,9 +47,9 @@ class Lead {
     def lastResponse  // Reference to linked row in call, email, or post w/ most recent timestamp
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */
-    static hasMany = [contacts: Contact, decisionMakers: Contact, internalChampions: Contact,
-                      calls: Call, emails: Email, posts: Post, actions: Action, results: Result,
-                      notes: Note]
+    static hasMany = [contacts      : Contact, decisionMakers: Contact, internalChampions: Contact,
+                      communications: Communication, actions: Action, results: Result,
+                      notes         : Note]
 
     //TO-DO:
     //------

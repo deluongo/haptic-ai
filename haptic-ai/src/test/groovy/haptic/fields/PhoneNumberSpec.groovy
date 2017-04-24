@@ -1,7 +1,12 @@
 package haptic.fields
 
 import grails.test.mixin.TestFor
+<<<<<<< HEAD
 import haptic.connect.Call
+=======
+import haptic.connect.Communication
+import haptic.connect.CommunicationSpec
+>>>>>>> master
 import spock.lang.Specification
 
 /**
@@ -22,8 +27,13 @@ class PhoneNumberSpec extends Specification {
                                                             phoneType: 'Work',
                                                             primary: true,
                                                             dateCreated: new Date(),
+<<<<<<< HEAD
                                                             lastCallAnswered: new Call(),
                                                             lastCallPlaced: new Call())
+=======
+                                                            lastCallAnswered: new Communication(),
+                                                            lastCallPlaced: new Communication())
+>>>>>>> master
 
         then:"Fail validation"
             !testPhoneNumber.validate()

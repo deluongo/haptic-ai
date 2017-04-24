@@ -1,5 +1,6 @@
 package haptic.fields
 
+import haptic.eval.Note
 
 
 /*                          ==============  ***  ==============                          *
@@ -32,4 +33,6 @@ class WebSite {
         siteName blank: false
         siteUrl matches: /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}/
     }
+    /*  -------------------             *** GORM Mapping ***            -------------------  */
+    static hasMany = [notes: Note]
 }

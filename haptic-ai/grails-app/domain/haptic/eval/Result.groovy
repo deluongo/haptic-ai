@@ -17,14 +17,17 @@ class Result {
     Date actionDate
     Date timeStamp
     String actionType //call, email, post
-
+    String impotant //yes, no
+    String timing //immediate, delayed, triggered, important
 
     // Possible Mapping, Pivot Table Candidates
-    def touchpoint // Call, Email, Post
-    Action actionReferenced
-    Employee author
+    Employee resultAuthor
 
 
     static constraints = {
     }
+
+/*  -------------------             *** GORM Mapping ***            -------------------  */
+    static hasMany = [notes: Note]
+    static belongsTo = [action: Action]
 }

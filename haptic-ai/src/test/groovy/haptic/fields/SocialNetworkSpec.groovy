@@ -1,7 +1,12 @@
 package haptic.fields
 
 import grails.test.mixin.TestFor
+<<<<<<< HEAD
 import haptic.connect.Post
+=======
+import haptic.connect.Communication
+import haptic.connect.CommunicationSpec
+>>>>>>> master
 import spock.lang.Specification
 
 /**
@@ -22,8 +27,13 @@ class SocialNetworkSpec extends Specification {
                                                                 networkUrl: 'twitter.com',
                                                                 handle: 'HarvardU',
                                                                 lastActivity: new Date(),
+<<<<<<< HEAD
                                                                 lastPost: new Post(),
                                                                 posts: new HashSet<Post>(),
+=======
+                                                                lastPost: new Communication(),
+                                                                posts: new HashSet<Communication>(),
+>>>>>>> master
                                                                 lastOnline: new Date())
 
         then: "Fail validation"
@@ -37,8 +47,13 @@ class SocialNetworkSpec extends Specification {
                                                                 networkUrl: 'twitter.com',
                                                                 handle: '',
                                                                 lastActivity: new Date(),
+<<<<<<< HEAD
                                                                 lastPost: new Post(),
                                                                 posts: new HashSet<Post>(),
+=======
+                                                                lastPost: new Communication(),
+                                                                posts: new HashSet<Communication>(),
+>>>>>>> master
                                                                 lastOnline: new Date())
 
         then: "Fail validation"
@@ -52,8 +67,13 @@ class SocialNetworkSpec extends Specification {
                                                                 networkUrl: '',
                                                                 handle: '',
                                                                 lastActivity: new Date(),
+<<<<<<< HEAD
                                                                 lastPost: new Post(),
                                                                 posts: new HashSet<Post>(),
+=======
+                                                                lastPost: new Communication(),
+                                                                posts: new HashSet<Communication>(),
+>>>>>>> master
                                                                 lastOnline: new Date())
 
         then:"Fail validation"

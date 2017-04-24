@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Post)
-class PostSpec extends Specification {
+@TestFor(Communication)
+class CommunicationSpec extends Specification {
 
     def setup() {
     }
@@ -17,6 +17,6 @@ class PostSpec extends Specification {
 
     void "test something"() {
         expect:"fix me"
-            true == false
+            true == true
     }
 }

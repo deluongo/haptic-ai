@@ -2,7 +2,7 @@ package haptic.app
 
 import grails.gorm.DetachedCriteria
 import groovy.transform.ToString
-
+import haptic.eval.Note
 import org.apache.commons.lang.builder.HashCodeBuilder
 
 @ToString(cache=true, includeNames=true, includePackage=false)
@@ -79,4 +79,7 @@ class UserRole implements Serializable {
 		id composite: ['user', 'role']
 		version false
 	}
+
+/*  -------------------             *** GORM Mapping ***            -------------------  */
+	static hasMany = [notes: Note]
 }
