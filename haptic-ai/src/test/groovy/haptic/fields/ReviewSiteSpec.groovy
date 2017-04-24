@@ -19,7 +19,7 @@ class ReviewSiteSpec extends Specification {
     void "Test site name not blank"() {
         when: "Site name blank"
             ReviewSite testReviewSite = new ReviewSite( siteName: '',
-                                                        siteUrl: 'twitter.com',
+                                                        siteUrl: 'yelp.com',
                                                         handle: 'HarvardU',
                                                         lastActivity: new Date(),
                                                         lastPost: new Post(),
@@ -32,8 +32,8 @@ class ReviewSiteSpec extends Specification {
 
     void "Test handle not blank"() {
         when: "Handle blank"
-            ReviewSite testReviewSite = new ReviewSite( siteName: 'Twitter',
-                                                        siteUrl: 'twitter.com',
+            ReviewSite testReviewSite = new ReviewSite( siteName: 'Yelp',
+                                                        siteUrl: 'yelp.com',
                                                         handle: '',
                                                         lastActivity: new Date(),
                                                         lastPost: new Post(),
@@ -46,7 +46,7 @@ class ReviewSiteSpec extends Specification {
 
     void "Test site URL in proper format"() {
         when:"Site URL not in proper format"
-            ReviewSite testReviewSite = new ReviewSite( siteName: 'Twitter',
+            ReviewSite testReviewSite = new ReviewSite( siteName: 'Yelp',
                                                         siteUrl: '',
                                                         handle: 'HarvardU',
                                                         lastActivity: new Date(),
