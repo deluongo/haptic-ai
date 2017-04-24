@@ -22,19 +22,26 @@ class PhoneNumber {
     // Fixed Fields
     String phoneNumber // 3 digits for country code, 15 digits for number
     String phoneType // e.164 Format: string https://en.wikipedia.org/wiki/E.164 Home, Work, Personal
-    String primary // yes, no
+    Boolean primary // yes, no
     Date dateCreated
-    Date expirationDate
+    //Date expirationDate
 
     // Possible transient or service
     Call lastCallAnswered //Last Action
     Call lastCallPlaced  // Reference to linked row in call, email, or post w/ most recent timestamp
+
+    /** TO-DO: Establish logical relationship between callsSinceLastAnswer/Response
     Integer callsSinceLastAnswer
     Integer callsSinceLastResponse
-    Float answerRate
+    **/
 
+    /** TO-DO: Formula for answer rate
+    Float answerRate
+     **/
 
 
     static constraints = {
+        phoneNumber matches: /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?\u0024/
+        phoneType blank: false
     }
 }
