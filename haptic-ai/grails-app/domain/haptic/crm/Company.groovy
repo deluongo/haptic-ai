@@ -34,5 +34,6 @@ class Company {
                       addresses     : Address, notes: Note]
 
     static constraints = {
+        emailFormula blank: false
     }
 }

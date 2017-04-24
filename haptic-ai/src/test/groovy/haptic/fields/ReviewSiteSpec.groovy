@@ -1,6 +1,7 @@
 package haptic.fields
 
 import grails.test.mixin.TestFor
+import haptic.connect.Communication
 import spock.lang.Specification
 
 /**
@@ -15,8 +16,43 @@ class ReviewSiteSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    void "Test site name not blank"() {
+        when: "Site name blank"
+            ReviewSite testReviewSite = new ReviewSite( siteName: '',
+                                                        siteUrl: 'yelp.com',
+                                                        handle: 'HarvardU',
+                                                        lastActivity: new Date(),
+                                                        lastPost: new Communication(),
+                                                        posts: new HashSet<Communication>())
+
+        then: "Fail validation"
+            !testReviewSite.validate()
+
+    }
+
+    void "Test handle not blank"() {
+        when: "Handle blank"
+            ReviewSite testReviewSite = new ReviewSite( siteName: 'Yelp',
+                                                        siteUrl: 'yelp.com',
+                                                        handle: '',
+                                                        lastActivity: new Date(),
+                                                        lastPost: new Communication(),
+                                                        posts: new HashSet<Communication>())
+
+        then: "Fail validation"
+            !testReviewSite.validate()
+
+    }
+
+    void "Test site URL in proper format"() {
+        when:"Site URL not in proper format"
+            ReviewSite testReviewSite = new ReviewSite( siteName: 'Yelp',
+                                                        siteUrl: '',
+                                                        handle: 'HarvardU',
+                                                        lastActivity: new Date(),
+                                                        lastPost: new Communication(),
+                                                        posts: new HashSet<Communication>())
+        then:"Fail validation"
+            !testReviewSite.validate()
     }
 }

@@ -24,7 +24,7 @@ class Opportunity {
     // Fixed Fields
     String status
     String opportunityStage // 10%, 25%, etc.
-    String oportunityStatus // pre-Demo, Post-Demo, Post-RFP, etc.
+    String opportunityStatus // pre-Demo, Post-Demo, Post-RFP, etc.
     String nextStep
 
     // BANT Qualification
@@ -56,5 +56,8 @@ class Opportunity {
                       notes        : Note, leads: Lead]
 
     static constraints = {
+        status blank: false
+        opportunityStage blank: false
+        opportunityStatus inList: ['Pre-demo', 'Post-demo', 'Post-RFP']
     }
 }

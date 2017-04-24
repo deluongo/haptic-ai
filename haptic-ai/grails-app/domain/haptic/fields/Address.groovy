@@ -25,9 +25,16 @@ class Address {
     String city
     String state
     String country
-    Integer zip
+    String zip
 
     static constraints = {
+        locName blank: false
+        locType blank: false
+        streetName blank: false
+        city blank: false
+        state blank: false
+        country blank: false
+        zip matches: /^[0-9]{5}(?:-[0-9]{4})?$/
     }
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */

@@ -58,5 +58,8 @@ class Lead {
     //     - e.g. Contacts is broken into DecisionMakers, InternalChampions, Contacts, etc.
 
     static constraints = {
+        status blank: false
+        leadStage blank: false
+        leadStatus inList: ['Converted', 'Qualified', 'Dis-qualified']
     }
 }

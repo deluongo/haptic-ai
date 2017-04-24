@@ -32,6 +32,9 @@ class SocialNetwork {
 
 
     static constraints = {
+        networkName blank: false
+        networkUrl matches: /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}/
+        handle blank: false
     }
 
 }

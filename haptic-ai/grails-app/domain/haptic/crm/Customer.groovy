@@ -50,5 +50,7 @@ class Customer {
 
 
     static constraints = {
+        status blank: false
+        customerStatus inList: ['Active', 'Churned', 'At-Risk', 'Expired', 'Upsell Opportunity']
     }
 }

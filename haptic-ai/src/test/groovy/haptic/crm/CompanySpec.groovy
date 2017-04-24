@@ -1,6 +1,12 @@
 package haptic.crm
 
 import grails.test.mixin.TestFor
+import haptic.fields.Address
+import haptic.fields.EmailAddress
+import haptic.fields.PhoneNumber
+import haptic.fields.ReviewSite
+import haptic.fields.SocialNetwork
+import haptic.fields.WebSite
 import spock.lang.Specification
 
 /**
@@ -15,8 +21,17 @@ class CompanySpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    void "Test email formula not blank"() {
+        when:"Email formula blank"
+            Company testCompany = new Company(  emailFormula: '',
+                                                emailAddresses: new HashSet<EmailAddress>(),
+                                                phoneNumbers: new HashSet<PhoneNumber>(),
+                                                socialNetworks: new HashSet<SocialNetwork>(),
+                                                reviewSites: new HashSet<ReviewSite>(),
+                                                webSites: new HashSet<WebSite>(),
+                                                addresses: new HashSet<Address>())
+
+        then:"Fail validation"
+            !testCompany.validate()
     }
 }

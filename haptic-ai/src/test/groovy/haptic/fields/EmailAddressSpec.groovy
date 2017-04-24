@@ -1,6 +1,7 @@
 package haptic.fields
 
 import grails.test.mixin.TestFor
+import haptic.connect.Communication
 import spock.lang.Specification
 
 /**
@@ -15,8 +16,35 @@ class EmailAddressSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    void "Test email in proper format"() {
+        when: "Email not in proper format"
+            EmailAddress testEmailAddress = new EmailAddress(   emailType: "School",
+                                                                emailAddress: "bob@harvard.eduedueduedu",
+                                                                emailExtension: "@harvard.edu",
+                                                                primary: true,
+                                                                emailStatus: 'unverified',
+                                                                unsubscribed: false,
+                                                                lastEmailAnswered: new Communication(),
+                                                                lastEmailSent: new Communication())
+
+        then: "Fail validation"
+            !testEmailAddress.validate()
     }
+
+    void "Test emailStatus is valid"() {
+        when: "Email status not valid"
+            EmailAddress testEmailAddress = new EmailAddress(   emailType: "School",
+                                                                emailAddress: "bob@harvard.edu",
+                                                                emailExtension: "@harvard.edu",
+                                                                primary: true,
+                                                                emailStatus: '',
+                                                                unsubscribed: false,
+                                                                lastEmailAnswered: new Communication(),
+                                                                lastEmailSent: new Communication())
+
+        then: "Fail validation"
+            !testEmailAddress.validate()
+    }
+
+
 }
