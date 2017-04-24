@@ -29,5 +29,6 @@ class Action {
 
 
     static constraints = {
+        actionType inList: ['Call', 'Email', 'Post']
     }
 }
