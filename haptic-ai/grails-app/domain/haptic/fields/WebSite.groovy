@@ -23,9 +23,13 @@ class WebSite {
     String siteUrl
     Float resourceWeight //for lead scoring
     Integer traffic
-    String alexaRating
 
+    /** TO-DO: Add constraint for alexa rating
+    String alexaRating
+    **/
 
     static constraints = {
+        siteName blank: false
+        siteUrl matches: /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}/
     }
 }
