@@ -3034,7 +3034,7 @@ tr.group:hover {
 .topmenu-outer {
     height: 60px;
     background: #fff;
-    margin-left: 160px;
+    margin-left: 260px;
 }
 
 .small-sidebar .topmenu-outer {
@@ -3060,7 +3060,7 @@ tr.group:hover {
 
 .navbar .logo-box {
     position: relative;
-    width: 160px;
+    width: 260px;
     height: 60px;
     float: left;
     display: table;
@@ -3522,7 +3522,7 @@ tr.group:hover {
 /* Sidebar */
 
 .page-sidebar {
-    width: 160px;
+    width: 260px;
     display: block;
     z-index: 998;
     float: left;
@@ -3541,7 +3541,7 @@ tr.group:hover {
 }
 
 .page-sidebar-fixed:not(.page-header-fixed) .topmenu-outer {
-    margin-left: 160px;
+    margin-left: 260px;
 }
 
 .small-sidebar.page-sidebar-fixed:not(.page-header-fixed) .topmenu-outer {
@@ -3876,7 +3876,7 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 .menu.accordion-menu {
     padding: 0px;
     margin: 0px;
-    width: 160px;
+    width: 260px;
 	color: white;
     position: relative;
     display: block;
@@ -4028,14 +4028,14 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
 
 .hover-menu .accordion-menu > li > ul {
     position: absolute;
-    left: 160px;
+    left: 260px;
     width: 200px;
 }
 
 .hover-menu:not(.page-horizontal-bar) .accordion-menu > li > ul {
     position: absolute;
     top: 0;
-    left: 160px;
+    left: 260px;
     width: 200px;
 }
 
@@ -4072,7 +4072,7 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
 
 .small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .sidebar:hover,
 .small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .sidebar:hover .menu.accordion-menu {
-    width: 160px!important;
+    width: 260px!important;
 }
 
 .small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .menu.accordion-menu > li > a {
@@ -4285,7 +4285,7 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
 }
 
 .page-sidebar-fixed.page-header-fixed .page-inner {
-	padding: 60px 0 50px 160px;
+	padding: 60px 0 50px 260px;
 }
 
 .page-horizontal-bar.page-sidebar-fixed.page-header-fixed .page-inner {
@@ -4297,7 +4297,7 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
 }
 
 .page-sidebar-fixed:not(.page-header-fixed) .page-inner {
-	padding: 0px 0 50px 160px;
+	padding: 0px 0 50px 260px;
 }
 
 .small-sidebar.page-sidebar-fixed.page-header-fixed .page-inner {
@@ -5578,11 +5578,11 @@ body:not(.small-sidebar):not(.page-horizontal-bar) .menu.accordion-menu,
     }
 
     body:not(.small-sidebar) .sidebar.visible {
-        margin-right: -160px;
+        margin-right: -260px;
         opacity: 1;
         visibility: visible;
         display: block;
-        width: 160px;
+        width: 260px;
         -webkit-transition: opacity 0.3s ease-in-out;
         -moz-transition: opacity 0.3s ease-in-out;
         -o-transition: opacity 0.3s ease-in-out;
@@ -5649,8 +5649,8 @@ body:not(.small-sidebar):not(.page-horizontal-bar) .menu.accordion-menu,
     }
 
     .page-inner.sidebar-visible {
-        -webkit-transform: translate3d(160px, 0, 0);
-        transform: translate3d(160px, 0, 0);
+        -webkit-transform: translate3d(260px, 0, 0);
+        transform: translate3d(260px, 0, 0);
     }
 
     .small-sidebar .page-inner.sidebar-visible,

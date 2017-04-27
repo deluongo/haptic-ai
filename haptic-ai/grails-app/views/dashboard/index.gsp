@@ -245,34 +245,36 @@
     <!-- Navbar -->
     <div class="page-sidebar sidebar">
         <div class="page-sidebar-inner slimscroll">
-            <ul class="menu accordion-menu display-block">
-                <li>
-                    <a href="#">
-                        <div class="prospect-list">
-                            <div class="col-xs-8 padding-0 prospect-label-wrapper">
-                                <p class="secondary-label">Product Manager</p>
-                                <p class="primary-label f-gray">Microsoft</p>
+            <div class="prospect-list-padding">
+                <ul class="menu accordion-menu display-block">
+                    <li>
+                        <a href="#">
+                            <div class="prospect-list">
+                                <div class="col-xs-8 prospect-label-wrapper">
+                                    <p class="secondary-label">Product Manager</p>
+                                    <p class="primary-label f-gray">Microsoft</p>
+                                </div>
+                                <div class="col-xs-4 vertical-align">
+                                    <p class="expected-value">$3,043</p>
+                                </div>
                             </div>
-                            <div class="col-xs-4 padding-0 padding-5-v padding-5-r vertical-align">
-                                <p class="expected-value">$3,043</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="prospect-list">
+                                <div class="col-xs-8 prospect-label-wrapper">
+                                    <p class="secondary-label">CEO</p>
+                                    <p class="primary-label f-gray">Proctor & Gambel</p>
+                                </div>
+                                <div class="col-xs-4 vertical-align">
+                                    <p class="expected-value">$943</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="prospect-list">
-                            <div class="col-xs-8 padding-0 prospect-label-wrapper">
-                                <p class="secondary-label">CEO</p>
-                                <p class="primary-label f-gray">Proctor & Gambel</p>
-                            </div>
-                            <div class="col-xs-4 padding-0 padding-5-v padding-5-r vertical-align">
-                                <p class="expected-value">$943</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <div class="sidebar-profile padding-10" id="header-content">
                 <a href="javascript:void(0);" id="profile-menu-link">
                     <div id="prospect-list-quick-settings">
@@ -337,7 +339,7 @@
                                 <div class="kpi-panel">
                                     <div class="chart">
                                         <span class="kpi-2 pie-chart" data-percent="66" data-scale-color="#ffb400" data-size="95">
-                                            <span class="percent">%</span>
+                                            <span class="kpi-2-value">%</span>
                                         </span>
                                     </div>
                                     <span class="btn js_update_2 kpi-label"><h4 class="padding-0 margin-0">KPI #2</h4></span>
@@ -359,7 +361,7 @@
                                 <div class="kpi-panel">
                                     <div class="chart">
                                         <span class="kpi-4 pie-chart" data-percent="66"  data-size="95">
-                                            <span class="percent">%</span>
+                                            <span class="kpi-4-value">%</span>
                                         </span>
                                     </div>
                                     <span class="btn js_update_4 kpi-label"><h4 class="padding-0 margin-0">KPI #4</h4></span>
@@ -370,14 +372,31 @@
                 </div>
 
                 <div class="col-xs-4">
-                    <!-- Pie Chart Container -->
-                    <div class="kpi-panel">
-                        <div class="chart">
-                            <span class="kpi-4 pie-chart" data-percent="66"  data-size="95">
-                                <span class="percent">%</span>
-                            </span>
+                    <div class="kpi-panel-invisible">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <!-- Pie Chart Container -->
+                                <div class="kpi-panel">
+                                    <div class="chart">
+                                        <span class="kpi-4 pie-chart" data-percent="66"  data-size="95">
+                                            <span class="percent">%</span>
+                                        </span>
+                                    </div>
+                                    <span class="btn js_update_4 kpi-label"><h4 class="padding-0 margin-0">KPI #4</h4></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="level-panel">
+                                    <span class="level-label"><h4 class="user-level">L<small>vl.</small></h4></span>
+                                    <span class="level-number"><h4 class="user-level-number">10</h4></span>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped active level-progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                                            <span class="sr-only">45% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <span class="btn js_update_4 kpi-label"><h4 class="padding-0 margin-0">KPI #4</h4></span>
                     </div>
                 </div>
             </div>

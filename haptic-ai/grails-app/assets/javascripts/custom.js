@@ -30,7 +30,7 @@ $( document ).ready(function() {
                 easing: 'easeOutBounce',
                 animate: 2000,
                 onStep: function(from, to, percent) {
-                    $(this.el).find('.percent').text(Math.round(percent));
+                    $(this.el).find('.kpi-2-value').text(Math.round(percent));
                 }
         });
 
@@ -38,7 +38,7 @@ $( document ).ready(function() {
             easing: 'easeOutBounce',
             animate: 2000,
             onStep: function(from, to, percent) {
-                $(this.el).find('.percent').text(Math.round(percent)).append("%");
+                $(this.el).find('.kpi-4-value').text(Math.round(percent)).append("%");
             }
         });
 
