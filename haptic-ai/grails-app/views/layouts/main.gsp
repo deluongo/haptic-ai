@@ -8,7 +8,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <asset:stylesheet src="application.css"/>
+    <asset:stylesheet src="grails-default/application.css"/>
 
     <g:layoutHead/>
 </head>
@@ -25,7 +25,7 @@
                 </button>
                 <a class="navbar-brand" href="/#">
                     <i class="fa grails-icon">
-                        <asset:image src="grails-cupsonly-logo-white.svg"/>
+                        <asset:image src="grails-default/grails-cupsonly-logo-white.svg"/>
                     </i> Grails
                 </a>
             </div>
@@ -45,7 +45,7 @@
         <g:message code="spinner.alt" default="Loading&hellip;"/>
     </div>
 
-    <asset:javascript src="application.js"/>
+    <asset:javascript src="grails-default/application.js"/>
 
 </body>
 </html>

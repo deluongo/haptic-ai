@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Title -->
+    <title>Haptic Sales Dashboard</title>
+
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta charset="UTF-8">
+    <meta name="description" content="Admin Dashboard Template" />
+    <meta name="keywords" content="admin,dashboard" />
+    <meta name="author" content="Steelcoders" />
+
+    <!-- Styles -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <asset:stylesheet src="plugins/pace-master/themes/blue/pace-theme-flash.css"/>
+    <asset:stylesheet src="plugins/uniform/css/uniform.default.min.css"/>
+    <asset:stylesheet src="plugins/bootstrap/css/bootstrap.min.css"/>
+    <asset:stylesheet src="plugins/fontawesome/css/font-awesome.css"/>
+    <asset:stylesheet src="plugins/line-icons/simple-line-icons.css"/>
+    <asset:stylesheet src="plugins/offcanvasmenueffects/css/menu_cornerbox.css"/>
+    <asset:stylesheet src="plugins/waves/waves.min.css"/>
+    <asset:stylesheet src="plugins/switchery/switchery.min.css"/>
+    <asset:stylesheet src="plugins/3d-bold-navigation/css/style.css"/>
+    <asset:stylesheet src="plugins/slidepushmenus/css/component.css"/>
+
+    <!-- Theme Styles -->
+    <asset:stylesheet src="modern.css"/>
+    <asset:stylesheet src="themes/green.css"/>
+    <asset:stylesheet src="custom.css"/>
+
+
+    <asset:javascript src="/plugins/3d-bold-navigation/js/modernizr.js" />
+    <asset:javascript src="/plugins/offcanvasmenueffects/js/snap.svg-min.js"/>
+
+
+</head>
+<body class="page-header-fixed page-sidebar-fixed">
+<div class="overlay"></div>
+<div class="menu-wrap">
+    <nav class="profile-menu">
+        <div class="profile"><img src="${assetPath(src: 'profile-menu-image.png')}" width="60" alt="David Green"/><span>David Green</span></div>
+        <div class="profile-menu-list">
+            <a href="#"><i class="fa fa-star"></i><span>Favorites</span></a>
+            <a href="#"><i class="fa fa-bell"></i><span>Alerts</span></a>
+            <a href="#"><i class="fa fa-envelope"></i><span>Messages</span></a>
+            <a href="#"><i class="fa fa-comment"></i><span>Comments</span></a>
+        </div>
+    </nav>
+    <button class="close-button" id="close-button">Close Menu</button>
+</div>
+<form class="search-form" action="#" method="GET">
+    <div class="input-group">
+        <input type="text" name="search" class="form-control search-input" placeholder="Search...">
+        <span class="input-group-btn">
+            <button class="btn btn-default close-search waves-effect waves-button waves-classic" type="button"><i class="fa fa-times"></i></button>
+        </span>
+    </div><!-- Input Group -->
+</form><!-- Search Form -->
+<main class="page-content content-wrap">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="sidebar-pusher">
+                <a href="javascript:void(0);" class="waves-effect waves-button waves-classic push-sidebar">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div class="logo-box">
+                <a href="index.html" class="logo-text"><span>Haptic AI</span></a>
+            </div><!-- Logo Box -->
+            <div class="search-button">
+                <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+            </div>
+            <div class="topmenu-outer">
+                <div class="top-menu">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="javascript:void(0);" class="waves-effect waves-button waves-classic sidebar-toggle"><i class="fa fa-bars"></i></a>
+                        </li>
+                        <li>
+                            <a href="#cd-nav" class="waves-effect waves-button waves-classic cd-nav-trigger"><i class="fa fa-diamond"></i></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="waves-effect waves-button waves-classic toggle-fullscreen"><i class="fa fa-expand"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
+                                <i class="fa fa-cogs"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-md dropdown-list theme-settings" role="menu">
+                                <li class="li-group">
+                                    <ul class="list-unstyled">
+                                        <li class="no-link" role="presentation">
+                                            Fixed Header
+                                            <div class="ios-switch pull-right switch-md">
+                                                <input type="checkbox" class="js-switch pull-right fixed-header-check" checked>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="li-group">
+                                    <ul class="list-unstyled">
+                                        <li class="no-link" role="presentation">
+                                            Fixed Sidebar
+                                            <div class="ios-switch pull-right switch-md">
+                                                <input type="checkbox" class="js-switch pull-right fixed-sidebar-check" checked>
+                                            </div>
+                                        </li>
+                                        <li class="no-link" role="presentation">
+                                            Horizontal bar
+                                            <div class="ios-switch pull-right switch-md">
+                                                <input type="checkbox" class="js-switch pull-right horizontal-bar-check">
+                                            </div>
+                                        </li>
+                                        <li class="no-link" role="presentation">
+                                            Toggle Sidebar
+                                            <div class="ios-switch pull-right switch-md">
+                                                <input type="checkbox" class="js-switch pull-right toggle-sidebar-check">
+                                            </div>
+                                        </li>
+                                        <li class="no-link" role="presentation">
+                                            Compact Menu
+                                            <div class="ios-switch pull-right switch-md">
+                                                <input type="checkbox" class="js-switch pull-right compact-menu-check">
+                                            </div>
+                                        </li>
+                                        <li class="no-link" role="presentation">
+                                            Hover Menu
+                                            <div class="ios-switch pull-right switch-md">
+                                                <input type="checkbox" class="js-switch pull-right hover-menu-check">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="li-group">
+                                    <ul class="list-unstyled">
+                                        <li class="no-link" role="presentation">
+                                            Boxed Layout
+                                            <div class="ios-switch pull-right switch-md">
+                                                <input type="checkbox" class="js-switch pull-right boxed-layout-check">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="li-group">
+                                    <ul class="list-unstyled">
+                                        <li class="no-link" role="presentation">
+                                            Choose Theme Color
+                                            <div class="color-switcher">
+                                                <a class="colorbox color-blue" href="?theme=blue" title="Blue Theme" data-css="blue"></a>
+                                                <a class="colorbox color-green" href="?theme=green" title="Green Theme" data-css="green"></a>
+                                                <a class="colorbox color-red" href="?theme=red" title="Red Theme" data-css="red"></a>
+                                                <a class="colorbox color-white" href="?theme=white" title="White Theme" data-css="white"></a>
+                                                <a class="colorbox color-purple" href="?theme=purple" title="purple Theme" data-css="purple"></a>
+                                                <a class="colorbox color-dark" href="?theme=dark" title="Dark Theme" data-css="dark"></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="no-link"><button class="btn btn-default reset-options">Reset Options</button></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge badge-success pull-right">1</span></a>
+                            <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
+                                <li><p class="drop-title">You have 1 new  messages !</p></li>
+                                <li class="dropdown-menu-list slimscroll messages">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="#">
+                                                <div class="msg-img"><div class="online on"></div><img class="img-circle" src="assets/images/avatar2.png" alt=""></div>
+                                                <p class="msg-name">Sandra Smith</p>
+                                                <p class="msg-text">Hey ! I'm working on your project</p>
+                                                <p class="msg-time">3 minutes ago</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="drop-all"><a href="#" class="text-center">All Messages</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-bell"></i><span class="badge badge-success pull-right">3</span></a>
+                            <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
+                                <li><p class="drop-title">You have 3 pending tasks !</p></li>
+                                <li class="dropdown-menu-list slimscroll tasks">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="#">
+                                                <div class="task-icon badge badge-success"><i class="icon-user"></i></div>
+                                                <span class="badge badge-roundless badge-default pull-right">in 1min</span>
+                                                <p class="task-details">New user registered.</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="task-icon badge badge-danger"><i class="icon-energy"></i></div>
+                                                <span class="badge badge-roundless badge-default pull-right">in 24min</span>
+                                                <p class="task-details">Database error.</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="task-icon badge badge-info"><i class="icon-heart"></i></div>
+                                                <span class="badge badge-roundless badge-default pull-right">in 1h</span>
+                                                <p class="task-details">Reached 24k likes</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="drop-all"><a href="#" class="text-center">All Tasks</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
+                                <span class="user-name">Devon<i class="fa fa-angle-down"></i></span>
+                                <!-- AVATAR -->
+                                <!--<img class="img-circle avatar" src="assets/images/avatar1.png" width="40" height="40" alt="">-->
+                            </a>
+                            <ul class="dropdown-menu dropdown-list" role="menu">
+                                <li role="presentation"><a href="profile.html"><i class="fa fa-user"></i>Profile</a></li>
+                                <li role="presentation"><a href="calendar.html"><i class="fa fa-calendar"></i>Calendar</a></li>
+                                <li role="presentation"><a href="inbox.html"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right">4</span></a></li>
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation"><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock screen</a></li>
+                                <li role="presentation"><a href="login.html"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="login.html" class="log-out waves-effect waves-button waves-classic">
+                                <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
+                            </a>
+                        </li>
+                    </ul><!-- Nav -->
+                </div><!-- Top Menu -->
+            </div>
+        </div>
+    </div>
+    <!-- Navbar -->
+    <div class="page-sidebar sidebar">
+        <div class="page-sidebar-inner slimscroll">
+            <ul class="menu accordion-menu display-block">
+                <li>
+                    <a href="#">
+                        <div class="prospect-list">
+                            <div class="col-xs-8 padding-0 prospect-label-wrapper">
+                                <p class="secondary-label">Product Manager</p>
+                                <p class="primary-label f-gray">Microsoft</p>
+                            </div>
+                            <div class="col-xs-4 padding-0 padding-5-v padding-5-r vertical-align">
+                                <p class="expected-value">$3,043</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="prospect-list">
+                            <div class="col-xs-8 padding-0 prospect-label-wrapper">
+                                <p class="secondary-label">CEO</p>
+                                <p class="primary-label f-gray">Proctor & Gambel</p>
+                            </div>
+                            <div class="col-xs-4 padding-0 padding-5-v padding-5-r vertical-align">
+                                <p class="expected-value">$943</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-profile padding-10" id="header-content">
+                <a href="javascript:void(0);" id="profile-menu-link">
+                    <div id="prospect-list-quick-settings">
+                        <span><i class="fa fa-cog"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div><!-- Page Sidebar Inner -->
+    </div><!-- Page Sidebar -->
+    <div class="page-inner">
+
+
+
+
+        <!-- UI Elements -->
+        <div class="page-title">
+
+            <div class="col-xs-6 col-sm-4">
+                <!-- Pie Chart Container -->
+                <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="70" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                    <span>8 <br><small class="text-muted">/100</small></span>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div id="main-wrapper">
+            <div class="row">
+            </div><!-- Row -->
+        </div><!-- Main Wrapper -->
+        <div class="page-footer">
+            <p class="no-s">2017 &copy; by Haptic AI</p>
+        </div>
+    </div><!-- Page Inner -->
+</main><!-- Page Content -->
+<nav class="cd-nav-container" id="cd-nav">
+    <header>
+        <h3>Navigation</h3>
+        <a href="#0" class="cd-close-nav">Close</a>
+    </header>
+    <ul class="cd-nav list-unstyled">
+        <li class="cd-selected" data-menu="index">
+            <a href="javsacript:void(0);">
+                <span>
+                    <i class="glyphicon glyphicon-home"></i>
+                </span>
+                <p>Dashboard</p>
+            </a>
+        </li>
+        <li data-menu="profile">
+            <a href="javsacript:void(0);">
+                <span>
+                    <i class="glyphicon glyphicon-user"></i>
+                </span>
+                <p>Profile</p>
+            </a>
+        </li>
+        <li data-menu="inbox">
+            <a href="javsacript:void(0);">
+                <span>
+                    <i class="glyphicon glyphicon-envelope"></i>
+                </span>
+                <p>Mailbox</p>
+            </a>
+        </li>
+        <li data-menu="#">
+            <a href="javsacript:void(0);">
+                <span>
+                    <i class="glyphicon glyphicon-tasks"></i>
+                </span>
+                <p>Tasks</p>
+            </a>
+        </li>
+        <li data-menu="#">
+            <a href="javsacript:void(0);">
+                <span>
+                    <i class="glyphicon glyphicon-cog"></i>
+                </span>
+                <p>Settings</p>
+            </a>
+        </li>
+        <li data-menu="calendar">
+            <a href="javsacript:void(0);">
+                <span>
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                <p>Calendar</p>
+            </a>
+        </li>
+    </ul>
+</nav>
+<div class="cd-overlay"></div>
+
+
+<!-- Javascripts -->
+<asset:javascript src="plugins/jquery/jquery-2.1.4.min.js" />
+<asset:javascript src="plugins/jquery-ui/jquery-ui.min.js" />
+<asset:javascript src="plugins/pace-master/pace.min.js" />
+<asset:javascript src="plugins/jquery-blockui/jquery.blockui.js" />
+<asset:javascript src="plugins/bootstrap/js/bootstrap.min.js" />
+<asset:javascript src="plugins/jquery-slimscroll/jquery.slimscroll.min.js" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
+<asset:javascript src="plugins/uniform/jquery.uniform.min.js" />
+<asset:javascript src="plugins/offcanvasmenueffects/js/classie.js" />
+<asset:javascript src="plugins/offcanvasmenueffects/js/main.js" />
+<asset:javascript src="plugins/waves/waves.min.js" />
+<asset:javascript src="plugins/3d-bold-navigation/js/main.js" />
+<asset:javascript src="plugins/easy-pie-chart/jquery.easypiechart.min.js" />
+<asset:javascript src="modern.min.js" />
+<asset:javascript src="custom.js" />
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta name="layout" content="main"/>
     <title>Welcome to Grails</title>
 
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+    <asset:link rel="icon" href="grails-default/favicon.ico" type="image/x-ico" />
 </head>
 <body>
     <content tag="nav">
@@ -47,7 +47,7 @@
 
     <div class="svg" role="presentation">
         <div class="grails-logo-container">
-            <asset:image src="grails-cupsonly-logo-white.svg" class="grails-logo"/>
+            <asset:image src="grails-default/grails-cupsonly-logo-white.svg" class="grails-logo"/>
         </div>
     </div>
 
