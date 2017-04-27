@@ -173,7 +173,8 @@
                                     <ul class="list-unstyled">
                                         <li>
                                             <a href="#">
-                                                <div class="msg-img"><div class="online on"></div><img class="img-circle" src="assets/images/avatar2.png" alt=""></div>
+                                                <div class="msg-img"><div class="online on"></div><img class="img-circle" src="${assetPath(src: 'avatar2.png')}" alt=""></div>
+                                                avatar2.png
                                                 <p class="msg-name">Sandra Smith</p>
                                                 <p class="msg-text">Hey ! I'm working on your project</p>
                                                 <p class="msg-time">3 minutes ago</p>
@@ -283,18 +284,104 @@
     </div><!-- Page Sidebar -->
     <div class="page-inner">
 
-
-
-
-        <!-- UI Elements -->
+        <!-- KPI's & Rankings -->
         <div class="page-title">
+            <div class="row-fluid">
+                <div class="col-xs-4">
+                    <!-- Pie Chart Container -->
+                    <div class="kpi-panel-big panel panel-default">
+                        <div class="kpi-heading panel-heading ">KPI Set #1</div>
+                        <div class="panel-body padding-0-i">
+                            <div class="row-fluid">
+                                <div class="col-xs-3 padding-0">
+                                    <div class="chart-sm">
+                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                            <span>8 <br><small class="text-muted">/100</small></span>
+                                        </div>
+                                    </div>
+                                    <h4 class="kpi-label">KPI #1</h4>
+                                </div>
+                                <div class="col-xs-3 padding-0">
+                                    <div class="chart-sm">
+                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                            <span>8 <br><small class="text-muted">/100</small></span>
+                                        </div>
+                                    </div>
+                                    <h4 class="kpi-label">KPI #1</h4>
+                                </div>
+                                <div class="col-xs-3 padding-0">
+                                    <div class="chart-sm">
+                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                            <span>8 <br><small class="text-muted">/100</small></span>
+                                        </div>
+                                    </div>
+                                    <h4 class="kpi-label">KPI #1</h4>
+                                </div>
+                                <div class="col-xs-3 padding-0">
+                                    <div class="chart-sm">
+                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                            <span>8 <br><small class="text-muted">/100</small></span>
+                                        </div>
+                                    </div>
+                                    <h4 class="kpi-label">KPI #1</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="kpi-panel-invisible">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <!-- Pie Chart Container -->
+                                <div class="kpi-panel">
+                                    <div class="chart">
+                                        <span class="kpi-2 pie-chart" data-percent="66" data-scale-color="#ffb400" data-size="95">
+                                            <span class="percent">%</span>
+                                        </span>
+                                    </div>
+                                    <span class="btn js_update_2 kpi-label"><h4 class="padding-0 margin-0">KPI #2</h4></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <!-- Pie Chart Container -->
+                                <div class="kpi-panel">
+                                    <div class="chart">
+                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="95" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                            <span>8 <br><small class="text-muted">/100</small></span>
+                                        </div>
+                                    </div>
+                                    <h4 class="kpi-label">KPI #3</h4>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <!-- Pie Chart Container -->
+                                <div class="kpi-panel">
+                                    <div class="chart">
+                                        <span class="kpi-4 pie-chart" data-percent="66"  data-size="95">
+                                            <span class="percent">%</span>
+                                        </span>
+                                    </div>
+                                    <span class="btn js_update_4 kpi-label"><h4 class="padding-0 margin-0">KPI #4</h4></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="col-xs-6 col-sm-4">
-                <!-- Pie Chart Container -->
-                <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="70" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
-                    <span>8 <br><small class="text-muted">/100</small></span>
+                <div class="col-xs-4">
+                    <!-- Pie Chart Container -->
+                    <div class="kpi-panel">
+                        <div class="chart">
+                            <span class="kpi-4 pie-chart" data-percent="66"  data-size="95">
+                                <span class="percent">%</span>
+                            </span>
+                        </div>
+                        <span class="btn js_update_4 kpi-label"><h4 class="padding-0 margin-0">KPI #4</h4></span>
+                    </div>
                 </div>
             </div>
+
         </div>
 
 
@@ -376,13 +463,13 @@
 <asset:javascript src="plugins/jquery-blockui/jquery.blockui.js" />
 <asset:javascript src="plugins/bootstrap/js/bootstrap.min.js" />
 <asset:javascript src="plugins/jquery-slimscroll/jquery.slimscroll.min.js" />
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 <asset:javascript src="plugins/uniform/jquery.uniform.min.js" />
 <asset:javascript src="plugins/offcanvasmenueffects/js/classie.js" />
 <asset:javascript src="plugins/offcanvasmenueffects/js/main.js" />
 <asset:javascript src="plugins/waves/waves.min.js" />
 <asset:javascript src="plugins/3d-bold-navigation/js/main.js" />
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <asset:javascript src="plugins/easy-pie-chart/jquery.easypiechart.min.js" />
 <asset:javascript src="modern.min.js" />
 <asset:javascript src="custom.js" />

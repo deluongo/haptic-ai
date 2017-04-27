@@ -18,5 +18,54 @@ $( document ).ready(function() {
         });
 
 
+        jQuery('.kpi-2').easyPieChart({
+                barColor: function(percent) {
+                    var ctx = this.renderer.getCtx();
+                    var canvas = this.renderer.getCanvas();
+                    var gradient = ctx.createLinearGradient(0,0,canvas.width,0);
+                    gradient.addColorStop(0, "#ffe57e");
+                    gradient.addColorStop(1, "#de5900");
+                    return gradient;
+                },
+                easing: 'easeOutBounce',
+                animate: 2000,
+                onStep: function(from, to, percent) {
+                    $(this.el).find('.percent').text(Math.round(percent));
+                }
+        });
+
+        jQuery('.kpi-4').easyPieChart({
+            easing: 'easeOutBounce',
+            animate: 2000,
+            onStep: function(from, to, percent) {
+                $(this.el).find('.percent').text(Math.round(percent)).append("%");
+            }
+        });
+
+        //update instance after 5 sec
+        setTimeout(function() {
+            $('.kpi-2').data('easyPieChart').update(40);
+        }, 5000);
+
+        var chart_2 = window.chart = $('.kpi-2').data('easyPieChart');
+        $('.js_update_2').on('click', function() {
+            chart_2.update(Math.random()*200-100);
+        });
+
+        var chart_4 = window.chart = $('.kpi-4').data('easyPieChart');
+        $('.js_update_4').on('click', function() {
+            chart_4.update(Math.random()*200-100);
+        });
+
+
+        jQuery('.percentage').easyPieChart({
+            animate: 2000,
+            lineWidth: 4,
+            easing: 'easeOutBounce',
+            onStep: function(from, to, percent) {
+                $(this.el).find('.percent').text(Math.round(percent));
+            }
+        });
+
 
 });
