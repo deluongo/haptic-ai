@@ -12,6 +12,8 @@
     <meta name="author" content="Steelcoders" />
 
     <!-- Styles -->
+
+    <!-- Menu & Frame Styles -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <asset:stylesheet src="plugins/pace-master/themes/blue/pace-theme-flash.css"/>
     <asset:stylesheet src="plugins/uniform/css/uniform.default.min.css"/>
@@ -24,12 +26,19 @@
     <asset:stylesheet src="plugins/3d-bold-navigation/css/style.css"/>
     <asset:stylesheet src="plugins/slidepushmenus/css/component.css"/>
 
+    <!-- Form Style -->
+    <asset:stylesheet src="plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css"/>
+    <asset:stylesheet src="plugins/x-editable/inputs-ext/typeaheadjs/lib/typeahead.js-bootstrap.css"/>
+    <asset:stylesheet src="plugins/x-editable/inputs-ext/address/address.css"/>
+    <asset:stylesheet src="plugins/select2-3.4.8/select2.css"/>
+    <asset:stylesheet src="plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+
     <!-- Theme Styles -->
     <asset:stylesheet src="modern.css"/>
     <asset:stylesheet src="themes/green.css"/>
     <asset:stylesheet src="custom.css"/>
 
-
+    <!-- Nav Styles -->
     <asset:javascript src="/plugins/3d-bold-navigation/js/modernizr.js" />
     <asset:javascript src="/plugins/offcanvasmenueffects/js/snap.svg-min.js"/>
 
@@ -91,43 +100,55 @@
                                 <li class="li-group">
                                     <ul class="list-unstyled">
                                         <li class="no-link" role="presentation">
-                                            Fixed Header
+                                            Auto-open Next Field
                                             <div class="ios-switch pull-right switch-md">
-                                                <input type="checkbox" class="js-switch pull-right fixed-header-check" checked>
+                                                <input type="checkbox" id="autoopen" class="js-switch pull-right fixed-header-check" checked>
+                                            </div>
+                                        </li>
+                                        <li class="no-link" role="presentation">
+                                            Enable Form Editing
+                                            <div class="ios-switch pull-right switch-md">
+                                                <div id="enable"><input type="checkbox"  class="js-switch pull-right fixed-header-check" checked></div>
                                             </div>
                                         </li>
                                     </ul>
+                                </li>
+
+
+
+
+
                                 </li>
                                 <li class="li-group">
                                     <ul class="list-unstyled">
                                         <li class="no-link" role="presentation">
                                             Fixed Sidebar
                                             <div class="ios-switch pull-right switch-md">
-                                                <input type="checkbox" class="js-switch pull-right fixed-sidebar-check" checked>
+                                                <input type="checkbox" class="js-switch pull-right fixed-sidebar-check" checked disabled>
                                             </div>
                                         </li>
                                         <li class="no-link" role="presentation">
                                             Horizontal bar
                                             <div class="ios-switch pull-right switch-md">
-                                                <input type="checkbox" class="js-switch pull-right horizontal-bar-check">
+                                                <input type="checkbox" class="js-switch pull-right horizontal-bar-check" disabled>
                                             </div>
                                         </li>
                                         <li class="no-link" role="presentation">
                                             Toggle Sidebar
                                             <div class="ios-switch pull-right switch-md">
-                                                <input type="checkbox" class="js-switch pull-right toggle-sidebar-check">
+                                                <input type="checkbox" class="js-switch pull-right toggle-sidebar-check" disabled>
                                             </div>
                                         </li>
                                         <li class="no-link" role="presentation">
                                             Compact Menu
                                             <div class="ios-switch pull-right switch-md">
-                                                <input type="checkbox" class="js-switch pull-right compact-menu-check">
+                                                <input type="checkbox" class="js-switch pull-right compact-menu-check" disabled>
                                             </div>
                                         </li>
                                         <li class="no-link" role="presentation">
                                             Hover Menu
                                             <div class="ios-switch pull-right switch-md">
-                                                <input type="checkbox" class="js-switch pull-right hover-menu-check">
+                                                <input type="checkbox" class="js-switch pull-right hover-menu-check" disabled>
                                             </div>
                                         </li>
                                     </ul>
@@ -137,7 +158,7 @@
                                         <li class="no-link" role="presentation">
                                             Boxed Layout
                                             <div class="ios-switch pull-right switch-md">
-                                                <input type="checkbox" class="js-switch pull-right boxed-layout-check">
+                                                <input type="checkbox" class="js-switch pull-right boxed-layout-check" disabled>
                                             </div>
                                         </li>
                                     </ul>
@@ -400,17 +421,33 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
 
 
 
-
+        <!-- CRM, Action, & Review Main Blocks -->
         <div id="main-wrapper">
-            <div class="row">
-            </div><!-- Row -->
+        <!-- Row -->
+        <g:render template="/sharedTemplates/crm-contact"/>
+        <!-- Row -->
+
+        <!-- Row -->
+        
+        
         </div><!-- Main Wrapper -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <div class="page-footer">
             <p class="no-s">2017 &copy; by Haptic AI</p>
         </div>
@@ -475,7 +512,7 @@
 <div class="cd-overlay"></div>
 
 
-<!-- Javascripts -->
+<!-- Javascripts - Primary-->
 <asset:javascript src="plugins/jquery/jquery-2.1.4.min.js" />
 <asset:javascript src="plugins/jquery-ui/jquery-ui.min.js" />
 <asset:javascript src="plugins/pace-master/pace.min.js" />
@@ -488,9 +525,27 @@
 <asset:javascript src="plugins/offcanvasmenueffects/js/main.js" />
 <asset:javascript src="plugins/waves/waves.min.js" />
 <asset:javascript src="plugins/3d-bold-navigation/js/main.js" />
+
+<!-- Javascripts - KPI Charts-->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <asset:javascript src="plugins/easy-pie-chart/jquery.easypiechart.min.js" />
+
+
+
+<!-- Javascripts - CRM Forms-->
+<asset:javascript src="plugins/jquery-mockjax-master/jquery.mockjax.js" />
+<asset:javascript src="plugins/moment/moment.js" />
+<asset:javascript src="plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js" />
+<asset:javascript src="plugins/x-editable/inputs-ext/typeaheadjs/lib/typeahead.js" />
+<asset:javascript src="plugins/x-editable/inputs-ext/typeaheadjs/typeaheadjs.js" />
+<asset:javascript src="plugins/x-editable/inputs-ext/address/address.js" />
+<asset:javascript src="plugins/select2-3.4.8/select2.min.js" />
+<asset:javascript src="plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" />
+
+
+<!-- Javascripts - Init-->
 <asset:javascript src="modern.min.js" />
+
 <asset:javascript src="custom.js" />
 
 
