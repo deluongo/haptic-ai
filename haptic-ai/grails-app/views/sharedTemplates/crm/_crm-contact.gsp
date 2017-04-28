@@ -50,7 +50,7 @@
                                 <td><a href="#" id="jobTitle" data-type="select" data-pk="1" data-value="5" data-source="/titles" data-title="Select group" class="editable editable-click">C-Level Executive</a></td>
                             </tr>
                             <tr>
-                                <td>Job Description <small>Submit w/ <i>ctrl+enter</i></small></td>
+                                <td>Job Description <br/><small>Submit w/ <i>ctrl+enter</i></small></td>
                                 <td><a href="#" id="jobDescription" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments" class="editable editable-pre-wrapped editable-click">Enter Job Description..</a></td>
                             </tr>
                             <tr>
@@ -61,13 +61,24 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+            </div>
+
+            <h3> Contact Info </h3>
+
+            <contactInfo:allDetails source="${contact ?: []}" ></contactInfo:allDetails>
 
 
 
-                <h3> Contact Info </h3>
+            <!-- Modals -->
+            <g:render template="/sharedTemplates/contactInfo/contact-info-modals"/>
 
-                <contactInfo:allDetails source="${contact ?: []}" ></contactInfo:allDetails>
+
+
+
+
+
+
+
 
 
 

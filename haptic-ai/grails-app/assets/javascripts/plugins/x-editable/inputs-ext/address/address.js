@@ -128,8 +128,8 @@ $(function(){
        **/          
        input2value: function() { 
            return {
-              city: this.$input.filter('[name="city"]').val(), 
-              street: this.$input.filter('[name="street"]').val(), 
+              city: this.$input.filter('[name="city"]').val(),
+              street: this.$input.filter('[name="street"]').val(),
               building: this.$input.filter('[name="building"]').val()
            };
        },        

@@ -20,8 +20,7 @@ class Address {
     // Fixed Fields
     String locName
     String locType // Main Office, Satelite Office, Home, Restaurant, etc.
-    Integer streetNumber
-    String streetName
+    String street
     String city
     String state
     String country
@@ -30,7 +29,7 @@ class Address {
     static constraints = {
         locName blank: false
         locType blank: false
-        streetName blank: false
+        street blank: false
         city blank: false
         state blank: false
         country blank: false
@@ -64,7 +63,7 @@ class Address {
      *  ~~~~~~ FULL ADDRESS ~~~~~~
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     def getFullAddress() {
-        "${streetNumber} ${streetName} ${city}, ${state}, ${zip}"
+        "${street} ${city}, ${state}, ${zip}, ${country} "
     }
 }
 
