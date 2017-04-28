@@ -22,7 +22,7 @@ class PhoneNumber {
     // Fixed Fields
     String phoneNumber // 3 digits for country code, 15 digits for number
     String phoneType // e.164 Format: string https://en.wikipedia.org/wiki/E.164 Home, Work, Personal
-    String primary // yes, no
+    String phoneStatus // yes, no
     Date dateCreated
     Date expirationDate
 

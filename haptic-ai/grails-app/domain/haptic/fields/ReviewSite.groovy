@@ -21,9 +21,9 @@ class ReviewSite {
 
 
     // Fixed Fields
-    String siteName // G2Crowd, Yelp, etc.
-    String siteUrl
-    String handle //CaptainAwesome650
+    String reviewSiteName // G2Crowd, Yelp, etc.
+    String reviewSiteUrl
+    String reviewSiteHandle //CaptainAwesome650
     Date lastActivity
 
 
@@ -34,9 +34,9 @@ class ReviewSite {
 
 
     static constraints = {
-        siteName blank: false
-        siteUrl matches: /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}/
-        handle blank: false
+        reviewSiteName blank: false
+        reviewSiteUrl matches: /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}/
+        reviewSiteHandle blank: false
     }
 
 }

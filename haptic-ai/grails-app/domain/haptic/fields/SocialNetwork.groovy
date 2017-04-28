@@ -22,7 +22,7 @@ class SocialNetwork {
     // Fixed Fields
     String networkName //Facebook, Twitter, LinkedIn, Pintrist, GitHub, Google, etc.
     String networkUrl
-    String handle //CaptainAwesome650
+    String socialNetworkHandle //CaptainAwesome650
     Date lastActivity
     Communication lastPost
     Date lastOnline
@@ -34,7 +34,7 @@ class SocialNetwork {
     static constraints = {
         networkName blank: false
         networkUrl matches: /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}/
-        handle blank: false
+        socialNetworkHandle blank: false
     }
 
 }

@@ -22,9 +22,9 @@ class EmailAddress {
     String emailType
     String emailAddress
     String emailExtension
-    Boolean primary // yes, no
     String emailStatus //active, unsubscribed, un-verified, verified
-    Boolean unsubscribed //yes, no
+
+    Date dateCreated
 
     // Possible transient or service
     Communication lastEmailAnswered //Last Action
@@ -36,7 +36,7 @@ class EmailAddress {
     static constraints = {
         emailAddress matches: /^[a-zA-Z0-9_.+-]+@([\w-]+\.)+[\w-]{2,4}$/, blank: false
         emailExtension blank: false
-        emailStatus inList: ['active', 'unsubscribed', 'unverified', 'verified']
+        emailStatus inList: ['Active', 'Inactive', 'Unsubscribed', 'Unverified', 'Verified']
 
     }
 
@@ -50,10 +50,12 @@ class EmailAddress {
     ]
 
 /*                          ==============  ***  ==============                          *
-#  ---------------------                Functions                 --------------------  #
-*                          ===================================                          */
+ #  ---------------------                Functions                 --------------------  #
+ *                          ===================================                          */
 
-
+/////  TO DO
+//     -----
+//     - Create function of service to parse email address for DB storage
 
 
 

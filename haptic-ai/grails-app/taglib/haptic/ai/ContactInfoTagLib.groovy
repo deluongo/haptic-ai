@@ -51,12 +51,20 @@ class ContactInfoTagLib {
 
 
             tr{
-                td{ a(href:"#", id:"add-email-address", class:"editable editable-click editable-empty", (dataType): "text", (dataPk): "2", (dataValue): "", (dataTitle): "Add email", "Add Email") }
-                td{ a(href:"#", id:"add-phone-number", class:"editable editable-click editable-empty", (dataType): "text", (dataPk): "2", (dataValue): "", (dataTitle): "Add phone", "Add Phone") }
-                td{ a(href:"#", id:"add-social-network", class:"editable editable-click", (dataType): "select2", (dataPk): "2", (dataValue): "BS", (dataTitle): "Add social network", "Add Network")  }
-                td{ a(href:"#", id:"add-review-site", class:"editable editable-click", (dataType): "select2", (dataPk): "2", (dataValue): "BS", (dataTitle): "Add review site", "Add Site")  }
-                td{ a(href:"#", id:"add-web-site", class:"editable editable-click", (dataType): "select2", (dataPk): "2", (dataValue): "BS", (dataTitle): "Add web site", "Add Site")  }
-                td{ a( (dataToggle):"modal", (dataTarget):"#addressModal", "Add Address") }
+                td{ a( (dataToggle):"modal", (dataTarget):"#add-email-address-modal", "Add Email") }
+                td{ a( (dataToggle):"modal", (dataTarget):"#add-phone-number-modal", "Add Phone") }
+                td{ a( (dataToggle):"modal", (dataTarget):"#add-social-network-modal", "Add Network") }
+                td{ a( (dataToggle):"modal", (dataTarget):"#add-review-site-modal", "Add Site") }
+                td{ a( (dataToggle):"modal", (dataTarget):"#add-web-site-modal", "Add Website") }
+                td{ a( (dataToggle):"modal", (dataTarget):"#add-address-modal", "Add Address") }
+
+
+                //SINGLE FIELD ENTRY
+                //td{ a(href:"#", id:"add-email-address", class:"editable editable-click editable-empty", (dataType): "text", (dataPk): "2", (dataValue): "", (dataTitle): "Add email", "Add Email") }
+                //td{ a(href:"#", id:"add-phone-number", class:"editable editable-click editable-empty", (dataType): "text", (dataPk): "2", (dataValue): "", (dataTitle): "Add phone", "Add Phone") }
+                //td{ a(href:"#", id:"add-social-network", class:"editable editable-click", (dataType): "select2", (dataPk): "2", (dataValue): "BS", (dataTitle): "Add social network", "Add Network")  }
+                //td{ a(href:"#", id:"add-review-site", class:"editable editable-click", (dataType): "select2", (dataPk): "2", (dataValue): "BS", (dataTitle): "Add review site", "Add Site")  }
+                //td{ a(href:"#", id:"add-web-site", class:"editable editable-click", (dataType): "select2", (dataPk): "2", (dataValue): "BS", (dataTitle): "Add web site", "Add Site")  }
                 //td{ a(href:"#", id:"address", class:"editable editable-click", (dataType): "select2", (dataPk): "2", (dataValue): "BS", (dataTitle): "Add address", "Add Address")  }
             }
 

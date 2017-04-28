@@ -310,6 +310,26 @@ $('.editable').on('hidden', function(e, reason){
             }
         });
 
+        $('#address').editable({
+            url: '/post',
+            value: {
+                city: "Moscow",
+                street: "Lenina",
+                building: "12"
+            },
+            validate: function(value) {
+                if(value.city == '') return 'city is required!';
+            },
+            display: function(value) {
+                if(!value) {
+                    $(this).empty();
+                    return;
+                }
+                var html = $('<div>').text(value.city).html() + '</b>, ' + $('<div>').text(value.street).html() + ' st., bld. ' + $('<div>').text(value.building).html();
+                $(this).html(html);
+            }
+        });
+
 
 
 
@@ -519,12 +539,29 @@ $('.editable').on('hidden', function(e, reason){
     });
 
 
+                                     //~~~~~~~~~~~~~~~\\
+                                    //                 \\
+                                   //   CONTACT FIELDS  \\
+                                  //                     \\
+                                 //=======================\\
+                                //                         \\
+                               //           MODALS          \\
+                              //                             \\
+                             //   /\  /\  /\  /\  /\  /\  /\  \\
+                            //___/  \/  \/  \/  \/  \/  \/  \__\\
+
+
+/*  ______________________                                         ____________________  */
+/*  ====================== !!! ---*** FIELD DEFINITIONS ***--- !!! ====================  */
+
+
+
 /*  -------------------           *** Contact Details ***           -------------------  */
 
     /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
      *  ~~~~~~~~~ EMAIL ~~~~~~~~~
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#add-email-address').editable({
+    $('#emailAddress').editable({
         validate: function(value) {
             if($.trim(value) == '') return 'This field is required';
         }
@@ -534,10 +571,38 @@ $('.editable').on('hidden', function(e, reason){
         },0);
     });
 
+
+    $('#emailType').editable({
+        pk: 1,
+        limit: 3,
+        source: [
+            {value: 1, text: 'Primary'},
+            {value: 2, text: 'Secondary'},
+            {value: 3, text: 'Company'},
+            {value: 4, text: 'Personal'},
+            {value: 5, text: 'Junk'}
+        ]
+    });
+
+    $('#emailStatus').editable({
+        pk: 1,
+        limit: 3,
+        value: 'Unverified',
+        source: [
+            {value: 1, text: 'Unverified'},
+            {value: 2, text: 'Verified'},
+            {value: 3, text: 'Active'},
+            {value: 3, text: 'Inactive'},
+            {value: 4, text: 'Unsubscribed'},
+        ]
+    });
+
+
+
     /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
      *  ~~~~~~~~~ PHONE ~~~~~~~~~
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#add-phone-number').editable({
+    $('#phoneNumber').editable({
         validate: function(value) {
             if($.trim(value) == '') return 'This field is required';
         }
@@ -545,12 +610,64 @@ $('.editable').on('hidden', function(e, reason){
         setTimeout(function() {
             editable.input.$input.select();
         },0);
+    });
+
+    $('#phoneType').editable({
+        pk: 1,
+        limit: 3,
+        source: [
+            {value: 1, text: 'Primary'},
+            {value: 2, text: 'Secondary'},
+            {value: 3, text: 'Work'},
+            {value: 3, text: 'Operator/Receptionist'},
+            {value: 3, text: 'Automated Routing'},
+            {value: 4, text: 'Home'},
+            {value: 4, text: 'Cell'},
+            {value: 4, text: 'Conference Dial-In'},
+            {value: 5, text: 'Burner'}
+        ]
+    });
+
+    $('#phoneStatus').editable({
+        pk: 1,
+        limit: 3,
+        value: 'Unverified',
+        source: [
+            {value: 1, text: 'Unverified'},
+            {value: 2, text: 'Verified'},
+            {value: 3, text: 'Active'},
+            {value: 4, text: 'Inactive'},
+            {value: 5, text: 'Direct to Voicemail'},
+            {value: 6, text: 'Unsubscribed'}
+        ]
     });
 
     /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
      *  ~~~~~ SOCIAL NETWORK ~~~~~
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#add-social-network').editable({
+    $('#networkUrl').editable({
+        validate: function(value) {
+            if($.trim(value) == '') return 'This field is required';
+        }
+    }).on('shown', function(ev, editable) {
+        setTimeout(function() {
+            editable.input.$input.select();
+        },0);
+    });
+
+    $('#networkName').editable({
+        showbuttons: 'bottom',
+        source: [
+            {value: 1, text: 'Linked In'},
+            {value: 2, text: 'Twitter'},
+            {value: 3, text: 'Facebook'},
+            {value: 4, text: 'Instagram'},
+            {value: 5, text: 'Snap Chat'},
+            {value: 6, text: 'Pinterist'}
+        ]
+    });
+
+    $('#socialNetworkHandel').editable({
         validate: function(value) {
             if($.trim(value) == '') return 'This field is required';
         }
@@ -563,7 +680,25 @@ $('.editable').on('hidden', function(e, reason){
     /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
      *  ~~~~~~ REVIEW SITE ~~~~~~~
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#add-review-site').editable({
+    $('#reviewSiteUrl').editable({
+        validate: function(value) {
+            if($.trim(value) == '') return 'This field is required';
+        }
+    }).on('shown', function(ev, editable) {
+        setTimeout(function() {
+            editable.input.$input.select();
+        },0);
+    });
+
+    $('#reviewSiteName').editable({
+        showbuttons: 'bottom',
+        source: [
+            {value: 1, text: 'G2 Crowd'},
+            {value: 2, text: 'Yelp'},
+        ]
+    });
+
+    $('#reviewSiteHandel').editable({
         validate: function(value) {
             if($.trim(value) == '') return 'This field is required';
         }
@@ -576,7 +711,8 @@ $('.editable').on('hidden', function(e, reason){
     /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
      *  ~~~~~~~~ WEB SITE ~~~~~~~~
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#add-web-site').editable({
+
+    $('#webSiteUrl').editable({
         validate: function(value) {
             if($.trim(value) == '') return 'This field is required';
         }
@@ -584,6 +720,29 @@ $('.editable').on('hidden', function(e, reason){
         setTimeout(function() {
             editable.input.$input.select();
         },0);
+    });
+
+
+    $('#webSiteName').editable({
+        validate: function(value) {
+            if($.trim(value) == '') return 'This field is required';
+        }
+    }).on('shown', function(ev, editable) {
+        setTimeout(function() {
+            editable.input.$input.select();
+        },0);
+    });
+
+    $('#webSiteType').editable({
+        showbuttons: 'bottom',
+        source: [
+            {value: 1, text: 'Living Resume'},
+            {value: 2, text: 'Project/Work Portfolio'},
+            {value: 3, text: 'Industry Blog'},
+            {value: 4, text: 'Personal Blog'},
+            {value: 5, text: 'Personal Website'},
+            {value: 6, text: 'Hobby / Interest'}
+        ]
     });
 
 
@@ -606,7 +765,7 @@ $('.editable').on('hidden', function(e, reason){
     });
 
     $('#locationType').editable({
-        value: 2,
+        value: 1,
         showbuttons: 'bottom',
         source: [
             {value: 1, text: 'Main Office'},
@@ -658,43 +817,6 @@ $('.editable').on('hidden', function(e, reason){
 
 
 
-
-
-
-    $('#address').editable({
-        url: '/post',
-        value: {
-            city: "Moscow",
-            street: "Lenina",
-            building: "12"
-        },
-        validate: function(value) {
-            if(value.city == '') return 'city is required!';
-        },
-        display: function(value) {
-            if(!value) {
-                $(this).empty();
-                return;
-            }
-            var html = $('<div>').text(value.city).html() + '</b>, ' + $('<div>').text(value.street).html() + ' st., bld. ' + $('<div>').text(value.building).html();
-            $(this).html(html);
-        }
-    });
-
-    /*  -------------------             *** Editable Def ***            -------------------  */
-
-    $('#user .editable').on('hidden', function(e, reason){
-        if(reason === 'save' || reason === 'nochange') {
-            var $next = $(this).closest('tr').next().find('.editable');
-            if($('#autoopen').is(':checked')) {
-                setTimeout(function() {
-                    $next.editable('show');
-                }, 300);
-            } else {
-                $next.focus();
-            }
-        }
-    });
 
 
 
