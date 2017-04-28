@@ -429,7 +429,7 @@
         <!-- CRM, Action, & Review Main Blocks -->
         <div id="main-wrapper">
         <!-- Row -->
-        <g:render template="/sharedTemplates/crm-contact"/>
+        <g:render template="/sharedTemplates/crm/crm-contact"/>
         <!-- Row -->
 
         <!-- Row -->

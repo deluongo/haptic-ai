@@ -34,7 +34,8 @@ class EmailAddress {
     Float answerRate
 
     static constraints = {
-        emailAddress matches: /^[a-zA-Z0-9_.+-]+@([\w-]+\.)+[\w-]{2,4}$/
+        emailAddress matches: /^[a-zA-Z0-9_.+-]+@([\w-]+\.)+[\w-]{2,4}$/, blank: false
+        emailExtension blank: false
         emailStatus inList: ['active', 'unsubscribed', 'unverified', 'verified']
 
     }
