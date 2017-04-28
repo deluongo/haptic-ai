@@ -28,9 +28,11 @@ class Contact {
     String firstName
     String lastName
     String gender
+
+    String jobRole
     String jobTitle
-    String roleName
-    String group //For Enterprise companies, which department/group/etc.
+    String roleDescription
+    String department //For Enterprise companies, which department/group/etc.
 
     // Possible Mapping, Pivot Table Candidates
     Company company
@@ -42,12 +44,14 @@ class Contact {
 
 
     static constraints = {
-        salutation inList: ['Mr.', 'Mrs.', 'Ms.', 'Dr.']
+        salutation inList: ['Mr.', 'Mrs.', 'Ms.', 'Dr.', 'Sir', 'Professor']
         firstName blank: false
         lastName blank: false
         gender  blank: false
         jobTitle blank: false
-        roleName blank: false
-        group blank: false
+        jobRole blank: false
+        roleDescription nullable: true
+        department blank: false
     }
+
 }
