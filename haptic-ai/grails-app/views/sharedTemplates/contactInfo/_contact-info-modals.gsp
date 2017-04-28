@@ -26,34 +26,30 @@
                                         <tbody>
                                         <tr>
                                             <td>Name</td>
-                                            <td><a href="#" id="locationName" data-type="textarea" data-pk="1" data-placeholder="Name this location.." data-title="Enter location name" class="editable editable-pre-wrapped editable-click">Enter location name..</a></td>
+                                            <td><a href="#" id="locationName" data-type="text" data-pk="1" data-placeholder="Name this location.." data-title="Enter location name" class="editable editable-pre-wrapped editable-click"></a></td>
                                         </tr>
                                         <tr>
                                             <td>Location Type</td>
-                                            <td><a href="#" id="locationType" data-type="radiolist" data-title="Select location type"  data-pk="1" data-url="/post"></a></td>
+                                            <td><a href="#" id="locationType" data-type="radiolist" data-title="Select location type" class="editable editable-click" data-pk="1" data-url="/post">Main Office</a></td>
                                         </tr>
                                         <tr>
                                             <td>Country</td>
-                                            <td><a href="#" id="country" data-type="select2" data-pk="1" data-value="United States" data-title="Select country" class="editable editable-click">Bahamas</a></td>
+                                            <td><a href="#" id="country" data-type="select2" data-pk="1" data-value="United States" data-title="Select country" class="editable editable-click">United States</a></td>
                                         </tr>
                                         <tr>
                                             <td>State</td>
-                                            <td><a href="#" id="state2" data-type="typeaheadjs" data-pk="1" data-placement="right" data-title="Start typing State.." class="editable editable-click">California</a></td>
+                                            <td><a href="#" id="state" data-type="typeaheadjs" data-pk="1" data-placement="right" data-title="Start typing State.." class="editable editable-click"></a></td>
                                         </tr>
                                         <tr>
-                                            <td>Address</td>
-                                            <td><a href="#" id="address" data-type="address" data-pk="1" data-title="Please, fill address" class="editable editable-click"><b>Moscow</b>, Lenina st., bld. 12</a></td>
+                                            <td>Street Address</td>
+                                            <td><a href="#" id="street" data-type="text" data-pk="1" data-placeholder="Enter street address.."  data-title="Please, fill address" class="editable editable-click"></a></td>
                                         </tr>
                                         <tr>
                                             <td>Zip</td>
-                                            <td><a href="#" id="zip" data-type="textarea" data-pk="1" data-placeholder="Enter zipcode.." data-title="Enter zipcode" class="editable editable-pre-wrapped editable-click">Enter zipcode..</a></td>
+                                            <td><a href="#" id="zip" data-type="text" data-pk="1" data-placeholder="Enter zipcode.." data-title="Enter zipcode" class="editable editable-pre-wrapped editable-click"></a></td>
                                         </tr>
                                         </tbody>
                                     </table>
-
-                                    //td{ a(href:"#", id:"address", class:"editable editable-click", (dataType): "select2", (dataPk): "2", (dataValue): "BS", (dataTitle): "Add address", "Add Address")  }
-
-
                                 </div>
                             </div>
                         </div>

@@ -285,17 +285,10 @@ $('.editable').on('hidden', function(e, reason){
             $('#note').editable('toggle');
         });
 
-        $('#state').editable({
+        $('#state2').editable({
             source: ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
         });
 
-        $('#state2').editable({
-            value: 'California',
-            typeahead: {
-                name: 'state',
-                local: ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
-            }
-        });
 
         $('#fruits').editable({
             pk: 1,
@@ -602,25 +595,14 @@ $('.editable').on('hidden', function(e, reason){
         countries.push({id: k, text: v});
     });
 
-    $('#country').editable({
-        source: countries,
-        select2: {
-            width: 200,
-            placeholder: 'Select country',
-            allowClear: true
+    $('#locationName').editable({
+        validate: function(value) {
+            if($.trim(value) == '') return 'This field is required';
         }
-    });
-
-    $('#state').editable({
-        source: ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
-    });
-
-    $('#state2').editable({
-        value: 'California',
-        typeahead: {
-            name: 'state',
-            local: ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
-        }
+    }).on('shown', function(ev, editable) {
+        setTimeout(function() {
+            editable.input.$input.select();
+        },0);
     });
 
     $('#locationType').editable({
@@ -634,6 +616,43 @@ $('.editable').on('hidden', function(e, reason){
             {value: 5, text: 'Restaurant'},
             {value: 6, text: 'Meeting Local'}
         ]
+    });
+
+    $('#country').editable({
+        source: countries,
+        value: "United States",
+        select2: {
+            width: 200,
+            placeholder: 'Select country',
+            allowClear: true
+        }
+    });
+
+    $('#state').editable({
+        typeahead: {
+            name: 'state',
+            local: ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
+        }
+    });
+
+    $('#street').editable({
+        validate: function(value) {
+            if($.trim(value) == '') return 'This field is required';
+        }
+    }).on('shown', function(ev, editable) {
+        setTimeout(function() {
+            editable.input.$input.select();
+        },0);
+    });
+
+    $('#zip').editable({
+        validate: function(value) {
+            if($.trim(value) == '') return 'This field is required';
+        }
+    }).on('shown', function(ev, editable) {
+        setTimeout(function() {
+            editable.input.$input.select();
+        },0);
     });
 
 
