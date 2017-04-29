@@ -1,3 +1,6 @@
+
+
+
 $( document ).ready(function() {
 
 
@@ -1009,7 +1012,6 @@ $('.editable').on('hidden', function(e, reason){
 
 
 
-
     var App = function() {
 
         // IE mode
@@ -1529,7 +1531,17 @@ $('.editable').on('hidden', function(e, reason){
             }
         };
 
-
+        // Handle Select2 Dropdowns
+        var handleSelect2 = function() {
+            if ($().select2) {
+                $.fn.select2.defaults.set("theme", "bootstrap");
+                $('.select2me').select2({
+                    placeholder: "Select",
+                    width: 'auto',
+                    allowClear: true
+                });
+            }
+        };
 
         // handle group element heights
         var handleHeight = function() {
@@ -1587,6 +1599,7 @@ $('.editable').on('hidden', function(e, reason){
                 handleBootstrapSwitch(); // handle bootstrap switch plugin
                 handleScrollers(); // handles slim scrolling contents
                 handleFancybox(); // handle fancy box
+                handleSelect2(); // handle custom Select2 dropdowns
                 handlePortletTools(); // handles portlet action bar functionality(refresh, configure, toggle, remove)
                 handleAlerts(); //handle closabled alerts
                 handleDropdowns(); // handle dropdowns
@@ -1612,6 +1625,7 @@ $('.editable').on('hidden', function(e, reason){
                 handleiCheck(); // handles custom icheck radio and checkboxes
                 handleBootstrapSwitch(); // handle bootstrap switch plugin
                 handleScrollers(); // handles slim scrolling contents
+                handleSelect2(); // handle custom Select2 dropdowns
                 handleFancybox(); // handle fancy box
                 handleDropdowns(); // handle dropdowns
                 handleTooltips(); // handle bootstrap tooltips
@@ -2012,9 +2026,7 @@ $('.editable').on('hidden', function(e, reason){
 
     <!-- END THEME LAYOUT SCRIPTS -->
 
-    jQuery(document).ready(function() {
-        App.init(); // init metronic core componets
-    });
+
 
 
 });
