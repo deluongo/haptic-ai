@@ -22,7 +22,7 @@
     <!-- END THEME GLOBAL STYLES -->
     <!-- BEGIN PAGE LEVEL STYLES -->
     <asset:stylesheet src="metronic/profile.min.css"/>
-    <asset:stylesheet src="metronic/layout.min.css"/>
+
     <!-- END PAGE LEVEL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
     <asset:stylesheet src="metronic/themes/blue.min.css" />
@@ -100,7 +100,7 @@
                 <div class="top-menu">
                     <ul class="nav navbar-nav navbar-left">
                         <li>
-                            <a href="javascript:void(0);" class="waves-effect waves-button waves-classic sidebar-toggle"><i class="fa fa-bars"></i></a>
+                            <a href="javascript:void(0);" class="waves-effect waves-button waves-classic sidebar-toggle" id="menu-toggle-link"><i class="fa fa-bars" id="menu-toggle-icon"></i></a>
                         </li>
                         <li>
                             <a href="#cd-nav" class="waves-effect waves-button waves-classic cd-nav-trigger"><i class="fa fa-diamond"></i></a>
@@ -280,7 +280,7 @@
         </div>
     </div>
     <!-- Navbar -->
-    <div class="page-sidebar sidebar">
+    <div class="page-sidebar sidebar" id="dashboard-sidebar">
         <div class="page-sidebar-inner slimscroll">
             <div class="prospect-list-padding">
                 <ul class="menu accordion-menu display-block">
@@ -325,107 +325,180 @@
 
         <!-- KPI's & Rankings -->
         <div class="page-title">
-            <div class="row-fluid">
-                <div class="col-xs-4">
-                    <!-- Pie Chart Container -->
-                    <div class="kpi-panel-big panel panel-default">
-                        <div class="kpi-heading panel-heading ">KPI Set #1</div>
-                        <div class="panel-body padding-0-i">
-                            <div class="row-fluid">
-                                <div class="col-xs-3 padding-0">
-                                    <div class="chart-sm">
-                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
-                                            <span>8 <br><small class="text-muted">/100</small></span>
-                                        </div>
+
+            <!-- XL Screens -->
+            <div class="flex-row" id="xlarge-screen-kpis">
+                <!-- Pie Chart Container -->
+                <div class="kpi-panel-big panel panel-default">
+                    <div class="kpi-heading panel-heading ">KPI Set #1</div>
+                    <div class="panel-body padding-0-i">
+                        <div class="row-fluid">
+                            <div class="col-xs-3 padding-0">
+                                <div class="chart-sm">
+                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                        <span>8 <br><small class="text-muted">/100</small></span>
                                     </div>
-                                    <h4 class="kpi-label">KPI #1</h4>
                                 </div>
-                                <div class="col-xs-3 padding-0">
-                                    <div class="chart-sm">
-                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
-                                            <span>8 <br><small class="text-muted">/100</small></span>
-                                        </div>
-                                    </div>
-                                    <h4 class="kpi-label">KPI #1</h4>
-                                </div>
-                                <div class="col-xs-3 padding-0">
-                                    <div class="chart-sm">
-                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
-                                            <span>8 <br><small class="text-muted">/100</small></span>
-                                        </div>
-                                    </div>
-                                    <h4 class="kpi-label">KPI #1</h4>
-                                </div>
-                                <div class="col-xs-3 padding-0">
-                                    <div class="chart-sm">
-                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
-                                            <span>8 <br><small class="text-muted">/100</small></span>
-                                        </div>
-                                    </div>
-                                    <h4 class="kpi-label">KPI #1</h4>
-                                </div>
+                                <h4 class="kpi-label">KPI #1a</h4>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="kpi-panel-invisible">
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <!-- Pie Chart Container -->
-                                <div class="kpi-panel">
-                                    <div class="chart">
-                                        <span class="kpi-2 pie-chart" data-percent="66" data-scale-color="#ffb400" data-size="95">
-                                            <span class="kpi-2-value">%</span>
-                                        </span>
+                            <div class="col-xs-3 padding-0">
+                                <div class="chart-sm">
+                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                        <span>8 <br><small class="text-muted">/100</small></span>
                                     </div>
-                                <h4 class="kpi-label js_update_2">KPI #2</h4>
                                 </div>
+                                <h4 class="kpi-label">KPI #1b</h4>
                             </div>
-                            <div class="col-xs-4">
-                                <!-- Pie Chart Container -->
-                                <div class="kpi-panel">
-                                    <div class="chart">
-                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="95" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
-                                            <span>8 <br><small class="text-muted">/100</small></span>
-                                        </div>
+                            <div class="col-xs-3 padding-0">
+                                <div class="chart-sm">
+                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                        <span>8 <br><small class="text-muted">/100</small></span>
                                     </div>
-                                    <h4 class="kpi-label">KPI #3</h4>
                                 </div>
+                                <h4 class="kpi-label">KPI #1c</h4>
                             </div>
-                            <div class="col-xs-4">
-                                <!-- Pie Chart Container -->
-                                <div class="kpi-panel">
-                                    <div class="chart">
-                                        <span class="kpi-4 pie-chart" data-percent="66"  data-size="95">
-                                            <span class="kpi-4-value">%</span>
-                                        </span>
+                            <div class="col-xs-3 padding-0">
+                                <div class="chart-sm">
+                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                        <span>8 <br><small class="text-muted">/100</small></span>
                                     </div>
-                                    <h4 class="kpi-label js_update_4">KPI #4</h4>
                                 </div>
+                                <h4 class="kpi-label">KPI #1d</h4>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-xs-4">
-                    <div class="kpi-panel-invisible">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <!-- Pie Chart Container -->
-                                <div class="kpi-panel">
-                                    <div class="chart">
-                                        <span class="kpi-4 pie-chart" data-percent="66"  data-size="95">
-                                            <span class="percent">%</span>
-                                        </span>
-                                    </div>
-                                <h4 class="kpi-label js_update_4">KPI #4</h4>
+
+                <div class="kpi-panel-invisible">
+                    <div class="row">
+                        <div class="col-xs-4 no-padding-i">
+                            <!-- Pie Chart Container -->
+                            <div class="kpi-panel">
+                                <div class="chart">
+                                    <span class="kpi-2 pie-chart" data-percent="66" data-scale-color="#ffb400" data-size="95">
+                                        <span class="kpi-2-value">%</span>
+                                    </span>
                                 </div>
+                            <h4 class="kpi-label js_update_2 solo-label">KPI #2</h4>
                             </div>
-                            <div class="col-xs-6">
-                                <div class="level-panel">
-                                    <span class="level-label"><h4 class="user-level">L<small>vl.</small></h4></span>
-                                    <span class="level-number"><h4 class="user-level-number">10</h4></span>
+                        </div>
+                        <div class="col-xs-4 no-padding-i">
+                            <!-- Pie Chart Container -->
+                            <div class="kpi-panel">
+                            <div class="chart">
+                                <span class="pie-chart kpi-3" data-percent="33" data-line-width="3" data-size="95" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                    <span class="kpi-3-value">%</span>
+                                </span>
+                            </div>
+                            <h4 class="kpi-label js_update_3 solo-label">KPI #3</h4>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 no-padding-i">
+                            <!-- Pie Chart Container -->
+                            <div class="kpi-panel">
+                                <div class="chart">
+                                    <span class="kpi-4 pie-chart" data-percent="66"  data-size="95">
+                                        <span class="kpi-4-value">%</span>
+                                    </span>
+                                </div>
+                                <h4 class="kpi-label js_update_4 solo-label">KPI #4</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="level-panel">
+                    <span class="level-label"><h4 class="user-level">L<small>vl.</small></h4></span>
+                    <span class="level-number"><h4 class="user-level-number">10</h4></span>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active level-progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                            <span class="sr-only">45% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Standard Screens -->
+            <div class="flex-row " id="large-screen-kpis">
+                <!-- Pie Chart Container -->
+                <div class="kpi-panel-big panel panel-default secondary-kpis">
+                    <div class="kpi-heading panel-heading ">KPI Set #1</div>
+                    <div class="panel-body padding-0-i">
+                        <div class="scroller" style="height: 500px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                        <div class="row-fluid">
+                            <div class="col-xs-3 padding-0">
+                                <div class="chart-sm">
+                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                        <span>8 <br><small class="text-muted">/100</small></span>
+                                    </div>
+                                </div>
+                                <h4 class="kpi-label">KPI #1a</h4>
+                            </div>
+                            <div class="col-xs-3 padding-0">
+                                <div class="chart-sm">
+                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                        <span>8 <br><small class="text-muted">/100</small></span>
+                                    </div>
+                                </div>
+                                <h4 class="kpi-label">KPI #1b</h4>
+                            </div>
+                            <div class="col-xs-3 padding-0">
+                                <div class="chart-sm">
+                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                        <span>8 <br><small class="text-muted">/100</small></span>
+                                    </div>
+                                </div>
+                                <h4 class="kpi-label">KPI #1c</h4>
+                            </div>
+                            <div class="col-xs-3 padding-0">
+                                <div class="chart-sm">
+                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                        <span>8 <br><small class="text-muted">/100</small></span>
+                                    </div>
+                                </div>
+                                <h4 class="kpi-label">KPI #1d</h4>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Pie Chart Container -->
+                <div class="kpi-panel-big panel panel-default">
+                    <div class="kpi-heading panel-heading ">KPI Set #2</div>
+                    <div class="panel-body padding-0-i">
+                        <div class="row-fluid">
+                            <div class="col-xs-3 padding-0">
+                                <div class="chart-sm">
+                                    <span class="kpi-2-sm pie-chart" data-percent="66" data-scale-color="#ffb400" data-size="75">
+                                        <span class="kpi-2-value-sm">%</span>
+                                    </span>
+                                </div>
+                                <h4 class="kpi-label js_update_2_sm solo-label">KPI #2</h4>
+                            </div>
+                            <div class="col-xs-3 padding-0">
+                                <div class="chart-sm">
+                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                        <span>8 <br><small class="text-muted">/100</small></span>
+                                    </div>
+                                </div>
+                                <h4 class="kpi-label solo-label">KPI #3</h4>
+                            </div>
+                            <div class="col-xs-3 padding-0">
+                                <div class="chart-sm">
+                                    <span class="kpi-4-sm pie-chart" data-percent="66"  data-size="75">
+                                        <span class="kpi-4-value-sm">%</span>
+                                    </span>
+                                </div>
+                                <h4 class="kpi-label js_update_4_sm solo-label">KPI #4</h4>
+                            </div>
+                            <div class="col-xs-3 padding-0">
+                                <div class="level-panel-sm">
+                                    <span class="level-label-sm"><h4 class="user-level-sm">L<small>vl.</small></h4></span>
+                                    <span class="level-number-sm"><h4 class="user-level-number-sm">10</h4></span>
                                     <div class="progress">
                                         <div class="progress-bar progress-bar-striped active level-progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
                                             <span class="sr-only">45% Complete</span>
@@ -436,8 +509,10 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
+
 
 
 
@@ -473,12 +548,12 @@
                             <div class="panel panel-white">
 
                                 <div class="panel-heading contacts-panel-heading clearfix">
-                                    <div class="row">
-                                        <div class="col-sm-6">
+                                    <div class="flex-row-between">
+                                        <div class="">
                                             <!-- Display The Selected Contact's Name -->
                                             <h2 class="no-m m-b-lg contact-name-header">Bill Gates</h2>
                                         </div>
-                                        <div class="col-sm-6 contact-action-buttons">
+                                        <div class=" contact-action-buttons">
                                             <a href="javascript:;" class="icon-btn">
                                                 <i class="fa fa-envelope"></i>
                                                 <div> Inbox </div>
@@ -508,10 +583,10 @@
                                     <div class="tabs-left" role="tabpanel">
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-tabs" role="tablist">
-                                            <li role="presentation" class="active" disabled><a href="#tab9" role="tab" data-toggle="tab">Bill Gates, <small>CEO</small></a></li>
-                                            <li role="presentation"><a href="#tab10" role="tab" data-toggle="tab">Bob Minor, <small>CTO</small></a></li>
-                                            <li role="presentation"><a href="#tab11" role="tab" data-toggle="tab">Justin Cooperman, <small>Head of Engineering</small></a></li>
-                                            <li role="presentation"><a href="#tab12" role="tab" data-toggle="tab">Devon Luongo, <small>Product Manager</small></a></li>
+                                            <li role="presentation" class="active" disabled><a href="#tab9" role="tab" data-toggle="tab">Bill Gates, <small class="contact-panel-job-title">CEO</small></a></li>
+                                            <li role="presentation"><a href="#tab10" role="tab" data-toggle="tab">Bob Minor,<small class="contact-panel-job-title">CTO</small></a></li>
+                                            <li role="presentation"><a href="#tab11" role="tab" data-toggle="tab">Justin Cooperman, <small class="contact-panel-job-title">Head of Engineering</small></a></li>
+                                            <li role="presentation"><a href="#tab12" role="tab" data-toggle="tab">Devon Luongo, <small class="contact-panel-job-title">Product Manager</small></a></li>
                                             <li role="presentation" class="dropdown">
                                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
                                                     Dropdown <span class="caret"></span>
@@ -524,339 +599,13 @@
                                         </ul>
                                         <!-- Tab panes -->
                                         <div class="tab-content">
-
                                             <div role="tabpanel" class="tab-pane active fade in" id="tab9">
-                                                <div class="caption">
-                                                    <i class="icon-globe font-dark hide"></i>
-                                                    <span class="caption-subject font-dark bold uppercase">Activity Feed</span>
-                                                    <br/>
-                                                </div>
-                                                <div class="scroller" style="height: 339px;" data-always-visible="1" data-rail-visible="0">
-                                                    <ul class="feeds">
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-success">
-                                                                            <i class="fa fa-bell-o"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> You have 4 pending tasks.
-                                                                            <span class="label label-sm label-info"> Take action
-                                                                                <i class="fa fa-share"></i>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> Just now </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:;">
-                                                                <div class="col1">
-                                                                    <div class="cont">
-                                                                        <div class="cont-col1">
-                                                                            <div class="label label-sm label-success">
-                                                                                <i class="fa fa-bell-o"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="cont-col2">
-                                                                            <div class="desc"> New version v1.4 just lunched! </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col2">
-                                                                    <div class="date"> 20 mins </div>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-danger">
-                                                                            <i class="fa fa-bolt"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> Database server #12 overloaded. Please fix the issue. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 24 mins </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-info">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 30 mins </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-success">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 40 mins </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-warning">
-                                                                            <i class="fa fa-plus"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New user registered. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 1.5 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-success">
-                                                                            <i class="fa fa-bell-o"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> Web server hardware needs to be upgraded.
-                                                                            <span class="label label-sm label-default "> Overdue </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 2 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-default">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 3 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-warning">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 5 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-info">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 18 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-default">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 21 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-info">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 22 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-default">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 21 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-info">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 22 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-default">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 21 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-info">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 22 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-default">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 21 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-sm label-info">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 22 hours </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-
-
-
-
+                                                <!-- Render Activity Feed | Tab Panel -->
+                                                <g:render template="/sharedTemplates/contactInfo/activity-feed"/>
                                             </div>
                                             <div role="tabpanel" class="tab-pane fade" id="tab10">
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                                <!-- Render Activity Feed | Tab Panel -->
+                                                <g:render template="/sharedTemplates/contactInfo/activity-feed"/>
                                             </div>
                                             <div role="tabpanel" class="tab-pane fade" id="tab11">
                                                 <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>

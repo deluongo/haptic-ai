@@ -47,6 +47,14 @@ $( document ).ready(function() {
                 }
         });
 
+        jQuery('.kpi-3').easyPieChart({
+            easing: 'easeOutBounce',
+            animate: 2000,
+            onStep: function(from, to, percent) {
+                $(this.el).find('.kpi-3-value').text(Math.round(percent)).append("%");
+            }
+        });
+
         jQuery('.kpi-4').easyPieChart({
             easing: 'easeOutBounce',
             animate: 2000,
@@ -55,9 +63,54 @@ $( document ).ready(function() {
             }
         });
 
-        //update instance after 5 sec
+        jQuery('.kpi-2-sm').easyPieChart({
+            barColor: function(percent) {
+                var ctx = this.renderer.getCtx();
+                var canvas = this.renderer.getCanvas();
+                var gradient = ctx.createLinearGradient(0,0,canvas.width,0);
+                gradient.addColorStop(0, "#ffe57e");
+                gradient.addColorStop(1, "#de5900");
+                return gradient;
+            },
+            easing: 'easeOutBounce',
+            animate: 2000,
+            onStep: function(from, to, percent) {
+                $(this.el).find('.kpi-2-value-sm').text(Math.round(percent));
+            }
+        });
+
+        jQuery('.kpi-3-sm').easyPieChart({
+            barColor: function(percent) {
+                var ctx = this.renderer.getCtx();
+                var canvas = this.renderer.getCanvas();
+                var gradient = ctx.createLinearGradient(0,0,canvas.width,0);
+                gradient.addColorStop(0, "#ffe57e");
+                gradient.addColorStop(1, "#de5900");
+                return gradient;
+            },
+            easing: 'easeOutBounce',
+            animate: 2000,
+            onStep: function(from, to, percent) {
+                $(this.el).find('.kpi-3-value-sm').text(Math.round(percent));
+            }
+        });
+
+        jQuery('.kpi-4-sm').easyPieChart({
+            easing: 'easeOutBounce',
+            animate: 2000,
+            onStep: function(from, to, percent) {
+                $(this.el).find('.kpi-4-value-sm').text(Math.round(percent)).append("%");
+            }
+        });
+
+
+    //update instance after 5 sec
         setTimeout(function() {
             $('.kpi-2').data('easyPieChart').update(40);
+        }, 5000);
+
+        setTimeout(function() {
+            $('.kpi-2-sm').data('easyPieChart').update(40);
         }, 5000);
 
         var chart_2 = window.chart = $('.kpi-2').data('easyPieChart');
@@ -65,9 +118,29 @@ $( document ).ready(function() {
             chart_2.update(Math.random()*200-100);
         });
 
+        var chart_3 = window.chart = $('.kpi-3').data('easyPieChart');
+        $('.js_update_3').on('click', function() {
+            chart_3.update(Math.random()*200-100);
+        });
+
         var chart_4 = window.chart = $('.kpi-4').data('easyPieChart');
         $('.js_update_4').on('click', function() {
             chart_4.update(Math.random()*200-100);
+        });
+
+        var chart_2_sm = window.chart = $('.kpi-2-sm').data('easyPieChart');
+        $('.js_update_2_sm').on('click', function() {
+            chart_2_sm.update(Math.random()*200-100);
+        });
+
+        var chart_3_sm = window.chart = $('.kpi-3-sm').data('easyPieChart');
+        $('.js_update_3_sm').on('click', function() {
+            chart_3_sm.update(Math.random()*200-100);
+        });
+
+        var chart_4_sm = window.chart = $('.kpi-4-sm').data('easyPieChart');
+        $('.js_update_4_sm').on('click', function() {
+            chart_4_sm.update(Math.random()*200-100);
         });
 
 
