@@ -52,6 +52,14 @@ class Contact {
         jobRole blank: false
         roleDescription nullable: true
         department blank: false
+
+        emailAddresses nullable: true
+        phoneNumbers nullable: true
+        socialNetworks nullable: true
+        reviewSites nullable: true
+        webSites nullable: true
+        addresses nullable: true
+        notes nullable: true
     }
 
 }
