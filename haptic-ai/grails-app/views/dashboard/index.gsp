@@ -324,7 +324,7 @@
     <div class="page-inner">
 
         <!-- KPI's & Rankings -->
-        <div class="page-title">
+        <div class="page-title pre-scrollable">
 
             <!-- XL Screens -->
             <div class="flex-row" id="xlarge-screen-kpis">
@@ -421,87 +421,89 @@
 
 
             <!-- Standard Screens -->
-            <div class="flex-row " id="large-screen-kpis">
-                <!-- Pie Chart Container -->
-                <div class="kpi-panel-big panel panel-default secondary-kpis">
-                    <div class="kpi-heading panel-heading ">KPI Set #1</div>
-                    <div class="panel-body padding-0-i">
-                        <div class="scroller" style="height: 500px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
-                        <div class="row-fluid">
-                            <div class="col-xs-3 padding-0">
-                                <div class="chart-sm">
-                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
-                                        <span>8 <br><small class="text-muted">/100</small></span>
+            <div class="enable-page-title-scroll">
+                <div class="flex-row-between" id="large-screen-kpis">
+                    <!-- Pie Chart Container -->
+                    <div class="kpi-panel-big panel panel-default">
+                        <div class="kpi-heading panel-heading ">KPI Set #1</div>
+                        <div class="panel-body padding-0-i">
+                            <div class="scroller" style="height: 500px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                            <div class="row-fluid">
+                                <div class="col-xs-3 padding-0">
+                                    <div class="chart-sm">
+                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                            <span>8 <br><small class="text-muted">/100</small></span>
+                                        </div>
                                     </div>
+                                    <h4 class="kpi-label">KPI #1a</h4>
                                 </div>
-                                <h4 class="kpi-label">KPI #1a</h4>
-                            </div>
-                            <div class="col-xs-3 padding-0">
-                                <div class="chart-sm">
-                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
-                                        <span>8 <br><small class="text-muted">/100</small></span>
+                                <div class="col-xs-3 padding-0">
+                                    <div class="chart-sm">
+                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                            <span>8 <br><small class="text-muted">/100</small></span>
+                                        </div>
                                     </div>
+                                    <h4 class="kpi-label">KPI #1b</h4>
                                 </div>
-                                <h4 class="kpi-label">KPI #1b</h4>
-                            </div>
-                            <div class="col-xs-3 padding-0">
-                                <div class="chart-sm">
-                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
-                                        <span>8 <br><small class="text-muted">/100</small></span>
+                                <div class="col-xs-3 padding-0">
+                                    <div class="chart-sm">
+                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                            <span>8 <br><small class="text-muted">/100</small></span>
+                                        </div>
                                     </div>
+                                    <h4 class="kpi-label">KPI #1c</h4>
                                 </div>
-                                <h4 class="kpi-label">KPI #1c</h4>
-                            </div>
-                            <div class="col-xs-3 padding-0">
-                                <div class="chart-sm">
-                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
-                                        <span>8 <br><small class="text-muted">/100</small></span>
+                                <div class="col-xs-3 padding-0">
+                                    <div class="chart-sm">
+                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                            <span>8 <br><small class="text-muted">/100</small></span>
+                                        </div>
                                     </div>
+                                    <h4 class="kpi-label">KPI #1d</h4>
                                 </div>
-                                <h4 class="kpi-label">KPI #1d</h4>
                             </div>
-                        </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <!-- Pie Chart Container -->
-                <div class="kpi-panel-big panel panel-default">
-                    <div class="kpi-heading panel-heading ">KPI Set #2</div>
-                    <div class="panel-body padding-0-i">
-                        <div class="row-fluid">
-                            <div class="col-xs-3 padding-0">
-                                <div class="chart-sm">
-                                    <span class="kpi-2-sm pie-chart" data-percent="66" data-scale-color="#ffb400" data-size="75">
-                                        <span class="kpi-2-value-sm">%</span>
-                                    </span>
-                                </div>
-                                <h4 class="kpi-label js_update_2_sm solo-label">KPI #2</h4>
-                            </div>
-                            <div class="col-xs-3 padding-0">
-                                <div class="chart-sm">
-                                    <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
-                                        <span>8 <br><small class="text-muted">/100</small></span>
+                    <!-- Pie Chart Container -->
+                    <div class="kpi-panel-big panel panel-default">
+                        <div class="kpi-heading panel-heading ">KPI Set #2</div>
+                        <div class="panel-body padding-0-i">
+                            <div class="row-fluid">
+                                <div class="col-xs-3 padding-0">
+                                    <div class="chart-sm">
+                                        <span class="kpi-2-sm pie-chart" data-percent="66" data-scale-color="#ffb400" data-size="75">
+                                            <span class="kpi-2-value-sm">%</span>
+                                        </span>
                                     </div>
+                                    <h4 class="kpi-label js_update_2_sm solo-label">KPI #2</h4>
                                 </div>
-                                <h4 class="kpi-label solo-label">KPI #3</h4>
-                            </div>
-                            <div class="col-xs-3 padding-0">
-                                <div class="chart-sm">
-                                    <span class="kpi-4-sm pie-chart" data-percent="66"  data-size="75">
-                                        <span class="kpi-4-value-sm">%</span>
-                                    </span>
+                                <div class="col-xs-3 padding-0">
+                                    <div class="chart-sm">
+                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                            <span>8 <br><small class="text-muted">/100</small></span>
+                                        </div>
+                                    </div>
+                                    <h4 class="kpi-label solo-label">KPI #3</h4>
                                 </div>
-                                <h4 class="kpi-label js_update_4_sm solo-label">KPI #4</h4>
-                            </div>
-                            <div class="col-xs-3 padding-0">
-                                <div class="level-panel-sm">
-                                    <span class="level-label-sm"><h4 class="user-level-sm">L<small>vl.</small></h4></span>
-                                    <span class="level-number-sm"><h4 class="user-level-number-sm">10</h4></span>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped active level-progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                                            <span class="sr-only">45% Complete</span>
+                                <div class="col-xs-3 padding-0">
+                                    <div class="chart-sm">
+                                        <span class="kpi-4-sm pie-chart" data-percent="66"  data-size="75">
+                                            <span class="kpi-4-value-sm">%</span>
+                                        </span>
+                                    </div>
+                                    <h4 class="kpi-label js_update_4_sm solo-label">KPI #4</h4>
+                                </div>
+                                <div class="col-xs-3 padding-0">
+                                    <div class="level-panel-sm">
+                                        <span class="level-label-sm"><h4 class="user-level-sm">L<small>vl.</small></h4></span>
+                                        <span class="level-number-sm"><h4 class="user-level-number-sm">10</h4></span>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped active level-progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                                                <span class="sr-only">45% Complete</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -509,7 +511,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 

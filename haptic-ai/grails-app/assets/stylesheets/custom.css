@@ -169,9 +169,12 @@ margin-15-l {
     padding-right: 5px;
     padding-top: 7px;
     padding-bottom: 7px;
-
-
 }
+
+.enable-page-title-scroll {
+    width: 897px;
+}
+
 
 .kpi-label {
     padding-bottom: 12px;
@@ -322,7 +325,12 @@ margin-15-l {
     .secondary-kpis {
         display: none;
     }
+}
 
+@media (min-width: 1124px) {
+    .enable-page-title-scroll {
+        width: 100%;
+    }
 }
 
 @media  (min-width: 1300px) {
@@ -702,7 +710,7 @@ fieldset[disabled] a.btn {
     -webkit-flex-flow: row wrap; /* Safari 6.1+ */
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .shrink-item {
