@@ -437,3 +437,7 @@ fieldset[disabled] a.btn {
 .contact-page-hr {
     margin-bottom: 5px;
 }
+
+.contact-action-buttons {
+    text-align: end;
+}

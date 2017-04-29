@@ -5,6 +5,7 @@
     <!-- Title -->
     <title>Haptic Sales Dashboard</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=0.6, maximum-scale=1.0, user-scalable=0">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta charset="UTF-8">
     <meta name="description" content="Admin Dashboard Template" />
@@ -473,15 +474,30 @@
 
                                 <div class="panel-heading contacts-panel-heading clearfix">
                                     <div class="row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-6">
                                             <!-- Display The Selected Contact's Name -->
                                             <h2 class="no-m m-b-lg contact-name-header">Bill Gates</h2>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-6 contact-action-buttons">
                                             <a href="javascript:;" class="icon-btn">
                                                 <i class="fa fa-envelope"></i>
                                                 <div> Inbox </div>
                                                 <span class="badge badge-info"> 12 </span>
+                                            </a>
+                                            <a href="javascript:;" class="icon-btn">
+                                                <i class="fa fa-thumbs-up"></i>
+                                                <div> Feedback </div>
+                                                <span class="badge badge-info"> 2 </span>
+                                            </a>
+                                            <a href="javascript:;" class="icon-btn">
+                                                <i class="fa fa-group"></i>
+                                                <div> Users </div>
+                                                <span class="badge badge-danger"> 2 </span>
+                                            </a>
+                                            <a href="javascript:;" class="icon-btn">
+                                                <i class="fa fa-phone"></i>
+                                                <div> Notification </div>
+                                                <span class="badge badge-danger"> 3 </span>
                                             </a>
                                         </div>
                                     </div>
