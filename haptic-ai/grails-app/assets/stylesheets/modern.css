@@ -2579,7 +2579,7 @@ ol.linenums {
 .table > thead > tr > td,
 .table > thead > tr > th,
 .table td {
-    padding: 15px!important;
+    padding: 5px;
 }
 
 .dataTables_wrapper .dataTables_filter input,
@@ -3641,6 +3641,9 @@ tr.group:hover {
     bottom: 0;
     height: 74px;
 }
+
+
+
 
 
 @media (min-width: 768px) {

@@ -85,9 +85,9 @@
 <main class="page-content content-wrap">
     <div class="navbar">
         <div class="navbar-inner">
-            <div class="sidebar-pusher">
+            <div class="sidebar-pusher ">
                 <a href="javascript:void(0);" class="waves-effect waves-button waves-classic push-sidebar">
-                    <i class="fa fa-bars"></i>
+                    <i class="fa fa-bars "></i>
                 </a>
             </div>
             <div class="logo-box">
@@ -547,7 +547,7 @@
 
 
                                 <!-- Row -->
-                                <div class="panel panel-white padding-0-i">
+                                <div class="panel panel-white padding-0-i margin-0 activity-feed-panel">
 
                                     <div class="panel-heading contacts-panel-heading clearfix padding-0-i">
                                         <div class="flex-row-between">

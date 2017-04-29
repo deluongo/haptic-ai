@@ -29,13 +29,13 @@ class ContactInfoTagLib {
         def dataTarget = "data-target"
 
         mb.table(class: "table table-bordered table-striped"){
-            tr(class: "w3-cyan"){
-                th{ mb.yield "Email Addresses" }
-                th{ mb.yield "Phone Numbers" }
-                th{ mb.yield "Social Networks" }
-                th{ mb.yield "Review Sites" }
-                th(class: 'hidden-xs hidden-sm'){ mb.yield "Web Sites" }
-                th{ mb.yield "Addresses" }
+            tr{
+                td{ mb.yield "Phones" }
+                td{ mb.yield "Emails" }
+                td{ mb.yield "Social" }
+                td{ mb.yield "Reviews" }
+                td{ mb.yield "Websites" }
+                td{ mb.yield "Locations" }
             }
 
             numRows.times{
@@ -51,6 +51,15 @@ class ContactInfoTagLib {
 
 
             tr{
+                //td(class:"text-center"){ a( (dataToggle):"modal", (dataTarget):"#add-email-address-modal" ) {span{ i('class': 'fa fa-plus icon-add-contact-method', '') "Email" }  }
+
+                //td(class:"text-center"){ div{ button(class:"btn btn-default btn-addon m-b-sm", (dataToggle):"modal", (dataTarget):"#add-email-address-modal", "+ Email")  } }
+                //td(class:"text-center"){ div{ button(class:"btn btn-default btn-addon m-b-sm", (dataToggle):"modal", (dataTarget):"#add-phone-number-modal", "+ Phone")  } }
+                //td(class:"text-center"){ div{ button(class:"btn btn-default btn-addon m-b-sm", (dataToggle):"modal", (dataTarget):"#add-social-network-modal", "+ Network")  } }
+                //td(class:"text-center"){ div{ button(class:"btn btn-default btn-addon m-b-sm", (dataToggle):"modal", (dataTarget):"#add-review-site-modal", "+ Site")  } }
+                //td(class:"text-center"){ div{ button(class:"btn btn-default btn-addon m-b-sm", (dataToggle):"modal", (dataTarget):"#add-web-site-modal", "+ Website")  } }
+                //td(class:"text-center"){ div{ button(class:"btn btn-default btn-addon m-b-sm", (dataToggle):"modal", (dataTarget):"#add-address-modal", "+ Address")  } }
+
                 td{ a( (dataToggle):"modal", (dataTarget):"#add-email-address-modal", "Add Email") }
                 td{ a( (dataToggle):"modal", (dataTarget):"#add-phone-number-modal", "Add Phone") }
                 td{ a( (dataToggle):"modal", (dataTarget):"#add-social-network-modal", "Add Network") }
