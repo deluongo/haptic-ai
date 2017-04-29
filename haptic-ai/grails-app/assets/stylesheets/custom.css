@@ -346,6 +346,7 @@ sup {
 
 .contacts-panel-heading {
     padding-top: 5px !important;
+    height: 90px !important;
 }
 
 .contacts-body {
@@ -429,3 +430,10 @@ fieldset[disabled] a.btn {
     height: 100px;
 }
 
+.contact-name-header {
+    margin-top: 17px;
+}
+
+.contact-page-hr {
+    margin-bottom: 5px;
+}

@@ -463,17 +463,31 @@
                             </div>
 
 
-                            <hr>
+                            <hr class="contact-page-hr">
 
 
 
 
                             <!-- Row -->
                             <div class="panel panel-white">
+
                                 <div class="panel-heading contacts-panel-heading clearfix">
-                                    <!-- Display The Selected Contact's Name -->
-                                    <h2 class="no-m m-b-lg">Bill Gates</h2>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <!-- Display The Selected Contact's Name -->
+                                            <h2 class="no-m m-b-lg contact-name-header">Bill Gates</h2>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <a href="javascript:;" class="icon-btn">
+                                                <i class="fa fa-envelope"></i>
+                                                <div> Inbox </div>
+                                                <span class="badge badge-info"> 12 </span>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
+
+
                                 <div class="panel-body">
                                     <div class="tabs-left" role="tabpanel">
                                         <!-- Nav tabs -->
@@ -494,9 +508,13 @@
                                         </ul>
                                         <!-- Tab panes -->
                                         <div class="tab-content">
+
                                             <div role="tabpanel" class="tab-pane active fade in" id="tab9">
-
-
+                                                <div class="caption">
+                                                    <i class="icon-globe font-dark hide"></i>
+                                                    <span class="caption-subject font-dark bold uppercase">Activity Feed</span>
+                                                    <br/>
+                                                </div>
                                                 <div class="scroller" style="height: 339px;" data-always-visible="1" data-rail-visible="0">
                                                     <ul class="feeds">
                                                         <li>
