@@ -899,8 +899,80 @@ $('.editable').on('hidden', function(e, reason){
 
 
 
+                                         //~~~~~~~~~~~~~~~\\
+                                        //                 \\
+                                       //      COMPANY      \\
+                                      //                     \\
+                                     //=======================\\
+                                    //                         \\
+                                   //            CRM            \\
+                                  //                             \\
+                                 //   /\  /\  /\  /\  /\  /\  /\  \\
+                                //___/  \/  \/  \/  \/  \/  \/  \__\\
 
 
+    /*  ______________________                                         ____________________  */
+    /*  ====================== !!! ---*** FIELD DEFINITIONS ***--- !!! ====================  */
+
+
+    /*  -------------------           *** Personal Details ***          -------------------  */
+
+
+    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *  ~~~~~~~~~~ NAME ~~~~~~~~~~
+     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    $('#companyName').editable({
+        validate: function(value) {
+            if($.trim(value) == '') return 'This field is required';
+        }
+    }).on('shown', function(ev, editable) {
+        setTimeout(function() {
+            editable.input.$input.select();
+        },0);
+    });
+
+    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *  ~~~~~~~~ REVENUE ~~~~~~~~~
+     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    $('#companyRevenue').editable({
+        showbuttons: false,
+        emptytext: 'unknown',
+        validate: function(value) {
+            if($.trim(value) == '') return 'This field is required';
+        }
+    });
+
+    $.mockjax({
+        url: '/companyRevenue',
+        response: function(settings) {
+            this.responseText = [
+                {value: 0, text: '< $10,000 ARR'},
+                {value: 1, text: '< $100,000 ARR'},
+                {value: 2, text: '< $1,000,000 ARR'},
+                {value: 3, text: '< $10,000,000 ARR'},
+                {value: 4, text: '< $100,000,000 ARR'},
+                {value: 5, text: '< $1,000,000,000 ARR'},
+                {value: 6, text: '> $1,000,000,000 ARR'}
+            ];
+            log(settings, this);
+        }
+    });
+
+
+    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *  ~~~~~~~~ VERTICAL ~~~~~~~~
+     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    $('#marketVertical').editable({
+        showbuttons: 'bottom',
+        source: [
+            {value: 1, text: 'Technology'},
+            {value: 2, text: 'Health Care'},
+            {value: 3, text: 'Banking & Finance'},
+            {value: 4, text: 'Education'},
+            {value: 5, text: 'Manufacturing'},
+            {value: 6, text: 'eCommerce'}
+        ]
+    });
 
 
 

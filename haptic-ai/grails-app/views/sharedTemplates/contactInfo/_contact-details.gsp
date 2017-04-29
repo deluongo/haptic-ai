@@ -1,1 +1,1 @@
-<contactInfo:allDetails parentTable="${contact}" ></contactInfo:allDetails>
+<contactInfo:allDetails source="${contact}" ></contactInfo:allDetails>

@@ -25,7 +25,13 @@ class Company {
 
 
     // Fixed Fields
+    String companyName
+    String companyRevenue
+    String marketVertical
+
     String emailFormula
+
+
 
 
     /*  -------------------             *** GORM Mapping ***            -------------------  */
