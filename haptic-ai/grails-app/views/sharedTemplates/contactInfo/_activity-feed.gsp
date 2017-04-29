@@ -4,7 +4,7 @@
         <span class="caption-subject font-dark bold uppercase">Activity Feed</span>
         <br/>
     </div>
-    <div class="scroller" style="height: 339px;" data-always-visible="1" data-rail-visible="0">
+    <div class="scroller" style="height: 225px;" data-always-visible="1" data-rail-visible="0">
         <ul class="feeds">
             <li>
                 <div class="col1">

@@ -422,12 +422,12 @@
 
             <!-- Standard Screens -->
             <div class="enable-page-title-scroll">
-                <div class="flex-row-between" id="large-screen-kpis">
+                <div class="flex-row-around" id="large-screen-kpis">
                     <!-- Pie Chart Container -->
                     <div class="kpi-panel-big panel panel-default">
                         <div class="kpi-heading panel-heading ">KPI Set #1</div>
                         <div class="panel-body padding-0-i">
-                            <div class="scroller" style="height: 500px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+
                             <div class="row-fluid">
                                 <div class="col-xs-3 padding-0">
                                     <div class="chart-sm">
@@ -462,7 +462,7 @@
                                     <h4 class="kpi-label">KPI #1d</h4>
                                 </div>
                             </div>
-                            </div>
+
                         </div>
                     </div>
 
@@ -525,7 +525,7 @@
 
             <!-- Row | CRM Panel -->
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="panel panel-white">
                         <div class="panel-body">
 
@@ -546,9 +546,9 @@
 
 
                             <!-- Row -->
-                            <div class="panel panel-white">
+                            <div class="panel panel-white padding-0-i">
 
-                                <div class="panel-heading contacts-panel-heading clearfix">
+                                <div class="panel-heading contacts-panel-heading clearfix padding-0-i">
                                     <div class="flex-row-between">
                                         <div class="">
                                             <!-- Display The Selected Contact's Name -->
@@ -580,14 +580,14 @@
                                 </div>
 
 
-                                <div class="panel-body">
+                                <div class="panel-body padding-0-i">
                                     <div class="tabs-left" role="tabpanel">
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-tabs" role="tablist">
-                                            <li role="presentation" class="active" disabled><a href="#tab9" role="tab" data-toggle="tab">Bill Gates, <small class="contact-panel-job-title">CEO</small></a></li>
-                                            <li role="presentation"><a href="#tab10" role="tab" data-toggle="tab">Bob Minor,<small class="contact-panel-job-title">CTO</small></a></li>
-                                            <li role="presentation"><a href="#tab11" role="tab" data-toggle="tab">Justin Cooperman, <small class="contact-panel-job-title">Head of Engineering</small></a></li>
-                                            <li role="presentation"><a href="#tab12" role="tab" data-toggle="tab">Devon Luongo, <small class="contact-panel-job-title">Product Manager</small></a></li>
+                                            <li role="presentation" class="active" disabled><a href="#tab9" role="tab" data-toggle="tab">Bill Gates<small class="contact-panel-job-title">, CEO</small></a></li>
+                                            <li role="presentation"><a href="#tab10" role="tab" data-toggle="tab">Bob Minor<small class="contact-panel-job-title">, CTO</small></a></li>
+                                            <li role="presentation"><a href="#tab11" role="tab" data-toggle="tab">Justin Cooperman<small class="contact-panel-job-title">, Head of Engineering</small></a></li>
+                                            <li role="presentation"><a href="#tab12" role="tab" data-toggle="tab">Devon Luongo<small class="contact-panel-job-title">, Product Manager</small></a></li>
                                             <li role="presentation" class="dropdown">
                                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
                                                     Dropdown <span class="caret"></span>
@@ -599,7 +599,7 @@
                                             </li>
                                         </ul>
                                         <!-- Tab panes -->
-                                        <div class="tab-content">
+                                        <div class="tab-content padding-0-i">
                                             <div role="tabpanel" class="tab-pane active fade in" id="tab9">
                                                 <!-- Render Activity Feed | Tab Panel -->
                                                 <g:render template="/sharedTemplates/contactInfo/activity-feed"/>
@@ -624,7 +624,7 @@
                                     </div>
                                 </div>
 
-                                <div class="panel panel-white">
+                                <div class="panel panel-white padding-0-i">
                                     <div class="panel-body contacts-body">
 
                                     <!-- Row | Contacts Panel -->
@@ -637,9 +637,8 @@
                     </div>
                 </div>
 
-                <div class="col-xs-4">
-
-                    <div class="col-md-12">
+                <div class="col-md-5 padding-0-i">
+                    <div class="col-md-12 contacts-timeline-padding">
                         <div class="portlet light portlet-fit ">
                             <div class="portlet-title">
                                 <div class="caption">
@@ -654,7 +653,7 @@
                                         <!-- TIMELINE ITEM -->
                                         <div class="timeline-item">
                                             <div class="timeline-badge">
-                                                <img class="timeline-badge-userpic" src="../assets/pages/media/users/avatar80_2.jpg"> </div>
+                                                <img class="timeline-badge-userpic" src="http://blog.addthiscdn.com/wp-content/uploads/2015/11/logo-facebook.png"> </div>
                                             <div class="timeline-body">
                                                 <div class="timeline-body-arrow"> </div>
                                                 <div class="timeline-body-head">
@@ -695,7 +694,8 @@
                                         <!-- TIMELINE ITEM WITH GOOGLE MAP -->
                                         <div class="timeline-item">
                                             <div class="timeline-badge">
-                                                <img class="timeline-badge-userpic" src="../assets/pages/media/users/avatar80_7.jpg"> </div>
+                                                <img class="timeline-badge-userpic" src="https://www.g2crowd.com/square-logo.png">
+                                            </div>
                                             <div class="timeline-body">
                                                 <div class="timeline-body-arrow"> </div>
                                                 <div class="timeline-body-head">
@@ -735,9 +735,7 @@
                                         <!-- TIMELINE ITEM -->
                                         <div class="timeline-item">
                                             <div class="timeline-badge">
-                                                <div class="timeline-icon">
-                                                    <i class="icon-user-following font-green-haze"></i>
-                                                </div>
+                                                <img class="timeline-badge-userpic" src="http://www.techlivewire.com/wp-content/uploads/2014/04/Twitter1.png">
                                             </div>
                                             <div class="timeline-body">
                                                 <div class="timeline-body-arrow"> </div>
@@ -782,9 +780,7 @@
                                         <!-- TIMELINE ITEM -->
                                         <div class="timeline-item">
                                             <div class="timeline-badge">
-                                                <div class="timeline-icon">
-                                                    <i class="icon-docs font-red-intense"></i>
-                                                </div>
+                                                <img class="timeline-badge-userpic" src="http://www.rpost.com/wp-content/uploads/2016/06/Linkedin_circle.svg_.png">
                                             </div>
                                             <div class="timeline-body">
                                                 <div class="timeline-body-arrow"> </div>

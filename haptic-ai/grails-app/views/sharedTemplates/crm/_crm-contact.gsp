@@ -1,7 +1,3 @@
-
-
-
-
 <div class = "row">
     <div class="col-xs-6">
         <h3 class="margin-0-t-i">Personal</h3>
