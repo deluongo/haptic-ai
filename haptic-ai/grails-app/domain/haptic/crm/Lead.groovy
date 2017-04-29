@@ -40,11 +40,11 @@ class Lead {
 
 
     // Possible Mapping, Pivot Table Candidates
-    Employee leadOwner
+//    Employee leadOwner
 
     // Possible transient or service
-    Action lastContact //Last Action
-    def lastResponse  // Reference to linked row in call, email, or post w/ most recent timestamp
+//    Action lastContact //Last Action
+//    def lastResponse  // Reference to linked row in call, email, or post w/ most recent timestamp
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */
     static hasMany = [contacts      : Contact, decisionMakers: Contact, internalChampions: Contact,
@@ -58,8 +58,15 @@ class Lead {
     //     - e.g. Contacts is broken into DecisionMakers, InternalChampions, Contacts, etc.
 
     static constraints = {
-        status blank: false
+        status blank: true
         leadStage blank: false
         leadStatus inList: ['Converted', 'Qualified', 'Dis-qualified']
+
+        decisionMakers nullable: true
+        internalChampions nullable: true
+        communications nullable: true
+        actions nullable: true
+        results nullable: true
+        notes nullable: true
     }
 }
