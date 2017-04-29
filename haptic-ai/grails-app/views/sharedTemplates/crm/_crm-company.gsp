@@ -25,7 +25,7 @@
 <contactInfo:allDetails source="${company ?: []}" ></contactInfo:allDetails>
 
 <!-- Modals -->
-<g:render template="/sharedTemplates/contactInfo/contact-info-modals"/>
+<g:render template="/sharedTemplates/modals/contact-info-modals"/>
 
 
 <div style="float: left; width: 50%">

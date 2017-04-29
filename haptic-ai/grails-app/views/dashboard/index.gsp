@@ -555,8 +555,8 @@
                                                     <!-- Display The Selected Contact's Name -->
                                                     <h2 class="no-m m-b-lg contact-name-header">Bill Gates</h2>
                                                 </div>
-                                                <div class=" contact-action-buttons">
-                                                    <a href="javascript:;" class="icon-btn">
+                                                <div class="contact-action-buttons">
+                                                    <a data-toggle="modal" data-target="#send-new-email-modal" class="icon-btn">
                                                         <i class="fa fa-envelope"></i>
                                                         <div> Inbox </div>
                                                         <span class="badge badge-info"> 12 </span>
@@ -669,12 +669,8 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
                     </div>
-
+                    <!-- END CONTACT BOXES -->
 
                     <div class="col-md-5 padding-0-i hidden-sm hidden-xs">
                         <div class="col-md-12 contacts-timeline-padding">
@@ -698,9 +694,13 @@
             </div>
             <!-- END CONTACTS PANEL -->
 
+            <!-- START CONTACT ACTIVITY MODALS -->
+            <g:render template="/sharedTemplates/modals/activity-modals"/>
+            <!-- END CONTACT ACTIVITY MODALS -->
+
 
             <!-- COMPANY PANEL -->
-            <div id=display-company-panel">
+            <div id=display-company-panel class="hidden">
                 <!-- Row | CRM Panel -->
                 <div class="row">
                     <div class="col-md-7">
@@ -957,6 +957,7 @@
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <asset:javascript src="plugins/metronic/scripts/profile.min.js"/>
 <asset:javascript src="plugins/metronic/scripts/timeline.min.js"/>
+<asset:javascript src="plugins/summernote-master/summernote.min.js"/>
 <!-- END PAGE LEVEL SCRIPTS -->
 
 
