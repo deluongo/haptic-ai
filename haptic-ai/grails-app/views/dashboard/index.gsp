@@ -293,11 +293,16 @@
                             <div class="prospect-list">
                                 <div class="col-xs-8 prospect-label-wrapper">
                                     <p class="secondary-label">Product Manager</p>
-                                    <p class="primary-label f-gray">Microsoft</p>
+                                    <p class="primary-label f-gray">Microsoft - ${leads[0]}</p>
                                 </div>
                                 <div class="col-xs-4 vertical-align padding-0-l-i">
                                     <p class="expected-value">$3,043</p>
                                 </div>
+                                <g:each status="i" in="${leads}" var="lead">
+                                    <div class="col-xs-4 vertical-align padding-0-l-i">
+                                        <p class="expected-value">${lead.name}</p>
+                                    </div>
+                                </g:each>
                             </div>
                         </a>
                     </li>

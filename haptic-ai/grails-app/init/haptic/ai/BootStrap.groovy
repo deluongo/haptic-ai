@@ -113,7 +113,7 @@ class BootStrap {
                 bio: 'Some Bio', birthDate: new Date(), birthPlace: "Home Town", height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg")
 
         saveObject(admin)
-        User user = new User(username: "deluongo", password:"Stephany",
+        User user = new User(username: "deluongo", password: "Stephany",
                 bio: 'Some Bio', birthDate: new Date(), birthPlace: "Home Town", height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg")
         saveObject(user)
 
