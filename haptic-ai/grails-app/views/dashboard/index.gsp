@@ -526,99 +526,101 @@
             <!-- Row | CRM Panel -->
             <div class="row">
                 <div class="col-md-7">
-                    <div class="panel panel-white">
-                        <div class="panel-body">
 
-                            <!-- Row -->
-                            <div class="page-breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="active" id="leads-tab"><span class="dashboard-breadcrumb-span">Lead</span></li>
-                                    <!-- Display The Selected Company Name -->
-                                    <li id="company-tab"><span class="dashboard-breadcrumb-span">Microsoft</span></li>
-                                    <li id="contacts-tab"><span class="dashboard-breadcrumb-span">Contacts</span></li>
-                                </ol>
-                            </div>
-
-
-                            <hr class="contact-page-hr">
-
-
-
-
-                            <!-- Row -->
-                            <div class="panel panel-white padding-0-i">
-
-                                <div class="panel-heading contacts-panel-heading clearfix padding-0-i">
-                                    <div class="flex-row-between">
-                                        <div class="">
-                                            <!-- Display The Selected Contact's Name -->
-                                            <h2 class="no-m m-b-lg contact-name-header">Bill Gates</h2>
-                                        </div>
-                                        <div class=" contact-action-buttons">
-                                            <a href="javascript:;" class="icon-btn">
-                                                <i class="fa fa-envelope"></i>
-                                                <div> Inbox </div>
-                                                <span class="badge badge-info"> 12 </span>
-                                            </a>
-                                            <a href="javascript:;" class="icon-btn">
-                                                <i class="fa fa-thumbs-up"></i>
-                                                <div> Feedback </div>
-                                                <span class="badge badge-info"> 2 </span>
-                                            </a>
-                                            <a href="javascript:;" class="icon-btn">
-                                                <i class="fa fa-group"></i>
-                                                <div> Users </div>
-                                                <span class="badge badge-danger"> 2 </span>
-                                            </a>
-                                            <a href="javascript:;" class="icon-btn">
-                                                <i class="fa fa-phone"></i>
-                                                <div> Notification </div>
-                                                <span class="badge badge-danger"> 3 </span>
-                                            </a>
-                                        </div>
-                                    </div>
+                    <div class="row padding-10-w">
+                        <div class="panel panel-white margin-10-b">
+                            <div class="panel-body">
+                                <!-- Row -->
+                                <div class="page-breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="active" id="leads-tab"><span class="dashboard-breadcrumb-span">Lead</span></li>
+                                        <!-- Display The Selected Company Name -->
+                                        <li id="company-tab"><span class="dashboard-breadcrumb-span">Microsoft</span></li>
+                                        <li id="contacts-tab"><span class="dashboard-breadcrumb-span">Contacts</span></li>
+                                    </ol>
                                 </div>
 
 
-                                <div class="panel-body padding-0-i">
-                                    <div class="tabs-left" role="tabpanel">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs" role="tablist">
-                                            <li role="presentation" class="active" disabled><a href="#tab9" role="tab" data-toggle="tab">Bill Gates<small class="contact-panel-job-title">, CEO</small></a></li>
-                                            <li role="presentation"><a href="#tab10" role="tab" data-toggle="tab">Bob Minor<small class="contact-panel-job-title">, CTO</small></a></li>
-                                            <li role="presentation"><a href="#tab11" role="tab" data-toggle="tab">Justin Cooperman<small class="contact-panel-job-title">, Head of Engineering</small></a></li>
-                                            <li role="presentation"><a href="#tab12" role="tab" data-toggle="tab">Devon Luongo<small class="contact-panel-job-title">, Product Manager</small></a></li>
-                                            <li role="presentation" class="dropdown">
-                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                                                    Dropdown <span class="caret"></span>
+                                <hr class="contact-page-hr">
+
+
+
+
+                                <!-- Row -->
+                                <div class="panel panel-white padding-0-i">
+
+                                    <div class="panel-heading contacts-panel-heading clearfix padding-0-i">
+                                        <div class="flex-row-between">
+                                            <div class="">
+                                                <!-- Display The Selected Contact's Name -->
+                                                <h2 class="no-m m-b-lg contact-name-header">Bill Gates</h2>
+                                            </div>
+                                            <div class=" contact-action-buttons">
+                                                <a href="javascript:;" class="icon-btn">
+                                                    <i class="fa fa-envelope"></i>
+                                                    <div> Inbox </div>
+                                                    <span class="badge badge-info"> 12 </span>
                                                 </a>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li class=""><a href="#tab32" role="tab" data-toggle="tab" aria-expanded="false">Steph Curry, <small>Brand Icon</small></a></li>
-                                                    <li class=""><a href="#tab33" role="tab" data-toggle="tab" aria-expanded="false">Jim Beam, <small>SDR</small></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <!-- Tab panes -->
-                                        <div class="tab-content padding-0-i">
-                                            <div role="tabpanel" class="tab-pane active fade in" id="tab9">
-                                                <!-- Render Activity Feed | Tab Panel -->
-                                                <g:render template="/sharedTemplates/contactInfo/activity-feed"/>
+                                                <a href="javascript:;" class="icon-btn">
+                                                    <i class="fa fa-thumbs-up"></i>
+                                                    <div> Feedback </div>
+                                                    <span class="badge badge-info"> 2 </span>
+                                                </a>
+                                                <a href="javascript:;" class="icon-btn">
+                                                    <i class="fa fa-group"></i>
+                                                    <div> Users </div>
+                                                    <span class="badge badge-danger"> 2 </span>
+                                                </a>
+                                                <a href="javascript:;" class="icon-btn">
+                                                    <i class="fa fa-phone"></i>
+                                                    <div> Notification </div>
+                                                    <span class="badge badge-danger"> 3 </span>
+                                                </a>
                                             </div>
-                                            <div role="tabpanel" class="tab-pane fade" id="tab10">
-                                                <!-- Render Activity Feed | Tab Panel -->
-                                                <g:render template="/sharedTemplates/contactInfo/activity-feed"/>
-                                            </div>
-                                            <div role="tabpanel" class="tab-pane fade" id="tab11">
-                                                <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
-                                            </div>
-                                            <div role="tabpanel" class="tab-pane fade" id="tab12">
-                                                <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.</p>
-                                            </div>
-                                            <div role="tabpanel" class="tab-pane fade" id="tab32">
-                                                <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.</p>
-                                            </div>
-                                            <div role="tabpanel" class="tab-pane fade" id="tab33">
-                                                <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="panel-body padding-0-i">
+                                        <div class="tabs-left" role="tabpanel">
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li role="presentation" class="active" disabled><a href="#tab9" role="tab" data-toggle="tab">Bill Gates<small class="contact-panel-job-title">, CEO</small></a></li>
+                                                <li role="presentation"><a href="#tab10" role="tab" data-toggle="tab">Bob Minor<small class="contact-panel-job-title">, CTO</small></a></li>
+                                                <li role="presentation"><a href="#tab11" role="tab" data-toggle="tab">Justin Cooperman<small class="contact-panel-job-title">, Head of Engineering</small></a></li>
+                                                <li role="presentation"><a href="#tab12" role="tab" data-toggle="tab">Devon Luongo<small class="contact-panel-job-title">, Product Manager</small></a></li>
+                                                <li role="presentation" class="dropdown">
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                                                        Dropdown <span class="caret"></span>
+                                                    </a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li class=""><a href="#tab32" role="tab" data-toggle="tab" aria-expanded="false">Steph Curry, <small>Brand Icon</small></a></li>
+                                                        <li class=""><a href="#tab33" role="tab" data-toggle="tab" aria-expanded="false">Jim Beam, <small>SDR</small></a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <!-- Tab panes -->
+                                            <div class="tab-content padding-0-i">
+                                                <div role="tabpanel" class="tab-pane active fade in" id="tab9">
+                                                    <!-- Render Activity Feed | Tab Panel -->
+                                                    <g:render template="/sharedTemplates/contactInfo/activity-feed"/>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="tab10">
+                                                    <!-- Render Activity Feed | Tab Panel -->
+                                                    <g:render template="/sharedTemplates/contactInfo/activity-feed"/>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="tab11">
+                                                    <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="tab12">
+                                                    <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.</p>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="tab32">
+                                                    <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.</p>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="tab33">
+                                                    <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -626,33 +628,73 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row  hidden-md hidden-lg padding-10-w">
+                        <div class="col-sm-12 padding-0-i">
+                            <div class="col-sm-12 contacts-timeline-padding padding-0-i">
+                                <div class="portlet light portlet-fit ">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="icon-microphone font-green"></i>
+                                            <span class="caption-subject bold font-green uppercase"> Timeline</span>
+                                            <span class="caption-helper">contact timeline</span>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="scroller" style="height: 344px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                            <g:render template="/sharedTemplates/contactInfo/timeline"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Row | CRM Panel -->
+                    <div class="row padding-10-w">
+                        <div class="panel panel-white">
+                            <div class="panel-body">
+                                <div class="panel panel-white">
+                                    <div class="panel-body contacts-body">
+                                        <!-- Row | Contacts Panel -->
+                                        <g:render template="/sharedTemplates/crm/crm-contact"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                 </div>
-                <div class="col-md-5 padding-0-i">
+
+
+                <div class="col-md-5 padding-0-i hidden-sm hidden-xs">
                     <div class="col-md-12 contacts-timeline-padding">
-                        <g:render template="/sharedTemplates/contactInfo/timeline"/>
+                        <div class="portlet light portlet-fit ">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-microphone font-green"></i>
+                                    <span class="caption-subject bold font-green uppercase"> Timeline</span>
+                                    <span class="caption-helper">contact timeline</span>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="scroller" style="height: 100%;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                    <g:render template="/sharedTemplates/contactInfo/timeline"/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
             </div><!-- Row -->
 
 
-            <!-- Row | CRM Panel -->
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="panel panel-white">
-                        <div class="panel-body">
-                            <div class="panel panel-white padding-0-i">
-                                <div class="panel-body contacts-body">
 
-                                    <!-- Row | Contacts Panel -->
-                                    <g:render template="/sharedTemplates/crm/crm-contact"/>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
         

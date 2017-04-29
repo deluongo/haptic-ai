@@ -1,13 +1,4 @@
-<div class="portlet light portlet-fit ">
-    <div class="portlet-title">
-        <div class="caption">
-            <i class="icon-microphone font-green"></i>
-            <span class="caption-subject bold font-green uppercase"> Timeline</span>
-            <span class="caption-helper">contact timeline</span>
-        </div>
-    </div>
-    <div class="portlet-body">
-        <div class="scroller" style="height: 344px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+
             <div class="timeline">
                 <!-- TIMELINE ITEM -->
                 <div class="timeline-item">
@@ -180,6 +171,3 @@
                 </div>
                 <!-- END TIMELINE ITEM -->
             </div>
-        </div>
-    </div>
-</div>
