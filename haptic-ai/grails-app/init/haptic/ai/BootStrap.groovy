@@ -32,7 +32,7 @@ class BootStrap {
 
         HashSet<EmailAddress> steveEmail = new HashSet<EmailAddress>()
         EmailAddress email2 = new EmailAddress(emailType: 'Primary', emailAddress: 'steve@apple.com', emailExtension: '@apple.com',
-                emailStatus: 'Active', dateCreated: new Date())
+                                                emailStatus: 'Active', dateCreated: new Date())
         email2.save(flush: true)
         steveEmail.add(email2)
 
@@ -44,7 +44,7 @@ class BootStrap {
 
         HashSet<EmailAddress> steve2Email = new HashSet<EmailAddress>()
         EmailAddress email4 = new EmailAddress(emailType: 'Primary', emailAddress: 'steve2@apple.com', emailExtension: '@apple.com',
-                emailStatus: 'Active', dateCreated: new Date())
+                                                emailStatus: 'Active', dateCreated: new Date())
         email4.save(flush: true)
         steve2Email.add(email4)
 
