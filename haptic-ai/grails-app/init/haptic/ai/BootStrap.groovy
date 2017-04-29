@@ -39,13 +39,13 @@ class BootStrap {
         HashSet<EmailAddress> bill2Email = new HashSet<EmailAddress>()
         EmailAddress email3 = new EmailAddress(emailType: 'Primary', emailAddress: 'bill2@microsoft.com', emailExtension: '@microsoft.com',
                                                 emailStatus: 'Active', dateCreated: new Date())
-        email1.save(flush: true)
+        email3.save(flush: true)
         bill2Email.add(email3)
 
         HashSet<EmailAddress> steve2Email = new HashSet<EmailAddress>()
         EmailAddress email4 = new EmailAddress(emailType: 'Primary', emailAddress: 'steve2@apple.com', emailExtension: '@apple.com',
                 emailStatus: 'Active', dateCreated: new Date())
-        email2.save(flush: true)
+        email4.save(flush: true)
         steve2Email.add(email4)
 
 
@@ -95,6 +95,9 @@ class BootStrap {
                                 authorityDetails: 'authDetails2', needDetails: 'needDetails2', timingDetails: new Date(),
                                 estimatedDealSize: 5867.35, dateOpened: new Date(), dateClosed: new Date(), contacts: lead2HashSet)
 
+
+        lead1.save(flush: true)
+        lead2.save(flush: true)
 
 
     }
