@@ -44,6 +44,15 @@
     padding: 0px;
 }
 
+.padding-0-t-i {
+    padding-top: 0px !important;
+}
+
+.margin-0-t-i {
+    margin-top: 0px !important;
+}
+
+
 .padding-0-i {
     padding: 0px !important;
 }
@@ -81,6 +90,11 @@
 
 .padding-10 {
     padding: 10px;
+}
+
+padding-10-w {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .padding-5-v {
@@ -309,3 +323,109 @@ sup {
     margin-top: 5px !important;
     margin-bottom: 19px !important;
 }
+
+.dashboard-breadcrumb-span {
+    font-size: 18px;
+}
+
+.dashboard-breadcrumb-span:hover {
+    color: #00aba9;
+}
+
+
+
+.breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #ccc;
+    font-family: FontAwesome;
+    content: "\f054";
+
+    /*content: "->\00a0"; */
+}
+
+
+.contacts-panel-heading {
+    padding-top: 5px !important;
+}
+
+.contacts-body {
+    padding-top: 5px !important;
+    padding-left: 35px !important;
+    padding-right: 35px !important;
+}
+
+
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.kpi-btn {
+    font-size: 13px;
+    border: 1px solid transparent;
+    border-radius: 0;
+    outline: none!important;
+}
+
+.kpi-btn:focus,
+.kpi-btn:active:focus,
+.kpi-btn.active:focus,
+.kpi-btn.focus,
+.kpi-btn:active.focus,
+.btn.active.focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+.kpi-btn:hover,
+.kpi-btn:focus,
+.kpi-btn.focus {
+    color: #333;
+    text-decoration: none;
+}
+.kpi-btn:active,
+.btn.active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+.kpi-btn.disabled,
+.kpi-btn[disabled],
+fieldset[disabled] .btn {
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+}
+a.kpi-btn.disabled,
+fieldset[disabled] a.btn {
+    pointer-events: none;
+}
+
+
+
+
+.contacts-tabs-contained {
+    width: 100%;
+    height: 100px;
+}
+

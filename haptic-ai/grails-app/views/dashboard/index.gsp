@@ -11,7 +11,21 @@
     <meta name="keywords" content="admin,dashboard" />
     <meta name="author" content="Steelcoders" />
 
-    <!-- Styles -->
+    <!-- Metronic Styles - Timeline + Portlets -->
+    <asset:stylesheet src="metronic/bootstrap-fileinput/bootstrap-fileinput.css"/>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <!-- <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />-->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <asset:stylesheet src="metronic/components-md.css" />
+    <asset:stylesheet src="metronic/plugins.min.css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <asset:stylesheet src="metronic/profile.min.css"/>
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <asset:stylesheet src="metronic/themes/darkblue.min.css" />
+
+
 
     <!-- Menu & Frame Styles -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
@@ -363,7 +377,7 @@
                                             <span class="kpi-2-value">%</span>
                                         </span>
                                     </div>
-                                    <span class="btn js_update_2 kpi-label"><h4 class="padding-0 margin-0">KPI #2</h4></span>
+                                <h4 class="kpi-label js_update_2">KPI #2</h4>
                                 </div>
                             </div>
                             <div class="col-xs-4">
@@ -385,7 +399,7 @@
                                             <span class="kpi-4-value">%</span>
                                         </span>
                                     </div>
-                                    <span class="btn js_update_4 kpi-label"><h4 class="padding-0 margin-0">KPI #4</h4></span>
+                                    <h4 class="kpi-label js_update_4">KPI #4</h4>
                                 </div>
                             </div>
                         </div>
@@ -403,7 +417,7 @@
                                             <span class="percent">%</span>
                                         </span>
                                     </div>
-                                    <span class="btn js_update_4 kpi-label"><h4 class="padding-0 margin-0">KPI #4</h4></span>
+                                <h4 class="kpi-label js_update_4">KPI #4</h4>
                                 </div>
                             </div>
                             <div class="col-xs-6">
@@ -428,11 +442,298 @@
 
         <!-- CRM, Action, & Review Main Blocks -->
         <div id="main-wrapper">
-        <!-- Row -->
-        <g:render template="/sharedTemplates/crm/crm-contact"/>
-        <!-- Row -->
 
-        <!-- Row -->
+
+
+            <!-- Row | CRM Panel -->
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-white">
+                        <div class="panel-body">
+
+                            <!-- Row -->
+                            <div class="page-breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="active" id="leads-tab"><span class="dashboard-breadcrumb-span">Lead</span></li>
+                                    <!-- Display The Selected Company Name -->
+                                    <li id="company-tab"><span class="dashboard-breadcrumb-span">Microsoft</span></li>
+                                    <li id="contacts-tab"><span class="dashboard-breadcrumb-span">Contacts</span></li>
+                                </ol>
+                            </div>
+
+
+                            <hr>
+
+
+
+
+                            <!-- Row -->
+                            <div class="panel panel-white">
+                                <div class="panel-heading contacts-panel-heading clearfix">
+                                    <!-- Display The Selected Contact's Name -->
+                                    <h2 class="no-m m-b-lg">Bill Gates</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="tabs-left" role="tabpanel">
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li role="presentation" class="active" disabled><a href="#tab9" role="tab" data-toggle="tab">Bill Gates, <small>CEO</small></a></li>
+                                            <li role="presentation"><a href="#tab10" role="tab" data-toggle="tab">Bob Minor, <small>CTO</small></a></li>
+                                            <li role="presentation"><a href="#tab11" role="tab" data-toggle="tab">Justin Cooperman, <small>Head of Engineering</small></a></li>
+                                            <li role="presentation"><a href="#tab12" role="tab" data-toggle="tab">Devon Luongo, <small>Product Manager</small></a></li>
+                                            <li role="presentation" class="dropdown">
+                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                                                    Dropdown <span class="caret"></span>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li class=""><a href="#tab32" role="tab" data-toggle="tab" aria-expanded="false">Steph Curry, <small>Brand Icon</small></a></li>
+                                                    <li class=""><a href="#tab33" role="tab" data-toggle="tab" aria-expanded="false">Jim Beam, <small>SDR</small></a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active fade in" id="tab9">
+
+
+
+
+
+
+
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab10">
+                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab11">
+                                                <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab12">
+                                                <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.</p>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab32">
+                                                <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.</p>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab33">
+                                                <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-white">
+                                    <div class="panel-body contacts-body">
+
+                                    <!-- Row | Contacts Panel -->
+                                    <g:render template="/sharedTemplates/crm/crm-contact"/>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+
+                    <div class="col-md-12">
+                        <div class="portlet light portlet-fit ">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-microphone font-green"></i>
+                                    <span class="caption-subject bold font-green uppercase"> Timeline</span>
+                                    <span class="caption-helper">contact timeline</span>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="scroller" style="height: 500px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                    <div class="timeline">
+                                        <!-- TIMELINE ITEM -->
+                                        <div class="timeline-item">
+                                            <div class="timeline-badge">
+                                                <img class="timeline-badge-userpic" src="../assets/pages/media/users/avatar80_2.jpg"> </div>
+                                            <div class="timeline-body">
+                                                <div class="timeline-body-arrow"> </div>
+                                                <div class="timeline-body-head">
+                                                    <div class="timeline-body-head-caption">
+                                                        <a href="javascript:;" class="timeline-body-title font-blue-madison">Lisa Strong</a>
+                                                        <span class="timeline-body-time font-grey-cascade">Replied at 17:45 PM</span>
+                                                    </div>
+                                                    <div class="timeline-body-head-actions">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-circle green btn-outline btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
+                                                                <i class="fa fa-angle-down"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                                <li>
+                                                                    <a href="javascript:;">Action </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;">Another action </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;">Something else here </a>
+                                                                </li>
+                                                                <li class="divider"> </li>
+                                                                <li>
+                                                                    <a href="javascript:;">Separated link </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-body-content">
+                                                    <span class="font-grey-cascade"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut consectetuer adipiscing elit laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                                    ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END TIMELINE ITEM -->
+                                        <!-- TIMELINE ITEM WITH GOOGLE MAP -->
+                                        <div class="timeline-item">
+                                            <div class="timeline-badge">
+                                                <img class="timeline-badge-userpic" src="../assets/pages/media/users/avatar80_7.jpg"> </div>
+                                            <div class="timeline-body">
+                                                <div class="timeline-body-arrow"> </div>
+                                                <div class="timeline-body-head">
+                                                    <div class="timeline-body-head-caption">
+                                                        <a href="javascript:;" class="timeline-body-title font-blue-madison">Paul Kiton</a>
+                                                        <span class="timeline-body-time font-grey-cascade">Added office location at 2:50 PM</span>
+                                                    </div>
+                                                    <div class="timeline-body-head-actions">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-circle red btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
+                                                                <i class="fa fa-angle-down"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                                <li>
+                                                                    <a href="javascript:;">Action </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;">Another action </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;">Something else here </a>
+                                                                </li>
+                                                                <li class="divider"> </li>
+                                                                <li>
+                                                                    <a href="javascript:;">Separated link </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-body-content">
+                                                    <div id="gmap_polygons" class="gmaps"> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END TIMELINE ITEM WITH GOOGLE MAP -->
+                                        <!-- TIMELINE ITEM -->
+                                        <div class="timeline-item">
+                                            <div class="timeline-badge">
+                                                <div class="timeline-icon">
+                                                    <i class="icon-user-following font-green-haze"></i>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <div class="timeline-body-arrow"> </div>
+                                                <div class="timeline-body-head">
+                                                    <div class="timeline-body-head-caption">
+                                                        <span class="timeline-body-alerttitle font-red-intense">You have new follower</span>
+                                                        <span class="timeline-body-time font-grey-cascade">at 11:00 PM</span>
+                                                    </div>
+                                                    <div class="timeline-body-head-actions">
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-circle green btn-outline
+
+                                            btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
+                                                                <i class="fa fa-angle-down"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                                <li>
+                                                                    <a href="javascript:;">Action </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;">Another action </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;">Something else here </a>
+                                                                </li>
+                                                                <li class="divider"> </li>
+                                                                <li>
+                                                                    <a href="javascript:;">Separated link </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-body-content">
+                                                    <span class="font-grey-cascade"> You have new follower
+                                                        <a href="javascript:;">Ivan Rakitic</a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END TIMELINE ITEM -->
+                                        <!-- TIMELINE ITEM -->
+                                        <div class="timeline-item">
+                                            <div class="timeline-badge">
+                                                <div class="timeline-icon">
+                                                    <i class="icon-docs font-red-intense"></i>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <div class="timeline-body-arrow"> </div>
+                                                <div class="timeline-body-head">
+                                                    <div class="timeline-body-head-caption">
+                                                        <span class="timeline-body-alerttitle font-green-haze">Server Report</span>
+                                                        <span class="timeline-body-time font-grey-cascade">Yesterday at 11:00 PM</span>
+                                                    </div>
+                                                    <div class="timeline-body-head-actions">
+                                                        <div class="btn-group dropup">
+                                                            <button class="btn btn-circle red btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
+                                                                <i class="fa fa-angle-down"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                                <li>
+                                                                    <a href="javascript:;">Action </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;">Another action </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;">Something else here </a>
+                                                                </li>
+                                                                <li class="divider"> </li>
+                                                                <li>
+                                                                    <a href="javascript:;">Separated link </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-body-content">
+                                                    <span class="font-grey-cascade"> Lorem ipsum dolore sit amet
+                                                        <a href="javascript:;">Ispect</a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END TIMELINE ITEM -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div><!-- Row -->
+
+
+
         
         
         </div><!-- Main Wrapper -->
@@ -526,6 +827,14 @@
 <asset:javascript src="plugins/waves/waves.min.js" />
 <asset:javascript src="plugins/3d-bold-navigation/js/main.js" />
 
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<asset:javascript src="plugins/metronic/plugins/bootstrap-fileinput/bootstrap-fileinput.js"/>
+<asset:javascript src="plugins/metronic/plugins/jquery.sparkline.min.js"/>
+<asset:javascript src="plugins/metronic/plugins/bootstrap-switch/js/bootstrap-switch.min.js"/>
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<asset:javascript src="plugins/metronic/plugins/gmaps/gmaps.min.js" />
+<!-- END PAGE LEVEL PLUGINS -->
+
 <!-- Javascripts - KPI Charts-->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <asset:javascript src="plugins/easy-pie-chart/jquery.easypiechart.min.js" />
@@ -541,6 +850,13 @@
 <asset:javascript src="plugins/x-editable/inputs-ext/address/address.js" />
 <asset:javascript src="plugins/select2-3.4.8/select2.min.js" />
 <asset:javascript src="plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" />
+<asset:javascript src="plugins/masked-input/jquery-input-masking.js.js" />
+
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<asset:javascript src="plugins/metronic/scripts/profile.min.js"/>
+<asset:javascript src="plugins/metronic/scripts/timeline.min.js"/>
+<!-- END PAGE LEVEL SCRIPTS -->
 
 
 <!-- Javascripts - Init-->
