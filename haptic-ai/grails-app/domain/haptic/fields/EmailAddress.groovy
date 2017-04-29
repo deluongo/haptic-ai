@@ -26,17 +26,23 @@ class EmailAddress {
 
     Date dateCreated
 
-    // Possible transient or service
-    Communication lastEmailAnswered //Last Action
-    Communication lastEmailSent  // Reference to linked row in call, email, or post w/ most recent timestamp
-    Integer emailsSinceLastAnswer
-    Integer emailsSinceLastResponse
-    Float answerRate
+    /*** UNCOMMENT BELOW ***/
+//    // Possible transient or service
+//    Communication lastEmailAnswered //Last Action
+//    Communication lastEmailSent  // Reference to linked row in call, email, or post w/ most recent timestamp
+//    Integer emailsSinceLastAnswer
+//    Integer emailsSinceLastResponse
+//    Float answerRate
 
     static constraints = {
         emailAddress matches: /^[a-zA-Z0-9_.+-]+@([\w-]+\.)+[\w-]{2,4}$/, blank: false
         emailExtension blank: false
         emailStatus inList: ['Active', 'Inactive', 'Unsubscribed', 'Unverified', 'Verified']
+
+        notes nullable: true
+        lastEmailAnswered nullable: true
+        lastEmailSent nullable: true
+
 
     }
 
