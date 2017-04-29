@@ -41,5 +41,13 @@ class Company {
 
     static constraints = {
         emailFormula blank: false
+
+        emailAddresses nullable: true
+        phoneNumbers nullable: true
+        socialNetworks nullable: true
+        reviewSites nullable: true
+        webSites nullable: true
+        addresses nullable: true
+        notes nullable: true
     }
 }
