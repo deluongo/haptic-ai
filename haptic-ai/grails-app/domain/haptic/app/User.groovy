@@ -62,6 +62,7 @@ class User implements Serializable {
 	static constraints = {
 		password blank: false, password: true
 		username blank: false, unique: true
+		employee nullable: true
 	}
 
 /*  -------------------          *** Database Designations ***      -------------------  */

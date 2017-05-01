@@ -109,6 +109,7 @@ class BootStrap {
     }
 
     def setupUsersAndRoles() {
+
         User admin = new User(username: "admin", password: "supersecret",
                 bio: 'Some Bio', birthDate: new Date(), birthPlace: "Home Town", height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg")
 
