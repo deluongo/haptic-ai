@@ -7,6 +7,7 @@ import haptic.crm.Company
 import haptic.crm.Contact
 import haptic.crm.Lead
 import haptic.fields.EmailAddress
+import haptic.org.Employee
 
 class BootStrap {
 
@@ -55,29 +56,64 @@ class BootStrap {
         steve2Email.add(email4)
 
 
-        // People, Companies
-        Company microsoft = new Company()
-        microsoft.save(flush: true)
-        Contact billGates = new Contact(salutation: 'Mr.', firstName: 'Bill', lastName: 'Gates', gender: 'M',
-                jobRole: 'Management', jobTitle: 'CEO', roleDescription: 'Description', department: 'Dept.',
-                company: microsoft, emailAddresses: billEmail)
-        Contact billGates2 = new Contact(salutation: 'Mr.', firstName: 'Bill2', lastName: 'Gates', gender: 'M',
-                jobRole: 'Management', jobTitle: 'CTO', roleDescription: 'Description', department: 'Dept.',
-                company: microsoft, emailAddresses: bill2Email)
-        billGates.save(flush: true)
-        billGates2.save(flush: true)
+        //lead2.save(flush: true)
+
+        //print(Lead.getAll())
+
+        //contacts: lead1HashSet, company: microsoft
+        //contacts: lead2HashSet, company: apple
 
 
-        Company apple = new Company()
-        apple.save(flush: true)
-        Contact steveJobs = new Contact(salutation: 'Mr.', firstName: 'Steve', lastName: 'Jobs', gender: 'M',
+
+
+        //Contacts
+        def billGates = new Contact(salutation: 'Mr.', firstName: 'Bill', lastName: 'Gates', gender: 'M',
                 jobRole: 'Management', jobTitle: 'CEO', roleDescription: 'Description', department: 'Dept.',
-                company: apple, emailAddresses: steveEmail)
-        Contact steveJobs2 = new Contact(salutation: 'Mr.', firstName: 'Steve2', lastName: 'Jobs', gender: 'M',
+                emailAddresses: billEmail)
+        def billGates2 = new Contact(salutation: 'Mr.', firstName: 'Bill2', lastName: 'Gates', gender: 'M',
                 jobRole: 'Management', jobTitle: 'CTO', roleDescription: 'Description', department: 'Dept.',
-                company: apple, emailAddresses: steve2Email)
-        steveJobs.save(flush: true)
-        steveJobs2.save(flush: true)
+                emailAddresses: bill2Email)
+        //billGates.save(flush: true)
+        //billGates2.save(flush: true)
+
+
+
+        def steveJobs = new Contact(salutation: 'Mr.', firstName: 'Steve', lastName: 'Jobs', gender: 'M',
+                jobRole: 'Management', jobTitle: 'CEO', roleDescription: 'Description', department: 'Dept.',
+                emailAddresses: steveEmail)
+        def steveJobs2 = new Contact(salutation: 'Mr.', firstName: 'Steve2', lastName: 'Jobs', gender: 'M',
+                jobRole: 'Management', jobTitle: 'CTO', roleDescription: 'Description', department: 'Dept.',
+                emailAddresses: steve2Email)
+        //steveJobs.save(flush: true)
+        //steveJobs2.save(flush: true)
+
+        // Companies
+        Company microsoft = new Company(companyName: 'Microsoft', companyRevenue: "6 bil", marketVertical: "Tech").addToContacts(billGates).addToContacts(billGates2)
+        //microsoft.save(flush: true)
+
+        Company apple = new Company(companyName: 'Apple', companyRevenue: "10 bil", marketVertical: "Tech").addToContacts(steveJobs).addToContacts(steveJobs2)
+        //apple.save(flush: true)
+
+
+        // Leads
+        Employee devon = Employee.findAllByFirstName("Devon")[0]
+
+        Lead lead1 = new Lead(status: 'Status 1', leadStatus: 'Qualified', leadStage: 'MQL', budget: 'Yes', leadOwner: devon,
+                auth: 'Yes', need: 'Yes', timing: 'Yes', budgetDetails: 'budgetDetails1',
+                authorityDetails: 'authDetails1', needDetails: 'needDetails1', timingDetails: new Date(),
+                estimatedDealSize: 3450, dateOpened: new Date(), dateClosed: new Date(), company: microsoft).save(flush:true)
+
+
+        //lead1.save(flush: true)
+
+        Lead lead2 = new Lead(status: 'Status 2', leadStatus: 'Qualified', leadStage: 'MQL', budget: 'Yes', leadOwner: devon,
+                auth: 'Yes', need: 'Yes', timing: 'Yes', budgetDetails: 'budgetDetails2',
+                authorityDetails: 'authDetails2', needDetails: 'needDetails2', timingDetails: new Date(),
+                estimatedDealSize: 5867, dateOpened: new Date(), dateClosed: new Date(), company: apple).save(flush:true)
+
+
+        print(lead1.company.contacts)
+
 
 
         // Contacts
@@ -90,25 +126,20 @@ class BootStrap {
         lead2HashSet.add(steveJobs2)
 
 
-        // Leads
-        Lead lead1 = new Lead(status: '', leadStatus: 'Qualified', leadStage: 'MQL', budget: 'Yes',
-                auth: 'Yes', need: 'Yes', timing: 'Yes', budgetDetails: 'budgetDetails1',
-                authorityDetails: 'authDetails1', needDetails: 'needDetails1', timingDetails: new Date(),
-                estimatedDealSize: 3450.15, dateOpened: new Date(), dateClosed: new Date(), contacts: lead1HashSet)
+        //microsoft = Company.findAllByCompanyName('Microsoft')
+        print(devon.firstName)
+        print(microsoft)
+        print("/n")
+        print("/n")
+        print(microsoft.companyName)
 
-        Lead lead2 = new Lead(status: '', leadStatus: 'Qualified', leadStage: 'MQL', budget: 'Yes',
-                auth: 'Yes', need: 'Yes', timing: 'Yes', budgetDetails: 'budgetDetails2',
-                authorityDetails: 'authDetails2', needDetails: 'needDetails2', timingDetails: new Date(),
-                estimatedDealSize: 5867.35, dateOpened: new Date(), dateClosed: new Date(), contacts: lead2HashSet)
-
-
-        lead1.save(flush: true)
-        lead2.save(flush: true)
 
 
     }
 
     def setupUsersAndRoles() {
+
+
 
         User admin = new User(username: "admin", password: "supersecret",
                 bio: 'Some Bio', birthDate: new Date(), birthPlace: "Home Town", height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg")
@@ -117,6 +148,9 @@ class BootStrap {
         User user = new User(username: "deluongo", password: "Stephany",
                 bio: 'Some Bio', birthDate: new Date(), birthPlace: "Home Town", height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg")
         saveObject(user)
+
+        Employee devon = new Employee(salutation: "Mr.", firstName: "Devon", lastName: "Luongo", gender: "male", jobTitle: "Founder & CEO", user: user)
+        saveObject(devon)
 
         Role adminRole = new Role(authority: Role.ROLE_ADMIN)
         saveObject(adminRole)

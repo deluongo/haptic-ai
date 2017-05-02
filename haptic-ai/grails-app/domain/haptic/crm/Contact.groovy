@@ -35,7 +35,7 @@ class Contact {
     String department //For Enterprise companies, which department/group/etc.
 
     // Possible Mapping, Pivot Table Candidates
-    Company company
+    static belongsTo = [company: Company]
 
     /*  -------------------             *** GORM Mapping ***            -------------------  */
     static hasMany = [emailAddresses: EmailAddress, phoneNumbers: PhoneNumber,

@@ -65,6 +65,7 @@
 
 </head>
 <body class="page-header-fixed page-sidebar-fixed">
+
 <div class="overlay"></div>
 <div class="menu-wrap">
     <nav class="profile-menu">
@@ -293,14 +294,15 @@
                             <div class="prospect-list">
                                 <div class="col-xs-8 prospect-label-wrapper">
                                     <p class="secondary-label">Product Manager</p>
-                                    <p class="primary-label f-gray">Microsoft - ${leads[0]}</p>
+
                                 </div>
                                 <div class="col-xs-4 vertical-align padding-0-l-i">
                                     <p class="expected-value">$3,043</p>
                                 </div>
-                                <g:each status="i" in="${leads}" var="lead">
+                                <g:each in="${leads}" var="lead">
                                     <div class="col-xs-4 vertical-align padding-0-l-i">
-                                        <p class="expected-value">${lead.name}</p>
+                                        <p class="primary-label f-gray">Microsoft - ${lead.company.companyName} </p>
+                                        <p class="expected-value">${lead.company.contacts[0].firstName} ${lead.company.contacts[0].lastName}</p>
                                     </div>
                                 </g:each>
                             </div>
@@ -670,9 +672,11 @@
                             <div class="panel panel-white">
                                 <div class="panel-body">
                                     <div class="panel panel-white">
-                                        <div class="panel-body contacts-body">
+                                        <div class="panel-body contacts-body" id="show-crm-contact-parent">
                                             <!-- Row | Contacts Panel -->
-                                            <g:render template="/sharedTemplates/crm/crm-contact"/>
+                                            <div class="panel-body contacts-body" id="show-crm-contact-child">
+                                                <g:render template="/sharedTemplates/crm/crm-contact"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -767,7 +771,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="panel-body padding-0-i">
+                                        <div class="panel-body padding-0-i" id="">
                                             <!-- Render Activity Feed | Tab Panel -->
                                             <g:render template="/sharedTemplates/contactInfo/activity-feed"/>
                                         </div>

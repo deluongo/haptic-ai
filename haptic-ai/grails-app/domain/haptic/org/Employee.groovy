@@ -28,6 +28,7 @@ class Employee {
     String jobTitle
     PrivateDetails employeeDetails
     Team team //Employee_Team is customer pivot table
+    //User user
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */
 
@@ -51,6 +52,14 @@ class Employee {
         firstName blank: false
         gender blank: false
         jobTitle blank: false
+        team nullable: true
+        employeeDetails nullable: true
+        emailAddresses nullable: true
+        phoneNumbers nullable: true
+        socialNetworks nullable: true
+        reviewSites nullable: true
+        webSites nullable: true
+        addresses nullable: true
     }
 
 /*  -------------------          *** Database Designations ***      -------------------  */

@@ -31,15 +31,24 @@ class Company {
 
     String emailFormula
 
+    Lead lead
+    //static belongsTo = [lead: Lead]
 
 
 
     /*  -------------------             *** GORM Mapping ***            -------------------  */
-    static hasMany = [emailAddresses: EmailAddress, phoneNumbers: PhoneNumber,
+    static hasMany = [contacts: Contact, emailAddresses: EmailAddress, phoneNumbers: PhoneNumber,
                       socialNetworks: SocialNetwork, reviewSites: ReviewSite, webSites: WebSite,
                       addresses     : Address, notes: Note]
 
     static constraints = {
-        emailFormula blank: false
+        emailFormula nullable: true
+        emailAddresses nullable: true
+        phoneNumbers nullable: true
+        socialNetworks nullable: true
+        reviewSites nullable: true
+        webSites nullable: true
+        addresses nullable: true
+        notes nullable: true
     }
 }

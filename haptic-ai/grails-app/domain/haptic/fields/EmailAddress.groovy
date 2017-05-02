@@ -37,6 +37,11 @@ class EmailAddress {
         emailAddress matches: /^[a-zA-Z0-9_.+-]+@([\w-]+\.)+[\w-]{2,4}$/, blank: false
         emailExtension blank: false
         emailStatus inList: ['Active', 'Inactive', 'Unsubscribed', 'Unverified', 'Verified']
+        emailsSinceLastAnswer nullable: true
+        emailsSinceLastResponse nullable: true
+        answerRate nullable: true
+        lastEmailAnswered nullable: true
+        lastEmailSent nullable: true
 
     }
 
