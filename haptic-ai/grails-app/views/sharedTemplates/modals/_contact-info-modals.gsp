@@ -27,7 +27,7 @@
                                         <tbody>
                                         <tr>
                                             <td>Email Address</td>
-                                            <td><a href="#" id="emailAddress" data-type="text" data-pk="1" data-placeholder="joe@montana.com" data-title="Enter location name" class="editable editable-pre-wrapped editable-click"></a></td>
+                                            <td><a href="#" id="emailAddress" data-type="text" data-pk="1" data-placeholder="joe@montana.com" data-url="/post" data-title="Enter location name" class="editable editable-pre-wrapped editable-click"></a></td>
                                         </tr>
                                         <tr>
                                             <td>Type</td>

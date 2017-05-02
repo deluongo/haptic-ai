@@ -15,8 +15,8 @@
 
                     <h4 class=""> This form mimics functionality that will be provided by email plugins in future releases.  </h4>
 
-                    <div id="new-email-address-error-messages"></div>
-                    <div id="new-email-address-success-messages"></div>
+                    <div id="new-email-error-messages"></div>
+                    <div id="new-email-success-messages"></div>
 
 
                     <div class="panel panel-white">
@@ -35,23 +35,267 @@
                                             <div class="form-body">
 
                                                 <div class="row">
-                                                              <div class="col-xs-6">
-                                                    <div class="form-group form-md-line-input">
-
-                                                            <input type="text" class="form-control" id="sent-to-email-address" placeholder="test@gmail.com">
+                                                    <div class="col-xs-6">
+                                                        <div class="form-group form-md-line-input has-success">
+                                                            <select class="form-control" id="sent-to-email-address">
+                                                                <option value=""></option>
+                                                                <option value="1">Email 1</option>
+                                                                <option value="2">Email 2</option>
+                                                                <option value="3">Email 3</option>
+                                                                <option value="4">Email 4</option>
+                                                            </select>
                                                             <label for="sent-to-email-address">To:</label>
-                                                            <span class="help-block">Some help goes here...</span>
+                                                            <span class="help-block">Selects from address... </span>
                                                         </div>
                                                     </div>
-                            <div class="col-xs-6">
-                                                    <div class="form-group form-md-line-input">
-
-                                                            <input type="text" class="form-control" id="sent-from-email-address" placeholder="test@gmail.com">
+                                                    <div class="col-xs-6">
+                                                        <div class="form-group form-md-line-input has-success">
+                                                            <select class="form-control" id="sent-from-email-address">
+                                                                <option value=""></option>
+                                                                <option value="1">Email 1</option>
+                                                                <option value="2">Email 2</option>
+                                                                <option value="3">Email 3</option>
+                                                                <option value="4">Email 4</option>
+                                                            </select>
                                                             <label for="sent-from-email-address">From:</label>
-                                                            <span class="help-block">Some help goes here...</span>
+                                                            <span class="help-block">Select to address...</span>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="flex-row-between padding-0-i">
+                                                    <div class="col-xs-10 padding-0-i">
+                                                        <div class="form-group form-md-line-input has-success">
+                                                            <input type="text" class="form-control" id="new-email-title" placeholder="Email Header">
+                                                            <label for="new-email-title">Title:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="form-actions noborder">
+                                                            <button type="button" class="btn blue">Send</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-md-line-input has-success">
+                                                    <textarea class="form-control" id="new-email-body" rows="10" placeholder="Enter text ..."></textarea>
+                                                    <label for="new-email-body">Body:</label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- END SAMPLE FORM PORTLET-->
+                            </div><!-- Row -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Phone Number Model -->
+<div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="make-new-call-modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    <h2 class="no-m m-b-lg">Send Email</h2>
+                </div>
+                <hr>
+                <div class="modal-body remove-margin-b remove-padding-b">
+
+                    <h4 class=""> This form mimics functionality that will be provided by email plugins in future releases.  </h4>
+
+                    <div id="new-phone-call-error-messages"></div>
+                    <div id="new-phone-call-success-messages"></div>
+
+
+                    <div class="panel panel-white">
+                        <div class="panel-body">
+                            <div class="row">
+                                <!-- BEGIN SAMPLE FORM PORTLET-->
+                                <div class="portlet light ">
+                                    <div class="portlet-title">
+                                        <div class="caption font-red-sunglo">
+                                            <i class="icon-settings font-red-sunglo"></i>
+                                            <span class="caption-subject bold uppercase"> Email</span>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form">
+                                        <form role="form">
+                                            <div class="form-body">
+
+                                                <div class="row">
+                                                    <div class="col-xs-6">
+                                                        <div class="form-group form-md-line-input">
+                                                            <select class="form-control" id="dial-this-number">
+                                                                <option value=""></option>
+                                                                <option value="1">Phone 1</option>
+                                                                <option value="2">Phone 2</option>
+                                                                <option value="3">Phone 3</option>
+                                                                <option value="4">Phone 4</option>
+                                                            </select>
+                                                            <label for="dial-this-number">Dial:</label>
+                                                            <span class="help-block">Selects from numbers... </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <div class="form-group form-md-line-input">
+                                                            <select class="form-control" id="dial-from-this-number">
+                                                                <option value=""></option>
+                                                                <option value="1">Phone 1</option>
+                                                                <option value="2">Phone 2</option>
+                                                                <option value="3">Phone 3</option>
+                                                                <option value="4">Phone 4</option>
+                                                            </select>
+                                                            <label for="dial-from-this-number">From:</label>
+                                                            <span class="help-block">Select from numbers...</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-md-line-input has-info">
+                                                    <input type="text" class="form-control" id="call-summary" placeholder="Info state">
+                                                    <label for="call-summary">Title:</label>
+                                                </div>
+                                                <div class="form-group form-md-line-input">
+                                                    <textarea class="form-control" id="call-transcript" rows="3" placeholder="Enter more text"></textarea>
+                                                    <label for="call-transcript">Body:</label>
+                                                </div>
+
+                                                <div class="portlet-body form">
+                                                    <form role="form">
+                                                        <div class="form-group form-md-checkboxes">
+                                                            <label>Checkboxes</label>
+                                                            <div class="md-checkbox-list">
+                                                                <div class="md-checkbox">
+                                                                    <input type="checkbox" id="checkbox1" class="md-check">
+                                                                    <label for="checkbox1">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Option 1 </label>
+                                                                </div>
+                                                                <div class="md-checkbox">
+                                                                    <input type="checkbox" id="checkbox2" class="md-check" checked>
+                                                                    <label for="checkbox2">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Option 2 </label>
+                                                                </div>
+                                                                <div class="md-checkbox">
+                                                                    <input type="checkbox" id="checkbox3" class="md-check">
+                                                                    <label for="checkbox3">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Option 3 </label>
+                                                                </div>
+                                                                <div class="md-checkbox">
+                                                                    <input type="checkbox" id="checkbox4" disabled class="md-check">
+                                                                    <label for="checkbox4">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Disabled </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-md-checkboxes">
+                                                            <label>Inline Checkboxes</label>
+                                                            <div class="md-checkbox-inline">
+                                                                <div class="md-checkbox">
+                                                                    <input type="checkbox" id="checkbox6" class="md-check">
+                                                                    <label for="checkbox6">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Option 1 </label>
+                                                                </div>
+                                                                <div class="md-checkbox">
+                                                                    <input type="checkbox" id="checkbox7" class="md-check" checked>
+                                                                    <label for="checkbox7">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Option 2 </label>
+                                                                </div>
+                                                                <div class="md-checkbox">
+                                                                    <input type="checkbox" id="checkbox8" class="md-check">
+                                                                    <label for="checkbox8">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Option 3 </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-md-checkboxes">
+                                                            <label>Checkboxes</label>
+                                                            <div class="md-checkbox-list">
+                                                                <div class="md-checkbox has-success">
+                                                                    <input type="checkbox" id="checkbox9" class="md-check">
+                                                                    <label for="checkbox9">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Option 1 </label>
+                                                                </div>
+                                                                <div class="md-checkbox has-error">
+                                                                    <input type="checkbox" id="checkbox10" class="md-check" checked>
+                                                                    <label for="checkbox10">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Option 2 </label>
+                                                                </div>
+                                                                <div class="md-checkbox has-warning">
+                                                                    <input type="checkbox" id="checkbox11" class="md-check">
+                                                                    <label for="checkbox11">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Option 3 </label>
+                                                                </div>
+                                                                <div class="md-checkbox has-info">
+                                                                    <input type="checkbox" id="checkbox12" disabled class="md-check">
+                                                                    <label for="checkbox12">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Disabled </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-md-checkboxes">
+                                                            <label>Inline Checkboxes</label>
+                                                            <div class="md-checkbox-inline">
+                                                                <div class="md-checkbox has-success">
+                                                                    <input type="checkbox" id="checkbox14" class="md-check">
+                                                                    <label for="checkbox14">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Option 1 </label>
+                                                                </div>
+                                                                <div class="md-checkbox has-error">
+                                                                    <input type="checkbox" id="checkbox15" class="md-check" checked>
+                                                                    <label for="checkbox15">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Option 2 </label>
+                                                                </div>
+                                                                <div class="md-checkbox has-info">
+                                                                    <input type="checkbox" id="checkbox16" class="md-check">
+                                                                    <label for="checkbox16">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> Option 3 </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <!-- END SAMPLE FORM PORTLET-->
+
+
+
 
                                                 <div class="row">
                                                     <div class="col-xs-6">
@@ -88,10 +332,7 @@
                                                     <input type="text" class="form-control" id="form_control_1" placeholder="Error state">
                                                     <label for="form_control_1">Error input</label>
                                                 </div>
-                                                <div class="form-group form-md-line-input has-info">
-                                                    <input type="text" class="form-control" id="form_control_1" placeholder="Info state">
-                                                    <label for="form_control_1">Info input</label>
-                                                </div>
+
                                                 <div class="form-group form-md-line-input has-info">
                                                     <select class="form-control" id="form_control_1">
                                                         <option value=""></option>
@@ -102,10 +343,7 @@
                                                     </select>
                                                     <label for="form_control_1">Dropdown sample</label>
                                                 </div>
-                                                <div class="form-group form-md-line-input">
-                                                    <textarea class="form-control" rows="3" placeholder="Enter more text"></textarea>
-                                                    <label for="form_control_1">Textarea input</label>
-                                                </div>
+
                                                 <div class="form-group form-md-line-input has-error">
                                                     <input type="text" class="form-control" disabled id="form_control_1" placeholder="Disable">
                                                     <label for="form_control_1">Disabled</label>
@@ -136,8 +374,9 @@
                                 </div>
                                 <!-- END SAMPLE FORM PORTLET-->
                             </div><!-- Row -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -148,7 +387,10 @@
 
 
 
-<!-- Phone Number Model -->
+
+
+
+
 <div class="container">
     <!-- Modal -->
     <div class="modal fade" id="add-phone-number-modal" role="dialog">

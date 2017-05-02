@@ -16,16 +16,7 @@
     <asset:stylesheet src="metronic/bootstrap-fileinput/bootstrap-fileinput.css"/>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
     <!-- <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />-->
-    <!-- BEGIN THEME GLOBAL STYLES -->
-    <asset:stylesheet src="metronic/components-md.css" />
-    <asset:stylesheet src="metronic/plugins.min.css" />
-    <!-- END THEME GLOBAL STYLES -->
-    <!-- BEGIN PAGE LEVEL STYLES -->
-    <asset:stylesheet src="metronic/profile.min.css"/>
 
-    <!-- END PAGE LEVEL STYLES -->
-    <!-- BEGIN THEME LAYOUT STYLES -->
-    <asset:stylesheet src="metronic/themes/blue.min.css" />
 
 
 
@@ -48,6 +39,19 @@
     <asset:stylesheet src="plugins/x-editable/inputs-ext/address/address.css"/>
     <asset:stylesheet src="plugins/select2-3.4.8/select2.css"/>
     <asset:stylesheet src="plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <asset:stylesheet src="plugins/metronic/plugins/bootstrap-switch/css/bootstrap-switch.css"/>
+
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <asset:stylesheet src="metronic/components-md.css" />
+
+    <asset:stylesheet src="metronic/plugins.min.css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <asset:stylesheet src="metronic/profile.min.css"/>
+
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <asset:stylesheet src="metronic/themes/blue.min.css" />
 
     <!-- Theme Styles -->
     <asset:stylesheet src="modern.css"/>
@@ -289,11 +293,16 @@
                             <div class="prospect-list">
                                 <div class="col-xs-8 prospect-label-wrapper">
                                     <p class="secondary-label">Product Manager</p>
-                                    <p class="primary-label f-gray">Microsoft</p>
+                                    <p class="primary-label f-gray">Microsoft - ${leads[0].contacts[0].firstName}</p>
                                 </div>
                                 <div class="col-xs-4 vertical-align padding-0-l-i">
                                     <p class="expected-value">$3,043</p>
                                 </div>
+                                <g:each status="i" in="${leads}" var="lead">
+                                    <div class="col-xs-4 vertical-align padding-0-l-i">
+                                        <p class="expected-value">${lead.status}</p>
+                                    </div>
+                                </g:each>
                             </div>
                         </a>
                     </li>
@@ -558,22 +567,22 @@
                                                 <div class="contact-action-buttons">
                                                     <a data-toggle="modal" data-target="#send-new-email-modal" class="icon-btn">
                                                         <i class="fa fa-envelope"></i>
-                                                        <div> Inbox </div>
+                                                        <div> Email </div>
                                                         <span class="badge badge-info"> 12 </span>
                                                     </a>
-                                                    <a href="javascript:;" class="icon-btn">
+                                                    <a data-toggle="modal" data-target="#make-new-social-post"  class="icon-btn">
                                                         <i class="fa fa-thumbs-up"></i>
-                                                        <div> Feedback </div>
+                                                        <div> Network </div>
                                                         <span class="badge badge-info"> 2 </span>
                                                     </a>
-                                                    <a href="javascript:;" class="icon-btn">
+                                                    <a data-toggle="modal" data-target="#make-new-website-touch"  class="icon-btn">
                                                         <i class="fa fa-group"></i>
-                                                        <div> Users </div>
+                                                        <div> Engage </div>
                                                         <span class="badge badge-danger"> 2 </span>
                                                     </a>
-                                                    <a href="javascript:;" class="icon-btn">
+                                                    <a data-toggle="modal" data-target="#make-new-call-modal"  class="icon-btn">
                                                         <i class="fa fa-phone"></i>
-                                                        <div> Notification </div>
+                                                        <div> Call </div>
                                                         <span class="badge badge-danger"> 3 </span>
                                                     </a>
                                                 </div>
@@ -951,6 +960,7 @@
 <asset:javascript src="plugins/x-editable/inputs-ext/address/address.js" />
 <asset:javascript src="plugins/select2-3.4.8/select2.min.js" />
 <asset:javascript src="plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" />
+<asset:javascript src="plugins/bootstrap-switch/js/bootstrap-switch.min.js" />
 <asset:javascript src="plugins/masked-input/jquery-input-masking.js.js" />
 
 
@@ -962,7 +972,7 @@
 
 
 <!-- Javascripts - Init-->
-<asset:javascript src="modern.min.js" />
+<asset:javascript src="modern.js" />
 
 <asset:javascript src="custom.js" />
 
