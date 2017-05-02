@@ -69,10 +69,10 @@ class BootStrap {
         //Contacts
         def billGates = new Contact(salutation: 'Mr.', firstName: 'Bill', lastName: 'Gates', gender: 'M',
                 jobRole: 'Management', jobTitle: 'CEO', roleDescription: 'Description', department: 'Dept.',
-                emailAddresses: billEmail)
+                emailAddresses: billEmail, neuralNetValue: "\$1,434")
         def billGates2 = new Contact(salutation: 'Mr.', firstName: 'Bill2', lastName: 'Gates', gender: 'M',
                 jobRole: 'Management', jobTitle: 'CTO', roleDescription: 'Description', department: 'Dept.',
-                emailAddresses: bill2Email)
+                emailAddresses: bill2Email, neuralNetValue: "\$734")
         //billGates.save(flush: true)
         //billGates2.save(flush: true)
 
@@ -80,10 +80,10 @@ class BootStrap {
 
         def steveJobs = new Contact(salutation: 'Mr.', firstName: 'Steve', lastName: 'Jobs', gender: 'M',
                 jobRole: 'Management', jobTitle: 'CEO', roleDescription: 'Description', department: 'Dept.',
-                emailAddresses: steveEmail)
+                emailAddresses: steveEmail, neuralNetValue: "\$434")
         def steveJobs2 = new Contact(salutation: 'Mr.', firstName: 'Steve2', lastName: 'Jobs', gender: 'M',
                 jobRole: 'Management', jobTitle: 'CTO', roleDescription: 'Description', department: 'Dept.',
-                emailAddresses: steve2Email)
+                emailAddresses: steve2Email, neuralNetValue: "\$234")
         //steveJobs.save(flush: true)
         //steveJobs2.save(flush: true)
 

@@ -138,7 +138,7 @@
 
 
 
-                                </li>
+
                                 <li class="li-group">
                                     <ul class="list-unstyled">
                                         <li class="no-link" role="presentation">
@@ -287,39 +287,22 @@
     <div class="page-sidebar sidebar" id="dashboard-sidebar">
         <div class="page-sidebar-inner slimscroll">
             <div class="prospect-list-padding">
-                <ul class="menu accordion-menu display-block">
-                    <li>
-                        <a href="#">
-                            <div class="prospect-list">
-                                <div class="col-xs-8 prospect-label-wrapper">
-                                    <p class="secondary-label">Product Manager</p>
-                                    <p class="primary-label f-gray">Microsoft</p>
+                <ul class="menu accordion-menu display-block" id="master-lead-list">
+                    <g:each status="i" in="${leads}" var="lead">
+                        <li>
+                            <a id="lead-link-${lead.id}">
+                                <div class="prospect-list">
+                                    <div class="col-xs-8 prospect-label-wrapper">
+                                        <p class="secondary-label">${lead.company.contacts[0].jobTitle}</p>
+                                        <p class="primary-label f-gray">${lead.company.companyName}</p>
+                                    </div>
+                                    <div class="col-xs-4 vertical-align padding-0-l-i">
+                                        <p class="expected-value">${lead.company.contacts[0].neuralNetValue}</p>
+                                    </div>
                                 </div>
-                                <div class="col-xs-4 vertical-align padding-0-l-i">
-                                    <p class="expected-value">$3,043</p>
-                                    <p class="expected-value">$2,043</p>
-                                </div>
-                            </div>
-                            <g:each status="i" in="${leads}" var="lead">
-                                <div class="col-xs-4 vertical-align padding-0-l-i">
-                                    <p class="expected-value">${lead.company.contacts}</p>
-                                </div>
-                            </g:each>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="prospect-list">
-                                <div class="col-xs-8 prospect-label-wrapper">
-                                    <p class="secondary-label">CEO</p>
-                                    <p class="primary-label f-gray">Proctor & Gambel</p>
-                                </div>
-                                <div class="col-xs-4 vertical-align">
-                                    <p class="expected-value">$943</p>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                            </a>
+                        </li>
+                    </g:each>
                 </ul>
             </div>
             <div class="sidebar-profile padding-10" id="header-content">
@@ -671,7 +654,9 @@
                             <div class="panel panel-white">
                                 <div class="panel-body">
                                     <div class="panel panel-white">
-                                        <div class="panel-body contacts-body">
+                                        <div class="panel-body contacts-body" id="display-contacts-feed-panel">
+                                            <div id="display-lead-error-messages"></div>
+                                            <div id="display-lead-success-messages"></div>
                                             <!-- Row | Contacts Panel -->
                                             <g:render template="/sharedTemplates/crm/crm-contact"/>
                                         </div>

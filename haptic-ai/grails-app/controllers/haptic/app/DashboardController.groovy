@@ -3,10 +3,15 @@ package haptic.app
 import grails.plugin.springsecurity.annotation.Secured
 import haptic.crm.Lead
 import haptic.fields.EmailAddress
+import static org.springframework.http.HttpStatus.*
+import grails.transaction.Transactional
+
 
 
 @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
 class DashboardController {
+
+    def springSecurityService
 
     def index() {
 
@@ -69,6 +74,7 @@ class DashboardController {
      *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~~~~~~ SHOW PLAYER STATS ~~~~~~~~~~~
      *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     def viewLead() {
+        print("HI")
         //String personIndex, String tabIndex, String postTitle, String postDescription, String backgroundImage, String blogText
 
         /*------------------------------------------*
@@ -91,8 +97,16 @@ class DashboardController {
 
         /*  --------------              *** Select Player ***           ---------------  */
         flash.message = "We've hit a snag. Details of this lead can't be displayed. Please refresh and try again."
-        leadIndex = leadIndex ?: "1"
-        def lead = Lead.get(leadIndex)
+
+        println("LEAD ------------- \n\n\n\n\n")
+        print(params)
+        println("LEAD ------------- \n\n\n\n\n")
+
+        //println(lead)
+        println(leadIndex[0])
+
+        def lead = Lead.get("${leadIndex[0]}")
+
 
         /*  --------------            *** Authenticate User ***         ---------------  */
         def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
@@ -105,19 +119,20 @@ class DashboardController {
         def active_contact_idx = 0;
         /*  --------------            *** Load Form Results ***         ---------------  */
         def leadCompany = lead.company
-        def activeContact = lead.contacts[active_contact_idx]
+        def activeContact = lead.company.contacts[active_contact_idx]
         def allContacts = lead.contacts
 
         /*
         def leadTimeLine = lead.timeLine
         def leadActivityFeed = lead.activityFeed
         */
-        def backgroundImage = params.list('backgroundImage')
+        //def backgroundImage = params.list('backgroundImage')
 
 
         /*  --------------              *** Display Stats ***           ---------------  */
 
-        render(template: "/crm/crmCompany", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
+        render(template: "/sharedTemplates/crm/crm-contact", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
+
     }
 
 

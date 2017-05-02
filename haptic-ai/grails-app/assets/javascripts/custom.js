@@ -1031,42 +1031,39 @@ $('.editable').on('hidden', function(e, reason){
      *  ~~~~ SELECT/SHOW LEAD ~~~~
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     //Get all your links
-    var links = $(".div_data_more_informations ul li a");
+
 
     //Loop through links and add on click listeners
-    links.each(function(){
-        var link = $(this);
-        var id = link.data('id');
+    $('#master-lead-list li a').on("click", function(event){
 
-        link.click(function() {
-            $.ajax({
-                url: 'details.php',
-                type: 'GET',
-                data: 'id=' + id,
-                dataType: 'html',
-                success: function (data) {
-                    if (response == []) {
-                        $('#validation-error-messages').append('<div class="w3-panel w3-card-4 w3-red w3-display-container w3-padding w3-margin"><span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-red w3-large w3-display-topright">×</span><h3> Error! </h3><p> You\'ve encountered a validation error. Please make sure your form contents match the placeholder requirements. </p></div>');
-                        return false;
-                    }
-                    else {
-                        $('#action-results-message').append('<div class="w3-panel w3-card-4 w3-green w3-display-container w3-padding w3-margin"><span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-green w3-large w3-display-topright">×</span><h3> Success! </h3><p>A new post was successfully published to your blog.</p></div>');
-                        $('#postModal').modal('hide');
-                        console.log(response)
-                        $('#displayPosts').html(response);
-                    }
-                },
+        var html_id = this.id;
+        console.log(html_id);
+        var lead_id = html_id.split("-")[2];
+        console.log(lead_id);
+
+
+        $.ajax({
+            type: "POST",
+            url: "/dashboard/viewLead",
+            data: {'leadIndex': lead_id},
+            dataType: 'html',
+            success: function (data) {
+
+                $('#display-lead-success-messages').append('<div class="w3-panel w3-card-4 w3-green w3-display-container w3-padding w3-margin"><span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-green w3-large w3-display-topright">×</span><h3> Success! </h3><p>A new post was successfully published to your blog.</p></div>');
+
+                console.log(response)
+                $('#display-contacts-feed-panel').html(response);
+
+            },
                 error: function () {
-                    alert("failure");
-                }
+                $('#display-lead-error-messages').append('<div class="w3-panel w3-card-4 w3-red w3-display-container w3-padding w3-margin"><span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-red w3-large w3-display-topright">×</span><h3> Error! </h3><p> You\'ve encountered a validation error. Please make sure your form contents match the placeholder requirements. </p></div>');
+            }
 
-                //$('#container-details').html(data); }
-                //prevent the link from refreshing page
+            //$('#container-details').html(data); }
+            //prevent the link from refreshing page
 
-            })
-            ;
-            return false;
         });
+        return false;
     });
 
 
@@ -1075,7 +1072,7 @@ $('.editable').on('hidden', function(e, reason){
     var querystring = $("#new-post-form").serialize();
     console.log("Query String:" + querystring);
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: "/league/publishPost",
             data : querystring,
             success : function(response) {
@@ -1122,21 +1119,22 @@ $('.editable').on('hidden', function(e, reason){
 
 
 
-
+/*
     function showSpinner(visible) {
-            $('spinner').style.display = visible ? "inline" : "none"
-        }
+        $('spinner').style.display = visible ? "inline" : "none" {
 
-    Ajax.Responders.register({
-            onLoading: function() {
-            showSpinner(true);
-        },
-        onComplete: function() {
-            if(!Ajax.activeRequestCount) showSpinner(false);
 
-        }
-    });
+        Ajax.Responders.register({
+            onLoading: function () {
+                showSpinner(true);
+            },
+            onComplete: function () {
+                if (!Ajax.activeRequestCount) showSpinner(false);
 
+            }
+        });
+    }
+*/
 
 
 
@@ -1157,13 +1155,14 @@ $('.editable').on('hidden', function(e, reason){
         autoclose: true
     });
 
+    /*
     $('#cp1').colorpicker({
         format: 'hex'
     });
     $('#cp2').colorpicker();
 
     $('#timepicker1').timepicker();
-
+    */
 
 
 
