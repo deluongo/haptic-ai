@@ -120,6 +120,11 @@ margin-10-w {
     padding: 10px;
 }
 
+.padding-10-w {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .padding-10-w-i {
     padding-left: 10px !important;
     padding-right: 10px !important;

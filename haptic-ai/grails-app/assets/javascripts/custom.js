@@ -1122,10 +1122,10 @@ $('.editable').on('hidden', function(e, reason){
 
 
 
-/*
+
     function showSpinner(visible) {
             $('spinner').style.display = visible ? "inline" : "none"
-        };
+        }
 
     Ajax.Responders.register({
             onLoading: function() {
@@ -1136,7 +1136,7 @@ $('.editable').on('hidden', function(e, reason){
 
         }
     });
-*/
+
 
 
 
@@ -1157,15 +1157,13 @@ $('.editable').on('hidden', function(e, reason){
         autoclose: true
     });
 
-    /*
     $('#cp1').colorpicker({
         format: 'hex'
     });
-
     $('#cp2').colorpicker();
 
     $('#timepicker1').timepicker();
-     */
+
 
 
 
