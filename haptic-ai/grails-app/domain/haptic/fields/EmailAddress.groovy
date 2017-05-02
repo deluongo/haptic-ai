@@ -34,17 +34,7 @@ class EmailAddress {
 //    Integer emailsSinceLastResponse
 //    Float answerRate
 
-    static constraints = {
-        emailAddress matches: /^[a-zA-Z0-9_.+-]+@([\w-]+\.)+[\w-]{2,4}$/, blank: false
-        emailExtension blank: false
-        emailStatus inList: ['Active', 'Inactive', 'Unsubscribed', 'Unverified', 'Verified']
 
-        notes nullable: true
-        lastEmailAnswered nullable: true
-        lastEmailSent nullable: true
-
-
-    }
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */
     static hasMany = [notes: Note]
@@ -75,5 +65,18 @@ class EmailAddress {
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     def getFullAddress() {
         emailAddress + emailExtension
+    }
+
+
+
+    static constraints = {
+        emailAddress matches: /^[a-zA-Z0-9_.+-]+@([\w-]+\.)+[\w-]{2,4}$/, blank: false
+        emailExtension blank: false
+        emailStatus inList: ['Active', 'Inactive', 'Unsubscribed', 'Unverified', 'Verified']
+
+        notes nullable: true
+
+
+
     }
 }

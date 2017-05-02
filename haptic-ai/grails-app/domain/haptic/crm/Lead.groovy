@@ -47,9 +47,11 @@ class Lead {
 //    def lastResponse  // Reference to linked row in call, email, or post w/ most recent timestamp
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */
-    static hasMany = [contacts      : Contact, decisionMakers: Contact, internalChampions: Contact,
-                      communications: Communication, actions: Action, results: Result,
-                      notes         : Note]
+    static hasMany = [contacts      : Contact]
+
+//    static hasMany = [contacts      : Contact, decisionMakers: Contact, internalChampions: Contact,
+//                      communications: Communication, actions: Action, results: Result,
+//                      notes         : Note]
 
     //TO-DO:
     //------
@@ -62,11 +64,6 @@ class Lead {
         leadStage blank: false
         leadStatus inList: ['Converted', 'Qualified', 'Dis-qualified']
 
-        decisionMakers nullable: true
-        internalChampions nullable: true
-        communications nullable: true
-        actions nullable: true
-        results nullable: true
-        notes nullable: true
+
     }
 }
