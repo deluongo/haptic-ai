@@ -1,3 +1,6 @@
+
+
+
 $( document ).ready(function() {
 
 
@@ -636,7 +639,32 @@ $('.editable').on('hidden', function(e, reason){
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     $('#emailAddress').editable({
         validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
+            if($.trim(value) == '') {
+                return 'This field is required';
+            }
+            // else {
+            //     $.ajax({
+            //         url: '/dashboard/newEmail',
+            //         type: 'POST',
+            //         data: {emailAddress: value},
+            //         success: function(res) {
+            //             console.log(res)
+            //         },
+            //         error: function(err) {
+            //             console.log(err)
+            //         }
+            //     });
+            // }
+        },
+        ajaxOptions: {
+            type: 'post',
+            url: '/dashboard/newEmail',
+            success: function(res) {
+                console.log(res)
+            },
+            error: function(err) {
+                console.log(err)
+            }
         }
     }).on('shown', function(ev, editable) {
         setTimeout(function() {
@@ -645,16 +673,27 @@ $('.editable').on('hidden', function(e, reason){
     });
 
 
+
     $('#emailType').editable({
         pk: 1,
         limit: 3,
         source: [
-            {value: 1, text: 'Primary'},
-            {value: 2, text: 'Secondary'},
-            {value: 3, text: 'Company'},
-            {value: 4, text: 'Personal'},
-            {value: 5, text: 'Junk'}
-        ]
+            {value: 'Primary', text: 'Primary'},
+            {value: 'Secondary', text: 'Secondary'},
+            {value: 'Company', text: 'Company'},
+            {value: 'Personal', text: 'Personal'},
+            {value: 'Junk', text: 'Junk'}
+        ],
+        ajaxOptions: {
+            type: 'post',
+            url: '/dashboard/newEmail',
+            success: function(res) {
+                console.log(res)
+            },
+            error: function(err) {
+                console.log(err)
+            }
+        }
     });
 
     $('#emailStatus').editable({
@@ -662,12 +701,22 @@ $('.editable').on('hidden', function(e, reason){
         limit: 3,
         value: 'Unverified',
         source: [
-            {value: 1, text: 'Unverified'},
-            {value: 2, text: 'Verified'},
-            {value: 3, text: 'Active'},
-            {value: 3, text: 'Inactive'},
-            {value: 4, text: 'Unsubscribed'},
-        ]
+            {value: 'Unverified', text: 'Unverified'},
+            {value: 'Verified', text: 'Verified'},
+            {value: 'Active', text: 'Active'},
+            {value: 'Inactive', text: 'Inactive'},
+            {value: 'Unsubscribed', text: 'Unsubscribed'}
+        ],
+        ajaxOptions: {
+            type: 'post',
+            url: '/dashboard/newEmail',
+            success: function(res) {
+                console.log(res)
+            },
+            error: function(err) {
+                console.log(err)
+            }
+        }
     });
 
 
@@ -1001,7 +1050,6 @@ $('.editable').on('hidden', function(e, reason){
     $('#cp2').colorpicker();
 
     $('#timepicker1').timepicker();
-
 
 
 
@@ -1529,7 +1577,17 @@ $('.editable').on('hidden', function(e, reason){
             }
         };
 
-
+        // Handle Select2 Dropdowns
+        var handleSelect2 = function() {
+            if ($().select2) {
+                $.fn.select2.defaults.set("theme", "bootstrap");
+                $('.select2me').select2({
+                    placeholder: "Select",
+                    width: 'auto',
+                    allowClear: true
+                });
+            }
+        };
 
         // handle group element heights
         var handleHeight = function() {
@@ -1587,6 +1645,7 @@ $('.editable').on('hidden', function(e, reason){
                 handleBootstrapSwitch(); // handle bootstrap switch plugin
                 handleScrollers(); // handles slim scrolling contents
                 handleFancybox(); // handle fancy box
+                handleSelect2(); // handle custom Select2 dropdowns
                 handlePortletTools(); // handles portlet action bar functionality(refresh, configure, toggle, remove)
                 handleAlerts(); //handle closabled alerts
                 handleDropdowns(); // handle dropdowns
@@ -1612,6 +1671,7 @@ $('.editable').on('hidden', function(e, reason){
                 handleiCheck(); // handles custom icheck radio and checkboxes
                 handleBootstrapSwitch(); // handle bootstrap switch plugin
                 handleScrollers(); // handles slim scrolling contents
+                handleSelect2(); // handle custom Select2 dropdowns
                 handleFancybox(); // handle fancy box
                 handleDropdowns(); // handle dropdowns
                 handleTooltips(); // handle bootstrap tooltips
@@ -2012,9 +2072,7 @@ $('.editable').on('hidden', function(e, reason){
 
     <!-- END THEME LAYOUT SCRIPTS -->
 
-    jQuery(document).ready(function() {
-        App.init(); // init metronic core componets
-    });
+
 
 
 });
