@@ -302,6 +302,7 @@
                                 </div>
                             </a>
                         </li>
+                        <!--<a href="#" data-load="true" data-url="/sharedTemplates/companyInfo/companyDetails" class="reload"></a>-->
                     </g:each>
                 </ul>
             </div>
@@ -604,6 +605,7 @@
                                                     </div>
                                                     <div role="tabpanel" class="tab-pane fade" id="tab10">
                                                         <!-- Render Activity Feed | Tab Panel -->
+
                                                         <g:render template="/sharedTemplates/contactInfo/activity-feed"/>
                                                     </div>
                                                     <div role="tabpanel" class="tab-pane fade" id="tab11">
@@ -656,7 +658,31 @@
                                     <div class="panel panel-white">
                                         <div class="panel-body contacts-body" id="display-contacts-feed-panel">
                                             <div id="display-lead-error-messages"></div>
+
+
+                                            <a href="#" data-load="true" data-url="portlet_ajax_content_1.html" class="reload"></a>
+
+
                                             <div id="display-lead-success-messages"></div>
+                                            <div class="panel panel-white">
+                                                <div class="panel-heading clearfix">
+                                                    <h3 class="panel-title">Links in alerts</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="alert alert-success" role="alert">
+                                                        <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+                                                    </div>
+                                                    <div class="alert alert-info" role="alert">
+                                                        <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
+                                                    </div>
+                                                    <div class="alert alert-warning" role="alert">
+                                                        <strong>Warning!</strong> Better check yourself, you're <a href="#" class="alert-link">not looking too good</a>.
+                                                    </div>
+                                                    <div class="alert alert-danger" role="alert">
+                                                        <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <!-- Row | Contacts Panel -->
                                             <g:render template="/sharedTemplates/crm/crm-contact"/>
                                         </div>
