@@ -1047,12 +1047,12 @@ $('.editable').on('hidden', function(e, reason){
             url: "/dashboard/viewLead",
             data: {'leadIndex': lead_id},
             dataType: 'html',
-            success: function (data) {
+            success: function (response) {
 
                 $('#display-lead-success-messages').append('<div class="w3-panel w3-card-4 w3-green w3-display-container w3-padding w3-margin"><span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-green w3-large w3-display-topright">×</span><h3> Success! </h3><p>A new post was successfully published to your blog.</p></div>');
 
                 console.log(response)
-                $('#display-contacts-feed-panel').html(response);
+                $('#contacts-render-target').html(response);
 
             },
                 error: function () {

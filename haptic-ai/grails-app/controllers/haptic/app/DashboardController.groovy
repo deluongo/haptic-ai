@@ -131,7 +131,7 @@ class DashboardController {
 
         /*  --------------              *** Display Stats ***           ---------------  */
 
-        render(template: "/sharedTemplates/crm/crm-contact", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
+        render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
 
     }
 
