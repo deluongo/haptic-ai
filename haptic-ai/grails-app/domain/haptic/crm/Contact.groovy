@@ -28,14 +28,15 @@ class Contact {
     String firstName
     String lastName
     String gender
-
     String jobRole
     String jobTitle
     String roleDescription
     String department //For Enterprise companies, which department/group/etc.
 
+    String neuralNetValue
+
     // Possible Mapping, Pivot Table Candidates
-    Company company
+    static belongsTo = [company: Company]
 
     /*  -------------------             *** GORM Mapping ***            -------------------  */
     static hasMany = [emailAddresses: EmailAddress, phoneNumbers: PhoneNumber,

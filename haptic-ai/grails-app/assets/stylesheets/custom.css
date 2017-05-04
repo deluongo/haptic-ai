@@ -43,6 +43,15 @@
     padding: 0px;
 }
 
+.padding-0-v {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.padding-0-b-i {
+    padding-bottom: 0px !important;
+}
+
 .padding-0-l-i {
     padding-left: 0px !important;
 }
@@ -51,6 +60,18 @@
     margin-top: 0px !important;
 }
 
+.margin-0-b-i {
+    margin-bottom: 0px !important;
+}
+
+.margin-0-i {
+    margin: 0px !important;
+}
+
+.action-form-hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 .padding-0-i {
     padding: 0px !important;
@@ -102,6 +123,19 @@ margin-10-w {
 .padding-10-w {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.padding-10-w-i {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.padding-l-7 {
+    padding-left: 7.5px;
+}
+
+.padding-r-7 {
+    padding-right: 7.5px;
 }
 
 .padding-5-v {

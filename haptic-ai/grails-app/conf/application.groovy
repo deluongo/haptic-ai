@@ -1,4 +1,4 @@
-
+grails.gorm.failOnError = true
 
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'haptic.app.User'
