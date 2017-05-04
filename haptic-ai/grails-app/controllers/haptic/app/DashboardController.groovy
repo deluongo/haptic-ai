@@ -19,7 +19,7 @@ class DashboardController {
         print(leads)
 
         // Toggles Welcome Message
-        def lead = "show"
+        def lead = null
 
 
         /*  --------------            *** Display Dashboard ***         ---------------  */

@@ -432,12 +432,16 @@ $('.editable').on('hidden', function(e, reason){
     /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
      *  ~~~~~~~~~ GROUP ~~~~~~~~~~
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#salutation').editable({
-        showbuttons: false,
-        emptytext: 'unknown',
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
+
+    //
+    $(document).on("click", "#salutation", function(){
+        $('#salutation').editable({
+            showbuttons: false,
+            emptytext: 'unknown',
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        });
     });
 
     $.mockjax({
@@ -1033,8 +1037,50 @@ $('.editable').on('hidden', function(e, reason){
     //Get all your links
 
 
-    //Loop through links and add on click listeners
+    // Display lead specific content
     $('#master-lead-list li a').on("click", function(event){
+
+        var html_id = this.id;
+        console.log(html_id);
+        var lead_id = html_id.split("-")[2];
+        console.log(lead_id);
+
+
+        $.ajax({
+            type: "POST",
+            url: "/dashboard/viewLead",
+            data: {'leadIndex': lead_id},
+            dataType: 'html',
+            success: function (response) {
+
+                $('#display-lead-success-messages').append(
+                    '<div class="alert alert-success" role="alert">' +
+                    '<span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-green w3-large w3-display-topright">×</span>' +
+                    '<h3> Success! </h3><p class="alert-link">A new post was successfully published to your blog.</p>' +
+                    '</div>');
+
+                //console.log(response)
+                $('#contacts-render-target').html(response);
+
+            },
+                error: function () {
+                $('#display-lead-error-messages').append('' +
+                    '<div class="alert alert-success" role="alert">' +
+                    '<span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-red w3-large w3-display-topright">×</span>' +
+                    '<h3> Error! </h3>' +
+                    '<p> Something went wrong. Please try again. </p>' +
+                    '</div>');
+            }
+
+            //$('#container-details').html(data); }
+            //prevent the link from refreshing page
+
+        });
+        return false;
+    });
+
+    //Display contact specific content
+    $('.update-active-contact-button li a').on("click", function(event){
 
         var html_id = this.id;
         console.log(html_id);
@@ -1055,7 +1101,7 @@ $('.editable').on('hidden', function(e, reason){
                 $('#contacts-render-target').html(response);
 
             },
-                error: function () {
+            error: function () {
                 $('#display-lead-error-messages').append('<div class="w3-panel w3-card-4 w3-red w3-display-container w3-padding w3-margin"><span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-red w3-large w3-display-topright">×</span><h3> Error! </h3><p> You\'ve encountered a validation error. Please make sure your form contents match the placeholder requirements. </p></div>');
             }
 
@@ -1065,6 +1111,7 @@ $('.editable').on('hidden', function(e, reason){
         });
         return false;
     });
+
 
 
 

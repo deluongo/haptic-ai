@@ -537,34 +537,12 @@
         <!-- PAGE CONTENT - CRM, Action, & Review Main Blocks -->
         <div id="main-wrapper">
 
-            <!-- LANDING PAGE - No Lead Default -->
-            <g:if test="${lead == "show"}">
-            <!-- Welcome Message -->
-            <div class="row">
-                <!-- Row -->
-                <div class="panel panel-white">
-
-                    <div class="panel-heading">
-                        <h2> HAPTIC AI - Dashboard</h2>
-                        <div class="row ">
-                            <div class="panel panel-white">
-                                <div class="panel-body">
-                                    <p> Welcome ${currentUser} - Select a lead from the left hand list to research and engage a prospect!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- END Welcome Message -->
-            </g:if>
-
 
 
 
             <!-- CONTACTS PANEL -->
             <div id="contacts-render-target">
-
+                <g:render template="/sharedTemplates/jqueryRenders/contacts"/>
             </div>
             <!-- END CONTACTS PANEL -->
 
@@ -576,7 +554,7 @@
 
             <!-- COMPANY PANEL -->
             <div id=display-company-panel class="hidden">
-
+                <g:render template="/sharedTemplates/jqueryRenders/company"/>
             </div>
             <!-- COMPANY PANEL -->
 

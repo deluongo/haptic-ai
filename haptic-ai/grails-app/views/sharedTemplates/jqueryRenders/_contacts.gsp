@@ -4,6 +4,53 @@
     <div class="row">
         <div class="col-md-7">
 
+
+
+
+            <!-- LANDING PAGE - No Lead Default -->
+            <g:if test="${!(lead instanceof haptic.crm.Lead)}">
+                <!-- Welcome Message -->
+
+
+
+                <div class="row padding-10-w">
+                    <div class="panel panel-white margin-10-b">
+                        <div class="panel-body">
+                            <!-- Row -->
+                            <div class="page-breadcrumb">
+                            <h2> Haptic Dashboard</h2>
+                            </div>
+
+
+                            <hr class="contact-page-hr">
+
+
+
+
+                            <!-- Row -->
+                            <div class="panel panel-white padding-0-i margin-0 activity-feed-panel">
+
+                                <div class="panel-heading contacts-panel-heading clearfix padding-0-i">
+                                    <div class="">
+                                        <!-- Display The Selected Contact's Name -->
+                                        <h2 class="no-m m-b-lg contact-name-header">Welcome ${currentUser} - <small> Select a lead from the left hand list to research and engage a prospect!</small></h2>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Welcome Message -->
+            </g:if>
+
+
+
+            <g:else>
+
+            </g:else>
             <div class="row padding-10-w">
                 <div class="panel panel-white margin-10-b">
                     <div class="panel-body">
@@ -30,7 +77,7 @@
                                 <div class="flex-row-between">
                                     <div class="">
                                         <!-- Display The Selected Contact's Name -->
-                                        <h2 class="no-m m-b-lg contact-name-header">Bill Gates</h2>
+                                        <h2 class="no-m m-b-lg contact-name-header">${activeContact?.firstName} ${activeContact?.lastName}</h2>
                                     </div>
                                     <div class="contact-action-buttons">
                                         <a data-toggle="modal" data-target="#send-new-email-modal" class="icon-btn">
@@ -56,13 +103,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <h1>Status ${lead?.status}</h1>
-                            <h1>${lead?.company?.contacts}</h1>
 
                             <div class="panel-body padding-0-i">
                                 <div class="tabs-left" role="tabpanel">
                                     <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs" role="tablist">
+                                    <ul class="nav nav-tabs" id="lead-panel-tab-label" class="change-active-contact-button" role="tablist">
 
                                         <g:each status="i" in="${allContacts}" var="contact">
                                             <g:if test="${i < 5}">
@@ -157,29 +202,8 @@
 
                                 <a href="#" data-load="true" data-url="portlet_ajax_content_1.html" class="reload"></a>
 
-
-                                <div id="display-lead-success-messages"></div>
-                                <div class="panel panel-white">
-                                    <div class="panel-heading clearfix">
-                                        <h3 class="panel-title">Links in alerts</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="alert alert-success" role="alert">
-                                            <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-                                        </div>
-                                        <div class="alert alert-info" role="alert">
-                                            <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
-                                        </div>
-                                        <div class="alert alert-warning" role="alert">
-                                            <strong>Warning!</strong> Better check yourself, you're <a href="#" class="alert-link">not looking too good</a>.
-                                        </div>
-                                        <div class="alert alert-danger" role="alert">
-                                            <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
-                                        </div>
-                                    </div>
-                                </div>
                                 <!-- Row | Contacts Panel -->
-                                <g:render template="/sharedTemplates/crm/crm-contact"/>
+                                <g:render template="/sharedTemplates/crm/crm-contact" />
                             </div>
                         </div>
                     </div>
@@ -206,10 +230,13 @@
                 </div>
             </div>
         </div>
+
+
+
     </div><!-- Row -->
 </div>
 <!-- END CONTACTS PANEL -->
 
 <!-- START CONTACT ACTIVITY MODALS -->
-<g:render template="/sharedTemplates/modals/activity-modals"/>
+<g:render template="/sharedTemplates/modals/activity-modals" model="[lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts]"/>
 <!-- END CONTACT ACTIVITY MODALS -->

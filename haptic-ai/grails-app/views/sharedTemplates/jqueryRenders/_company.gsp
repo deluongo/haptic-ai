@@ -1,7 +1,37 @@
+<%@ page import="haptic.crm.Lead" %>
 <!-- Row | CRM Panel -->
 <div class="row">
     <div class="col-md-7">
 
+
+        <!-- LANDING PAGE - No Lead Default -->
+        <g:if test="${!(lead instanceof haptic.crm.Lead)}">
+            <!-- Welcome Message -->
+            <div class="row">
+                <!-- Row -->
+                <div class="panel panel-white">
+
+                    <div class="panel-heading">
+                        <h2> HAPTIC AI - Dashboard</h2>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row ">
+                            <div class="panel panel-white">
+                                <div class="panel-body">
+                                    <p> Welcome ${currentUser} - Select a lead from the left hand list to research and engage a prospect!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Welcome Message -->
+        </g:if>
+
+
+
+        <g:else>
         <div class="row padding-10-w">
             <div class="panel panel-white margin-10-b">
                 <div class="panel-body">
@@ -124,6 +154,10 @@
                 </div>
             </div>
         </div>
+
+        </g:else>
+
+
     </div>
 </div>
 <!-- Row -->

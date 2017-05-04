@@ -5,19 +5,23 @@
             <tbody>
             <tr>
                 <td>Salutation</td>
-                <td><a href="#" id="salutation"  data-type="select" data-pk="1" data-source="/salutations" data-title="Select salutation" class="editable editable-click editable-empty" style="color: gray;"></a></td>
+                <td><a href="#" id="salutation"  data-type="select" data-pk="1" data-source="/salutations" data-title="Select salutation" class="editable editable-click editable-empty" style="color: gray;">
+                    ${activeContact?.salutation}</a></td>
             </tr>
             <tr>
                 <td>First Name</td>
-                <td><a href="#" id="firstName" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your first name" class="editable editable-click editable-empty"></a></td>
+                <td><a href="#" id="firstName" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your first name" class="editable editable-click editable-empty">
+                    ${activeContact?.firstName}</a></td>
             </tr>
             <tr>
                 <td>Last Name</td>
-                <td><a href="#" id="lastName" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your last name" class="editable editable-click editable-empty"></a></td>
+                <td><a href="#" id="lastName" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your last name" class="editable editable-click editable-empty">
+                    ${activeContact?.lastName}</a></td>
             </tr>
             <tr>
                 <td>Gender</td>
-                <td><a href="#" id="gender" data-type="select" data-pk="1" data-value="" data-source="/genders" data-title="Select gender" class="editable editable-click" style="color: gray;">unknown</a></td>
+                <td><a href="#" id="gender" data-type="select" data-pk="1" data-value="" data-source="/genders" data-title="Select gender" class="editable editable-click" style="color: gray;">
+                    ${activeContact?.gender}</a></td>
             </tr>
             </tbody>
         </table>
@@ -54,7 +58,7 @@
 
 <h3> Contact Info </h3>
 
-<contactInfo:allDetails source="${contact ?: []}" ></contactInfo:allDetails>
+<contactInfo:allDetails source="${activeContact ?: []}" ></contactInfo:allDetails>
 
 <!-- Modals -->
 <g:render template="/sharedTemplates/modals/contact-info-modals"/>
