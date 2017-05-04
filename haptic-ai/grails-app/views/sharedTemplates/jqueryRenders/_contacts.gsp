@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <h1>Status ${lead?.status}</h1>
-                            <h1>${lead?.contacts}</h1>
+                            <h1>${lead?.company?.contacts}</h1>
 
                             <div class="panel-body padding-0-i">
                                 <div class="tabs-left" role="tabpanel">
@@ -65,9 +65,19 @@
                                     <ul class="nav nav-tabs" role="tablist">
 
                                         <g:each status="i" in="${allContacts}" var="contact">
-                                            <li role="presentation" <g:if test="${contact == activeContact}"> class="active" disabled </g:if> >
-                                                <a href="#tab9" role="tab" data-toggle="tab"><p class="contact-name-tabs">
-                                               ${contact.firstName} ${contact.lastName} <small class="contact-panel-job-title">, ${contact.jobTitle}</small></p></a></li>
+                                            <g:if test="${i < 5}">
+                                                <li role="presentation" <g:if test="${contact == activeContact}"> class="active" disabled </g:if> >
+                                                    <a href="#tab9" role="tab" data-toggle="tab">
+                                                        <p class="contact-name-tabs">
+                                                            ${contact.firstName} ${contact.lastName} <small class="contact-panel-job-title">, ${contact.jobTitle}</small>
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                            </g:if>
+                                            <g:if test="${i >= 5}">
+
+                                            </g:if>
+
                                         </g:each>
 
                                         <li role="presentation" class="active" disabled><a href="#tab9" role="tab" data-toggle="tab"><p class="contact-name-tabs">

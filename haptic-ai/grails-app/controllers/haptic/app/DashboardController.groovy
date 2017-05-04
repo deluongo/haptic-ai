@@ -116,11 +116,11 @@ class DashboardController {
             flash.message = "You aren't authorized to create new blog posts for ${person.firstName} ${person.lastName}"
         }
         */
-        def active_contact_idx = 0;
+        def active_contact_idx = 0
         /*  --------------            *** Load Form Results ***         ---------------  */
         def leadCompany = lead.company
-        def activeContact = lead.company.contacts[active_contact_idx]
-        def allContacts = lead.contacts
+        def activeContact = leadCompany.contacts[active_contact_idx]
+        def allContacts = leadCompany.contacts
 
         /*
         def leadTimeLine = lead.timeLine
