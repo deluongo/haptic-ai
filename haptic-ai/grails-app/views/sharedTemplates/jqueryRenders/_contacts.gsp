@@ -75,29 +75,22 @@
                                                 </li>
                                             </g:if>
                                             <g:if test="${i >= 5}">
-
+                                                <li role="presentation" class="dropdown">
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><p class="contact-name-tabs">
+                                                        Dropdown<span class="caret"></span></p>
+                                                    </a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li class="">
+                                                            <a href="#tab32" role="tab" data-toggle="tab" aria-expanded="false">
+                                                                <p class="contact-name-tabs">
+                                                                    ${contact.firstName} ${contact.lastName} <small class="contact-panel-job-title">, ${contact.jobTitle}</small>
+                                                                </p>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
                                             </g:if>
-
                                         </g:each>
-
-                                        <li role="presentation" class="active" disabled><a href="#tab9" role="tab" data-toggle="tab"><p class="contact-name-tabs">
-                                            Bill Gates<small class="contact-panel-job-title">, CEO</small></p></a></li>
-                                        <li role="presentation"><a href="#tab10" role="tab" data-toggle="tab"><p class="contact-name-tabs">
-                                            Bob Minor<small class="contact-panel-job-title">, CTO</small></p></a></li>
-                                        <li role="presentation"><a href="#tab11" role="tab" data-toggle="tab"><p class="contact-name-tabs">
-                                            Justin Cooperman<small class="contact-panel-job-title">, Head of Engineering</small></p></a></li>
-                                        <li role="presentation"><a href="#tab12" role="tab" data-toggle="tab"><p class="contact-name-tabs">
-                                            Devon Luongo<small class="contact-panel-job-title">, Product Manager</small></p></a></li>
-                                        <li role="presentation" class="dropdown">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><p class="contact-name-tabs">
-                                                Dropdown<span class="caret"></span></p>
-                                            </a>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li class=""><a href="#tab32" role="tab" data-toggle="tab" aria-expanded="false">Steph Curry, <small>Brand Icon</small></a></li>
-                                                <li class=""><a href="#tab33" role="tab" data-toggle="tab" aria-expanded="false">Jim Beam, <small>SDR</small></a></li>
-                                            </ul>
-                                        </li>
-
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content padding-0-i">
