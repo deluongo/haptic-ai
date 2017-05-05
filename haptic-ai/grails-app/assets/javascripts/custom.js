@@ -434,6 +434,8 @@ $('.editable').on('hidden', function(e, reason){
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
     //
+
+
     $(document).on("click", ".editable", function(){
         $('#salutation').editable({
             showbuttons: false,
@@ -1048,9 +1050,7 @@ $('.editable').on('hidden', function(e, reason){
     // Display lead specific content
     $('#master-lead-list li a').on("click", function(event){
 
-        var html_id = this.id;
-        console.log(html_id);
-        var lead_id = html_id.split("-")[2];
+        var lead_id = this.id.split("-")[2];
         console.log(lead_id);
 
 
@@ -1084,40 +1084,77 @@ $('.editable').on('hidden', function(e, reason){
             //prevent the link from refreshing page
 
         });
+
+
         return false;
     });
 
+    $(document).on("click", ".change-active-contact-button li a", function(){
+
+            var contact_id = this.id.split("-")[2];
+            console.log(contact_id);
+            var lead_id = this.id.split("-")[3];
+            console.log("deep-ajax");
+
+
+            $.ajax({
+                type: "POST",
+                url: "/dashboard/viewLead",
+                data: {'leadIndex': lead_id, "contactIndex": contact_id},
+                dataType: 'html',
+                success: function (response) {
+
+                    $('#display-lead-success-messages').append(
+                        '<div class="alert alert-success" role="alert">' +
+                        '<span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-green w3-large w3-display-topright">×</span>' +
+                        '<h3> Success! </h3><p class="alert-link">A new post was successfully published to your blog.</p>' +
+                        '</div>');
+
+                    //console.log(response)
+                    $('#contacts-render-target').html(response);
+
+                },
+                error: function () {
+                    $('#display-lead-error-messages').append('' +
+                        '<div class="alert alert-success" role="alert">' +
+                        '<span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-red w3-large w3-display-topright">×</span>' +
+                        '<h3> Error! </h3>' +
+                        '<p> Something went wrong. Please try again. </p>' +
+                        '</div>');
+                }
+
+                //$('#container-details').html(data); }
+                //prevent the link from refreshing page
+
+            });
+            return false;
+    });
+
+    $("table.planning_grid").on({
+        mouseenter: function() {
+            // Handle mouseenter...
+        },
+        mouseleave: function() {
+            // Handle mouseleave...
+        },
+        click: function() {
+            // Handle click...
+        }
+    }, "td");
+
+
+
+
+
+
     //Display contact specific content
-    $('.update-active-contact-button li a').on("click", function(event){
-
-        var html_id = this.id;
-        console.log(html_id);
-        var lead_id = html_id.split("-")[2];
-        console.log(lead_id);
+    $('.contact-action-buttons').on("click", function(event){
+        console.log("HI!!!!!!!!!!")
+        //var activeContact = $('.contact-action-buttons').val()
+        $('#sent-to-email-address option').val("1")
 
 
-        $.ajax({
-            type: "POST",
-            url: "/dashboard/viewLead",
-            data: {'leadIndex': lead_id},
-            dataType: 'html',
-            success: function (response) {
 
-                $('#display-lead-success-messages').append('<div class="w3-panel w3-card-4 w3-green w3-display-container w3-padding w3-margin"><span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-green w3-large w3-display-topright">×</span><h3> Success! </h3><p>A new post was successfully published to your blog.</p></div>');
-
-                console.log(response)
-                $('#contacts-render-target').html(response);
-
-            },
-            error: function () {
-                $('#display-lead-error-messages').append('<div class="w3-panel w3-card-4 w3-red w3-display-container w3-padding w3-margin"><span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-red w3-large w3-display-topright">×</span><h3> Error! </h3><p> You\'ve encountered a validation error. Please make sure your form contents match the placeholder requirements. </p></div>');
-            }
-
-            //$('#container-details').html(data); }
-            //prevent the link from refreshing page
-
-        });
-        return false;
     });
 
 

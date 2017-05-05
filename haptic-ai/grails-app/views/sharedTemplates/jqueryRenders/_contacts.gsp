@@ -107,12 +107,12 @@
                             <div class="panel-body padding-0-i">
                                 <div class="tabs-left" role="tabpanel">
                                     <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs" id="lead-panel-tab-label" class="change-active-contact-button" role="tablist">
+                                    <ul class="nav nav-tabs change-active-contact-button" id="lead-panel-tab-label" role="tablist">
 
-                                        <g:each status="i" in="${allContacts}" var="contact">
+                                        <g:each status="i" in="${allContacts?.sort()}" var="contact">
                                             <g:if test="${i < 5}">
                                                 <li role="presentation" <g:if test="${contact == activeContact}"> class="active" disabled </g:if> >
-                                                    <a href="#tab9" role="tab" data-toggle="tab">
+                                                    <a href="#tab9" role="tab" id="select-contact-${contact.id}-${lead.id}" data-toggle="tab">
                                                         <p class="contact-name-tabs">
                                                             ${contact.firstName} ${contact.lastName} <small class="contact-panel-job-title">, ${contact.jobTitle}</small>
                                                         </p>

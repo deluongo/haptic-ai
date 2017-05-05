@@ -1,6 +1,7 @@
 package haptic.app
 
 import grails.plugin.springsecurity.annotation.Secured
+import haptic.crm.Contact
 import haptic.crm.Lead
 import haptic.fields.EmailAddress
 import static org.springframework.http.HttpStatus.*
@@ -79,7 +80,6 @@ class DashboardController {
      *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~~~~~~ SHOW PLAYER STATS ~~~~~~~~~~~
      *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     def viewLead() {
-        print("HI")
         //String personIndex, String tabIndex, String postTitle, String postDescription, String backgroundImage, String blogText
 
         /*------------------------------------------*
@@ -96,21 +96,20 @@ class DashboardController {
         *     -
         /*---------------------------------------------------------------------------------------------*/
 
-        def leadIndex = params.list('leadIndex')
+        def leadIndex = params.list('leadIndex') ?: 1
+        def contactIndex = params.list('contactIndex') ?: 1
         //def validation_error = []
         //String personIndex, String tabIndex,
 
         /*  --------------              *** Select Player ***           ---------------  */
         flash.message = "We've hit a snag. Details of this lead can't be displayed. Please refresh and try again."
 
-        println("LEAD ------------- \n\n\n\n\n")
-        print(params)
-        println("LEAD ------------- \n\n\n\n\n")
+
 
         //println(lead)
-        println(leadIndex[0])
 
-        def lead = Lead.get("${leadIndex[0]}")
+
+        def lead = Lead.get(leadIndex)
 
 
         /*  --------------            *** Authenticate User ***         ---------------  */
@@ -121,14 +120,21 @@ class DashboardController {
             flash.message = "You aren't authorized to create new blog posts for ${person.firstName} ${person.lastName}"
         }
         */
-        def active_contact_idx = 0
-
 
 
         /*  --------------            *** Load Form Results ***         ---------------  */
         def leadCompany = lead.company
-        def activeContact = leadCompany.contacts[active_contact_idx]
-        def allContacts = leadCompany.contacts
+        def activeContact = Contact.get(contactIndex)
+        def allContacts = leadCompany.contacts.sort()
+
+
+        println("\n\n\n" + " ----------- LEAD ------------- \n")
+        print(contactIndex)
+        print(activeContact.firstName)
+        println(lead.leadStatus)
+        println(allContacts)
+        println("\n" + " ----------- LEAD -------------" + "\n\n\n")
+
 
         /*
         def leadTimeLine = lead.timeLine
