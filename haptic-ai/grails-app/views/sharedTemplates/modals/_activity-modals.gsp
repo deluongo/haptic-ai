@@ -2,12 +2,14 @@
 <!-- Email Address Model -->
 <div class="container">
     <!-- Modal -->
+
     <div class="modal fade" id="send-new-email-modal" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header" style="padding:35px 50px;">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h2 class="no-m m-b-lg">Lead Outreach</h2>
+                    <h2> activeContact.firstName</h2>
                 </div>
                 <hr>
                 <div class="modal-body remove-margin-b padding-0-i">

@@ -1,4 +1,5 @@
 <div class = "row">
+
     <div class="col-xs-6">
         <h3 class="margin-0-t-i">Personal</h3>
         <table id="personal-details" class="table table-bordered table-striped" style="clear: both">
@@ -26,6 +27,7 @@
             </tbody>
         </table>
     </div>
+
     <div class="col-xs-6">
         <h3 class="margin-0-t-i">Professional</h3>
         <table id="professional-details" class="table table-bordered table-striped" style="clear: both">

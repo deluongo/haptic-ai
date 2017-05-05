@@ -434,7 +434,7 @@ $('.editable').on('hidden', function(e, reason){
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
     //
-    $(document).on("click", "#salutation", function(){
+    $(document).on("click", ".editable", function(){
         $('#salutation').editable({
             showbuttons: false,
             emptytext: 'unknown',
@@ -442,477 +442,198 @@ $('.editable').on('hidden', function(e, reason){
                 if($.trim(value) == '') return 'This field is required';
             }
         });
-    });
-
-    $.mockjax({
-        url: '/salutations',
-        response: function(settings) {
-            this.responseText = [
-                {value: 0, text: 'Mr.'},
-                {value: 1, text: 'Mrs.'},
-                {value: 2, text: 'Ms.'},
-                {value: 3, text: 'Dr.'},
-                {value: 4, text: 'Sir'},
-                {value: 5, text: 'Professor'}
-            ];
-            log(settings, this);
-        }
-    });
 
 
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~~~~ NAME ~~~~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#firstName').editable({
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
-
-    $('#lastName').editable({
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
-
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~~~ GENDER ~~~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#gender').editable({
-        showbuttons: false,
-        emptyText: 'unknown'
-    });
-
-    $.mockjax({
-        url: '/genders',
-        response: function(settings) {
-            this.responseText = [
-                {value: 0, text: 'Male'},
-                {value: 1, text: 'Female'},
-                {value: 2, text: 'Trans'},
-                {value: 3, text: 'Other'}
-            ];
-            log(settings, this);
-        }
-    });
-
-/*  -------------------         *** Professional Details ***        -------------------  */
-
-
-    // *** Enable Dependent Lists *** //
-    var department_role_sources = {
-        1: [{value: 11, text: 'Sales Development'}, {value: 12, text: 'Account Management'}, {value: 22, text: 'Customer Success'}],
-        2: [{value: 21, text: 'Product Marketing'}, {value: 22, text: 'Lead Generation'}],
-        3: [{value: 31, text: 'Product Management'}, {value: 32, text: 'Software Engineer'}, {value: 33, text: 'Dev Ops'}, {value: 34, text: 'Code Testing'}, {value: 35, text: 'IT'}],
-        4: [{value: 41, text: 'Customer Support'}, {value: 42, text: 'Onsite Specialist'}, {value: 43, text: 'Technical Writing'}],
-        5: [{value: 51, text: 'Customer Onboarding'}, {value: 52, text: 'Job Training'}]
-    };
-
-
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~ DEPARTMENT ~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#department').editable({
-        showbuttons: false,
-        emptyText: 'unknown',
-        success: function(response, newValue) {
-            $('#jobRole').editable('option', 'source', department_role_sources[newValue]);
-            $('#jobRole').editable('setValue', null);
-        }
-    });
-
-    $.mockjax({
-        url: '/departments',
-        response: function(settings) {
-            this.responseText = [
-                {value: 1, text: 'Sales'},
-                {value: 2, text: 'Marketing'},
-                {value: 3, text: 'Engineering'},
-                {value: 4, text: 'Support'},
-                {value: 5, text: 'Training & Education'}
-            ];
-            log(settings, this);
-        }
-    });
-
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~~ JOB ROLE ~~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#jobRole').editable({
-        showbuttons: false,
-        emptyText: 'unknown'
-    });
-
-    $.mockjax({
-        url: '/roles',
-        response: function(settings) {
-            this.responseText = [
-                {value: 11, text: 'Sales Development'}, {value: 12, text: 'Account Management'}, {value: 22, text: 'Customer Success'},
-                {value: 21, text: 'Product Marketing'}, {value: 22, text: 'Lead Generation'}, {value: 31, text: 'Product Management'},
-                {value: 32, text: 'Software Engineer'}, {value: 33, text: 'Dev Ops'}, {value: 34, text: 'Code Testing'}, {value: 35, text: 'IT'},
-                {value: 41, text: 'Customer Support'}, {value: 42, text: 'Onsite Specialist'}, {value: 43, text: 'Technical Writing'},
-                {value: 51, text: 'Customer Onboarding'}, {value: 52, text: 'Job Training'}
-            ];
-            log(settings, this);
-        }
-    });
-
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~ JOB TITLE ~~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#jobTitle').editable({
-        showbuttons: false,
-        emptyText: 'unknown'
-    });
-
-    $.mockjax({
-        url: '/titles',
-        response: function(settings) {
-            this.responseText = [
-                {value: 0, text: 'Independent Contractor'},
-                {value: 1, text: 'Entry Level'},
-                {value: 2, text: 'Manager'},
-                {value: 4, text: 'Director'},
-                {value: 5, text: 'Executive'},
-                {value: 6, text: 'Vice President'},
-                {value: 7, text: 'C-Level Executive'},
-                {value: 8, text: 'CEO'}
-            ];
-            log(settings, this);
-        }
-    });
-
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~ JOB DESCRIPTION ~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#jobDescription').editable({
-        showbuttons: 'bottom'
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
-
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~~~ COMPANY ~~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    var company = [];
-    $.each({"MS": "Microsoft", "P&G": "Proctor & Gamble"}, function(k, v) {
-        company.push({id: k, text: v});
-    });
-
-    $('#company').editable({
-        source: company,
-        select2: {
-            width: 200,
-            placeholder: 'Select company',
-            allowClear: true
-        }
-    });
-
-
-                                     //~~~~~~~~~~~~~~~\\
-                                    //                 \\
-                                   //   CONTACT FIELDS  \\
-                                  //                     \\
-                                 //=======================\\
-                                //                         \\
-                               //           MODALS          \\
-                              //                             \\
-                             //   /\  /\  /\  /\  /\  /\  /\  \\
-                            //___/  \/  \/  \/  \/  \/  \/  \__\\
-
-
-/*  ______________________                                         ____________________  */
-/*  ====================== !!! ---*** FIELD DEFINITIONS ***--- !!! ====================  */
+        $.mockjax({
+            url: '/salutations',
+            response: function(settings) {
+                this.responseText = [
+                    {value: 0, text: 'Mr.'},
+                    {value: 1, text: 'Mrs.'},
+                    {value: 2, text: 'Ms.'},
+                    {value: 3, text: 'Dr.'},
+                    {value: 4, text: 'Sir'},
+                    {value: 5, text: 'Professor'}
+                ];
+                log(settings, this);
+            }
+        });
 
 
 
-/*  -------------------           *** Contact Details ***           -------------------  */
 
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~~~ EMAIL ~~~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#emailAddress').editable({
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~~~~ NAME ~~~~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-
-    $('#emailType').editable({
-        pk: 1,
-        limit: 3,
-        source: [
-            {value: 1, text: 'Primary'},
-            {value: 2, text: 'Secondary'},
-            {value: 3, text: 'Company'},
-            {value: 4, text: 'Personal'},
-            {value: 5, text: 'Junk'}
-        ]
-    });
-
-    $('#emailStatus').editable({
-        pk: 1,
-        limit: 3,
-        value: 'Unverified',
-        source: [
-            {value: 1, text: 'Unverified'},
-            {value: 2, text: 'Verified'},
-            {value: 3, text: 'Active'},
-            {value: 3, text: 'Inactive'},
-            {value: 4, text: 'Unsubscribed'},
-        ]
-    });
+        $('#firstName').editable({
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
 
 
 
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~~~ PHONE ~~~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#phoneNumber').editable({
-        tpl: '<input type="text" id ="phone-number-mask" class="mask">',
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
 
-    $(document).on("focus", "#phone-number-mask", function () {
-        $(this).mask("(999) 999-9999? x99999");
-    });
-
-    $('#phoneType').editable({
-        pk: 1,
-        limit: 3,
-        source: [
-            {value: 1, text: 'Primary'},
-            {value: 2, text: 'Secondary'},
-            {value: 3, text: 'Work'},
-            {value: 3, text: 'Operator/Receptionist'},
-            {value: 3, text: 'Automated Routing'},
-            {value: 4, text: 'Home'},
-            {value: 4, text: 'Cell'},
-            {value: 4, text: 'Conference Dial-In'},
-            {value: 5, text: 'Burner'}
-        ]
-    });
-
-    $('#phoneStatus').editable({
-        pk: 1,
-        limit: 3,
-        value: 'Unverified',
-        source: [
-            {value: 1, text: 'Unverified'},
-            {value: 2, text: 'Verified'},
-            {value: 3, text: 'Active'},
-            {value: 4, text: 'Inactive'},
-            {value: 5, text: 'Direct to Voicemail'},
-            {value: 6, text: 'Unsubscribed'}
-        ]
-    });
-
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~ SOCIAL NETWORK ~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#networkUrl').editable({
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
-
-    $('#networkName').editable({
-        showbuttons: 'bottom',
-        source: [
-            {value: 1, text: 'Linked In'},
-            {value: 2, text: 'Twitter'},
-            {value: 3, text: 'Facebook'},
-            {value: 4, text: 'Instagram'},
-            {value: 5, text: 'Snap Chat'},
-            {value: 6, text: 'Pinterist'}
-        ]
-    });
-
-    $('#socialNetworkHandel').editable({
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
-
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~ REVIEW SITE ~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#reviewSiteUrl').editable({
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
-
-    $('#reviewSiteName').editable({
-        showbuttons: 'bottom',
-        source: [
-            {value: 1, text: 'G2 Crowd'},
-            {value: 2, text: 'Yelp'},
-        ]
-    });
-
-    $('#reviewSiteHandel').editable({
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
-
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~~ WEB SITE ~~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-    $('#webSiteUrl').editable({
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
+        $('#lastName').editable({
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
 
 
-    $('#webSiteName').editable({
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~~~ GENDER ~~~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        $('#gender').editable({
+            showbuttons: false,
+            emptyText: 'unknown'
+        });
 
-    $('#webSiteType').editable({
-        showbuttons: 'bottom',
-        source: [
-            {value: 1, text: 'Living Resume'},
-            {value: 2, text: 'Project/Work Portfolio'},
-            {value: 3, text: 'Industry Blog'},
-            {value: 4, text: 'Personal Blog'},
-            {value: 5, text: 'Personal Website'},
-            {value: 6, text: 'Hobby / Interest'}
-        ]
-    });
+        $.mockjax({
+            url: '/genders',
+            response: function(settings) {
+                this.responseText = [
+                    {value: 0, text: 'Male'},
+                    {value: 1, text: 'Female'},
+                    {value: 2, text: 'Trans'},
+                    {value: 3, text: 'Other'}
+                ];
+                log(settings, this);
+            }
+        });
+
+    /*  -------------------         *** Professional Details ***        -------------------  */
 
 
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~~~ ADDRESS ~~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    var countries = [];
-    $.each({"BD": "Bangladesh", "BE": "Belgium", "BF": "Burkina Faso", "BG": "Bulgaria", "BA": "Bosnia and Herzegovina", "BB": "Barbados", "WF": "Wallis and Futuna", "BL": "Saint Bartelemey", "BM": "Bermuda", "BN": "Brunei Darussalam", "BO": "Bolivia", "BH": "Bahrain", "BI": "Burundi", "BJ": "Benin", "BT": "Bhutan", "JM": "Jamaica", "BV": "Bouvet Island", "BW": "Botswana", "WS": "Samoa", "BR": "Brazil", "BS": "Bahamas", "JE": "Jersey", "BY": "Belarus", "O1": "Other Country", "LV": "Latvia", "RW": "Rwanda", "RS": "Serbia", "TL": "Timor-Leste", "RE": "Reunion", "LU": "Luxembourg", "TJ": "Tajikistan", "RO": "Romania", "PG": "Papua New Guinea", "GW": "Guinea-Bissau", "GU": "Guam", "GT": "Guatemala", "GS": "South Georgia and the South Sandwich Islands", "GR": "Greece", "GQ": "Equatorial Guinea", "GP": "Guadeloupe", "JP": "Japan", "GY": "Guyana", "GG": "Guernsey", "GF": "French Guiana", "GE": "Georgia", "GD": "Grenada", "GB": "United Kingdom", "GA": "Gabon", "SV": "El Salvador", "GN": "Guinea", "GM": "Gambia", "GL": "Greenland", "GI": "Gibraltar", "GH": "Ghana", "OM": "Oman", "TN": "Tunisia", "JO": "Jordan", "HR": "Croatia", "HT": "Haiti", "HU": "Hungary", "HK": "Hong Kong", "HN": "Honduras", "HM": "Heard Island and McDonald Islands", "VE": "Venezuela", "PR": "Puerto Rico", "PS": "Palestinian Territory", "PW": "Palau", "PT": "Portugal", "SJ": "Svalbard and Jan Mayen", "PY": "Paraguay", "IQ": "Iraq", "PA": "Panama", "PF": "French Polynesia", "BZ": "Belize", "PE": "Peru", "PK": "Pakistan", "PH": "Philippines", "PN": "Pitcairn", "TM": "Turkmenistan", "PL": "Poland", "PM": "Saint Pierre and Miquelon", "ZM": "Zambia", "EH": "Western Sahara", "RU": "Russian Federation", "EE": "Estonia", "EG": "Egypt", "TK": "Tokelau", "ZA": "South Africa", "EC": "Ecuador", "IT": "Italy", "VN": "Vietnam", "SB": "Solomon Islands", "EU": "Europe", "ET": "Ethiopia", "SO": "Somalia", "ZW": "Zimbabwe", "SA": "Saudi Arabia", "ES": "Spain", "ER": "Eritrea", "ME": "Montenegro", "MD": "Moldova, Republic of", "MG": "Madagascar", "MF": "Saint Martin", "MA": "Morocco", "MC": "Monaco", "UZ": "Uzbekistan", "MM": "Myanmar", "ML": "Mali", "MO": "Macao", "MN": "Mongolia", "MH": "Marshall Islands", "MK": "Macedonia", "MU": "Mauritius", "MT": "Malta", "MW": "Malawi", "MV": "Maldives", "MQ": "Martinique", "MP": "Northern Mariana Islands", "MS": "Montserrat", "MR": "Mauritania", "IM": "Isle of Man", "UG": "Uganda", "TZ": "Tanzania, United Republic of", "MY": "Malaysia", "MX": "Mexico", "IL": "Israel", "FR": "France", "IO": "British Indian Ocean Territory", "FX": "France, Metropolitan", "SH": "Saint Helena", "FI": "Finland", "FJ": "Fiji", "FK": "Falkland Islands (Malvinas)", "FM": "Micronesia, Federated States of", "FO": "Faroe Islands", "NI": "Nicaragua", "NL": "Netherlands", "NO": "Norway", "NA": "Namibia", "VU": "Vanuatu", "NC": "New Caledonia", "NE": "Niger", "NF": "Norfolk Island", "NG": "Nigeria", "NZ": "New Zealand", "NP": "Nepal", "NR": "Nauru", "NU": "Niue", "CK": "Cook Islands", "CI": "Cote d'Ivoire", "CH": "Switzerland", "CO": "Colombia", "CN": "China", "CM": "Cameroon", "CL": "Chile", "CC": "Cocos (Keeling) Islands", "CA": "Canada", "CG": "Congo", "CF": "Central African Republic", "CD": "Congo, The Democratic Republic of the", "CZ": "Czech Republic", "CY": "Cyprus", "CX": "Christmas Island", "CR": "Costa Rica", "CV": "Cape Verde", "CU": "Cuba", "SZ": "Swaziland", "SY": "Syrian Arab Republic", "KG": "Kyrgyzstan", "KE": "Kenya", "SR": "Suriname", "KI": "Kiribati", "KH": "Cambodia", "KN": "Saint Kitts and Nevis", "KM": "Comoros", "ST": "Sao Tome and Principe", "SK": "Slovakia", "KR": "Korea, Republic of", "SI": "Slovenia", "KP": "Korea, Democratic People's Republic of", "KW": "Kuwait", "SN": "Senegal", "SM": "San Marino", "SL": "Sierra Leone", "SC": "Seychelles", "KZ": "Kazakhstan", "KY": "Cayman Islands", "SG": "Singapore", "SE": "Sweden", "SD": "Sudan", "DO": "Dominican Republic", "DM": "Dominica", "DJ": "Djibouti", "DK": "Denmark", "VG": "Virgin Islands, British", "DE": "Germany", "YE": "Yemen", "DZ": "Algeria", "US": "United States", "UY": "Uruguay", "YT": "Mayotte", "UM": "United States Minor Outlying Islands", "LB": "Lebanon", "LC": "Saint Lucia", "LA": "Lao People's Democratic Republic", "TV": "Tuvalu", "TW": "Taiwan", "TT": "Trinidad and Tobago", "TR": "Turkey", "LK": "Sri Lanka", "LI": "Liechtenstein", "A1": "Anonymous Proxy", "TO": "Tonga", "LT": "Lithuania", "A2": "Satellite Provider", "LR": "Liberia", "LS": "Lesotho", "TH": "Thailand", "TF": "French Southern Territories", "TG": "Togo", "TD": "Chad", "TC": "Turks and Caicos Islands", "LY": "Libyan Arab Jamahiriya", "VA": "Holy See (Vatican City State)", "VC": "Saint Vincent and the Grenadines", "AE": "United Arab Emirates", "AD": "Andorra", "AG": "Antigua and Barbuda", "AF": "Afghanistan", "AI": "Anguilla", "VI": "Virgin Islands, U.S.", "IS": "Iceland", "IR": "Iran, Islamic Republic of", "AM": "Armenia", "AL": "Albania", "AO": "Angola", "AN": "Netherlands Antilles", "AQ": "Antarctica", "AP": "Asia/Pacific Region", "AS": "American Samoa", "AR": "Argentina", "AU": "Australia", "AT": "Austria", "AW": "Aruba", "IN": "India", "AX": "Aland Islands", "AZ": "Azerbaijan", "IE": "Ireland", "ID": "Indonesia", "UA": "Ukraine", "QA": "Qatar", "MZ": "Mozambique"}, function(k, v) {
-        countries.push({id: k, text: v});
-    });
+        // *** Enable Dependent Lists *** //
+        var department_role_sources = {
+            1: [{value: 11, text: 'Sales Development'}, {value: 12, text: 'Account Management'}, {value: 22, text: 'Customer Success'}],
+            2: [{value: 21, text: 'Product Marketing'}, {value: 22, text: 'Lead Generation'}],
+            3: [{value: 31, text: 'Product Management'}, {value: 32, text: 'Software Engineer'}, {value: 33, text: 'Dev Ops'}, {value: 34, text: 'Code Testing'}, {value: 35, text: 'IT'}],
+            4: [{value: 41, text: 'Customer Support'}, {value: 42, text: 'Onsite Specialist'}, {value: 43, text: 'Technical Writing'}],
+            5: [{value: 51, text: 'Customer Onboarding'}, {value: 52, text: 'Job Training'}]
+        };
 
-    $('#locationName').editable({
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
 
-    $('#locationType').editable({
-        value: 1,
-        showbuttons: 'bottom',
-        source: [
-            {value: 1, text: 'Main Office'},
-            {value: 2, text: 'Satellite Office'},
-            {value: 3, text: 'Home Office'},
-            {value: 4, text: 'Conference/Event Hall'},
-            {value: 5, text: 'Restaurant'},
-            {value: 6, text: 'Meeting Local'}
-        ]
-    });
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~ DEPARTMENT ~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        $('#department').editable({
+            showbuttons: false,
+            emptyText: 'unknown',
+            success: function(response, newValue) {
+                $('#jobRole').editable('option', 'source', department_role_sources[newValue]);
+                $('#jobRole').editable('setValue', null);
+            }
+        });
 
-    $('#country').editable({
-        source: countries,
-        value: "United States",
-        select2: {
-            width: 200,
-            placeholder: 'Select country',
-            allowClear: true
-        }
-    });
+        $.mockjax({
+            url: '/departments',
+            response: function(settings) {
+                this.responseText = [
+                    {value: 1, text: 'Sales'},
+                    {value: 2, text: 'Marketing'},
+                    {value: 3, text: 'Engineering'},
+                    {value: 4, text: 'Support'},
+                    {value: 5, text: 'Training & Education'}
+                ];
+                log(settings, this);
+            }
+        });
 
-    $('#state').editable({
-        typeahead: {
-            name: 'state',
-            local: ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
-        }
-    });
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~~ JOB ROLE ~~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        $('#jobRole').editable({
+            showbuttons: false,
+            emptyText: 'unknown'
+        });
 
-    $('#street').editable({
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
+        $.mockjax({
+            url: '/roles',
+            response: function(settings) {
+                this.responseText = [
+                    {value: 11, text: 'Sales Development'}, {value: 12, text: 'Account Management'}, {value: 22, text: 'Customer Success'},
+                    {value: 21, text: 'Product Marketing'}, {value: 22, text: 'Lead Generation'}, {value: 31, text: 'Product Management'},
+                    {value: 32, text: 'Software Engineer'}, {value: 33, text: 'Dev Ops'}, {value: 34, text: 'Code Testing'}, {value: 35, text: 'IT'},
+                    {value: 41, text: 'Customer Support'}, {value: 42, text: 'Onsite Specialist'}, {value: 43, text: 'Technical Writing'},
+                    {value: 51, text: 'Customer Onboarding'}, {value: 52, text: 'Job Training'}
+                ];
+                log(settings, this);
+            }
+        });
 
-    $('#zip').editable({
-        tpl: '<input type="text" id ="zip-code-mask" class="mask">',
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
-    });
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~ JOB TITLE ~~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-    $(document).on("focus", "#zip-code-mask", function () {
-        $(this).mask("99999-999");
-    });
+        $('#jobTitle').editable({
+            showbuttons: false,
+            emptyText: 'unknown'
+        });
 
+        $.mockjax({
+            url: '/titles',
+            response: function(settings) {
+                this.responseText = [
+                    {value: 0, text: 'Independent Contractor'},
+                    {value: 1, text: 'Entry Level'},
+                    {value: 2, text: 'Manager'},
+                    {value: 4, text: 'Director'},
+                    {value: 5, text: 'Executive'},
+                    {value: 6, text: 'Vice President'},
+                    {value: 7, text: 'C-Level Executive'},
+                    {value: 8, text: 'CEO'}
+                ];
+                log(settings, this);
+            }
+        });
+
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~ JOB DESCRIPTION ~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        $('#jobDescription').editable({
+            showbuttons: 'bottom'
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
+
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~~~ COMPANY ~~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        var company = [];
+        $.each({"MS": "Microsoft", "P&G": "Proctor & Gamble"}, function(k, v) {
+            company.push({id: k, text: v});
+        });
+
+        $('#company').editable({
+            source: company,
+            select2: {
+                width: 200,
+                placeholder: 'Select company',
+                allowClear: true
+            }
+        });
 
 
                                          //~~~~~~~~~~~~~~~\\
                                         //                 \\
-                                       //      COMPANY      \\
+                                       //   CONTACT FIELDS  \\
                                       //                     \\
                                      //=======================\\
                                     //                         \\
-                                   //            CRM            \\
+                                   //           MODALS          \\
                                   //                             \\
                                  //   /\  /\  /\  /\  /\  /\  /\  \\
                                 //___/  \/  \/  \/  \/  \/  \/  \__\\
@@ -922,65 +643,352 @@ $('.editable').on('hidden', function(e, reason){
     /*  ====================== !!! ---*** FIELD DEFINITIONS ***--- !!! ====================  */
 
 
-    /*  -------------------           *** Personal Details ***          -------------------  */
+
+    /*  -------------------           *** Contact Details ***           -------------------  */
+
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~~~ EMAIL ~~~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        $('#emailAddress').editable({
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
 
 
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~~~~ NAME ~~~~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#companyName').editable({
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    }).on('shown', function(ev, editable) {
-        setTimeout(function() {
-            editable.input.$input.select();
-        },0);
+        $('#emailType').editable({
+            pk: 1,
+            limit: 3,
+            source: [
+                {value: 1, text: 'Primary'},
+                {value: 2, text: 'Secondary'},
+                {value: 3, text: 'Company'},
+                {value: 4, text: 'Personal'},
+                {value: 5, text: 'Junk'}
+            ]
+        });
+
+        $('#emailStatus').editable({
+            pk: 1,
+            limit: 3,
+            value: 'Unverified',
+            source: [
+                {value: 1, text: 'Unverified'},
+                {value: 2, text: 'Verified'},
+                {value: 3, text: 'Active'},
+                {value: 3, text: 'Inactive'},
+                {value: 4, text: 'Unsubscribed'},
+            ]
+        });
+
+
+
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~~~ PHONE ~~~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        $('#phoneNumber').editable({
+            tpl: '<input type="text" id ="phone-number-mask" class="mask">',
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
+
+        $(document).on("focus", "#phone-number-mask", function () {
+            $(this).mask("(999) 999-9999? x99999");
+        });
+
+        $('#phoneType').editable({
+            pk: 1,
+            limit: 3,
+            source: [
+                {value: 1, text: 'Primary'},
+                {value: 2, text: 'Secondary'},
+                {value: 3, text: 'Work'},
+                {value: 3, text: 'Operator/Receptionist'},
+                {value: 3, text: 'Automated Routing'},
+                {value: 4, text: 'Home'},
+                {value: 4, text: 'Cell'},
+                {value: 4, text: 'Conference Dial-In'},
+                {value: 5, text: 'Burner'}
+            ]
+        });
+
+        $('#phoneStatus').editable({
+            pk: 1,
+            limit: 3,
+            value: 'Unverified',
+            source: [
+                {value: 1, text: 'Unverified'},
+                {value: 2, text: 'Verified'},
+                {value: 3, text: 'Active'},
+                {value: 4, text: 'Inactive'},
+                {value: 5, text: 'Direct to Voicemail'},
+                {value: 6, text: 'Unsubscribed'}
+            ]
+        });
+
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~ SOCIAL NETWORK ~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        $('#networkUrl').editable({
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
+
+        $('#networkName').editable({
+            showbuttons: 'bottom',
+            source: [
+                {value: 1, text: 'Linked In'},
+                {value: 2, text: 'Twitter'},
+                {value: 3, text: 'Facebook'},
+                {value: 4, text: 'Instagram'},
+                {value: 5, text: 'Snap Chat'},
+                {value: 6, text: 'Pinterist'}
+            ]
+        });
+
+        $('#socialNetworkHandel').editable({
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
+
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~ REVIEW SITE ~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        $('#reviewSiteUrl').editable({
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
+
+        $('#reviewSiteName').editable({
+            showbuttons: 'bottom',
+            source: [
+                {value: 1, text: 'G2 Crowd'},
+                {value: 2, text: 'Yelp'},
+            ]
+        });
+
+        $('#reviewSiteHandel').editable({
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
+
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~~ WEB SITE ~~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+        $('#webSiteUrl').editable({
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
+
+
+        $('#webSiteName').editable({
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
+
+        $('#webSiteType').editable({
+            showbuttons: 'bottom',
+            source: [
+                {value: 1, text: 'Living Resume'},
+                {value: 2, text: 'Project/Work Portfolio'},
+                {value: 3, text: 'Industry Blog'},
+                {value: 4, text: 'Personal Blog'},
+                {value: 5, text: 'Personal Website'},
+                {value: 6, text: 'Hobby / Interest'}
+            ]
+        });
+
+
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~~~ ADDRESS ~~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        var countries = [];
+        $.each({"BD": "Bangladesh", "BE": "Belgium", "BF": "Burkina Faso", "BG": "Bulgaria", "BA": "Bosnia and Herzegovina", "BB": "Barbados", "WF": "Wallis and Futuna", "BL": "Saint Bartelemey", "BM": "Bermuda", "BN": "Brunei Darussalam", "BO": "Bolivia", "BH": "Bahrain", "BI": "Burundi", "BJ": "Benin", "BT": "Bhutan", "JM": "Jamaica", "BV": "Bouvet Island", "BW": "Botswana", "WS": "Samoa", "BR": "Brazil", "BS": "Bahamas", "JE": "Jersey", "BY": "Belarus", "O1": "Other Country", "LV": "Latvia", "RW": "Rwanda", "RS": "Serbia", "TL": "Timor-Leste", "RE": "Reunion", "LU": "Luxembourg", "TJ": "Tajikistan", "RO": "Romania", "PG": "Papua New Guinea", "GW": "Guinea-Bissau", "GU": "Guam", "GT": "Guatemala", "GS": "South Georgia and the South Sandwich Islands", "GR": "Greece", "GQ": "Equatorial Guinea", "GP": "Guadeloupe", "JP": "Japan", "GY": "Guyana", "GG": "Guernsey", "GF": "French Guiana", "GE": "Georgia", "GD": "Grenada", "GB": "United Kingdom", "GA": "Gabon", "SV": "El Salvador", "GN": "Guinea", "GM": "Gambia", "GL": "Greenland", "GI": "Gibraltar", "GH": "Ghana", "OM": "Oman", "TN": "Tunisia", "JO": "Jordan", "HR": "Croatia", "HT": "Haiti", "HU": "Hungary", "HK": "Hong Kong", "HN": "Honduras", "HM": "Heard Island and McDonald Islands", "VE": "Venezuela", "PR": "Puerto Rico", "PS": "Palestinian Territory", "PW": "Palau", "PT": "Portugal", "SJ": "Svalbard and Jan Mayen", "PY": "Paraguay", "IQ": "Iraq", "PA": "Panama", "PF": "French Polynesia", "BZ": "Belize", "PE": "Peru", "PK": "Pakistan", "PH": "Philippines", "PN": "Pitcairn", "TM": "Turkmenistan", "PL": "Poland", "PM": "Saint Pierre and Miquelon", "ZM": "Zambia", "EH": "Western Sahara", "RU": "Russian Federation", "EE": "Estonia", "EG": "Egypt", "TK": "Tokelau", "ZA": "South Africa", "EC": "Ecuador", "IT": "Italy", "VN": "Vietnam", "SB": "Solomon Islands", "EU": "Europe", "ET": "Ethiopia", "SO": "Somalia", "ZW": "Zimbabwe", "SA": "Saudi Arabia", "ES": "Spain", "ER": "Eritrea", "ME": "Montenegro", "MD": "Moldova, Republic of", "MG": "Madagascar", "MF": "Saint Martin", "MA": "Morocco", "MC": "Monaco", "UZ": "Uzbekistan", "MM": "Myanmar", "ML": "Mali", "MO": "Macao", "MN": "Mongolia", "MH": "Marshall Islands", "MK": "Macedonia", "MU": "Mauritius", "MT": "Malta", "MW": "Malawi", "MV": "Maldives", "MQ": "Martinique", "MP": "Northern Mariana Islands", "MS": "Montserrat", "MR": "Mauritania", "IM": "Isle of Man", "UG": "Uganda", "TZ": "Tanzania, United Republic of", "MY": "Malaysia", "MX": "Mexico", "IL": "Israel", "FR": "France", "IO": "British Indian Ocean Territory", "FX": "France, Metropolitan", "SH": "Saint Helena", "FI": "Finland", "FJ": "Fiji", "FK": "Falkland Islands (Malvinas)", "FM": "Micronesia, Federated States of", "FO": "Faroe Islands", "NI": "Nicaragua", "NL": "Netherlands", "NO": "Norway", "NA": "Namibia", "VU": "Vanuatu", "NC": "New Caledonia", "NE": "Niger", "NF": "Norfolk Island", "NG": "Nigeria", "NZ": "New Zealand", "NP": "Nepal", "NR": "Nauru", "NU": "Niue", "CK": "Cook Islands", "CI": "Cote d'Ivoire", "CH": "Switzerland", "CO": "Colombia", "CN": "China", "CM": "Cameroon", "CL": "Chile", "CC": "Cocos (Keeling) Islands", "CA": "Canada", "CG": "Congo", "CF": "Central African Republic", "CD": "Congo, The Democratic Republic of the", "CZ": "Czech Republic", "CY": "Cyprus", "CX": "Christmas Island", "CR": "Costa Rica", "CV": "Cape Verde", "CU": "Cuba", "SZ": "Swaziland", "SY": "Syrian Arab Republic", "KG": "Kyrgyzstan", "KE": "Kenya", "SR": "Suriname", "KI": "Kiribati", "KH": "Cambodia", "KN": "Saint Kitts and Nevis", "KM": "Comoros", "ST": "Sao Tome and Principe", "SK": "Slovakia", "KR": "Korea, Republic of", "SI": "Slovenia", "KP": "Korea, Democratic People's Republic of", "KW": "Kuwait", "SN": "Senegal", "SM": "San Marino", "SL": "Sierra Leone", "SC": "Seychelles", "KZ": "Kazakhstan", "KY": "Cayman Islands", "SG": "Singapore", "SE": "Sweden", "SD": "Sudan", "DO": "Dominican Republic", "DM": "Dominica", "DJ": "Djibouti", "DK": "Denmark", "VG": "Virgin Islands, British", "DE": "Germany", "YE": "Yemen", "DZ": "Algeria", "US": "United States", "UY": "Uruguay", "YT": "Mayotte", "UM": "United States Minor Outlying Islands", "LB": "Lebanon", "LC": "Saint Lucia", "LA": "Lao People's Democratic Republic", "TV": "Tuvalu", "TW": "Taiwan", "TT": "Trinidad and Tobago", "TR": "Turkey", "LK": "Sri Lanka", "LI": "Liechtenstein", "A1": "Anonymous Proxy", "TO": "Tonga", "LT": "Lithuania", "A2": "Satellite Provider", "LR": "Liberia", "LS": "Lesotho", "TH": "Thailand", "TF": "French Southern Territories", "TG": "Togo", "TD": "Chad", "TC": "Turks and Caicos Islands", "LY": "Libyan Arab Jamahiriya", "VA": "Holy See (Vatican City State)", "VC": "Saint Vincent and the Grenadines", "AE": "United Arab Emirates", "AD": "Andorra", "AG": "Antigua and Barbuda", "AF": "Afghanistan", "AI": "Anguilla", "VI": "Virgin Islands, U.S.", "IS": "Iceland", "IR": "Iran, Islamic Republic of", "AM": "Armenia", "AL": "Albania", "AO": "Angola", "AN": "Netherlands Antilles", "AQ": "Antarctica", "AP": "Asia/Pacific Region", "AS": "American Samoa", "AR": "Argentina", "AU": "Australia", "AT": "Austria", "AW": "Aruba", "IN": "India", "AX": "Aland Islands", "AZ": "Azerbaijan", "IE": "Ireland", "ID": "Indonesia", "UA": "Ukraine", "QA": "Qatar", "MZ": "Mozambique"}, function(k, v) {
+            countries.push({id: k, text: v});
+        });
+
+        $('#locationName').editable({
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
+
+        $('#locationType').editable({
+            value: 1,
+            showbuttons: 'bottom',
+            source: [
+                {value: 1, text: 'Main Office'},
+                {value: 2, text: 'Satellite Office'},
+                {value: 3, text: 'Home Office'},
+                {value: 4, text: 'Conference/Event Hall'},
+                {value: 5, text: 'Restaurant'},
+                {value: 6, text: 'Meeting Local'}
+            ]
+        });
+
+        $('#country').editable({
+            source: countries,
+            value: "United States",
+            select2: {
+                width: 200,
+                placeholder: 'Select country',
+                allowClear: true
+            }
+        });
+
+        $('#state').editable({
+            typeahead: {
+                name: 'state',
+                local: ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
+            }
+        });
+
+        $('#street').editable({
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
+
+        $('#zip').editable({
+            tpl: '<input type="text" id ="zip-code-mask" class="mask">',
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
+
+        $(document).on("focus", "#zip-code-mask", function () {
+            $(this).mask("99999-999");
+        });
+
+
+
+                                             //~~~~~~~~~~~~~~~\\
+                                            //                 \\
+                                           //      COMPANY      \\
+                                          //                     \\
+                                         //=======================\\
+                                        //                         \\
+                                       //            CRM            \\
+                                      //                             \\
+                                     //   /\  /\  /\  /\  /\  /\  /\  \\
+                                    //___/  \/  \/  \/  \/  \/  \/  \__\\
+
+
+        /*  ______________________                                         ____________________  */
+        /*  ====================== !!! ---*** FIELD DEFINITIONS ***--- !!! ====================  */
+
+
+        /*  -------------------           *** Personal Details ***          -------------------  */
+
+
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~~~~ NAME ~~~~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        $('#companyName').editable({
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        }).on('shown', function(ev, editable) {
+            setTimeout(function() {
+                editable.input.$input.select();
+            },0);
+        });
+
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~~ REVENUE ~~~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        $('#companyRevenue').editable({
+            showbuttons: false,
+            emptytext: 'unknown',
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        });
+
+        $.mockjax({
+            url: '/companyRevenue',
+            response: function(settings) {
+                this.responseText = [
+                    {value: 0, text: '< $10,000 ARR'},
+                    {value: 1, text: '< $100,000 ARR'},
+                    {value: 2, text: '< $1,000,000 ARR'},
+                    {value: 3, text: '< $10,000,000 ARR'},
+                    {value: 4, text: '< $100,000,000 ARR'},
+                    {value: 5, text: '< $1,000,000,000 ARR'},
+                    {value: 6, text: '> $1,000,000,000 ARR'}
+                ];
+                log(settings, this);
+            }
+        });
+
+
+        /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *  ~~~~~~~~ VERTICAL ~~~~~~~~
+         *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        $('#marketVertical').editable({
+            showbuttons: 'bottom',
+            source: [
+                {value: 1, text: 'Technology'},
+                {value: 2, text: 'Health Care'},
+                {value: 3, text: 'Banking & Finance'},
+                {value: 4, text: 'Education'},
+                {value: 5, text: 'Manufacturing'},
+                {value: 6, text: 'eCommerce'}
+            ]
+        });
     });
-
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~~ REVENUE ~~~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#companyRevenue').editable({
-        showbuttons: false,
-        emptytext: 'unknown',
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
-    });
-
-    $.mockjax({
-        url: '/companyRevenue',
-        response: function(settings) {
-            this.responseText = [
-                {value: 0, text: '< $10,000 ARR'},
-                {value: 1, text: '< $100,000 ARR'},
-                {value: 2, text: '< $1,000,000 ARR'},
-                {value: 3, text: '< $10,000,000 ARR'},
-                {value: 4, text: '< $100,000,000 ARR'},
-                {value: 5, text: '< $1,000,000,000 ARR'},
-                {value: 6, text: '> $1,000,000,000 ARR'}
-            ];
-            log(settings, this);
-        }
-    });
-
-
-    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~~ VERTICAL ~~~~~~~~
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#marketVertical').editable({
-        showbuttons: 'bottom',
-        source: [
-            {value: 1, text: 'Technology'},
-            {value: 2, text: 'Health Care'},
-            {value: 3, text: 'Banking & Finance'},
-            {value: 4, text: 'Education'},
-            {value: 5, text: 'Manufacturing'},
-            {value: 6, text: 'eCommerce'}
-        ]
-    });
-
 
 
     /*  ______________________                                         ____________________  */

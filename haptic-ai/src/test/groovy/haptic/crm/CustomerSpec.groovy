@@ -1,7 +1,12 @@
 package haptic.crm
 
 import grails.test.mixin.TestFor
+import haptic.eval.Note
+import haptic.fields.Address
+import haptic.fields.EmailAddress
+import haptic.fields.PhoneNumber
 import spock.lang.Specification
+import spock.lang.Unroll
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
@@ -15,8 +20,4 @@ class CustomerSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == true
-    }
 }
