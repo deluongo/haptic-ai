@@ -1,5 +1,5 @@
 <!-- CONTACTS PANEL -->
-<div id=display-contact-panel">
+<div id="display-contact-panel">
     <!-- Row | CRM Panel -->
     <div class="row">
         <div class="col-md-7">
@@ -80,7 +80,7 @@
                                         <h2 class="no-m m-b-lg contact-name-header">${activeContact?.firstName} ${activeContact?.lastName}</h2>
                                     </div>
                                     <div class="contact-action-buttons">
-                                        <a data-toggle="modal" data-target="#send-new-email-modal" class="icon-btn">
+                                        <a data-toggle="modal" data-target="#send-new-email-modal" id="new-email-${activeContact?.id}-${lead?.id}" class="icon-btn">
                                             <i class="fa fa-envelope"></i>
                                             <div> Email </div>
                                             <span class="badge badge-info"> 12 </span>
@@ -112,7 +112,7 @@
                                         <g:each status="i" in="${allContacts?.sort()}" var="contact">
                                             <g:if test="${i < 5}">
                                                 <li role="presentation" <g:if test="${contact == activeContact}"> class="active" disabled </g:if> >
-                                                    <a href="#tab9" role="tab" id="select-contact-${contact.id}-${lead.id}" data-toggle="tab">
+                                                    <a href="#select-contact-${contact.id}-${lead.id}" role="tab" id="select-contact-${contact.id}-${lead.id}" data-toggle="tab">
                                                         <p class="contact-name-tabs">
                                                             ${contact.firstName} ${contact.lastName} <small class="contact-panel-job-title">, ${contact.jobTitle}</small>
                                                         </p>
@@ -238,5 +238,8 @@
 <!-- END CONTACTS PANEL -->
 
 <!-- START CONTACT ACTIVITY MODALS -->
-<g:render template="/sharedTemplates/modals/activity-modals" model="[lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts]"/>
+<div id="activity-modals-render-target">
+    <g:render template="/sharedTemplates/modals/activity-modals" model="[lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts]"/>
+</div>
+
 <!-- END CONTACT ACTIVITY MODALS -->
