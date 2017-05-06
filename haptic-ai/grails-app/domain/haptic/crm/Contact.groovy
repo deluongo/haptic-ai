@@ -54,11 +54,6 @@ class Contact {
         roleDescription nullable: true
         department blank: false
     }
-/*  -------------------             *** GORM Mapping ***            -------------------  */
-    int compareTo(Contact other) {
-        int lastNameCompare = lastName <=> other.lastName
-        return lastNameCompare != 0 ? lastNameCompare : firstName <=> other.firstName
-    }
 
 
 }

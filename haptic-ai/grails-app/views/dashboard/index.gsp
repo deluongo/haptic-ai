@@ -304,11 +304,11 @@
                             <a id="lead-link-${lead.id}">
                                 <div class="prospect-list">
                                     <div class="col-xs-8 prospect-label-wrapper">
-                                        <p class="secondary-label">${lead.company.contacts[0].jobTitle}</p>
+                                        <p class="secondary-label">${lead.rankedContacts[0].jobTitle}</p>
                                         <p class="primary-label f-gray">${lead.company.companyName}</p>
                                     </div>
                                     <div class="col-xs-4 vertical-align padding-0-l-i">
-                                        <p class="expected-value">${lead.company.contacts[0].neuralNetValue}</p>
+                                        <p class="expected-value">${lead.rankedContacts[0].neuralNetValue}</p>
                                     </div>
                                 </div>
                             </a>

@@ -16,12 +16,12 @@
             </tr>
             <tr>
                 <td>Last Name</td>
-                <td><a href="#" id="lastName" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your last name" class="editable editable-click editable-empty">
+                <td><a href="#" id="lastName" data-type="text" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-placement="right" data-placeholder="Required" data-title="Enter your last name" class="editable editable-click editable-empty">
                     ${activeContact?.lastName}</a></td>
             </tr>
             <tr>
                 <td>Gender</td>
-                <td><a href="#" id="gender" data-type="select" data-pk="1" data-value="" data-source="/genders" data-title="Select gender" class="editable editable-click" style="color: gray;">
+                <td><a href="#" id="gender" data-type="select" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-value="" data-source="/genders" data-title="Select gender" class="editable editable-click" style="color: gray;">
                     ${activeContact?.gender}</a></td>
             </tr>
             </tbody>
@@ -34,24 +34,24 @@
             <tbody>
             <tr>
                 <td>Department</td>
-                <td><a href="#" id="department" data-type="select" data-pk="1" data-value="5" data-source="/departments" data-title="Select group" class="editable editable-click">Sales</a></td>
+                <td><a href="#" id="department" data-type="select" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-value="5" data-source="/departments" data-title="Select group" class="editable editable-click">${activeContact?.department}</a></td>
             </tr>
             <tr>
                 <td>Role</td>
-                <td><a href="#" id="jobRole" data-type="select" data-pk="1" data-value="5" data-source="/roles" data-title="Select group" class="editable editable-click">Sales Development</a></td>
+                <td><a href="#" id="jobRole" data-type="select" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-value="5" data-source="/roles" data-title="Select group" class="editable editable-click">${activeContact?.jobRole}</a></td>
             </tr>
             <tr>
                 <td>Job Title</td>
-                <td><a href="#" id="jobTitle" data-type="select" data-pk="1" data-value="5" data-source="/titles" data-title="Select group" class="editable editable-click">C-Level Executive</a></td>
+                <td><a href="#" id="jobTitle" data-type="select" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-value="5" data-source="/titles" data-title="Select group" class="editable editable-click">${activeContact?.jobTitle}</a></td>
             </tr>
             <tr>
-                <td>Job Description <br/><small>Submit w/ <i>ctrl+enter</i></small></td>
-                <td><a href="#" id="jobDescription" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments" class="editable editable-pre-wrapped editable-click">Enter Job Description..</a></td>
+                <td>Role Description <br/><small>Submit w/ <i>ctrl+enter</i></small></td>
+                <td><a href="#" id="roleDescription" data-type="textarea" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-placeholder="Your comments here..." data-title="Enter comments" class="editable editable-pre-wrapped editable-click">${activeContact?.roleDescription}</a></td>
             </tr>
             <tr>
                 <td>Company</td>
                 <!--Make Modal Window-->
-                <td><a href="#" id="company" data-type="select2" data-pk="1" data-value="BS" data-title="Select country" class="editable editable-click">Microsoft</a>&nbsp; <small><a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a></small></td>
+                <td><a href="#" id="company" data-type="select2" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-value="BS" data-title="Select country" class="editable editable-click">${activeContact?.company?.companyName ?: lead?.company?.companyName}</a>&nbsp; <small><a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a></small></td>
             </tr>
             </tbody>
         </table>

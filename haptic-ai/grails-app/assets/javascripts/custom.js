@@ -439,6 +439,9 @@ $('.editable').on('hidden', function(e, reason){
     $(document).on("mouseover", "#display-contact-panel", function(){
         $('#salutation').editable({
             showbuttons: false,
+            url: 'storeEditable',
+            send: 'always',
+            params: {lead: $('#firstName').data("lead")},
             emptytext: 'unknown',
             validate: function(value) {
                 if($.trim(value) == '') return 'This field is required';
@@ -447,7 +450,7 @@ $('.editable').on('hidden', function(e, reason){
 
 
         $.mockjax({
-            url: 'salutations',
+            url: '/salutations',
             response: function(settings) {
                 this.responseText = [
                     {value: 'Mr.', text: 'Mr.'},
@@ -472,7 +475,7 @@ $('.editable').on('hidden', function(e, reason){
             validate: function(value) {
                 if($.trim(value) == '') return 'This field is required';
             },
-            url: 'firstName',
+            url: 'storeEditable',
             send: 'always',
             params: {lead: $('#firstName').data("lead")}
         }).on('shown', function(ev, editable) {
@@ -487,7 +490,10 @@ $('.editable').on('hidden', function(e, reason){
         $('#lastName').editable({
             validate: function(value) {
                 if($.trim(value) == '') return 'This field is required';
-            }
+            },
+            url: 'storeEditable',
+            send: 'always',
+            params: {lead: $('#firstName').data("lead")}
         }).on('shown', function(ev, editable) {
             setTimeout(function() {
                 editable.input.$input.select();
@@ -500,7 +506,10 @@ $('.editable').on('hidden', function(e, reason){
          *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         $('#gender').editable({
             showbuttons: false,
-            emptyText: 'unknown'
+            emptyText: 'unknown',
+            url: 'storeEditable',
+            send: 'always',
+            params: {lead: $('#firstName').data("lead")}
         });
 
         $.mockjax({
@@ -521,11 +530,11 @@ $('.editable').on('hidden', function(e, reason){
 
         // *** Enable Dependent Lists *** //
         var department_role_sources = {
-            1: [{value: 11, text: 'Sales Development'}, {value: 12, text: 'Account Management'}, {value: 22, text: 'Customer Success'}],
-            2: [{value: 21, text: 'Product Marketing'}, {value: 22, text: 'Lead Generation'}],
-            3: [{value: 31, text: 'Product Management'}, {value: 32, text: 'Software Engineer'}, {value: 33, text: 'Dev Ops'}, {value: 34, text: 'Code Testing'}, {value: 35, text: 'IT'}],
-            4: [{value: 41, text: 'Customer Support'}, {value: 42, text: 'Onsite Specialist'}, {value: 43, text: 'Technical Writing'}],
-            5: [{value: 51, text: 'Customer Onboarding'}, {value: 52, text: 'Job Training'}]
+            'Sales': [{value: 'Sales Development', text: 'Sales Development'}, {value: 'Account Management', text: 'Account Management'}, {value: 'Customer Success', text: 'Customer Success'}],
+            'Marketing': [{value: 'Product Marketing', text: 'Product Marketing'}, {value: 'Lead Generation', text: 'Lead Generation'}],
+            'Engineering': [{value: 'Product Management', text: 'Product Management'}, {value: 'Software Engineer', text: 'Software Engineer'}, {value: 'Dev Ops', text: 'Dev Ops'}, {value: 'Code Testing', text: 'Code Testing'}, {value: 'IT', text: 'IT'}],
+            'Support': [{value: 'Customer Support', text: 'Customer Support'}, {value: 'Onsite Specialist', text: 'Onsite Specialist'}, {value: 'Technical Writing', text: 'Technical Writing'}],
+            'Training & Education': [{value: 'Customer Onboarding', text: 'Customer Onboarding'}, {value: 'Job Training', text: 'Job Training'}]
         };
 
 
@@ -535,6 +544,9 @@ $('.editable').on('hidden', function(e, reason){
         $('#department').editable({
             showbuttons: false,
             emptyText: 'unknown',
+            url: 'storeEditable',
+            send: 'always',
+            params: {lead: $('#firstName').data("lead")},
             success: function(response, newValue) {
                 $('#jobRole').editable('option', 'source', department_role_sources[newValue]);
                 $('#jobRole').editable('setValue', null);
@@ -545,11 +557,11 @@ $('.editable').on('hidden', function(e, reason){
             url: '/departments',
             response: function(settings) {
                 this.responseText = [
-                    {value: 1, text: 'Sales'},
-                    {value: 2, text: 'Marketing'},
-                    {value: 3, text: 'Engineering'},
-                    {value: 4, text: 'Support'},
-                    {value: 5, text: 'Training & Education'}
+                    {value: 'Sales', text: 'Sales'},
+                    {value: 'Marketing', text: 'Marketing'},
+                    {value: 'Engineering', text: 'Engineering'},
+                    {value: 'Support', text: 'Support'},
+                    {value: 'Training & Education', text: 'Training & Education'}
                 ];
                 log(settings, this);
             }
@@ -560,7 +572,10 @@ $('.editable').on('hidden', function(e, reason){
          *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         $('#jobRole').editable({
             showbuttons: false,
-            emptyText: 'unknown'
+            emptyText: 'unknown',
+            url: 'storeEditable',
+            send: 'always',
+            params: {lead: $('#firstName').data("lead")}
         });
 
         $.mockjax({
@@ -583,21 +598,24 @@ $('.editable').on('hidden', function(e, reason){
 
         $('#jobTitle').editable({
             showbuttons: false,
-            emptyText: 'unknown'
+            emptyText: 'unknown',
+            url: 'storeEditable',
+            send: 'always',
+            params: {lead: $('#firstName').data("lead")},
         });
 
         $.mockjax({
             url: '/titles',
             response: function(settings) {
                 this.responseText = [
-                    {value: 0, text: 'Independent Contractor'},
-                    {value: 1, text: 'Entry Level'},
-                    {value: 2, text: 'Manager'},
-                    {value: 4, text: 'Director'},
-                    {value: 5, text: 'Executive'},
-                    {value: 6, text: 'Vice President'},
-                    {value: 7, text: 'C-Level Executive'},
-                    {value: 8, text: 'CEO'}
+                    {value: 'Independent Contractor', text: 'Independent Contractor'},
+                    {value: 'Entry Level', text: 'Entry Level'},
+                    {value: 'Manager', text: 'Manager'},
+                    {value: 'Director', text: 'Director'},
+                    {value: 'Executive', text: 'Executive'},
+                    {value: 'Vice President', text: 'Vice President'},
+                    {value: 'C-Level Executive', text: 'C-Level Executive'},
+                    {value: 'CEO', text: 'CEO'}
                 ];
                 log(settings, this);
             }
@@ -606,8 +624,11 @@ $('.editable').on('hidden', function(e, reason){
         /*  ~~~~~~~~~~~~~~~~~~~~~~~~~
          *  ~~~~ JOB DESCRIPTION ~~~~
          *  ~~~~~~~~~~~~~~~~~~~~~~~~~ */
-        $('#jobDescription').editable({
-            showbuttons: 'bottom'
+        $('#roleDescription').editable({
+            showbuttons: 'bottom',
+            url: 'storeEditable',
+            send: 'always',
+            params: {lead: $('#firstName').data("lead")},
         }).on('shown', function(ev, editable) {
             setTimeout(function() {
                 editable.input.$input.select();
@@ -623,13 +644,26 @@ $('.editable').on('hidden', function(e, reason){
         });
 
         $('#company').editable({
-            source: company,
+            source: 'companyList',
+            url: 'storeEditable',
+            send: 'always',
+            params: {lead: $('#firstName').data("lead")},
             select2: {
                 width: 200,
                 placeholder: 'Select company',
                 allowClear: true
             }
         });
+
+        $.ajax({
+            url: 'companyList',
+            type: 'GET',
+            response: function(response) {
+                var companyList = response;
+                log(response, this);
+            }
+        });
+
 
 
                                          //~~~~~~~~~~~~~~~\\

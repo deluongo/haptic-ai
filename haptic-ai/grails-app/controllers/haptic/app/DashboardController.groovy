@@ -1,6 +1,7 @@
 package haptic.app
 
 import grails.plugin.springsecurity.annotation.Secured
+import haptic.crm.Company
 import haptic.crm.Contact
 import haptic.crm.Lead
 import haptic.fields.EmailAddress
@@ -274,7 +275,7 @@ class DashboardController {
     /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~ UPDATE CONTACT'S SALUTATION ~~~~~~
      *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    def salutations() {
+    def salutations_temp() {
 
         /*------------------------------------------*
         * ===========================================
@@ -381,7 +382,69 @@ class DashboardController {
     }
 
 
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
+    /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~ UPDATE CONTACT'S SALUTATION ~~~~~~
+     *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    def storeEditable() {
 
+        /*------------------------------------------*
+        * ===========================================
+        * FUNCTION -> UPDATES CONTACT'S SALUTATION FIELD IN DB!
+        * ===========================================
+        * INPUTS:
+        *     - contactIndex
+        *     - leadIndex
+        *     - salutationValue
+        * DESCRIPTION:
+        *     - Stores results for x-editable form in DB
+        * OUTPUT:
+        *     - HTML rendering of _contacts.gsp template
+        /*---------------------------------------------------------------------------------------------*/
+
+        // Authenticate User
+        //def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
+
+        // Get indices from post params
+        //def leadIndex = params.list('leadIndex') ?: 1
+        def contactIndex = params.list('pk')[0]
+        def leadIndex = params.list('lead')[0]
+        def salutationValue = params.list('value')[0]
+        def fieldName = params.list('name')[0]
+
+
+        println("\n\n\n" + " ----------- SALUTATION ------------- \n")
+        println(contactIndex)
+        println(salutationValue)
+        println("\n")
+        print(leadIndex)
+        println("\n" + " ----------- SALUTATION -------------" + "\n\n\n")
+
+        // Define flash message
+        flash.message = "We've hit a snag. Details of this lead can't be displayed. Please refresh and try again."
+
+        // Get domain class objects from indices
+        //def lead = Lead.get(leadIndex)
+        //def leadCompany = lead.company
+        def activeContact = Contact.get(contactIndex)
+        //def allContacts = leadCompany.contacts.sort()
+
+        // Store updated salutation value
+        activeContact."${fieldName}" = salutationValue
+        activeContact.save(flush:true)
+
+
+
+        return "HTTP status 200 OK"
+
+    }
+
+
+    def companyList() {
+        //Editable dropdown lists
+        def company_dropdown = Company.getAll().sort{it.companyName}.companyName
+        println(company_dropdown)
+    }
 
 
 
