@@ -36,7 +36,7 @@ class Company {
 
 
 
-    /*  -------------------             *** GORM Mapping ***            -------------------  */
+/*  -------------------             *** GORM Mapping ***            -------------------  */
     static hasMany = [contacts: Contact, emailAddresses: EmailAddress, phoneNumbers: PhoneNumber,
                       socialNetworks: SocialNetwork, reviewSites: ReviewSite, webSites: WebSite,
                       addresses     : Address, notes: Note]
@@ -51,4 +51,9 @@ class Company {
         addresses nullable: true
         notes nullable: true
     }
+
+
+
 }
+
+

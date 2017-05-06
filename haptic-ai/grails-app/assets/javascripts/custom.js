@@ -447,10 +447,10 @@ $('.editable').on('hidden', function(e, reason){
 
 
         $.mockjax({
-            url: '/salutations',
+            url: 'salutations',
             response: function(settings) {
                 this.responseText = [
-                    {value: 0, text: 'Mr.'},
+                    {value: 'Mr.', text: 'Mr.'},
                     {value: 1, text: 'Mrs.'},
                     {value: 2, text: 'Ms.'},
                     {value: 3, text: 'Dr.'},
@@ -471,7 +471,10 @@ $('.editable').on('hidden', function(e, reason){
         $('#firstName').editable({
             validate: function(value) {
                 if($.trim(value) == '') return 'This field is required';
-            }
+            },
+            url: 'firstName',
+            send: 'always',
+            params: {lead: $('#firstName').data("lead")}
         }).on('shown', function(ev, editable) {
             setTimeout(function() {
                 editable.input.$input.select();
@@ -1052,13 +1055,12 @@ $('.editable').on('hidden', function(e, reason){
 
         var lead_id = this.id.split("-")[2];
         console.log(lead_id);
-        var contact_id = "1";
 
 
         $.ajax({
             type: "POST",
             url: "/dashboard/viewLead",
-            data: {'leadIndex': lead_id, 'contactIndex': contact_id},
+            data: {'leadIndex': lead_id},
             dataType: 'html',
             success: function (response) {
 
@@ -1095,12 +1097,12 @@ $('.editable').on('hidden', function(e, reason){
             var contact_id = this.id.split("-")[2];
             console.log(contact_id);
             var lead_id = this.id.split("-")[3];
-            console.log("deep-ajax");
+            console.log("contact ID shown above");
 
 
             $.ajax({
                 type: "POST",
-                url: "/dashboard/viewLead",
+                url: "/dashboard/updateContact",
                 data: {'leadIndex': lead_id, "contactIndex": contact_id},
                 dataType: 'html',
                 success: function (response) {

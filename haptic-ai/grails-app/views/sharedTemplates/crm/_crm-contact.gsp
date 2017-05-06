@@ -6,12 +6,12 @@
             <tbody>
             <tr>
                 <td>Salutation</td>
-                <td><a href="#" id="salutation"  data-type="select" data-pk="1" data-source="/salutations" data-title="Select salutation" class="editable editable-click editable-empty" style="color: gray;">
+                <td><a href="#" id="salutation"  data-type="select" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-source="/salutations" data-title="Select salutation" class="editable editable-click editable-empty" style="color: gray;">
                     ${activeContact?.salutation}</a></td>
             </tr>
             <tr>
                 <td>First Name</td>
-                <td><a href="#" id="firstName" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your first name" class="editable editable-click editable-empty">
+                <td><a href="#" id="firstName" data-type="text" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-placement="right" data-placeholder="Required" data-title="Enter your first name" class="editable editable-click editable-empty">
                     ${activeContact?.firstName}</a></td>
             </tr>
             <tr>

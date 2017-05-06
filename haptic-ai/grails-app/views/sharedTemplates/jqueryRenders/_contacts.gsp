@@ -109,7 +109,7 @@
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs change-active-contact-button" id="lead-panel-tab-label" role="tablist">
 
-                                        <g:each status="i" in="${allContacts?.sort()}" var="contact">
+                                        <g:each status="i" in="${allContacts}" var="contact">
                                             <g:if test="${i < 5}">
                                                 <li role="presentation" <g:if test="${contact == activeContact}"> class="active" disabled </g:if> >
                                                     <a href="#select-contact-${contact.id}-${lead.id}" role="tab" id="select-contact-${contact.id}-${lead.id}" data-toggle="tab">

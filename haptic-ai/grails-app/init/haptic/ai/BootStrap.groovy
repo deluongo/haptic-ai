@@ -67,22 +67,22 @@ class BootStrap {
 
 
         //Contacts
-        def billGates = new Contact(salutation: 'Mr.', firstName: 'Bill', lastName: 'Gates', gender: 'M',
-                jobRole: 'Management', jobTitle: 'CEO', roleDescription: 'Description', department: 'Dept.',
+        def billGates = new Contact(salutation: 'Mr.', firstName: 'Bill', lastName: 'Gates', gender: 'Male',
+                jobRole: 'Customer Support', jobTitle: 'CEO', roleDescription: 'Description', department: 'Support',
                 emailAddresses: billEmail, neuralNetValue: "\$1,434")
-        def billGates2 = new Contact(salutation: 'Mr.', firstName: 'Bill2', lastName: 'Gates', gender: 'M',
-                jobRole: 'Management', jobTitle: 'CTO', roleDescription: 'Description', department: 'Dept.',
+        def billGates2 = new Contact(salutation: 'Mr.', firstName: 'Bill2', lastName: 'Gates', gender: 'Male',
+                jobRole: 'Software Engineering', jobTitle: 'C-Level Executive', roleDescription: 'Description', department: 'Engineering',
                 emailAddresses: bill2Email, neuralNetValue: "\$734")
         //billGates.save(flush: true)
         //billGates2.save(flush: true)
 
 
 
-        def steveJobs = new Contact(salutation: 'Mr.', firstName: 'Steve', lastName: 'Jobs', gender: 'M',
-                jobRole: 'Management', jobTitle: 'CEO', roleDescription: 'Description', department: 'Dept.',
+        def steveJobs = new Contact(salutation: 'Mr.', firstName: 'Steve', lastName: 'Jobs', gender: 'Male',
+                jobRole: 'Account Management', jobTitle: 'CEO', roleDescription: 'Description', department: 'Sales',
                 emailAddresses: steveEmail, neuralNetValue: "\$434")
-        def steveJobs2 = new Contact(salutation: 'Mr.', firstName: 'Steve2', lastName: 'Jobs', gender: 'M',
-                jobRole: 'Management', jobTitle: 'CTO', roleDescription: 'Description', department: 'Dept.',
+        def steveJobs2 = new Contact(salutation: 'Mr.', firstName: 'Steve2', lastName: 'Jobs', gender: 'Male',
+                jobRole: 'Product Marketing', jobTitle: 'CTO', roleDescription: 'Description', department: 'Marketing',
                 emailAddresses: steve2Email, neuralNetValue: "\$234")
         //steveJobs.save(flush: true)
         //steveJobs2.save(flush: true)

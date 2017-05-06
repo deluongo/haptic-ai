@@ -80,60 +80,34 @@ class DashboardController {
      *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~~~~~~ SHOW PLAYER STATS ~~~~~~~~~~~
      *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     def viewLead() {
-        //String personIndex, String tabIndex, String postTitle, String postDescription, String backgroundImage, String blogText
 
         /*------------------------------------------*
         * ===========================================
-        * FUNCTION -> SHOW PLAYER STATS!
+        * FUNCTION -> UPDATES DASHBOARD PAGE CONTENT!
         * ===========================================
         * INPUTS:
-        *     -
-        * FUNCTIONS:
-        *     - playGame(homeTeam, awayTeam)
+        *     - leadIndex
+        *     - contactIndex
         * DESCRIPTION:
-        *     - Displays league standings in the browser
+        *     - Displays lead related contact data via ajax render
         * OUTPUT:
-        *     -
+        *     - HTML rendering of _contacts.gsp template
         /*---------------------------------------------------------------------------------------------*/
 
-        def leadIndex = params.list('leadIndex') ?: 1
-        def contactIndex = params.list('contactIndex') ?: 1
-        //def validation_error = []
-        //String personIndex, String tabIndex,
+        // Authenticate User
+        def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
 
-        /*  --------------              *** Select Player ***           ---------------  */
+        // Get indices from post params
+        def leadIndex = params.list('leadIndex')
+
+        // Define flash message
         flash.message = "We've hit a snag. Details of this lead can't be displayed. Please refresh and try again."
 
-
-
-        //println(lead)
-
-
+        // Get domain class objects from indices
         def lead = Lead.get(leadIndex)
-
-
-        /*  --------------            *** Authenticate User ***         ---------------  */
-        def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
-        /*
-        if(person.user != currentUser) {
-
-            flash.message = "You aren't authorized to create new blog posts for ${person.firstName} ${person.lastName}"
-        }
-        */
-
-
-        /*  --------------            *** Load Form Results ***         ---------------  */
         def leadCompany = lead.company
-        def activeContact = Contact.get(contactIndex)
-        def allContacts = leadCompany.contacts.sort()
-
-
-        println("\n\n\n" + " ----------- LEAD ------------- \n")
-        print(contactIndex)
-        print(activeContact?.firstName)
-        println(lead?.leadStatus)
-        println(allContacts)
-        println("\n" + " ----------- LEAD -------------" + "\n\n\n")
+        def allContacts = lead.rankedContacts
+        def activeContact = allContacts[0]
 
 
         /*
@@ -141,6 +115,77 @@ class DashboardController {
         def leadActivityFeed = lead.activityFeed
         */
         //def backgroundImage = params.list('backgroundImage')
+
+        // Tests
+        println("\n\n\n" + " ----------- VIEW LEAD ------------- \n")
+        print(activeContact?.firstName)
+        println(lead?.leadStatus)
+        println(allContacts)
+        println("\n" + " ----------- LEAD -------------" + "\n\n\n")
+
+
+
+
+
+        /*  --------------              *** Display Stats ***           ---------------  */
+
+        render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
+
+    }
+
+
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
+    /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~~~~~~ SHOW PLAYER STATS ~~~~~~~~~~~
+     *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    def updateContact() {
+
+        /*------------------------------------------*
+        * ===========================================
+        * FUNCTION -> UPDATES DASHBOARD PAGE CONTENT!
+        * ===========================================
+        * INPUTS:
+        *     - leadIndex
+        *     - contactIndex
+        * DESCRIPTION:
+        *     - Displays lead related contact data via ajax render
+        * OUTPUT:
+        *     - HTML rendering of _contacts.gsp template
+        /*---------------------------------------------------------------------------------------------*/
+
+        // Authenticate User
+        def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
+
+        // Get indices from post params
+        def leadIndex = params.list('leadIndex') //?: 1
+        def contactIndex = params.list('contactIndex')
+
+        // Define flash message
+        flash.message = "We've hit a snag. Details of this lead can't be displayed. Please refresh and try again."
+
+        // Get domain class objects from indices
+        def lead = Lead.get(leadIndex)
+        def leadCompany = lead.company
+        def activeContact = Contact.get(contactIndex)
+        def allContacts = lead.rankedContacts
+
+
+        /*
+        def leadTimeLine = lead.timeLine
+        def leadActivityFeed = lead.activityFeed
+        */
+        //def backgroundImage = params.list('backgroundImage')
+
+        // Tests
+        println("\n\n\n" + " ----------- UPDATE ------------- \n")
+        print(contactIndex)
+        print(activeContact?.firstName)
+        println(lead?.leadStatus)
+        println(allContacts)
+        println("\n" + " ----------- UPDATE -------------" + "\n\n\n")
+
+
+
 
 
         /*  --------------              *** Display Stats ***           ---------------  */
@@ -222,6 +267,136 @@ class DashboardController {
         render(template: "/sharedTemplates/modals/new-email-modal", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
 
     }
+
+
+
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
+    /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~ UPDATE CONTACT'S SALUTATION ~~~~~~
+     *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    def salutations() {
+
+        /*------------------------------------------*
+        * ===========================================
+        * FUNCTION -> UPDATES CONTACT'S SALUTATION FIELD IN DB!
+        * ===========================================
+        * INPUTS:
+        *     - contactIndex
+        *     - leadIndex
+        *     - salutationValue
+        * DESCRIPTION:
+        *     - Stores results for x-editable form in DB
+        * OUTPUT:
+        *     - HTML rendering of _contacts.gsp template
+        /*---------------------------------------------------------------------------------------------*/
+
+        // Authenticate User
+        //def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
+
+        // Get indices from post params
+        //def leadIndex = params.list('leadIndex') ?: 1
+        def contactIndex = params.list('pk')
+        def salutationValue = params.list('value')
+
+
+        println("\n\n\n" + " ----------- SALUTATION ------------- \n")
+        print(contactIndex)
+        print(salutationValue)
+        println("\n" + " ----------- SALUTATION -------------" + "\n\n\n")
+
+        // Define flash message
+        flash.message = "We've hit a snag. Details of this lead can't be displayed. Please refresh and try again."
+
+        // Get domain class objects from indices
+        //def lead = Lead.get(leadIndex)
+        //def leadCompany = lead.company
+        def activeContact = Contact.get(contactIndex)
+        //def allContacts = leadCompany.contacts.sort()
+
+        // Store updated salutation value
+        activeContact.salutation = salutationValue
+        activeContact.save(flush:true)
+
+
+        render(template: "/sharedTemplates/modals/new-email-modal", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
+
+    }
+
+
+
+
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
+    /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~ UPDATE CONTACT'S SALUTATION ~~~~~~
+     *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    def firstName() {
+
+        /*------------------------------------------*
+        * ===========================================
+        * FUNCTION -> UPDATES CONTACT'S SALUTATION FIELD IN DB!
+        * ===========================================
+        * INPUTS:
+        *     - contactIndex
+        *     - leadIndex
+        *     - salutationValue
+        * DESCRIPTION:
+        *     - Stores results for x-editable form in DB
+        * OUTPUT:
+        *     - HTML rendering of _contacts.gsp template
+        /*---------------------------------------------------------------------------------------------*/
+
+        // Authenticate User
+        //def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
+
+        // Get indices from post params
+        //def leadIndex = params.list('leadIndex') ?: 1
+        def contactIndex = params.list('pk')[0]
+        def leadIndex = params.list('lead')[0]
+        def salutationValue = params.list('value')[0]
+
+
+        println("\n\n\n" + " ----------- SALUTATION ------------- \n")
+        println(contactIndex)
+        println(salutationValue)
+        println("\n")
+        print(leadIndex)
+        println("\n" + " ----------- SALUTATION -------------" + "\n\n\n")
+
+        // Define flash message
+        flash.message = "We've hit a snag. Details of this lead can't be displayed. Please refresh and try again."
+
+        // Get domain class objects from indices
+        //def lead = Lead.get(leadIndex)
+        //def leadCompany = lead.company
+        def activeContact = Contact.get(contactIndex)
+        //def allContacts = leadCompany.contacts.sort()
+
+        // Store updated salutation value
+        activeContact.firstName = salutationValue
+        activeContact.save(flush:true)
+
+
+        return "HTTP status 200 OK"
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /*

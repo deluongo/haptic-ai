@@ -56,6 +56,7 @@ class Lead {
 
     static hasOne = [company: Company]
 
+
     //TO-DO:
     //------
     // - Fix GORM Mappings
@@ -77,4 +78,35 @@ class Lead {
         notes nullable: true
         company unique: true
     }
+
+/*  -------------------           *** List Transients ***         -------------------  */
+    static transients = [
+            /* ___  stats  ___ */
+            'rankedContacts'
+    ]
+
+
+/*                          ==============  ***  ==============                          *
+ #  ---------------------                Functions                 --------------------  #
+ *                          ===================================                          */
+
+
+
+
+
+
+/*  _________________________                                  ________________________  */
+/*  ========================= !!! ---*** TRANSIENTS ***--- !!! ========================  */
+
+/*  ---------------                 *** Helpers ***             ---------------  */
+    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *  ~~~~ LIST CONFERENCE STANDINGS ~~~~
+     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    def getRankedContacts() {
+        /*--|  LIST company CONTACTS -> SORT by HAPTIC SCORE  |--*/
+        Contact.findAllByCompany(company).sort{it.neuralNetValue}.reverse()
+    }
+
+
+
 }
