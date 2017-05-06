@@ -36,6 +36,13 @@ class PhoneNumber {
 
 
     static constraints = {
+        phoneStatus inList: ['Active', 'Inactive', 'Automated', 'Assistant', 'Unverified', 'Verified']
+        callsSinceLastAnswer nullable: true
+        callsSinceLastResponse nullable: true
+        answerRate nullable: true
+        lastCallPlaced nullable: true
+        lastCallAnswered nullable: true
+        expirationDate nullable: true
     }
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */

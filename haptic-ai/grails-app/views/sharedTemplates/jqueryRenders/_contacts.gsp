@@ -33,7 +33,7 @@
                                 <div class="panel-heading contacts-panel-heading clearfix padding-0-i">
                                     <div class="">
                                         <!-- Display The Selected Contact's Name -->
-                                        <h2 class="no-m m-b-lg contact-name-header">Welcome ${currentUser} - <small> Select a lead from the left hand list to research and engage a prospect!</small></h2>
+                                        <h2 class="no-m m-b-lg contact-name-header">Welcome ${currentUser.employee.salutation} ${currentUser.employee.lastName} - <small> Select a lead from the left hand list to research and engage a prospect!</small></h2>
                                     </div>
                                 </div>
 
@@ -50,7 +50,7 @@
 
             <g:else>
 
-            </g:else>
+
             <div class="row padding-10-w">
                 <div class="panel panel-white margin-10-b">
                     <div class="panel-body">
@@ -209,6 +209,7 @@
                     </div>
                 </div>
             </div>
+            </g:else>
         </div>
         <!-- END CONTACT BOXES -->
 

@@ -454,11 +454,11 @@ $('.editable').on('hidden', function(e, reason){
             response: function(settings) {
                 this.responseText = [
                     {value: 'Mr.', text: 'Mr.'},
-                    {value: 1, text: 'Mrs.'},
-                    {value: 2, text: 'Ms.'},
-                    {value: 3, text: 'Dr.'},
-                    {value: 4, text: 'Sir'},
-                    {value: 5, text: 'Professor'}
+                    {value: 'Mrs.', text: 'Mrs.'},
+                    {value: 'Ms.', text: 'Ms.'},
+                    {value: 'Dr.', text: 'Dr.'},
+                    {value: 'Sir', text: 'Sir'},
+                    {value: 'Professor', text: 'Professor'}
                 ];
                 log(settings, this);
             }
@@ -516,14 +516,16 @@ $('.editable').on('hidden', function(e, reason){
             url: '/genders',
             response: function(settings) {
                 this.responseText = [
-                    {value: 0, text: 'Male'},
-                    {value: 1, text: 'Female'},
-                    {value: 2, text: 'Trans'},
-                    {value: 3, text: 'Other'}
+                    {value: 'Male', text: 'Male'},
+                    {value: 'Female', text: 'Female'},
+                    {value: 'Trans', text: 'Trans'},
+                    {value: 'Other', text: 'Other'}
                 ];
                 log(settings, this);
             }
         });
+
+
 
     /*  -------------------         *** Professional Details ***        -------------------  */
 
@@ -639,12 +641,15 @@ $('.editable').on('hidden', function(e, reason){
          *  ~~~~~~~~~ COMPANY ~~~~~~~~
          *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         var company = [];
-        $.each({"MS": "Microsoft", "P&G": "Proctor & Gamble"}, function(k, v) {
+        $.each({"Microsoft": "Microsoft", "Apple": "Apple"}, function(k, v) {
             company.push({id: k, text: v});
         });
 
+
+
+
         $('#company').editable({
-            source: 'companyList',
+            source: company,
             url: 'storeEditable',
             send: 'always',
             params: {lead: $('#firstName').data("lead")},
@@ -655,13 +660,23 @@ $('.editable').on('hidden', function(e, reason){
             }
         });
 
-        $.ajax({
-            url: 'companyList',
-            type: 'GET',
-            response: function(response) {
-                var companyList = response;
-                log(response, this);
-            }
+        // Display lead specific content
+        $('#company__').on("click", function(event) {
+            $.ajax({
+                url: 'companyList',
+                success: function (response) {
+                    console.log(response);
+                    //var companys = JSON.parse(response);
+                    //$.each(JSON.parse(response), function(k, v) {
+                    //    companys.push({id: k, text: v});
+                    //});
+                    console.log(companyList, this);
+                },
+                response: function(response) {
+                    this.responseText = response;
+                }
+            });
+            return false;
         });
 
 

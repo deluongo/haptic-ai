@@ -1,4 +1,4 @@
-<h1>${activeContact?.firstName}</h1>
+
 <div class="modal-dialog modal-lg" id="new-email-model-render-target">
     <div class="modal-content">
         <div class="modal-header" style="padding:35px 50px;">
@@ -28,10 +28,9 @@
                                 <div class="col-xs-6">
                                     <div class="form-group form-md-line-input has-success">
                                         <select class="form-control" id="sent-to-email-address">
-                                            <option value="1">Email 1</option>
-                                            <option value="2">Email 2</option>
-                                            <option value="3">Email 3</option>
-                                            <option value="4">Email 4</option>
+                                            <g:each in="${activeContact?.emailAddresses}" var="email">
+                                                <option value="${email?.emailAddress}">${email?.emailAddress} (${activeContact?.firstName} ${activeContact?.lastName}'s ${email?.emailStatus} ${email?.emailType})</option>
+                                            </g:each>
                                         </select>
                                         <label for="sent-to-email-address">To:</label>
                                         <span class="help-block">Selects from address... </span>
@@ -40,11 +39,9 @@
                                 <div class="col-xs-6">
                                     <div class="form-group form-md-line-input has-success">
                                         <select class="form-control" id="sent-from-email-address">
-                                            <option value=""></option>
-                                            <option value="1">Email 1</option>
-                                            <option value="2">Email 2</option>
-                                            <option value="3">Email 3</option>
-                                            <option value="4">Email 4</option>
+                                            <g:each in="${currentUser?.employee?.emailAddresses}" var="email">
+                                                <option value="${email?.emailAddress}">${email?.emailAddress} (${currentUser?.employee?.firstName} ${currentUser?.employee?.lastName})</option>
+                                            </g:each>
                                         </select>
                                         <label for="sent-from-email-address">From:</label>
                                         <span class="help-block">Select to address...</span>

@@ -37,6 +37,8 @@ class ReviewSite {
         reviewSiteName blank: false
         reviewSiteUrl matches: /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}/
         reviewSiteHandle blank: false
+        lastActivity nullable: true
+        lastPost nullable: true
     }
 
 }

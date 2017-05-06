@@ -1,6 +1,8 @@
 package haptic.app
 
+import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
+import grails.web.JSONBuilder
 import haptic.crm.Company
 import haptic.crm.Contact
 import haptic.crm.Lead
@@ -15,7 +17,11 @@ class DashboardController {
 
     def springSecurityService
 
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
     def index() {
+
+        /*  --------------            *** Authenticate User ***         ---------------  */
+        def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
 
         def leads = Lead.getAll()
         print(leads)
@@ -25,7 +31,7 @@ class DashboardController {
 
 
         /*  --------------            *** Display Dashboard ***         ---------------  */
-        render(view: "index", model: ["leads": leads, "lead": lead])
+        render(view: "index", model: ["leads": leads, "lead": lead, currentUser: currentUser])
     }
 
     /*
@@ -35,6 +41,7 @@ class DashboardController {
     String emailType = ''
     String emailStatus = ''
 
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN])
     def newEmail() {
 
         if (params.name=='emailAddress') {
@@ -76,7 +83,7 @@ class DashboardController {
     }
 
 
-    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN])
     /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~~~~~~ SHOW PLAYER STATS ~~~~~~~~~~~
      *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -130,12 +137,12 @@ class DashboardController {
 
         /*  --------------              *** Display Stats ***           ---------------  */
 
-        render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
+        render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts,  currentUser: currentUser])
 
     }
 
 
-    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN])
     /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~~~~~~ SHOW PLAYER STATS ~~~~~~~~~~~
      *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -191,11 +198,11 @@ class DashboardController {
 
         /*  --------------              *** Display Stats ***           ---------------  */
 
-        render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
+        render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts, currentUser: currentUser])
 
     }
 
-    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN])
     /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~~~~~~ SHOW PLAYER STATS ~~~~~~~~~~~
      *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -265,7 +272,7 @@ class DashboardController {
 
         /*  --------------              *** Display Stats ***           ---------------  */
 
-        render(template: "/sharedTemplates/modals/new-email-modal", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
+        render(template: "/sharedTemplates/modals/new-email-modal", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts, currentUser: currentUser])
 
     }
 
@@ -440,10 +447,19 @@ class DashboardController {
     }
 
 
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
+    /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~ UPDATE CONTACT'S SALUTATION ~~~~~~
+     *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     def companyList() {
         //Editable dropdown lists
         def company_dropdown = Company.getAll().sort{it.companyName}.companyName
-        println(company_dropdown)
+        print(company_dropdown)
+
+
+        print(company_json)
+        //def ret = {"Microsoft": "Microsoft", "P&G": "Proctor & Gamble"}
+        render company_json
     }
 
 

@@ -6,22 +6,22 @@
             <tbody>
             <tr>
                 <td>Salutation</td>
-                <td><a href="#" id="salutation"  data-type="select" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-source="/salutations" data-title="Select salutation" class="editable editable-click editable-empty" style="color: gray;">
+                <td><a href="#" id="salutation"  data-type="select" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-source="/salutations" data-title="Select salutation" class="editable editable-click">
                     ${activeContact?.salutation}</a></td>
             </tr>
             <tr>
                 <td>First Name</td>
-                <td><a href="#" id="firstName" data-type="text" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-placement="right" data-placeholder="Required" data-title="Enter your first name" class="editable editable-click editable-empty">
+                <td><a href="#" id="firstName" data-type="text" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-placement="right" data-placeholder="Required" data-title="Enter your first name" class="editable editable-click">
                     ${activeContact?.firstName}</a></td>
             </tr>
             <tr>
                 <td>Last Name</td>
-                <td><a href="#" id="lastName" data-type="text" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-placement="right" data-placeholder="Required" data-title="Enter your last name" class="editable editable-click editable-empty">
+                <td><a href="#" id="lastName" data-type="text" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-placement="right" data-placeholder="Required" data-title="Enter your last name" class="editable editable-click">
                     ${activeContact?.lastName}</a></td>
             </tr>
             <tr>
                 <td>Gender</td>
-                <td><a href="#" id="gender" data-type="select" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-value="" data-source="/genders" data-title="Select gender" class="editable editable-click" style="color: gray;">
+                <td><a href="#" id="gender" data-type="select" data-lead="${lead?.id}" data-pk="${activeContact?.id}" data-value="" data-source="/genders" data-title="Select gender" class="editable editable-click">
                     ${activeContact?.gender}</a></td>
             </tr>
             </tbody>
@@ -58,9 +58,20 @@
     </div>
 </div>
 
+
+
+
+
+
 <h3> Contact Info </h3>
 
-<contactInfo:allDetails source="${activeContact ?: []}" ></contactInfo:allDetails>
+<contactInfo:contactDetails source="${activeContact ?: []}" ></contactInfo:contactDetails>
+
+<h3> Web Presence </h3>
+
+<contactInfo:websiteDetails source="${activeContact ?: []}" ></contactInfo:websiteDetails>
+
+
 
 <!-- Modals -->
 <g:render template="/sharedTemplates/modals/contact-info-modals"/>

@@ -35,6 +35,10 @@ class SocialNetwork {
         networkName blank: false
         networkUrl matches: /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}/
         socialNetworkHandle blank: false
+        lastActivity nullable: true
+        lastPost nullable: true
+        lastOnline nullable: true
+
     }
 
 }

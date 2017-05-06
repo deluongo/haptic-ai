@@ -2,7 +2,6 @@
 <!-- Email Address Model -->
 <div class="container">
     <!-- Modal -->
-    <h1>${activeContact?.firstName}</h1>
     <div class="modal fade" id="send-new-email-modal"  role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content" id="new-email-model-body-wrapper">
@@ -33,10 +32,9 @@
                                         <div class="col-xs-6">
                                             <div class="form-group form-md-line-input has-success">
                                                 <select class="form-control" id="sent-to-email-address">
-                                                    <option value="1"></option>
-                                                    <option value="2">Email 2</option>
-                                                    <option value="3">Email 3</option>
-                                                    <option value="4">Email 4</option>
+                                                    <g:each in="${activeContact?.emailAddresses}" var="email">
+                                                        <option value="${email}"></option>
+                                                    </g:each>
                                                 </select>
                                                 <label for="sent-to-email-address">To:</label>
                                                 <span class="help-block">Selects from address... </span>

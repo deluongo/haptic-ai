@@ -3,11 +3,19 @@ package haptic.ai
 import haptic.app.UserRole
 import haptic.app.User
 import haptic.app.Role
+import haptic.connect.Communication
 import haptic.crm.Company
 import haptic.crm.Contact
 import haptic.crm.Lead
+import haptic.fields.Address
 import haptic.fields.EmailAddress
+import haptic.fields.PhoneNumber
+import haptic.fields.ReviewSite
+import haptic.fields.SocialNetwork
+import haptic.fields.WebSite
 import haptic.org.Employee
+import haptic.org.PrivateDetails
+import haptic.org.Team
 
 class BootStrap {
 
@@ -56,6 +64,29 @@ class BootStrap {
         steve2Email.add(email4)
 
 
+        PhoneNumber phone1 = new PhoneNumber(phoneType: 'Home', phoneNumber: '650-540-9234', phoneStatus: 'Active', dateCreated: new Date())
+        PhoneNumber phone2 = new PhoneNumber(phoneType: 'Home', phoneNumber: '+1 334-540-9234', phoneStatus: 'Active', dateCreated: new Date())
+        PhoneNumber phone3 = new PhoneNumber(phoneType: 'Home', phoneNumber: '650-540-9464', phoneStatus: 'Active', dateCreated: new Date())
+        PhoneNumber phone4 = new PhoneNumber(phoneType: 'Home', phoneNumber: '950-640-9234', phoneStatus: 'Active', dateCreated: new Date())
+        PhoneNumber phone5 = new PhoneNumber(phoneType: 'Home', phoneNumber: '888-540-9234', phoneStatus: 'Active', dateCreated: new Date())
+
+
+        SocialNetwork sn1 = new SocialNetwork(networkName: "Facebook", networkUrl: "http://www.facebook.com", socialNetworkHandle: "Devon Luongo")
+        SocialNetwork sn2 = new SocialNetwork(networkName: "Twitter", networkUrl: "http://www.twitter.com", socialNetworkHandle: "BillGatesDAlegend")
+        SocialNetwork sn3 = new SocialNetwork(networkName: "LinkedIn", networkUrl: "http://www.linkedin.com", socialNetworkHandle: "SteveJobsRIP")
+
+        WebSite web1 = new WebSite(webSiteName: "Google", webSiteType: "Company Site", webSiteUrl: "http://www.google.com")
+
+        ReviewSite review1 = new ReviewSite(reviewSiteName: "G2 Crowd", reviewSiteUrl: "http://www.g2crowd.com", reviewSiteHandle: "deluongo")
+
+        Address address1 = new Address(locName: "Corporate Headquarters", locType: "Main Office", street: "999 Microsoft Dr.", city: "Wiscogi", state: "Washington", country: "United States", zip: "94999")
+        Address address2 = new Address(locName: "Main Campus", locType: "Home", street: "999 Microsoft Dr.", city: "Wiscogi", state: "Washington", country: "United States", zip: "94999")
+        Address address3 = new Address(locName: "Secret Offshore Base", locType: "Main Office", street: "Nowhere Dr.", city: "San Francisco", state: "California", country: "United States", zip: "94999")
+
+
+
+
+
         //lead2.save(flush: true)
 
         //print(Lead.getAll())
@@ -69,10 +100,10 @@ class BootStrap {
         //Contacts
         def billGates = new Contact(salutation: 'Mr.', firstName: 'Bill', lastName: 'Gates', gender: 'Male',
                 jobRole: 'Customer Support', jobTitle: 'CEO', roleDescription: 'Description', department: 'Support',
-                emailAddresses: billEmail, neuralNetValue: "\$1,434")
+                emailAddresses: billEmail, neuralNetValue: "\$1,434", phoneNumbers: [phone1, phone2, phone3], addresses: [address2, address3], reviewSites: [review1], socialNetworks: [sn1, sn2, sn3], webSites: [web1])
         def billGates2 = new Contact(salutation: 'Mr.', firstName: 'Bill2', lastName: 'Gates', gender: 'Male',
                 jobRole: 'Software Engineering', jobTitle: 'C-Level Executive', roleDescription: 'Description', department: 'Engineering',
-                emailAddresses: bill2Email, neuralNetValue: "\$734")
+                emailAddresses: bill2Email, neuralNetValue: "\$734",  phoneNumbers: [phone3, phone5], addresses: [address1], reviewSites: [review1], socialNetworks: [sn1], webSites: [web1])
         //billGates.save(flush: true)
         //billGates2.save(flush: true)
 
@@ -80,7 +111,7 @@ class BootStrap {
 
         def steveJobs = new Contact(salutation: 'Mr.', firstName: 'Steve', lastName: 'Jobs', gender: 'Male',
                 jobRole: 'Account Management', jobTitle: 'CEO', roleDescription: 'Description', department: 'Sales',
-                emailAddresses: steveEmail, neuralNetValue: "\$434")
+                emailAddresses: steveEmail, neuralNetValue: "\$434", phoneNumbers: [phone4], addresses: [address2, address3], reviewSites: [review1], socialNetworks: [sn1, sn2, sn3], webSites: [web1])
         def steveJobs2 = new Contact(salutation: 'Mr.', firstName: 'Steve2', lastName: 'Jobs', gender: 'Male',
                 jobRole: 'Product Marketing', jobTitle: 'CTO', roleDescription: 'Description', department: 'Marketing',
                 emailAddresses: steve2Email, neuralNetValue: "\$234")
@@ -140,16 +171,23 @@ class BootStrap {
     def setupUsersAndRoles() {
 
 
+        Employee devon = new Employee(salutation: "Dr.", firstName: "Devon", lastName: "Luongo", gender: "Trans", jobTitle: "Loving Husband")
+        Employee michael = new Employee(salutation: "Mr.", firstName: "Michael", lastName: "Kerry", gender: "Male", jobTitle: "Professor of Graduate Studies")
+        Employee guest = new Employee(salutation: "Mrs.", firstName: "guest", lastName: "user", gender: "Unknown", jobTitle: "Secret")
+
+
 
         User admin = new User(username: "admin", password: "supersecret",
-                bio: 'Some Bio', birthDate: new Date(), birthPlace: "Home Town", height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg")
+                bio: 'Some Bio', birthDate: new Date(), height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg", employee: michael)
 
         saveObject(admin)
-        User user = new User(username: "deluongo", password: "Stephany",
-                bio: 'Some Bio', birthDate: new Date(), birthPlace: "Home Town", height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg")
+
+        User user = new User(username: "user", password: "cscie56",
+                bio: 'Some Bio', birthDate: new Date(), height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg", employee: guest)
         saveObject(user)
 
-        Employee devon = new Employee(salutation: "Mr.", firstName: "Devon", lastName: "Luongo", gender: "male", jobTitle: "Founder & CEO", user: user)
+        User devon_user = new User(username: "devon", password: "stephany",
+                bio: 'Some Bio', birthDate: new Date(), height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg", employee: devon)
         saveObject(devon)
 
         Role adminRole = new Role(authority: Role.ROLE_ADMIN)
@@ -160,6 +198,11 @@ class BootStrap {
         UserRole.create(admin, adminRole)
         UserRole.create(admin, userRole)
         UserRole.create(user, userRole)
+        UserRole.create(devon_user, userRole)
+
+
+        Team cscie56 = new Team(name:"cscie56", teamMembers: [devon, michael, guest])
+        saveObject(cscie56)
     }
 
     /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

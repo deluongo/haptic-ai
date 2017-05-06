@@ -27,7 +27,7 @@ class Employee {
     String gender
     String jobTitle
     PrivateDetails employeeDetails
-    Team team //Employee_Team is customer pivot table
+    Team team//Employee_Team is customer pivot table
     //User user
 
 /*  -------------------             *** GORM Mapping ***            -------------------  */

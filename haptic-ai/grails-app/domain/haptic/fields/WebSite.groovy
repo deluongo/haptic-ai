@@ -31,6 +31,9 @@ class WebSite {
     static constraints = {
         webSiteName blank: false
         webSiteUrl matches: /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}/
+        resourceWeight nullable: true
+        traffic nullable: true
+        alexaRating nullable: true
     }
     /*  -------------------             *** GORM Mapping ***            -------------------  */
     static hasMany = [notes: Note]
