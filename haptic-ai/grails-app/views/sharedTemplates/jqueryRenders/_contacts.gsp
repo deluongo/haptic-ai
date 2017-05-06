@@ -111,7 +111,7 @@
 
                                         <g:each status="i" in="${allContacts}" var="contact">
                                             <g:if test="${i < 5}">
-                                                <li role="presentation" class="contact-sidebar" <g:if test="${contact == activeContact}"> class="active"</g:if> >
+                                                <li role="presentation" class="contact-sidebar"  <g:if test="${contact == activeContact}"> class="active" disabled </g:if> >
                                                     <a href="#tab9" role="tab" data-toggle="tab">
                                                         <p class="contact-name-tabs">
                                                             ${contact.firstName} ${contact.lastName} <small class="contact-panel-job-title">, ${contact.jobTitle}</small>

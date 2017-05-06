@@ -1081,12 +1081,12 @@ $('.editable').on('hidden', function(e, reason){
     });
 
 
-    $(document).on('click', '.contact-sidebar a', function (event) {
+    $(document).on('click', '.contact-sidebar', function (event) {
 
-        if (!$(this).hasClass('active')) {
+        // if (!$(this).hasClass('active')) {
 
-            var contactName = $(this).children('p').text().split(',')[0].trim();
-            var contactTitle = $(this).children('p').text().split(',')[1].trim();
+            var contactName = $(this).children('a').children('p').text().split(',')[0].trim();
+            var contactTitle = $(this).children('a').children('p').text().split(',')[1].trim();
 
             $.ajax({
                 type: "POST",
@@ -1103,13 +1103,16 @@ $('.editable').on('hidden', function(e, reason){
                 }
             });
 
-        }
+        // }
     });
 
 
     $(document).on('click', '#send-email-button', function (event) {
-
-        console.log('Sent!');
+        console.log($('#sent-to-email-address').val());
+        console.log($('#new-email-title').val());
+        $('#new-email-title').val('');
+        console.log($('#new-email-body').val());
+        $('#new-email-body').val('');
 
     });
 
