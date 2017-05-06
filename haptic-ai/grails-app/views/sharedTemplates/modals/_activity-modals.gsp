@@ -8,7 +8,6 @@
                 <div class="modal-header" style="padding:35px 50px;">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h2 class="no-m m-b-lg">Lead Outreach</h2>
-
                 </div>
                 <hr>
                 <div class="modal-body remove-margin-b padding-0-i">
@@ -33,11 +32,15 @@
                                         <div class="col-xs-6">
                                             <div class="form-group form-md-line-input has-success">
                                                 <select class="form-control" id="sent-to-email-address">
-                                                    <option value=""></option>
-                                                    <option value="1">Email 1</option>
-                                                    <option value="2">Email 2</option>
-                                                    <option value="3">Email 3</option>
-                                                    <option value="4">Email 4</option>
+                                                    <g:each in="${activeContact?.emailAddresses}" var="email">
+                                                        <option>${email.emailAddress}</option>
+                                                    </g:each>
+
+                                                    %{--<option value=""></option>--}%
+                                                    %{--<option value="1">Email 1</option>--}%
+                                                    %{--<option value="2">Email 2</option>--}%
+                                                    %{--<option value="3">Email 3</option>--}%
+                                                    %{--<option value="4">Email 4</option>--}%
                                                 </select>
                                                 <label for="sent-to-email-address">To:</label>
                                                 <span class="help-block">Selects from address... </span>
@@ -66,7 +69,7 @@
                                         </div>
                                         <div class="">
                                             <div class="form-actions noborder">
-                                                <button type="button" class="btn blue">Send</button>
+                                                <button type="button" class="btn blue" id="send-email-button">Send</button>
                                             </div>
                                         </div>
                                     </div>

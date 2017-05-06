@@ -432,12 +432,16 @@ $('.editable').on('hidden', function(e, reason){
     /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
      *  ~~~~~~~~~ GROUP ~~~~~~~~~~
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    $('#salutation').editable({
-        showbuttons: false,
-        emptytext: 'unknown',
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        }
+
+    //
+    $(document).on("click", "#salutation", function(){
+        $('#salutation').editable({
+            showbuttons: false,
+            emptytext: 'unknown',
+            validate: function(value) {
+                if($.trim(value) == '') return 'This field is required';
+            }
+        });
     });
 
     $.mockjax({
@@ -639,32 +643,7 @@ $('.editable').on('hidden', function(e, reason){
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     $('#emailAddress').editable({
         validate: function(value) {
-            if($.trim(value) == '') {
-                return 'This field is required';
-            }
-            // else {
-            //     $.ajax({
-            //         url: '/dashboard/newEmail',
-            //         type: 'POST',
-            //         data: {emailAddress: value},
-            //         success: function(res) {
-            //             console.log(res)
-            //         },
-            //         error: function(err) {
-            //             console.log(err)
-            //         }
-            //     });
-            // }
-        },
-        ajaxOptions: {
-            type: 'post',
-            url: '/dashboard/newEmail',
-            success: function(res) {
-                console.log(res)
-            },
-            error: function(err) {
-                console.log(err)
-            }
+            if($.trim(value) == '') return 'This field is required';
         }
     }).on('shown', function(ev, editable) {
         setTimeout(function() {
@@ -673,27 +652,16 @@ $('.editable').on('hidden', function(e, reason){
     });
 
 
-
     $('#emailType').editable({
         pk: 1,
         limit: 3,
         source: [
-            {value: 'Primary', text: 'Primary'},
-            {value: 'Secondary', text: 'Secondary'},
-            {value: 'Company', text: 'Company'},
-            {value: 'Personal', text: 'Personal'},
-            {value: 'Junk', text: 'Junk'}
-        ],
-        ajaxOptions: {
-            type: 'post',
-            url: '/dashboard/newEmail',
-            success: function(res) {
-                console.log(res)
-            },
-            error: function(err) {
-                console.log(err)
-            }
-        }
+            {value: 1, text: 'Primary'},
+            {value: 2, text: 'Secondary'},
+            {value: 3, text: 'Company'},
+            {value: 4, text: 'Personal'},
+            {value: 5, text: 'Junk'}
+        ]
     });
 
     $('#emailStatus').editable({
@@ -701,22 +669,12 @@ $('.editable').on('hidden', function(e, reason){
         limit: 3,
         value: 'Unverified',
         source: [
-            {value: 'Unverified', text: 'Unverified'},
-            {value: 'Verified', text: 'Verified'},
-            {value: 'Active', text: 'Active'},
-            {value: 'Inactive', text: 'Inactive'},
-            {value: 'Unsubscribed', text: 'Unsubscribed'}
-        ],
-        ajaxOptions: {
-            type: 'post',
-            url: '/dashboard/newEmail',
-            success: function(res) {
-                console.log(res)
-            },
-            error: function(err) {
-                console.log(err)
-            }
-        }
+            {value: 1, text: 'Unverified'},
+            {value: 2, text: 'Verified'},
+            {value: 3, text: 'Active'},
+            {value: 3, text: 'Inactive'},
+            {value: 4, text: 'Unsubscribed'},
+        ]
     });
 
 
@@ -1078,9 +1036,86 @@ $('.editable').on('hidden', function(e, reason){
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     //Get all your links
 
-
-    //Loop through links and add on click listeners
+    var lead_id;
+    // Display lead specific content
     $('#master-lead-list li a').on("click", function(event){
+
+        var html_id = this.id;
+        console.log(html_id);
+        lead_id = html_id.split("-")[2];
+        console.log(lead_id);
+
+
+        $.ajax({
+            type: "POST",
+            url: "/dashboard/viewLead",
+            data: {'leadIndex': lead_id},
+            dataType: 'html',
+            success: function (response) {
+
+                $('#display-lead-success-messages').append(
+                    '<div class="alert alert-success" role="alert">' +
+                    '<span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-green w3-large w3-display-topright">×</span>' +
+                    '<h3> Success! </h3><p class="alert-link">A new post was successfully published to your blog.</p>' +
+                    '</div>');
+
+                //console.log(response)
+                $('#contacts-render-target').html(response);
+
+
+            },
+                error: function () {
+                $('#display-lead-error-messages').append('' +
+                    '<div class="alert alert-success" role="alert">' +
+                    '<span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-red w3-large w3-display-topright">×</span>' +
+                    '<h3> Error! </h3>' +
+                    '<p> Something went wrong. Please try again. </p>' +
+                    '</div>');
+            }
+
+            //$('#container-details').html(data); }
+            //prevent the link from refreshing page
+
+        });
+        return false;
+    });
+
+
+    $(document).on('click', '.contact-sidebar a', function (event) {
+
+        if (!$(this).hasClass('active')) {
+
+            var contactName = $(this).children('p').text().split(',')[0].trim();
+            var contactTitle = $(this).children('p').text().split(',')[1].trim();
+
+            $.ajax({
+                type: "POST",
+                url: "/dashboard/contactInfo",
+                data: {'leadIndex': lead_id, 'name': contactName, 'jobTitle': contactTitle},
+                success: function(res) {
+                    // console.log(res);
+                    $('#contacts-render-target').html(res);
+
+
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+
+        }
+    });
+
+
+    $(document).on('click', '#send-email-button', function (event) {
+
+        console.log('Sent!');
+
+    });
+
+
+    //Display contact specific content
+    $('.update-active-contact-button li a').on("click", function(event){
 
         var html_id = this.id;
         console.log(html_id);
@@ -1100,8 +1135,9 @@ $('.editable').on('hidden', function(e, reason){
                 console.log(response)
                 $('#contacts-render-target').html(response);
 
+
             },
-                error: function () {
+            error: function () {
                 $('#display-lead-error-messages').append('<div class="w3-panel w3-card-4 w3-red w3-display-container w3-padding w3-margin"><span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-red w3-large w3-display-topright">×</span><h3> Error! </h3><p> You\'ve encountered a validation error. Please make sure your form contents match the placeholder requirements. </p></div>');
             }
 
@@ -1111,6 +1147,7 @@ $('.editable').on('hidden', function(e, reason){
         });
         return false;
     });
+
 
 
 
@@ -1209,6 +1246,7 @@ $('.editable').on('hidden', function(e, reason){
 
     $('#timepicker1').timepicker();
     */
+
 
 
 

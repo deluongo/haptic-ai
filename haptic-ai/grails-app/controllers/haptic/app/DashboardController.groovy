@@ -2,6 +2,7 @@ package haptic.app
 
 import grails.plugin.springsecurity.annotation.Secured
 import haptic.crm.Lead
+import haptic.crm.Contact
 import haptic.fields.EmailAddress
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -17,8 +18,13 @@ class DashboardController {
 
         def leads = Lead.getAll()
         print(leads)
+
+        // Toggles Welcome Message
+        def lead = null
+
+
         /*  --------------            *** Display Dashboard ***         ---------------  */
-        render(view: "index", model: ["leads": leads])
+        render(view: "index", model: ["leads": leads, "lead": lead])
     }
 
     /*
@@ -117,6 +123,9 @@ class DashboardController {
         }
         */
         def active_contact_idx = 0
+
+
+
         /*  --------------            *** Load Form Results ***         ---------------  */
         def leadCompany = lead.company
         def activeContact = leadCompany.contacts[active_contact_idx]
@@ -131,9 +140,78 @@ class DashboardController {
 
         /*  --------------              *** Display Stats ***           ---------------  */
 
+//        String lastName = params.list('name')?.split(' ')[1]
+//
+//        if (firstName!=null && lastName!=null) {
+//            List<Contact> possibleNewActiveContacts = Contact.findAllByFirstName(firstName)
+//            for (contact in possibleNewActiveContacts) {
+//                if (contact.getLastName() == lastName) {
+//                    activeContact = contact
+//                }
+//            }
+//        }
+        println(activeContact.firstName)
         render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
 
     }
+
+
+    def contactInfo() {
+            def leadIndex = params.list('leadIndex')
+            //def validation_error = []
+            //String personIndex, String tabIndex,
+
+            /*  --------------              *** Select Player ***           ---------------  */
+            flash.message = "We've hit a snag. Details of this lead can't be displayed. Please refresh and try again."
+
+            println("LEAD ------------- \n\n\n\n\n")
+            print(params)
+            println("LEAD ------------- \n\n\n\n\n")
+
+            //println(lead)
+            println(leadIndex[0])
+
+            def lead = Lead.get("${leadIndex[0]}")
+
+
+            /*  --------------            *** Authenticate User ***         ---------------  */
+            def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
+            /*
+            if(person.user != currentUser) {
+
+                flash.message = "You aren't authorized to create new blog posts for ${person.firstName} ${person.lastName}"
+            }
+            */
+
+            def active_contact_idx = 0
+
+
+
+            /*  --------------            *** Load Form Results ***         ---------------  */
+            def leadCompany = lead.company
+            def activeContact = leadCompany.contacts[active_contact_idx]
+            def allContacts = leadCompany.contacts
+
+
+
+
+            def firstName = params.list('name')[0].split(' ')[0]
+            def lastName = params.list('name')[0].split(' ')[1]
+            def jobTitle = params.list('jobTitle')[0]
+
+            for (contact in allContacts) {
+
+                if (contact.getFirstName()==firstName &&
+                        contact.getLastName()==lastName && contact.getJobTitle()==jobTitle) {
+                    activeContact = contact
+                    println('executed')
+                }
+            }
+
+            render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
+
+
+        }
 
 
     /*
@@ -143,40 +221,90 @@ class DashboardController {
      *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~~~~~~ SHOW PLAYER STATS ~~~~~~~~~~~
      *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /*
-    def viewLead() {
-        render: function() {
-            <ul className="posts">
-                    {this.props.posts.map(function(post){
-                        return (
-                                <li>
-                        <h3>{post.title}</h3>
-            <p>{post.content}</p>
-                        </li>
-        )
-      })}
-            </ul>
-                    }
-                    })
+    def viewLeadContacts() {
+        print("HI")
+        //String personIndex, String tabIndex, String postTitle, String postDescription, String backgroundImage, String blogText
 
-            const ChildComponentContainer = React.createClass({
-                getInitialState: function() {
-                    return {
-                        posts: []
-                    }
-                },
-                componentWillMount: function() {
-                    axios.get(this.props.url, function(resp) {
-                        this.setState({
-                            posts: resp.data
-                        });
-                    }.bind(this));
-                },
-                render: function() {
-                    return (
-                            <ChildComponent posts={this.state.posts} />
-                    )
-                }
-            })
+        /*------------------------------------------*
+        * ===========================================
+        * FUNCTION -> SHOW PLAYER STATS!
+        * ===========================================
+        * INPUTS:
+        *     -
+        * FUNCTIONS:
+        *     - playGame(homeTeam, awayTeam)
+        * DESCRIPTION:
+        *     - Displays league standings in the browser
+        * OUTPUT:
+        *     -
+        /*---------------------------------------------------------------------------------------------*/
+
+        /*
+        def leadIndex = params.list('leadIndex')
+        //def validation_error = []
+        //String personIndex, String tabIndex,
+
+        /*  --------------              *** Select Player ***           ---------------  */
+
+        /*
+        flash.message = "We've hit a snag. Details of this lead can't be displayed. Please refresh and try again."
+
+        println("LEAD ------------- \n\n\n\n\n")
+        print(params)
+        println("LEAD ------------- \n\n\n\n\n")
+
+        //println(lead)
+        println(leadIndex[0])
+
+        def lead = Lead.get("${leadIndex[0]}")
+
+
+        /*  --------------            *** Authenticate User ***         ---------------  */
+
+        /*
+        def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
+
+        /*
+        if(person.user != currentUser) {
+
+            flash.message = "You aren't authorized to create new blog posts for ${person.firstName} ${person.lastName}"
+        }
+	    */
+
+        /*
+        def active_contact_idx = 0
+        /*  --------------            *** Load Form Results ***         ---------------  */
+
+        /*
+        def leadCompany = lead.company
+        def activeContact = leadCompany.contacts[active_contact_idx]
+        def allContacts = leadCompany.contacts
+
+        /*
+        def leadTimeLine = lead.timeLine
+        def leadActivityFeed = lead.activityFeed
+        */
+        //def backgroundImage = params.list('backgroundImage')
+
+
+        /*  --------------              *** Display Stats ***           ---------------  */
+        /*
+        render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts])
+
+    }
+
+
+
+        /*
+        @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
+        */
+        /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~~~~~~ SHOW PLAYER STATS ~~~~~~~~~~~
+         *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /*
+        def viewLeadCompany() {
+            print("HI")
+            //String personIndex, String tabIndex, String postTitle, String postDescription, String backgroundImage, String blogText
             */
 
 }

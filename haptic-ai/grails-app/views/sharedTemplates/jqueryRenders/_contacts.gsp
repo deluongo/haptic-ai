@@ -4,6 +4,53 @@
     <div class="row">
         <div class="col-md-7">
 
+
+
+
+            <!-- LANDING PAGE - No Lead Default -->
+            <g:if test="${!(lead instanceof haptic.crm.Lead)}">
+                <!-- Welcome Message -->
+
+
+
+                <div class="row padding-10-w">
+                    <div class="panel panel-white margin-10-b">
+                        <div class="panel-body">
+                            <!-- Row -->
+                            <div class="page-breadcrumb">
+                            <h2> Haptic Dashboard</h2>
+                            </div>
+
+
+                            <hr class="contact-page-hr">
+
+
+
+
+                            <!-- Row -->
+                            <div class="panel panel-white padding-0-i margin-0 activity-feed-panel">
+
+                                <div class="panel-heading contacts-panel-heading clearfix padding-0-i">
+                                    <div class="">
+                                        <!-- Display The Selected Contact's Name -->
+                                        <h2 class="no-m m-b-lg contact-name-header">Welcome ${currentUser} - <small> Select a lead from the left hand list to research and engage a prospect!</small></h2>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Welcome Message -->
+            </g:if>
+
+
+
+            <g:else>
+
+            </g:else>
             <div class="row padding-10-w">
                 <div class="panel panel-white margin-10-b">
                     <div class="panel-body">
@@ -12,7 +59,7 @@
                             <ol class="breadcrumb">
                                 <li class="active" id="leads-tab"><span class="dashboard-breadcrumb-span">Lead</span></li>
                                 <!-- Display The Selected Company Name -->
-                                <li id="company-tab"><span class="dashboard-breadcrumb-span">Microsoft</span></li>
+                                <li id="company-tab"><span class="dashboard-breadcrumb-span">${leadCompany?.companyName}</span></li>
                                 <li id="contacts-tab"><span class="dashboard-breadcrumb-span">Contacts</span></li>
                             </ol>
                         </div>
@@ -30,7 +77,7 @@
                                 <div class="flex-row-between">
                                     <div class="">
                                         <!-- Display The Selected Contact's Name -->
-                                        <h2 class="no-m m-b-lg contact-name-header">Bill Gates</h2>
+                                        <h2 class="no-m m-b-lg contact-name-header">${activeContact?.firstName} ${activeContact?.lastName}</h2>
                                     </div>
                                     <div class="contact-action-buttons">
                                         <a data-toggle="modal" data-target="#send-new-email-modal" class="icon-btn">
@@ -56,17 +103,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <h1>Status ${lead?.status}</h1>
-                            <h1>${lead?.company?.contacts}</h1>
 
                             <div class="panel-body padding-0-i">
                                 <div class="tabs-left" role="tabpanel">
                                     <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs" role="tablist">
+                                    <ul class="nav nav-tabs" id="lead-panel-tab-label" class="change-active-contact-button" role="tablist">
 
                                         <g:each status="i" in="${allContacts}" var="contact">
                                             <g:if test="${i < 5}">
-                                                <li role="presentation" <g:if test="${contact == activeContact}"> class="active" disabled </g:if> >
+                                                <li role="presentation" class="contact-sidebar" <g:if test="${contact == activeContact}"> class="active"</g:if> >
                                                     <a href="#tab9" role="tab" data-toggle="tab">
                                                         <p class="contact-name-tabs">
                                                             ${contact.firstName} ${contact.lastName} <small class="contact-panel-job-title">, ${contact.jobTitle}</small>
@@ -75,29 +120,22 @@
                                                 </li>
                                             </g:if>
                                             <g:if test="${i >= 5}">
-
+                                                <li role="presentation" class="dropdown">
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><p class="contact-name-tabs">
+                                                        Dropdown<span class="caret"></span></p>
+                                                    </a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li class="">
+                                                            <a href="#tab32" role="tab" data-toggle="tab" aria-expanded="false">
+                                                                <p class="contact-name-tabs">
+                                                                    ${contact.firstName} ${contact.lastName} <small class="contact-panel-job-title">, ${contact.jobTitle}</small>
+                                                                </p>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
                                             </g:if>
-
                                         </g:each>
-
-                                        <li role="presentation" class="active" disabled><a href="#tab9" role="tab" data-toggle="tab"><p class="contact-name-tabs">
-                                            Bill Gates<small class="contact-panel-job-title">, CEO</small></p></a></li>
-                                        <li role="presentation"><a href="#tab10" role="tab" data-toggle="tab"><p class="contact-name-tabs">
-                                            Bob Minor<small class="contact-panel-job-title">, CTO</small></p></a></li>
-                                        <li role="presentation"><a href="#tab11" role="tab" data-toggle="tab"><p class="contact-name-tabs">
-                                            Justin Cooperman<small class="contact-panel-job-title">, Head of Engineering</small></p></a></li>
-                                        <li role="presentation"><a href="#tab12" role="tab" data-toggle="tab"><p class="contact-name-tabs">
-                                            Devon Luongo<small class="contact-panel-job-title">, Product Manager</small></p></a></li>
-                                        <li role="presentation" class="dropdown">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><p class="contact-name-tabs">
-                                                Dropdown<span class="caret"></span></p>
-                                            </a>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li class=""><a href="#tab32" role="tab" data-toggle="tab" aria-expanded="false">Steph Curry, <small>Brand Icon</small></a></li>
-                                                <li class=""><a href="#tab33" role="tab" data-toggle="tab" aria-expanded="false">Jim Beam, <small>SDR</small></a></li>
-                                            </ul>
-                                        </li>
-
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content padding-0-i">
@@ -164,29 +202,8 @@
 
                                 <a href="#" data-load="true" data-url="portlet_ajax_content_1.html" class="reload"></a>
 
-
-                                <div id="display-lead-success-messages"></div>
-                                <div class="panel panel-white">
-                                    <div class="panel-heading clearfix">
-                                        <h3 class="panel-title">Links in alerts</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="alert alert-success" role="alert">
-                                            <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-                                        </div>
-                                        <div class="alert alert-info" role="alert">
-                                            <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
-                                        </div>
-                                        <div class="alert alert-warning" role="alert">
-                                            <strong>Warning!</strong> Better check yourself, you're <a href="#" class="alert-link">not looking too good</a>.
-                                        </div>
-                                        <div class="alert alert-danger" role="alert">
-                                            <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
-                                        </div>
-                                    </div>
-                                </div>
                                 <!-- Row | Contacts Panel -->
-                                <g:render template="/sharedTemplates/crm/crm-contact"/>
+                                <g:render template="/sharedTemplates/crm/crm-contact" />
                             </div>
                         </div>
                     </div>
@@ -202,7 +219,7 @@
                         <div class="caption">
                             <i class="icon-microphone font-green"></i>
                             <span class="caption-subject bold font-green uppercase"> Timeline</span>
-                            <span class="caption-helper">contact timeline</span>
+                            <span class="caption-helper">timeline</span>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -213,10 +230,13 @@
                 </div>
             </div>
         </div>
+
+
+
     </div><!-- Row -->
 </div>
 <!-- END CONTACTS PANEL -->
 
 <!-- START CONTACT ACTIVITY MODALS -->
-<g:render template="/sharedTemplates/modals/activity-modals"/>
+<g:render template="/sharedTemplates/modals/activity-modals" model="${[lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts]}"/>
 <!-- END CONTACT ACTIVITY MODALS -->
