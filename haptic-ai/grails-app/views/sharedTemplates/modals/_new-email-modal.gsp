@@ -22,7 +22,7 @@
                     <div id="new-email-success-messages"></div>
                 </div>
                 <div class="portlet-body form">
-                    <g:form class="" name="send-email-form" action="sendEmailMessage">
+                    <form class="" id="send-email-form">
                         <div class="form-body padding-0-b-i padding-10-w-i">
                             <div class="row">
                                 <div class="col-xs-6">
@@ -56,11 +56,11 @@
                                     </div>
                                 </div>
                                 <div class="">
+                                    <input type="hidden" id="senderIndex" name="senderIndex" value="${currentUser.id}" />
+                                    <input type="hidden" id="receiverIndex" name="receiverIndex" value="${activeContact.id}" />
+                                    <input type="hidden" id="leadIndex" name="leadIndex" value="${lead.id}" />
                                     <div class="form-actions noborder">
-                                        <input type="hidden" id="senderIndex" name="senderIndex" value="${currentUser.id}" />
-                                        <input type="hidden" id="receiverIndex" name="receiverIndex" value="${activeContact.id}" />
-                                        <input type="hidden" id="leadIndex" name="leadIndex" value="${lead.id}" />
-                                        <g:actionSubmit type="button" class="btn blue" action="sendEmailMessage" value="Send" />
+                                        <button type="submit" value="Send" id="new-email-submit-button" class="btn blue">Send</button>
                                     </div>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                             </div>
                         </div>
 
-                    </g:form>
+                    </form>
                     <div class="modal-footer padding-0-v">
                         <div class="form-actions noborder">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

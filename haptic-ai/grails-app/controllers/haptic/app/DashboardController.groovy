@@ -427,6 +427,8 @@ class DashboardController {
         def senderIndex = params.list('senderIndex')[0]
         def leadIndex = params.list('leadIndex')[0]
 
+        print(receiverIndex)
+        print(leadIndex)
         // Load objects from form indices
         String comChannel = "email"
         String direction = "outbound"
@@ -457,8 +459,8 @@ class DashboardController {
             /*  --------------             *** Add Post to DB ***           ---------------  */
             if (newEmail.validate()) {
                 newEmail.save(flush:true)
-                receiver.addToCommunications(newEmail)
-                sender.addToCommunications(newEmail)
+                receiver.addToCommunications(newEmail).save(flush:true)
+                sender.addToCommunications(newEmail).save(flush:true)
             }
 
             /*  --------------             *** Display Errors ***           ---------------  */
@@ -466,7 +468,10 @@ class DashboardController {
                 flash.message = "Something got stuck. Please try your email again."
             }
 
-
+            print("\n\nCOMMUNICATIONS")
+            print(receiver.communications.findAll())
+            print(sender.communications.findAll())
+            print("\n\nCOMMUNICATIONS\n\n\n")
             /*  --------------    *** Render Contacts 2 Update Data ***     ---------------  */
             render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: receiver, allContacts: allContacts, currentUser: currentUser])
         }

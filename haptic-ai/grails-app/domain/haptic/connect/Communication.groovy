@@ -45,6 +45,7 @@ class Communication {
     def receiver
 
 
+
     static constraints = {
         keywords nullable: true
         length nullable: true

@@ -1074,23 +1074,22 @@ $('.editable').on('hidden', function(e, reason){
      *  ~~~~~~~~~~ NAME ~~~~~~~~~~
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-    function objectifyForm(formArray) {//serialize data function
-        var returnArray = {};
-        for (var i = 0; i < formArray.length; i++){
-            returnArray[formArray[i]['name']] = formArray[i]['value'];
-        }
-        return returnArray;
-    }
-    $('#new-email-form').on('submit', function() {
-        var querystring = $("#new-email-form").serialize();
+
+
+
+    $(document).on("submit", "#send-email-form", function(e){
+
+        var querystring = $(this).serialize();
         console.log("Query String:" + querystring);
+
         $.ajax({
             type: "POST",
             url: "sendEmailMessage",
             data : querystring,
             success : function(response) {
 
-                $('#send-new-email-modal').modal('hide');
+
+                //$('#send-new-email-modal').modal('toggle');
 
                 $('#display-lead-success-messages').append(
                     '<div class="alert alert-success" role="alert">' +
@@ -1100,6 +1099,7 @@ $('.editable').on('hidden', function(e, reason){
 
                 //console.log(response)
                 $('#contacts-render-target').html(response);
+
 
 
             },
@@ -1112,6 +1112,9 @@ $('.editable').on('hidden', function(e, reason){
                     '</div>');
             }
         });
+
+        // Coding
+
         return false;
     });
 

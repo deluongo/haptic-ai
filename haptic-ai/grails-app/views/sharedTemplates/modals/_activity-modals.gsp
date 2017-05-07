@@ -2,7 +2,7 @@
 <!-- Email Address Model -->
 <div class="container">
     <!-- Modal -->
-    <div class="modal fade" id="send-new-email-modal"  role="dialog">
+    <div class="modal fade" id="send-new-email-modal" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content" id="new-email-model-body-wrapper">
                 <div class="modal-header" style="padding:35px 50px;">

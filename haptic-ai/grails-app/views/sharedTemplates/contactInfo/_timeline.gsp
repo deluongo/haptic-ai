@@ -1,5 +1,57 @@
 
             <div class="timeline">
+
+                <g:each status="i" in="${activeContact?.communications}" var="action">
+                    <g:if test="${action?.comChannel == "email"}">
+
+                        <!-- TIMELINE ITEM -->
+                        <div class="timeline-item">
+                            <div class="timeline-badge">
+                                <img class="timeline-badge-userpic" src="https://cdn4.iconfinder.com/data/icons/happily-colored-snlogo/512/gmail-email-mail-logo-circle-material.png"> </div>
+                            <div class="timeline-body">
+                                <div class="timeline-body-arrow"> </div>
+                                <div class="timeline-body-head">
+                                    <div class="timeline-body-head-caption">
+                                        <a href="javascript:;" class="timeline-body-title font-blue-madison">${action?.sender?.firstName} ${action?.sender?.lastName}</a>
+                                        <span class="timeline-body-time font-grey-cascade">Sent at ${println(action?.comDate?.format('h:mm a MMMM dd, yyyy'))}</span>
+                                    </div>
+                                    <div class="timeline-body-head-actions">
+                                        <div class="btn-group">
+                                            <button class="btn btn-circle green btn-outline btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" disabled> Actions
+                                                <i class="fa fa-angle-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li>
+                                                    <a href="javascript:;">Action </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">Another action </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">Something else here </a>
+                                                </li>
+                                                <li class="divider"> </li>
+                                                <li>
+                                                    <a href="javascript:;">Separated link </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="timeline-body-content">
+                                    <span class="font-grey-cascade"> ${action?.comContent} </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END TIMELINE ITEM -->
+
+
+
+                    </g:if>
+
+                </g:each>
+
+
                 <!-- TIMELINE ITEM -->
                 <div class="timeline-item">
                     <div class="timeline-badge">
@@ -41,6 +93,7 @@
                     </div>
                 </div>
                 <!-- END TIMELINE ITEM -->
+
                 <!-- TIMELINE ITEM WITH GOOGLE MAP -->
                 <div class="timeline-item">
                     <div class="timeline-badge">
