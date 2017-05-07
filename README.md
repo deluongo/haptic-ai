@@ -32,3 +32,96 @@ From a user perspective, a Sales Rep opens up a dashboard. They see a sorted lis
 ### Goal:
 The goal of the Haptic AI project is to create a system with a fully functional tool ready to be used in Market Research and to secure funding. A milestone of this goal (the web application tool) serves as the final project for the CSCI E-56 class. This web application would set up the fundamental database architecture for the traditional CRM and use a modular approach which can enhance the feedback loop process described above.
 
+
+### Contribution Breakdown
+
+![Code Additions](https://image.ibb.co/fNAMak/Contributor_Additions.png)
+
+
+### Accomplishments:
+
+**Devon**
+
+
+
+	* Back End:
+		- Security
+			- Implemented Spring Security Plugin & Authorization
+		- Domain Classes
+			- Defined all domain class relationships and hierarchies
+			- Includes support for many-2-many, 1-to-many, and 1-to-1 relationships with Cascade enabled for a 5 level table relationship. Lead, Company, Contacts, EmailAddress (PhoneNumbers, WebSites, SocialNetworks, ReviewSites, and Addresses) all update on with a single save method. As do User, Employee, Team, Employee Details, and EmailAddress (etc)
+			- Domain Class Validation (everything after Milestone 1) 
+		- Init
+			- Bootstrapped data (after milestone 1)
+		- TagLib
+			- Used a TagLib to dynamically update CRM related contact data via Ajax so that contacts and the accompanying contact details (Name, Job Title, Role, etc) update when a lead is selected in the left hand list (nav) and when a contact specific modal tab is clicked.
+		- Custom Transient functions
+			- Fixed random ordering changes in front end lists caused by the g:each tag by creating custom transients that sort lead lists and contact lists by their associated prospecting value. 
+		- Controllers
+			- Dashboard Controller
+				- All Methods
+					- Supports backend for front end nested AJAX calls
+					- Designed to solve multiple, complex problems with passing complex data structures (objects, arrays, JSON, etc.) located inside a parent div rendered by AJAX to the jQuery event handlers required to manages two different types of forms across myriad bootstrap modals. 
+		- Tests
+			- Domain Class Tests (part of Milestone 1 and after)
+			- Integration Test
+			- Functional Tests
+		- All Commenting
+    
+	* Front End:
+    - JS
+      - x-editable forms
+				- Added custom methods to Library code to support radio buttons
+				- Implemented custom inline forms that move to the next input upon completion
+				- Created context dependent dropdown menus
+				- Coded ajax event handeling to enable x-editable forms from within a previously rendered AJAX template by anchoring the parent .on method to an element outside the nested AJAX render hierarchy
+				- Pulled in drop down options dynamically from domain class variable values on the back end (not working for x-editable inside AJAX, worked on first page load)
+			- Material Forms
+				 - Pulled in drop down options dynamically from domain class variable values on the back end 
+			- Bootstrap Modal
+				- Implemented Bootstrap modals
+				- Enabled modals to access params and handle form submits even when inside a parent div rendered by Ajax
+			- KPI charts
+				- Charts update by clicking their title
+				- Designed to update in realtime as data regarding team sales progress updates the backend with data from many users.
+		
+    - Library Integration
+			- Bootstrap
+			- jQuery
+			- x-editable
+			- Material Forms
+			- Portlets
+			- Form Input Masking
+			- Charts.js
+			- (plus all additional)
+		- Views
+			- HTML
+				- Broken into Grails Templates to support multi-level, nested AJAX rendering
+				- ID’s, Classes defined, managed to work with JS and CSS
+				- Defined responsive grid layout with 3 unique layouts
+				- Created hidden event based warnings & notifications 
+				- 
+			- CSS
+				- Working responsive design (needs further mobile enhancement)
+				- KPI’s are horizontally scrollable and resized by screen size
+				- All UI/UX design and implementation
+				- Event based, contextual coloring of warnings & notifications
+				- (all code)
+
+
+**Sachin**
+
+	* Back End
+		- Bootstrap Data (up to Milestone 1)
+		- Domain Class Unit Tests (from Milestone 1)
+		- Domain Class Validation (from Milestone 1)
+
+	* Front End
+		- Activity Model JS (code has not been pushed to GitHub)
+		- Ability to access parameters from backend after Ajax render
+		- Ability to submit form (objects did not save properly)
+
+
+
+
+
