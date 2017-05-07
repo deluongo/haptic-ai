@@ -60,7 +60,7 @@
                                     <input type="hidden" id="receiverIndex" name="receiverIndex" value="${activeContact.id}" />
                                     <input type="hidden" id="leadIndex" name="leadIndex" value="${lead.id}" />
                                     <div class="form-actions noborder">
-                                        <button type="submit" value="Send" id="new-email-submit-button" class="btn blue">Send</button>
+                                        <button type="submit" value="Send" id="send-email-submit-button" class="btn blue">Send</button>
                                     </div>
                                 </div>
                             </div>

@@ -1074,11 +1074,13 @@ $('.editable').on('hidden', function(e, reason){
      *  ~~~~~~~~~~ NAME ~~~~~~~~~~
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-
+    $(document).on("click", "#send-email-submit-button", function(e){
+        $('#send-new-email-modal').modal('hide')
+    });
 
 
     $(document).on("submit", "#send-email-form", function(e){
-
+        e.preventDefault();
         var querystring = $(this).serialize();
         console.log("Query String:" + querystring);
 
@@ -1089,7 +1091,11 @@ $('.editable').on('hidden', function(e, reason){
             success : function(response) {
 
 
-                //$('#send-new-email-modal').modal('toggle');
+                $('#send-new-email-modal').modal('hide');
+
+                $('#send-new-email-modal').on('hidden.bs.modal', function () {
+
+
 
                 $('#display-lead-success-messages').append(
                     '<div class="alert alert-success" role="alert">' +
@@ -1099,6 +1105,7 @@ $('.editable').on('hidden', function(e, reason){
 
                 //console.log(response)
                 $('#contacts-render-target').html(response);
+                });
 
 
 
