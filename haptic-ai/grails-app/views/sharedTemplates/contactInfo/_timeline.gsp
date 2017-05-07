@@ -17,12 +17,12 @@
                                     </div>
                                     <div class="timeline-body-head-actions">
                                         <div class="btn-group">
-                                            <button class="btn btn-circle green btn-outline btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" disabled> Actions
+                                            <button class="btn btn-circle green btn-outline btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right" role="menu">
                                                 <li>
-                                                    <a href="javascript:;">Action </a>
+                                                    <a href="mailto:${action?.toField}">Email ${activeContact?.firstName}</a>
                                                 </li>
                                                 <li>
                                                     <a href="javascript:;">Another action </a>

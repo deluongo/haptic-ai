@@ -4,6 +4,10 @@
     padding-top: 5px;
 }
 
+a.disabled {
+    pointer-events: none;
+}
+
 .prospect-list-padding {
     padding-bottom: 10px;
 }

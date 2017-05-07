@@ -265,17 +265,30 @@
                                 <!--<img class="img-circle avatar" src="assets/images/avatar1.png" width="40" height="40" alt="">-->
                             </a>
                             <ul class="dropdown-menu dropdown-list" role="menu">
-                                <li role="presentation"><a href="profile.html" disabled=""><i class="fa fa-user"></i>Profile</a></li>
-                                <li role="presentation"><a href="calendar.html" disabled=""><i class="fa fa-calendar"></i>Calendar</a></li>
-                                <li role="presentation"><a href="inbox.html" disabled=""><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right">4</span></a></li>
+                                <!--
+                                <li role="presentation" class="no-link"><a href="#" class="disabled" disabled tabindex="-1"><i class="fa fa-user"></i>Profile</a></li>
+                                <li role="presentation" class="no-link"><a href="#" class="disabled" disabled tabindex="-1"><i class="fa fa-calendar"></i>Calendar</a></li>
+                                <li role="presentation" class="no-link"><a href="#" class="disabled" disabled tabindex="-1"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right">4</span></a></li>
                                 <li role="presentation" class="divider"></li>
-                                <li role="presentation"><a href="lock-screen.html" disabled=""><i class="fa fa-lock"></i>Lock screen</a></li>
-                                <li role="presentation"><a href="/logout/index"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                                <li role="presentation" class="no-link"><a href="#" class="disabled" disabled tabindex="-1"><i class="fa fa-lock"></i>Lock screen</a></li>
+                                -->
+                                <g:if test="${currentUser instanceof haptic.app.User}">
+                                    <li role="presentation"><a href="/logout/index"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                                </g:if>
+                                <g:else>
+                                    <li role="presentation"><a href="/login"><i class="fa fa-sign-out m-r-xs"></i>Log in</a></li>
+                                </g:else>
                             </ul>
                         </li>
                         <li>
-                            <a href="/logout/index" class="log-out waves-effect waves-button waves-classic">
-                                <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
+                                <g:if test="${currentUser instanceof haptic.app.User}">
+                                    <a href="/logout/index" class="log-out waves-effect waves-button waves-classic">
+                                    <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
+                                </g:if>
+                                <g:else>
+                                    <a href="/login" class="log-out waves-effect waves-button waves-classic">
+                                    <span><i class="fa fa-sign-out m-r-xs"></i>Log in</span>
+                                </g:else>
                             </a>
                         </li>
                     </ul><!-- Nav -->

@@ -1092,19 +1092,15 @@ $('.editable').on('hidden', function(e, reason){
 
 
                 $('#send-new-email-modal').modal('hide');
-
                 $('#send-new-email-modal').on('hidden.bs.modal', function () {
+                    $('#display-lead-success-messages').append(
+                        '<div class="alert alert-success" role="alert">' +
+                        '<span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-green w3-large w3-display-topright">×</span>' +
+                        '<h3> Success! </h3><p class="alert-link">A new post was successfully published to your blog.</p>' +
+                        '</div>');
 
-
-
-                $('#display-lead-success-messages').append(
-                    '<div class="alert alert-success" role="alert">' +
-                    '<span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-green w3-large w3-display-topright">×</span>' +
-                    '<h3> Success! </h3><p class="alert-link">A new post was successfully published to your blog.</p>' +
-                    '</div>');
-
-                //console.log(response)
-                $('#contacts-render-target').html(response);
+                    //console.log(response)
+                    $('#contacts-render-target').html(response);
                 });
 
 
