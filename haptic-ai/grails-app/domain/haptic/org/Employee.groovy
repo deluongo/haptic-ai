@@ -1,5 +1,6 @@
 package haptic.org
 import haptic.app.User
+import haptic.connect.Communication
 import haptic.fields.Address
 import haptic.fields.EmailAddress
 import haptic.fields.PhoneNumber
@@ -35,7 +36,7 @@ class Employee {
     /*  -------------------             *** GORM Mapping ***            -------------------  */
     static hasMany = [emailAddresses: EmailAddress, phoneNumbers: PhoneNumber,
                       socialNetworks: SocialNetwork, reviewSites: ReviewSite, webSites: WebSite,
-                      addresses     : Address]
+                      addresses     : Address,  communications: Communication]
 
     //TO-DO:
     //------

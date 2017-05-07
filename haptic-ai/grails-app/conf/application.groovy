@@ -1,7 +1,7 @@
 grails.gorm.failOnError = true
 
 // Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.useBasicAuth = true
+grails.plugin.springsecurity.useBasicAuth = true
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'haptic.app.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'haptic.app.UserRole'
 grails.plugin.springsecurity.authority.className = 'haptic.app.Role'

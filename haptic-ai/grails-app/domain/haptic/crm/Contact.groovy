@@ -1,5 +1,6 @@
 package haptic.crm
 
+import haptic.connect.Communication
 import haptic.eval.Note
 import haptic.fields.Address
 import haptic.fields.EmailAddress
@@ -41,7 +42,7 @@ class Contact {
     /*  -------------------             *** GORM Mapping ***            -------------------  */
     static hasMany = [emailAddresses: EmailAddress, phoneNumbers: PhoneNumber,
     socialNetworks: SocialNetwork, reviewSites: ReviewSite, webSites: WebSite,
-    addresses: Address, notes: Note]
+    addresses: Address, notes: Note, communications: Communication]
 
 
     static constraints = {

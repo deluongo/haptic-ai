@@ -30,7 +30,7 @@ class WebSite {
 
     static constraints = {
         webSiteName blank: false
-        webSiteUrl matches: /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}/
+        webSiteUrl matches: /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/
         resourceWeight nullable: true
         traffic nullable: true
         alexaRating nullable: true

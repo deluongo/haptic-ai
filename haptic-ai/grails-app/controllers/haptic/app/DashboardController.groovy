@@ -1,10 +1,13 @@
 package haptic.app
 
 import grails.plugin.springsecurity.annotation.Secured
+import haptic.connect.Communication
 import haptic.crm.Company
 import haptic.crm.Contact
 import haptic.crm.Lead
 import haptic.fields.EmailAddress
+import haptic.org.Employee
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.SpringSecurityUtils
@@ -331,60 +334,6 @@ class DashboardController {
 
 
 
-    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
-    /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~ UPDATE CONTACT'S SALUTATION ~~~~~~
-     *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    def firstName() {
-
-        /*------------------------------------------*
-        * ===========================================
-        * FUNCTION -> UPDATES CONTACT'S SALUTATION FIELD IN DB!
-        * ===========================================
-        * INPUTS:
-        *     - contactIndex
-        *     - leadIndex
-        *     - salutationValue
-        * DESCRIPTION:
-        *     - Stores results for x-editable form in DB
-        * OUTPUT:
-        *     - HTML rendering of _contacts.gsp template
-        /*---------------------------------------------------------------------------------------------*/
-
-        // Authenticate User
-        //def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
-
-        // Get indices from post params
-        //def leadIndex = params.list('leadIndex') ?: 1
-        def contactIndex = params.list('pk')[0]
-        def leadIndex = params.list('lead')[0]
-        def salutationValue = params.list('value')[0]
-
-
-        println("\n\n\n" + " ----------- SALUTATION ------------- \n")
-        println(contactIndex)
-        println(salutationValue)
-        println("\n")
-        print(leadIndex)
-        println("\n" + " ----------- SALUTATION -------------" + "\n\n\n")
-
-        // Define flash message
-        flash.message = "We've hit a snag. Details of this lead can't be displayed. Please refresh and try again."
-
-        // Get domain class objects from indices
-        //def lead = Lead.get(leadIndex)
-        //def leadCompany = lead.company
-        def activeContact = Contact.get(contactIndex)
-        //def allContacts = leadCompany.contacts.sort()
-
-        // Store updated salutation value
-        activeContact.firstName = salutationValue
-        activeContact.save(flush:true)
-
-
-        return "HTTP status 200 OK"
-
-    }
 
 
     @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
@@ -445,6 +394,88 @@ class DashboardController {
     }
 
 
+
+
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
+    /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~ UPDATE CONTACT'S SALUTATION ~~~~~~
+     *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    def sendEmailMessage() {
+
+        /*------------------------------------------*
+        * ===========================================
+        * FUNCTION -> UPDATES CONTACT'S SALUTATION FIELD IN DB!
+        * ===========================================
+        * INPUTS:
+        *     - contactIndex
+        *     - leadIndex
+        *     - salutationValue
+        * DESCRIPTION:
+        *     - Stores results for x-editable form in DB
+        * OUTPUT:
+        *     - HTML rendering of _contacts.gsp template
+        /*---------------------------------------------------------------------------------------------*/
+
+
+        // Authenticate User
+        def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
+
+        /*  --------------            *** Send Email Form Results ***         ---------------  */
+
+        // Get form results
+        def receiverIndex = params.list('receiverIndex')[0]
+        def senderIndex = params.list('senderIndex')[0]
+        def leadIndex = params.list('leadIndex')[0]
+
+        // Load objects from form indices
+        String comChannel = "email"
+        String direction = "outbound"
+        def receiver = Contact.findById(receiverIndex)
+        def sender = Employee.findById(senderIndex)
+        String sentTo = params.list('sent-to-email-address')[0]
+        String sentFrom = params.list('sent-from-email-address')[0]
+        String comTitle = params.list('new-email-title')[0]
+        String comContent = params.list('new-email-body')[0]
+
+        // Load objects for ajax render
+        def lead = Lead.get(leadIndex)
+        def leadCompany = lead.company
+        def allContacts = lead.rankedContacts
+
+        /*  -------------------------------- END EMAIL -------------------------------  */
+
+        // Store results
+        if(currentUser == "User Not Configured") {
+            flash.message = "You aren't authorized to send emails to ${receiver.firstName} ${receiver.lastName}"
+        }
+        else {
+
+            /*  --------------           *** Add New Comm Object ***        ---------------  */
+            Communication newEmail = new Communication(receiver: receiver, sender: sender, comDate: new Date(), direction: direction, comChannel: comChannel,
+                    sentTo: sentTo, sentFrom: sentFrom, comTitle: comTitle, comContent: comContent)
+
+            /*  --------------             *** Add Post to DB ***           ---------------  */
+            if (newEmail.validate()) {
+                newEmail.save(flush:true)
+                receiver.addToCommunications(newEmail)
+                sender.addToCommunications(newEmail)
+            }
+
+            /*  --------------             *** Display Errors ***           ---------------  */
+            else {
+                flash.message = "Something got stuck. Please try your email again."
+            }
+
+
+            /*  --------------    *** Render Contacts 2 Update Data ***     ---------------  */
+            render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: receiver, allContacts: allContacts, currentUser: currentUser])
+        }
+
+    }
+
+
+
+
     @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
     /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~ UPDATE CONTACT'S SALUTATION ~~~~~~
@@ -478,7 +509,66 @@ class DashboardController {
 
     /*
     @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
+
+
+
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
     */
+    /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~ UPDATE CONTACT'S SALUTATION ~~~~~~
+     *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /*
+  def firstName() {
+*/	  /*------------------------------------------*
+	  * ===========================================
+	  * FUNCTION -> UPDATES CONTACT'S SALUTATION FIELD IN DB!
+	  * ===========================================
+	  * INPUTS:
+	  *     - contactIndex
+	  *     - leadIndex
+	  *     - salutationValue
+	  * DESCRIPTION:
+	  *     - Stores results for x-editable form in DB
+	  * OUTPUT:
+	  *     - HTML rendering of _contacts.gsp template
+	  /*---------------------------------------------------------------------------------------------*/
+
+        // Authenticate User
+        //def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
+
+        // Get indices from post params
+        //def leadIndex = params.list('leadIndex') ?: 1
+        /*
+	  def contactIndex = params.list('pk')[0]
+	  def leadIndex = params.list('lead')[0]
+	  def salutationValue = params.list('value')[0]
+
+
+	  println("\n\n\n" + " ----------- SALUTATION ------------- \n")
+	  println(contactIndex)
+	  println(salutationValue)
+	  println("\n")
+	  print(leadIndex)
+	  println("\n" + " ----------- SALUTATION -------------" + "\n\n\n")
+
+	  // Define flash message
+	  flash.message = "We've hit a snag. Details of this lead can't be displayed. Please refresh and try again."
+
+	  // Get domain class objects from indices
+	  //def lead = Lead.get(leadIndex)
+	  //def leadCompany = lead.company
+	  def activeContact = Contact.get(contactIndex)
+	  //def allContacts = leadCompany.contacts.sort()
+
+	  // Store updated salutation value
+	  activeContact.firstName = salutationValue
+	  activeContact.save(flush:true)
+
+
+	  return "HTTP status 200 OK"
+
+  }
+  */
     /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~~~~~~ SHOW PLAYER STATS ~~~~~~~~~~~
      *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */

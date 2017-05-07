@@ -22,7 +22,7 @@
                     <div id="new-email-success-messages"></div>
                 </div>
                 <div class="portlet-body form">
-                    <form role="form ">
+                    <g:form class="" name="send-email-form" action="sendEmailMessage">
                         <div class="form-body padding-0-b-i padding-10-w-i">
                             <div class="row">
                                 <div class="col-xs-6">
@@ -57,7 +57,10 @@
                                 </div>
                                 <div class="">
                                     <div class="form-actions noborder">
-                                        <button type="button" class="btn blue">Send</button>
+                                        <input type="hidden" id="senderIndex" name="senderIndex" value="${currentUser.id}" />
+                                        <input type="hidden" id="receiverIndex" name="receiverIndex" value="${activeContact.id}" />
+                                        <input type="hidden" id="leadIndex" name="leadIndex" value="${lead.id}" />
+                                        <g:actionSubmit type="button" class="btn blue" action="sendEmailMessage" value="Send" />
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +70,7 @@
                             </div>
                         </div>
 
-                    </form>
+                    </g:form>
                     <div class="modal-footer padding-0-v">
                         <div class="form-actions noborder">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

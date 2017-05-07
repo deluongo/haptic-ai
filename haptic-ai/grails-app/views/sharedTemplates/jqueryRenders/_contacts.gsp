@@ -33,7 +33,10 @@
                                 <div class="panel-heading contacts-panel-heading clearfix padding-0-i">
                                     <div class="">
                                         <!-- Display The Selected Contact's Name -->
-                                        <h2 class="no-m m-b-lg contact-name-header">Welcome ${currentUser.employee.salutation} ${currentUser.employee.lastName} - <small> Select a lead from the left hand list to research and engage a prospect!</small></h2>
+                                        <h2 class="no-m m-b-lg contact-name-header">
+                                        <g:if test="${currentUser instanceof haptic.app.User}">Welcome ${currentUser?.employee?.salutation} ${currentUser?.employee?.lastName} - <small> Select a lead from the left hand list to research and engage a prospect!</small></g:if>
+                                        <g:else> <a href="/login/auth" class="text-danger">Please Sign In</a> - <small> prospect details are private!</small></g:else>
+                                        </h2>
                                     </div>
                                 </div>
 

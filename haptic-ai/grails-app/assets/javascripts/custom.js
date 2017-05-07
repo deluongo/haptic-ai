@@ -1045,6 +1045,77 @@ $('.editable').on('hidden', function(e, reason){
     });
 
 
+
+
+
+
+
+
+                                         //~~~~~~~~~~~~~~~\\
+                                        //                 \\
+                                       //     SEND EMAIL    \\
+                                      //                     \\
+                                     //=======================\\
+                                    //                         \\
+                                   //       ACTIVITY MODALS     \\
+                                  //                             \\
+                                 //   /\  /\  /\  /\  /\  /\  /\  \\
+                                //___/  \/  \/  \/  \/  \/  \/  \__\\
+
+
+    /*  ______________________                                         ____________________  */
+    /*  ====================== !!! ---*** FIELD DEFINITIONS ***--- !!! ====================  */
+
+
+    /*  -------------------           *** Personal Details ***          -------------------  */
+
+
+    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *  ~~~~~~~~~~ NAME ~~~~~~~~~~
+     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+    function objectifyForm(formArray) {//serialize data function
+        var returnArray = {};
+        for (var i = 0; i < formArray.length; i++){
+            returnArray[formArray[i]['name']] = formArray[i]['value'];
+        }
+        return returnArray;
+    }
+    $('#new-email-form').on('submit', function() {
+        var querystring = $("#new-email-form").serialize();
+        console.log("Query String:" + querystring);
+        $.ajax({
+            type: "POST",
+            url: "sendEmailMessage",
+            data : querystring,
+            success : function(response) {
+
+                $('#send-new-email-modal').modal('hide');
+
+                $('#display-lead-success-messages').append(
+                    '<div class="alert alert-success" role="alert">' +
+                    '<span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-green w3-large w3-display-topright">×</span>' +
+                    '<h3> Success! </h3><p class="alert-link">A new post was successfully published to your blog.</p>' +
+                    '</div>');
+
+                //console.log(response)
+                $('#contacts-render-target').html(response);
+
+
+            },
+            error: function () {
+                $('#display-lead-error-messages').append('' +
+                    '<div class="alert alert-success" role="alert">' +
+                    '<span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-red w3-large w3-display-topright">×</span>' +
+                    '<h3> Error! </h3>' +
+                    '<p> Something went wrong. Please try again. </p>' +
+                    '</div>');
+            }
+        });
+        return false;
+    });
+
+
     /*  ______________________                                         ____________________  */
     /*  ______________________                                         ____________________  */
     /*  ______________________                                         ____________________  */
