@@ -1,7 +1,8 @@
+<%@ page import="haptic.org.Employee" %>
 
-            <div class="timeline">
+<div class="timeline">
 
-                <g:each status="i" in="${activeContact?.communications}" var="action">
+                <g:each status="i" in="${activeContact?.sortedCommunications}" var="action">
                     <g:if test="${action?.comChannel == "email"}">
 
                         <!-- TIMELINE ITEM -->
@@ -12,7 +13,7 @@
                                 <div class="timeline-body-arrow"> </div>
                                 <div class="timeline-body-head">
                                     <div class="timeline-body-head-caption">
-                                        <a href="javascript:;" class="timeline-body-title font-blue-madison">${action?.sender?.firstName} ${action?.sender?.lastName}</a>
+                                        <a href="javascript:;" class="timeline-body-title font-blue-madison">${haptic.org.Employee.get(action?.sender)?.firstName} ${haptic.org.Employee.get(action?.sender)?.lastName} </a>
                                         <span class="timeline-body-time font-grey-cascade">Sent at ${println(action?.comDate?.format('h:mm a MMMM dd, yyyy'))}</span>
                                     </div>
                                     <div class="timeline-body-head-actions">
@@ -24,21 +25,19 @@
                                                 <li>
                                                     <a href="mailto:${action?.toField}">Email ${activeContact?.firstName}</a>
                                                 </li>
-                                                <li>
-                                                    <a href="javascript:;">Another action </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">Something else here </a>
-                                                </li>
                                                 <li class="divider"> </li>
                                                 <li>
-                                                    <a href="javascript:;">Separated link </a>
+                                                    <a class="mark-email-as-answered">Mark Answered </a>
+                                                </li>
+                                                <li>
+                                                    <a class="mark-email-as-significant">Mark Significant </a>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="timeline-body-content">
+                                    <span class="timeline-body-alerttitle font-red-intense">${action?.comTitle}</span><br/>
                                     <span class="font-grey-cascade"> ${action?.comContent} </span>
                                 </div>
                             </div>

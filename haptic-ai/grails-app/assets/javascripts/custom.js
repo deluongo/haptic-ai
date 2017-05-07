@@ -1069,18 +1069,28 @@ $('.editable').on('hidden', function(e, reason){
 
     /*  -------------------           *** Personal Details ***          -------------------  */
 
+    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *  ~~~~~~~~~~ EMAIL TIMELINE ACTIONS ~~~~~~~~~~
+     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    $(document).on("click", ".mark-email-as-answered", function(){
+        chart_2.update(Math.random()*200-100);
+        chart_2_sm.update(Math.random()*200-100);
+    });
+
+    $(document).on("click", ".mark-email-as-significant", function(){
+        chart_3.update(Math.random()*200-100);
+        chart_3_sm.update(Math.random()*200-100);
+    });
 
     /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-     *  ~~~~~~~~~~ NAME ~~~~~~~~~~
+     *  ~~~~~~~~~~ SEND EMAIL ~~~~~~~~~~
      *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-    $(document).on("click", "#send-email-submit-button", function(e){
+    $(document).on("click", "#send-email-submit-button", function(){
         $('#send-new-email-modal').modal('hide')
     });
 
-
     $(document).on("submit", "#send-email-form", function(e){
-        e.preventDefault();
+
         var querystring = $(this).serialize();
         console.log("Query String:" + querystring);
 
@@ -1091,7 +1101,7 @@ $('.editable').on('hidden', function(e, reason){
             success : function(response) {
 
 
-                $('#send-new-email-modal').modal('hide');
+
                 $('#send-new-email-modal').on('hidden.bs.modal', function () {
                     $('#display-lead-success-messages').append(
                         '<div class="alert alert-success" role="alert">' +

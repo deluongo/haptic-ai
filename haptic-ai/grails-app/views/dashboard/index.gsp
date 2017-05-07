@@ -510,11 +510,12 @@
                                 </div>
                                 <div class="col-xs-3 padding-0">
                                     <div class="chart-sm">
-                                        <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
-                                            <span>8 <br><small class="text-muted">/100</small></span>
+                                        <div class="kpi-3-sm pie-chart" data-percent="33" data-line-width="3" data-size="75" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
+                                            <span class="kpi-3-value-sm">%</span>
                                         </div>
                                     </div>
-                                    <h4 class="kpi-label solo-label">KPI #3</h4>
+                                    <h4 class="kpi-label js_update_3_sm solo-label">KPI #3</h4>
+
                                 </div>
                                 <div class="col-xs-3 padding-0">
                                     <div class="chart-sm">

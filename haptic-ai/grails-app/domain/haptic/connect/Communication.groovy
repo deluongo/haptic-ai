@@ -41,8 +41,8 @@ class Communication {
     String comContent // Call transcript, email/post text,
 
     // Nullable
-    def sender
-    def receiver
+    String sender //ID to identify sender
+    Contact receiver
 
 
 

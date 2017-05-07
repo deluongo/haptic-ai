@@ -453,8 +453,8 @@ class DashboardController {
         else {
 
             /*  --------------           *** Add New Comm Object ***        ---------------  */
-            Communication newEmail = new Communication(receiver: receiver, sender: sender, comDate: new Date(), direction: direction, comChannel: comChannel,
-                    sentTo: sentTo, sentFrom: sentFrom, comTitle: comTitle, comContent: comContent)
+            Communication newEmail = new Communication(receiver: receiver, sender: senderIndex, comDate: new Date(), direction: direction, comChannel: comChannel,
+                    toField: sentTo, fromField: sentFrom, comTitle: comTitle, comContent: comContent)
 
             /*  --------------             *** Add Post to DB ***           ---------------  */
             if (newEmail.validate()) {
@@ -471,6 +471,11 @@ class DashboardController {
             print("\n\nCOMMUNICATIONS")
             print(receiver.communications.findAll())
             print(sender.communications.findAll())
+            print(sentTo)
+            print(sentFrom)
+            print(comTitle)
+            print(comContent)
+
             print("\n\nCOMMUNICATIONS\n\n\n")
             /*  --------------    *** Render Contacts 2 Update Data ***     ---------------  */
             render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: receiver, allContacts: allContacts, currentUser: currentUser])

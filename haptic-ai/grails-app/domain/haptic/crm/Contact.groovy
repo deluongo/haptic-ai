@@ -56,5 +56,33 @@ class Contact {
         department blank: false
     }
 
+    /*  -------------------           *** List Transients ***         -------------------  */
+    static transients = [
+            /* ___  stats  ___ */
+            'sortedCommunications'
+    ]
+
+
+/*                          ==============  ***  ==============                          *
+ #  ---------------------                Functions                 --------------------  #
+ *                          ===================================                          */
+
+
+
+
+
+
+/*  _________________________                                  ________________________  */
+/*  ========================= !!! ---*** TRANSIENTS ***--- !!! ========================  */
+
+/*  ---------------                 *** Helpers ***             ---------------  */
+    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *  ~~~~ LIST CONFERENCE STANDINGS ~~~~
+     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    def getSortedCommunications() {
+        /*--|  LIST company CONTACTS -> SORT by HAPTIC SCORE  |--*/
+        communications.sort{it.comDate}.reverse()
+    }
+
 
 }
