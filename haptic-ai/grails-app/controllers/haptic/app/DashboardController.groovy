@@ -1,15 +1,13 @@
 package haptic.app
 
-import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
-import grails.web.JSONBuilder
 import haptic.crm.Company
 import haptic.crm.Contact
 import haptic.crm.Lead
 import haptic.fields.EmailAddress
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 
 @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
