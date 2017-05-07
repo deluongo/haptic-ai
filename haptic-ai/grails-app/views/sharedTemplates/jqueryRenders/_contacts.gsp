@@ -83,22 +83,22 @@
                                         <h2 class="no-m m-b-lg contact-name-header">${activeContact?.firstName} ${activeContact?.lastName}</h2>
                                     </div>
                                     <div class="contact-action-buttons">
-                                        <a data-toggle="modal" data-target="#send-new-email-modal" id="new-email-${activeContact?.id}-${lead?.id}" class="icon-btn">
+                                        <a data-target="#send-new-email-modal" data-id="send-new-email-modal" id="new-email-${activeContact?.id}-${lead?.id}" class="icon-btn">
                                             <i class="fa fa-envelope"></i>
                                             <div> Email </div>
                                             <span class="badge badge-info"> 12 </span>
                                         </a>
-                                        <a data-toggle="modal" data-target="#make-new-social-post"  class="icon-btn">
+                                        <a data-toggle="modal" data-target="#new-social-post-modal" data-id="new-social-post-modal"  id="new-email-${activeContact?.id}-${lead?.id}" class="icon-btn">
                                             <i class="fa fa-thumbs-up"></i>
                                             <div> Network </div>
                                             <span class="badge badge-info"> 2 </span>
                                         </a>
-                                        <a data-toggle="modal" data-target="#make-new-website-touch"  class="icon-btn">
+                                        <a data-toggle="modal" data-target="#new-website-touch-modal" data-id="new-website-touch-modal" id="new-email-${activeContact?.id}-${lead?.id}" class="icon-btn">
                                             <i class="fa fa-group"></i>
                                             <div> Engage </div>
                                             <span class="badge badge-danger"> 2 </span>
                                         </a>
-                                        <a data-toggle="modal" data-target="#make-new-call-modal"  class="icon-btn">
+                                        <a data-toggle="modal" data-target="#new-call-modal" data-id="new-call-modal" id="new-email-${activeContact?.id}-${lead?.id}" class="icon-btn">
                                             <i class="fa fa-phone"></i>
                                             <div> Call </div>
                                             <span class="badge badge-danger"> 3 </span>

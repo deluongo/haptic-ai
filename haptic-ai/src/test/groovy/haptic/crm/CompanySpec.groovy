@@ -20,6 +20,7 @@ import spock.lang.Unroll
 class CompanySpec extends Specification {
 
     def setup() {
+
     }
 
     def cleanup() {
@@ -27,7 +28,7 @@ class CompanySpec extends Specification {
 
     void "Test email formula not blank"() {
         when:"Email formula blank"
-            Company testCompany = new Company(  emailFormula: '',
+            Company testCompany = new Company(  companyName: '',
                                                 emailAddresses: new HashSet<EmailAddress>(),
                                                 phoneNumbers: new HashSet<PhoneNumber>(),
                                                 socialNetworks: new HashSet<SocialNetwork>(),
@@ -40,7 +41,7 @@ class CompanySpec extends Specification {
     }
 
     @Unroll
-    void "test Request nullable parameters event: #event requestedSpace: #requestedSpace dateRequested: #dateRequested messages: #messages status: #status is valid: #result"() {
+    void "test Company nullable parameters phoneNumbers: #phoneNumbers emailAddresses: #emailAddresses addresses: #addresses notes: #notes contacts: #contacts is valid: #result"() {
 
         when:
         Company company = new Company(companyName: 'Apple', companyRevenue: "10 bil", marketVertical: "Tech")
@@ -51,13 +52,13 @@ class CompanySpec extends Specification {
         company.validate() == result
 
         where:
-        phoneNumbers      |   emailAddresses     |   addresses     |   notes      |   contacts                        |   status                         |   result
-        new PhoneNumber() |   new EmailAddress() |   new Address() |   new Note() |   [new Contact(), new Contact()]  |   Request.RequestStatus.Approved |   true
-        null              |   new EmailAddress() |   new Address() |   new Note() |   [new Contact(), new Contact()]  |   Request.RequestStatus.Approved |   false
-        new PhoneNumber() |   null               |   new Address() |   new Note() |   [new Contact()]                 |   Request.RequestStatus.Approved |   false
-        new PhoneNumber() |   new EmailAddress() |   null          |   new Note() |   [new Contact()]                 |   Request.RequestStatus.Approved |   false
-        new PhoneNumber() |   new EmailAddress() |   new Address() |   null       |   []                              |   Request.RequestStatus.Approved |   false
-        new PhoneNumber() |   new EmailAddress() |   new Address() |   new Note() |   null                            |   Request.RequestStatus.Approved |   false
-        new PhoneNumber() |   new EmailAddress() |   new Address() |   new Note() |   []                              |   null                           |   false
+        phoneNumbers      |   emailAddresses     |   addresses     |   notes      |   contacts                        |   result
+        new PhoneNumber() |   new EmailAddress() |   new Address() |   new Note() |   [new Contact(), new Contact()]  |   false
+        null              |   new EmailAddress() |   new Address() |   new Note() |   [new Contact(), new Contact()]  |   false
+        new PhoneNumber() |   null               |   new Address() |   new Note() |   [new Contact()]                 |   false
+        new PhoneNumber() |   new EmailAddress() |   null          |   new Note() |   [new Contact()]                 |   false
+        new PhoneNumber() |   new EmailAddress() |   new Address() |   null       |   []                              |   false
+        new PhoneNumber() |   new EmailAddress() |   new Address() |   new Note() |   null                            |   false
+        new PhoneNumber() |   new EmailAddress() |   new Address() |   new Note() |   []                              |   false
     }
 }

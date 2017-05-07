@@ -22,7 +22,8 @@ class Communication {
     // Fixed Fields
     String comChannel // call, email, post
     String direction // inbound, outbound
-    String type
+    String platform
+
 
     String fromField
     String toField
@@ -55,7 +56,7 @@ class Communication {
         competitorsMentioned nullable: true
         fromField nullable: true
         toField nullable: true
-        type nullable: true
+        platform nullable: true
         comTitle nullable: true
         comContent nullable: true
     }

@@ -42,6 +42,7 @@ class Company {
                       addresses     : Address, notes: Note]
 
     static constraints = {
+        companyName blank: false
         emailFormula nullable: true
         emailAddresses nullable: true
         phoneNumbers nullable: true

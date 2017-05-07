@@ -15,8 +15,8 @@ class DashboardSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    void "no tests required as domain class is just a dummy to enable a dashboard controller"() {
+        expect:"nothing"
+            true == true
     }
 }

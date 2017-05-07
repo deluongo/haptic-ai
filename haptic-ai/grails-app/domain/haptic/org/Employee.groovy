@@ -71,9 +71,15 @@ class Employee {
 /*  -------------------             *** List Transients ***         -------------------  */
     static transients = [
             /* ___  security  ___ */
+            'companySocialHandles'
 
     ]
 /*  -------------------           *** Transient Functions ***       -------------------  */
 
 
+    def getCompanySocialHandles() {
+        def allHandles = []
+        findAll().each { allHandles << it.socialNetworks.socialNetworkHandle}
+        allHandles.flatten()
+    }
 }

@@ -1132,6 +1132,55 @@ $('.editable').on('hidden', function(e, reason){
     });
 
 
+    /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *  ~~~~~~~~~~ SEND EMAIL ~~~~~~~~~~
+     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    $(document).on("click", "#submit-post-button", function(){
+        $('#new-social-post-modal').modal('hide')
+    });
+
+    $(document).on("submit", "#submit-post-form", function(e){
+
+        var querystring = $(this).serialize();
+        console.log("Query String:" + querystring);
+
+        $.ajax({
+            type: "POST",
+            url: "sendSocialPost",
+            data : querystring,
+            success : function(response) {
+
+
+
+                $('#new-social-post-modal').on('hidden.bs.modal', function () {
+                    $('#display-lead-success-messages').append(
+                        '<div class="alert alert-success" role="alert">' +
+                        '<span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-green w3-large w3-display-topright">×</span>' +
+                        '<h3> Success! </h3><p class="alert-link">A new post was successfully published to your blog.</p>' +
+                        '</div>');
+
+                    //console.log(response)
+                    $('#contacts-render-target').html(response);
+                });
+
+
+
+            },
+            error: function () {
+                $('#display-lead-error-messages').append('' +
+                    '<div class="alert alert-success" role="alert">' +
+                    '<span onclick="this.parentElement.style.display=\'none\'" class="w3-button w3-red w3-large w3-display-topright">×</span>' +
+                    '<h3> Error! </h3>' +
+                    '<p> Something went wrong. Please try again. </p>' +
+                    '</div>');
+            }
+        });
+
+        // Coding
+
+        return false;
+    });
+
     /*  ______________________                                         ____________________  */
     /*  ______________________                                         ____________________  */
     /*  ______________________                                         ____________________  */
@@ -1296,10 +1345,12 @@ $('.editable').on('hidden', function(e, reason){
         console.log(lead_id);
         //var activeContact = $('.contact-action-buttons').val()
 
+        var renderTarget = $(this).attr('data-id');
+        console.log(renderTarget);
         $.ajax({
             type: "POST",
             url: "/dashboard/activityModals",
-            data: {'leadIndex': lead_id, "contactIndex": contact_id},
+            data: {'leadIndex': lead_id, "contactIndex": contact_id, "renderTarget": renderTarget},
             dataType: 'html',
             success: function (response) {
 
@@ -1310,10 +1361,11 @@ $('.editable').on('hidden', function(e, reason){
                     '</div>');
 
                 //console.log(response)
-                $('#new-email-model-body-wrapper').html(response);
+                $('#' + renderTarget).html(response);
+                $('#' + renderTarget).modal('show');
 
-
-            },
+            }
+            ,
             error: function () {
                 $('#display-lead-error-messages').append('' +
                     '<div class="alert alert-success" role="alert">' +

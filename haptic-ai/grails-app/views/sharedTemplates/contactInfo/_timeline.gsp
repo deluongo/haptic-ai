@@ -48,6 +48,59 @@
 
                     </g:if>
 
+                    <g:if test="${action?.comChannel == "social"}">
+
+                        <!-- TIMELINE ITEM -->
+                        <div class="timeline-item">
+                            <div class="timeline-badge">
+                                <g:if test="${action?.platform == "facebook"}">
+                                <img class="timeline-badge-userpic" src="http://blog.addthiscdn.com/wp-content/uploads/2015/11/logo-facebook.png"> </div>
+                                </g:if>
+                                <g:if test="${action?.platform == "twitter"}">
+                                    <img class="timeline-badge-userpic" src="http://www.techlivewire.com/wp-content/uploads/2014/04/Twitter1.png"> </div>
+                                </g:if>
+                                <g:if test="${action?.platform == "linked in"}">
+                                    <img class="timeline-badge-userpic" src="http://www.rpost.com/wp-content/uploads/2016/06/Linkedin_circle.svg_.png"> </div>
+                                </g:if>
+                            <div class="timeline-body">
+                                <div class="timeline-body-arrow"> </div>
+                                <div class="timeline-body-head">
+                                    <div class="timeline-body-head-caption">
+                                        <a href="javascript:;" class="timeline-body-title font-blue-madison">${haptic.org.Employee.get(action?.sender)?.firstName} ${haptic.org.Employee.get(action?.sender)?.lastName} </a>
+                                        <span class="timeline-body-time font-grey-cascade">Sent at ${println(action?.comDate?.format('h:mm a MMMM dd, yyyy'))}</span>
+                                    </div>
+                                    <div class="timeline-body-head-actions">
+                                        <div class="btn-group">
+                                            <button class="btn btn-circle green btn-outline btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
+                                                <i class="fa fa-angle-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li>
+                                                    <a href="mailto:${action?.toField}">Email ${activeContact?.firstName}</a>
+                                                </li>
+                                                <li class="divider"> </li>
+                                                <li>
+                                                    <a class="mark-email-as-answered">Mark Answered </a>
+                                                </li>
+                                                <li>
+                                                    <a class="mark-email-as-significant">Mark Significant </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="timeline-body-content">
+                                    <span class="timeline-body-alerttitle font-red-intense">${action?.comTitle}</span><br/>
+                                    <span class="font-grey-cascade"> ${action?.comContent} </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END TIMELINE ITEM -->
+
+
+
+                    </g:if>
+
                 </g:each>
 
 

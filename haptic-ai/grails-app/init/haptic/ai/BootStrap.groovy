@@ -138,26 +138,7 @@ class BootStrap {
                 estimatedDealSize: 5867, dateOpened: new Date(), dateClosed: new Date(), company: apple).save(flush:true)
 
 
-        print(lead1.company.contacts)
 
-
-
-        // Contacts
-        HashSet<Contact> lead1HashSet = new HashSet<Contact>()
-        lead1HashSet.add(billGates)
-        lead1HashSet.add(billGates2)
-
-        HashSet<Contact> lead2HashSet = new HashSet<Contact>()
-        lead2HashSet.add(steveJobs)
-        lead2HashSet.add(steveJobs2)
-
-
-        //microsoft = Company.findAllByCompanyName('Microsoft')
-        print(devon.firstName)
-        print(microsoft)
-        print("/n")
-        print("/n")
-        print(microsoft.companyName)
 
 
 
@@ -171,29 +152,33 @@ class BootStrap {
         EmailAddress email_devon = new EmailAddress(emailType: 'Primary', emailAddress: 'del253@g.harvard.edu', emailExtension: '@g.harvard.edu', emailStatus: 'Active', dateCreated: new Date())
         EmailAddress email_user = new EmailAddress(emailType: 'Primary', emailAddress: 'anon56@g.harvard.edu', emailExtension: '@g.harvard.edu', emailStatus: 'Unsubscribed', dateCreated: new Date())
 
+        // Phone Numbers
         PhoneNumber phone_mike = new PhoneNumber(phoneType: 'Cell', phoneNumber: '650-540-9234', phoneStatus: 'Active', dateCreated: new Date())
         PhoneNumber phone_admin = new PhoneNumber(phoneType: 'Work', phoneNumber: '+1 334-540-9234', phoneStatus: 'Active', dateCreated: new Date())
         PhoneNumber phone_user = new PhoneNumber(phoneType: 'Work', phoneNumber: '650-540-9464', phoneStatus: 'Active', dateCreated: new Date())
         PhoneNumber phone_devon = new PhoneNumber(phoneType: 'Home', phoneNumber: '950-640-9234', phoneStatus: 'Active', dateCreated: new Date())
         PhoneNumber phone_haptic = new PhoneNumber(phoneType: 'Automated', phoneNumber: '888-540-9234', phoneStatus: 'Active', dateCreated: new Date())
 
+        // Social Networks
         SocialNetwork sn_devon = new SocialNetwork(networkName: "Facebook", networkUrl: "http://www.facebook.com", socialNetworkHandle: "Devon Luongo")
         SocialNetwork sn_michael = new SocialNetwork(networkName: "Twitter", networkUrl: "http://www.twitter.com", socialNetworkHandle: "ProfessorKerry")
         SocialNetwork sn_haptic = new SocialNetwork(networkName: "LinkedIn", networkUrl: "http://www.linkedin.com", socialNetworkHandle: "Haptic Sales")
 
+        // Websites
         WebSite web1 = new WebSite(webSiteName: "Google", webSiteType: "Company Site", webSiteUrl: "http://www.google.com")
         WebSite devon_github = new WebSite(webSiteName: "GitHub", webSiteType: "Company Site", webSiteUrl: "https://www.github.com/deluongo")
         WebSite haptic_github = new WebSite(webSiteName: "GitHub", webSiteType: "Company Site", webSiteUrl: "https://github.com/deluongo/haptic-ai/graphs/contributors?from=2017-04-16&to=2017-05-06&type=a")
         WebSite michael_github = new WebSite(webSiteName: "GitHub", webSiteType: "Company Site", webSiteUrl: "https://github.com/cscie56-2017/bookstore2017/tree/lecture4")
 
+        // Review Sites
         ReviewSite review1 = new ReviewSite(reviewSiteName: "G2 Crowd", reviewSiteUrl: "http://www.g2crowd.com", reviewSiteHandle: "deluongo")
 
+        // Addresses
         Address address1 = new Address(locName: "Corporate Headquarters", locType: "Main Office", street: "999 Microsoft Dr.", city: "Wiscogi", state: "Washington", country: "United States", zip: "94999")
         Address address2 = new Address(locName: "Main Campus", locType: "Campus", street: "86 Brattle Street", city: "Cambridge", state: "Massachusetts", country: "United States", zip: "02138")
         Address address3 = new Address(locName: "Secret Offshore Base", locType: "Main Office", street: "Nowhere Dr.", city: "San Francisco", state: "California", country: "United States", zip: "94999")
 
-
-
+        // Employees
         Employee devon = new Employee(salutation: "Dr.", firstName: "Devon", lastName: "Luongo", gender: "Trans", jobTitle: "Loving Husband",
                 emailAddresses: [email_devon, email_admin], phoneNumbers: [phone_devon, phone_haptic, phone_admin], socialNetworks: [sn_michael, sn_haptic],
                 webSites: [devon_github, haptic_github], reviewSites: [review1], addresses: [address1, address2, address3])
@@ -204,34 +189,27 @@ class BootStrap {
                 emailAddresses: [email_user], phoneNumbers: [phone_user, phone_haptic], socialNetworks: [sn_haptic], webSites: [web1, haptic_github],
                 reviewSites: [review1], addresses: [address2, address3])
 
-
-
+        // Users
         User admin = new User(username: "admin", password: "supersecret",
-                bio: 'Some Bio', birthDate: new Date(), height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg", employee: michael)
-
-        saveObject(admin)
-
+                bio: 'Some Bio', birthDate: new Date(), height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg", employee: michael).save(flush:true)
         User user = new User(username: "user", password: "cscie56",
-                bio: 'Some Bio', birthDate: new Date(), height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg", employee: guest)
-        saveObject(user)
-
+                bio: 'Some Bio', birthDate: new Date(), height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg", employee: guest).save(flush:true)
         User devon_user = new User(username: "devon", password: "stephany",
-                bio: 'Some Bio', birthDate: new Date(), height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg", employee: devon)
-        saveObject(devon)
+                bio: 'Some Bio', birthDate: new Date(), height: "6'2", weight: 160, universityAttended: "Some School", pictureURL: "https://pbs.twimg.com/media/Ce55dhKUYAAVEzF.jpg", employee: devon).save(flush:true)
 
-        Role adminRole = new Role(authority: Role.ROLE_ADMIN)
-        saveObject(adminRole)
-        Role userRole = new Role(authority: Role.ROLE_USER)
-        saveObject(userRole)
+        // Roles
+        Role adminRole = new Role(authority: Role.ROLE_ADMIN).save(flush:true)
+        Role userRole = new Role(authority: Role.ROLE_USER).save(flush:true)
 
+        // Link Users & Roles
         UserRole.create(admin, adminRole)
         UserRole.create(admin, userRole)
         UserRole.create(user, userRole)
         UserRole.create(devon_user, userRole)
 
+        // Team
+        Team cscie56 = new Team(name:"cscie56", teamMembers: [devon, michael, guest]).save(flush:true)
 
-        Team cscie56 = new Team(name:"cscie56", teamMembers: [devon, michael, guest])
-        saveObject(cscie56)
     }
 
     /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

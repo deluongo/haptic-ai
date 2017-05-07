@@ -35,54 +35,6 @@ class DashboardController {
         render(view: "index", model: ["leads": leads, "lead": lead, currentUser: currentUser])
     }
 
-    /*
-     *  Fields below needed for following method
-     * */
-    String emailAddress = ''
-    String emailType = ''
-    String emailStatus = ''
-
-    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN])
-    def newEmail() {
-
-        if (params.name=='emailAddress') {
-            emailAddress = params['value']
-            println(emailAddress)
-        }
-
-        if (params.name=='emailType') {
-            emailType = params['value[]']
-            println(emailType)
-        }
-
-        if (params.name=='emailStatus') {
-            emailStatus = params['value[]']
-            println(emailStatus)
-        }
-
-        println('Params: '+params)
-        println('Address: '+emailAddress)
-        println('Type: '+emailType)
-        println('Status: '+emailStatus)
-
-
-        if (emailAddress!='' && emailType!='' && emailStatus!='') {
-            String extension = '@'+emailAddress.split('@')[1]
-            println(extension)
-
-            EmailAddress newEmail = new EmailAddress(emailAddress: emailAddress, emailType: emailType,
-                    emailStatus: emailStatus, emailExtension: extension, dateCreated: new Date())
-
-            newEmail.save(flush: true)
-            emailAddress = ''
-            emailType = ''
-            emailStatus = ''
-
-        }
-
-        render(emailAddress+' '+emailType+' '+emailStatus)
-    }
-
 
     @Secured([Role.ROLE_USER, Role.ROLE_ADMIN])
     /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -226,6 +178,11 @@ class DashboardController {
 
         def leadIndex = params.list('leadIndex') ?: 1
         def contactIndex = params.list('contactIndex') ?: 1
+        def renderTarget = params.list('renderTarget')[0]
+        print("render target index: ")
+        print(renderTarget)
+
+
         //def validation_error = []
         //String personIndex, String tabIndex,
 
@@ -273,7 +230,7 @@ class DashboardController {
 
         /*  --------------              *** Display Stats ***           ---------------  */
 
-        render(template: "/sharedTemplates/modals/new-email-modal", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts, currentUser: currentUser])
+        render(template: "/sharedTemplates/modals/${renderTarget}", model: [lead: lead, leadCompany: leadCompany, activeContact: activeContact, allContacts: allContacts, currentUser: currentUser])
 
     }
 
@@ -483,6 +440,93 @@ class DashboardController {
 
     }
 
+
+    @Secured([Role.ROLE_USER, Role.ROLE_ADMIN, Role.ROLE_ANONYMOUS])
+    /*  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     *   ~~ !!! FUNCTION !!! ~~~  | ~~~~~ UPDATE CONTACT'S SALUTATION ~~~~~~
+     *  ========================= | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    def sendSocialPost() {
+
+        /*------------------------------------------*
+        * ===========================================
+        * FUNCTION -> UPDATES CONTACT'S SALUTATION FIELD IN DB!
+        * ===========================================
+        * INPUTS:
+        *     - contactIndex
+        *     - leadIndex
+        *     - salutationValue
+        * DESCRIPTION:
+        *     - Stores results for x-editable form in DB
+        * OUTPUT:
+        *     - HTML rendering of _contacts.gsp template
+        /*---------------------------------------------------------------------------------------------*/
+
+
+        // Authenticate User
+        def currentUser = springSecurityService?.currentUser ?: "User Not Configured"
+
+        /*  --------------            *** Send Email Form Results ***         ---------------  */
+
+        // Get form results
+        def receiverIndex = params.list('receiverIndex')[0]
+        def senderIndex = params.list('senderIndex')[0]
+        def leadIndex = params.list('leadIndex')[0]
+
+        // Load objects from form indices
+        String comChannel = "social"
+        String direction = "outbound"
+        def receiver = Contact.findById(receiverIndex)
+        def sender = Employee.findById(senderIndex)
+        String sentTo = params.list('post-at-this-handel')[0]
+        String sentFrom = params.list('post-from-this-handel')[0]
+        String comTitle = params.list('social-post-title')[0]
+        String comContent = params.list('social-post-body')[0]
+        String networkName = params.list('network_select_radio')[0]
+        print(networkName)
+
+        // Load objects for ajax render
+        def lead = Lead.get(leadIndex)
+        def leadCompany = lead.company
+        def allContacts = lead.rankedContacts
+
+        /*  -------------------------------- END EMAIL -------------------------------  */
+
+        // Store results
+        if(currentUser == "User Not Configured") {
+            flash.message = "You aren't authorized to send emails to ${receiver.firstName} ${receiver.lastName}"
+        }
+        else {
+
+            /*  --------------           *** Add New Comm Object ***        ---------------  */
+            Communication newPost = new Communication(receiver: receiver, sender: senderIndex, comDate: new Date(), direction: direction, comChannel: comChannel,
+                    toField: sentTo, fromField: sentFrom, comTitle: comTitle, comContent: comContent, platform: networkName)
+
+            /*  --------------             *** Add Post to DB ***           ---------------  */
+            if (newPost.validate()) {
+                newPost.save(flush:true)
+                receiver.addToCommunications(newPost).save(flush:true)
+                sender.addToCommunications(newPost).save(flush:true)
+            }
+
+            /*  --------------             *** Display Errors ***           ---------------  */
+            else {
+                flash.message = "Something got stuck. Please try your email again."
+            }
+
+            print("\n\nCOMMUNICATIONS")
+            print(receiver.communications.findAll())
+            print(sender.communications.findAll())
+            print(sentTo)
+            print(sentFrom)
+            print(comTitle)
+            print(comContent)
+
+            print("\n\nCOMMUNICATIONS\n\n\n")
+            /*  --------------    *** Render Contacts 2 Update Data ***     ---------------  */
+            render(template: "/sharedTemplates/jqueryRenders/contacts", model: [lead: lead, leadCompany: leadCompany, activeContact: receiver, allContacts: allContacts, currentUser: currentUser])
+        }
+
+    }
 
 
 

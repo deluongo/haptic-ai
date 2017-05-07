@@ -50,7 +50,7 @@ class ContactSpec extends Specification {
 
 
     @Unroll
-    void "test Request nullable parameters event: #event requestedSpace: #requestedSpace dateRequested: #dateRequested messages: #messages status: #status is valid: #result"() {
+    void "test Contact nullable parameters phoneNumber: #phoneNumber emailAddress: #emailAddress address: #address notes: #notes reviewSites: #reviewSites is valid: #result"() {
 
         when:
         Contact contact = new Contact(salutation: 'Mr.', firstName: 'Steve2', lastName: 'Jobs', gender: 'M',
@@ -63,12 +63,12 @@ class ContactSpec extends Specification {
 
         where:
         phoneNumbers      |   emailAddresses      |   addresses          |   notes           |   reviewSites |   status                          |   result
-        new PhoneNumber() |   new EmailAddress()  |   new Address()      |   new Note()      |   []          |   Request.RequestStatus.Approved  |   true
-        null              |   new EmailAddress()  |   new Address()      |   new Note()      |   []          |   Request.RequestStatus.Approved  |   false
-        new PhoneNumber() |   null                |   new Address()      |   new Note()      |   []          |   Request.RequestStatus.Approved  |   false
-        new PhoneNumber() |   new EmailAddress()  |   null               |   new Note()      |   []          |   Request.RequestStatus.Approved  |   false
-        new PhoneNumber() |   new EmailAddress()  |   new Address()      |   null            |   []          |   Request.RequestStatus.Approved  |   false
-        new PhoneNumber() |   new EmailAddress()  |   new Address()      |   new Note()      |   null        |   Request.RequestStatus.Approved  |   false
+        null              |   null                |   null               |   null            |   null        |   "something"                     |   false
+        null              |   new EmailAddress()  |   new Address()      |   new Note()      |   []          |   null                            |   false
+        new PhoneNumber() |   null                |   new Address()      |   new Note()      |   []          |   null                            |   false
+        new PhoneNumber() |   new EmailAddress()  |   null               |   new Note()      |   []          |   "something"                     |   false
+        new PhoneNumber() |   new EmailAddress()  |   new Address()      |   null            |   []          |   "something"                     |   false
+        new PhoneNumber() |   new EmailAddress()  |   new Address()      |   null            |   null        |   null                            |   false
         new PhoneNumber() |   new EmailAddress()  |   new Address()      |   new Note()      |   []          |   null                            |   false
     }
 }

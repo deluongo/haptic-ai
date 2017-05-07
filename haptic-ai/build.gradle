@@ -7,7 +7,12 @@ buildscript {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.11.6"
         classpath "org.grails.plugins:hibernate5:6.0.6"
+        classpath "net.saliman:gradle-cobertura-plugin:2.4.0"
     }
+}
+
+plugins {
+    id "net.saliman.cobertura" version "2.4.0"
 }
 
 version "0.1"
@@ -19,6 +24,7 @@ apply plugin:"war"
 apply plugin:"org.grails.grails-web"
 apply plugin:"org.grails.grails-gsp"
 apply plugin:"asset-pipeline"
+apply plugin: "net.saliman.cobertura"
 
 repositories {
     mavenLocal()
@@ -54,7 +60,6 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
     compile 'org.grails.plugins:spring-security-core:3.1.1'
-
 }
 
 
@@ -68,3 +73,4 @@ assets {
     minifyJs = true
     minifyCss = true
 }
+
